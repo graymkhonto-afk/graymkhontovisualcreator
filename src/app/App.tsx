@@ -60,7 +60,7 @@ import svgFigs149 from "@/imports/QG_rpl_prog.svg_for_figs_149.svg";
 import svgFigs151 from "@/imports/QG_rpl_prog.svg_for_figs_151.svg";
 import svgFigs157 from "@/imports/QG_rpl_prog.svg_for_figs_157.svg";
 import svgFigs159 from "@/imports/QG_rpl_prog.svg_for_figs_159.svg";
-import editableKeynoteTextSlides from "@/imports/editable-keynote-text-slides.json";
+import editableKeynoteSlides from "@/imports/editable-keynote-slides.json";
 import * as pdfjsLib from "pdfjs-dist";
 pdfjsLib.GlobalWorkerOptions.workerSrc = "https://unpkg.com/pdfjs-dist@6.1.200/build/pdf.worker.min.mjs";
 
@@ -80,13 +80,11 @@ import pdf_product_photo from "@/imports/gracious-mkhonto-product-photography-bo
 import pdf_character_sheet from "@/imports/character-design-sheet-figma-make.pdf";
 import pdf_supporting_certificate from "@/imports/supporting-certificate-cu1jie.pdf";
 import pdf_hulk_poster from "@/imports/semiotics-hulk-final-poster.pdf";
-import pdf_complete_keynote from "@/imports/qgray-porti-complete-portfolio-web.pdf";
 
 const ART_DIRECTION_CAMPAIGNS = "Part 04 — Art Direction · Campaign Systems";
 
 // Metadata for each uploaded PDF — section placement and label
 const UPLOADED_PDFS = [
-  { url: pdf_complete_keynote, id: "pdf-complete-keynote", title: "Complete Keynote Portfolio", section: "Complete Portfolio" },
   { url: pdf_toc,        id: "pdf-toc",        title: "TOC & Core Competencies",    section: "Uploaded Artwork" },
   { url: pdf_bio_simple, id: "pdf-bio-s",      title: "Biography & Philosophy",     section: "Uploaded Artwork" },
   { url: pdf_bio_mono,   id: "pdf-bio-m",      title: "Monograph — Biography",      section: "Uploaded Artwork" },
@@ -1972,12 +1970,12 @@ function AfricanLiteratureResearch() {
   ];
 
   return (
-    <EPage section="BACK MATTER · AFRICAN LITERATURE" page="REF. 02" navActive="INDEX">
+    <EPage section="BACK MATTER · DESIGN READING" page="REF. 02" navActive="INDEX">
       <div style={{ position: "absolute", inset: 0, padding: `24px ${M}px 16px` }}>
         <div style={{ display: "grid", gridTemplateColumns: "235px 1fr", gap: 34, marginBottom: 18 }}>
           <div>
-            <CapLabel color={c.olive}>Books of Interest</CapLabel>
-            <div style={{ fontFamily: Fd, fontSize: 31, lineHeight: 1, color: c.ink, marginBottom: 14 }}>African literature<br/><em style={{ color: c.olive }}>I researched.</em></div>
+            <CapLabel color={c.olive}>Research Library</CapLabel>
+            <div style={{ fontFamily: Fd, fontSize: 31, lineHeight: 1, color: c.ink, marginBottom: 14 }}>My Design<br/><em style={{ color: c.olive }}>Reading List.</em></div>
             <p style={{ fontFamily: Fb, fontSize: 10, lineHeight: 1.6, color: c.mid, margin: 0 }}>Selected only from books cited in my year-end essays and concept books. These texts informed how I understand African identity, visual culture, material meaning, decolonial representation, and digital authorship.</p>
           </div>
           <div style={{ borderLeft: `1px solid ${c.rule}`, paddingLeft: 28, display: "grid", gridTemplateColumns: "1fr 1fr", gap: "0 24px" }}>
@@ -2144,14 +2142,14 @@ function PDFSlidePage({ dataUrl, title, section }: { dataUrl: string; title: str
 
 function KeynoteSlidePage({ dataUrl, title, section, slideNumber }: { dataUrl: string; title: string; section: string; slideNumber: number }) {
   return (
-    <MediaSlideFrame section={section} page={`SLIDE ${String(slideNumber).padStart(3, "0")}`}>
+    <div aria-label={`${section} — slide ${slideNumber}`} style={{ width: PW, height: PH, background: c.bg, overflow: "hidden" }}>
       <img src={dataUrl} alt={title} decoding="async" style={{ width: "100%", height: "100%", objectFit: "contain", display: "block", imageRendering: "auto", backfaceVisibility: "hidden" }} />
-    </MediaSlideFrame>
+    </div>
   );
 }
 
 interface EditableSlideItem {
-  kind: "text" | "shape";
+  kind: "text" | "shape" | "image";
   x: number;
   y: number;
   w: number;
@@ -2168,6 +2166,8 @@ interface EditableSlideItem {
   color?: string;
   align?: "left" | "center" | "right" | "justify";
   vertical?: "flex-start" | "center" | "flex-end";
+  src?: string;
+  crop?: { l: number; t: number; r: number; b: number } | null;
 }
 
 interface EditableSlideData {
@@ -2185,15 +2185,48 @@ function EditableTextSlidePage({ slideNumber, section, data }: { slideNumber: nu
   };
 
   return (
-    <MediaSlideFrame section={section} page={`SLIDE ${String(slideNumber).padStart(3, "0")}`}>
-      <div aria-label={`Editable reconstruction of Portfolio Slide ${slideNumber}`} style={{ width: PW, height: PH, position: "relative", overflow: "hidden", background: c.bg }}>
+      <div aria-label={`${section} — editable reconstruction of Portfolio Slide ${slideNumber}`} style={{ width: PW, height: PH, position: "relative", overflow: "hidden", background: c.bg }}>
       {data.items.map((item, index) => {
+        const isPhotographyTitle = index === 9 && slideNumber >= 45 && slideNumber <= 47;
+        const adjustedWidth = isPhotographyTitle && slideNumber === 45 ? 24.5 : item.w;
+        const adjustedTop = slideNumber === 108 && index === 56 ? 15.2 : item.y;
+        const rawText = item.text || "";
+        const textLines = rawText.split("\n");
+        const longestLine = Math.max(1, ...textLines.map(line => line.length));
+        const boxWidthPx = (adjustedWidth / 100) * PW;
+        const boxHeightPx = (item.h / 100) * PH;
+        const widthBoundPt = (boxWidthPx / (longestLine * 0.54)) * 0.75;
+        const heightBoundPt = (boxHeightPx / (Math.max(1, textLines.length) * 1.18)) * 0.75;
+        const frameBoundPt = Math.max(5.5, Math.min(widthBoundPt, heightBoundPt));
+        const isEdgeMatter = item.y < 10 || item.y > 95;
+        const isDefaultExtractedSize = Math.abs((item.fontSize || 11) - 11) < 0.01;
+        const isDisplayText = isDefaultExtractedSize && rawText.length <= 110 && item.h >= 8;
+        const isMidLevelText = isDefaultExtractedSize && rawText.length <= 70 && item.h >= 5;
+        const preferredFontSize = slideNumber === 108 && index === 14
+          ? 8
+          : isPhotographyTitle
+          ? 22
+          : isEdgeMatter
+            ? 7.2
+            : !isDefaultExtractedSize
+              ? Math.max(5.5, Math.min(item.fontSize || 11, item.h * 2.1))
+              : isDisplayText
+                ? Math.min(34, Math.max(16, item.h * 2.1))
+                : isMidLevelText
+                  ? 14
+                  : 7.5;
+        const resolvedFontSize = Math.min(preferredFontSize, frameBoundPt);
+        const extractedTracking = item.letterSpacing || 0;
+        const resolvedTracking = isPhotographyTitle
+          ? -0.35
+          : Math.max(-0.4, Math.min(2, extractedTracking));
+        const adjustedHeight = item.y > 95 ? Math.min(item.h, 2.55) : item.h;
         const shared: React.CSSProperties = {
           position: "absolute",
           left: `${item.x}%`,
-          top: `${item.y}%`,
-          width: `${item.w}%`,
-          height: `${item.h}%`,
+          top: `${adjustedTop}%`,
+          width: `${adjustedWidth}%`,
+          height: `${adjustedHeight}%`,
           boxSizing: "border-box",
           background: resolvedColor(item.fill) || "transparent",
           border: item.stroke ? `0.5px solid ${resolvedColor(item.stroke)}` : "none",
@@ -2202,6 +2235,32 @@ function EditableTextSlidePage({ slideNumber, section, data }: { slideNumber: nu
         };
 
         if (item.kind === "shape") return <div key={index} style={shared} />;
+
+        if (item.kind === "image" && item.src) {
+          const crop = item.crop || { l: 0, t: 0, r: 0, b: 0 };
+          const visibleW = Math.max(1, 100 - crop.l - crop.r);
+          const visibleH = Math.max(1, 100 - crop.t - crop.b);
+          return (
+            <div key={index} style={{ ...shared, overflow: "hidden" }}>
+              <img
+                src={`${import.meta.env.BASE_URL}${item.src.replace(/^\//, "")}`}
+                alt=""
+                draggable={false}
+                decoding="async"
+                style={{
+                  position: "absolute",
+                  width: `${10000 / visibleW}%`,
+                  height: `${10000 / visibleH}%`,
+                  left: `${-crop.l * 100 / visibleW}%`,
+                  top: `${-crop.t * 100 / visibleH}%`,
+                  objectFit: "fill",
+                  maxWidth: "none",
+                  display: "block",
+                }}
+              />
+            </div>
+          );
+        }
 
         return (
           <div
@@ -2215,13 +2274,13 @@ function EditableTextSlidePage({ slideNumber, section, data }: { slideNumber: nu
               display: "flex",
               alignItems: item.vertical || "flex-start",
               whiteSpace: "pre-wrap",
-              overflow: "visible",
+              overflow: "hidden",
               fontFamily: item.fontFamily === "Playfair Display" ? Fd : item.fontFamily === "DM Mono" ? Fm : Fb,
-              fontSize: `${Math.max(5.5, (item.fontSize || 11) * 0.92)}pt`,
+              fontSize: `${resolvedFontSize}pt`,
               fontWeight: item.fontWeight || 400,
               fontStyle: item.fontStyle || "normal",
-              letterSpacing: `${item.letterSpacing || 0}pt`,
-              lineHeight: 1.06,
+              letterSpacing: `${resolvedTracking}pt`,
+              lineHeight: isDisplayText || isPhotographyTitle ? 1.04 : 1.18,
               color: resolvedColor(item.color) || c.ink,
               textAlign: item.align || "left",
               outline: "none",
@@ -2233,7 +2292,6 @@ function EditableTextSlidePage({ slideNumber, section, data }: { slideNumber: nu
         );
       })}
       </div>
-    </MediaSlideFrame>
   );
 }
 
@@ -2763,18 +2821,10 @@ interface DisplayPage extends PageEntry { pdfId?: string; isImported?: boolean; 
 const buildDisplayPages = (pdfPages: PdfPage[]): DisplayPage[] => {
   const pages: DisplayPage[] = [];
   const placed = new Set<string>();
-  // Slides 8 and 24 contain the same Reflective Learning composition already
-  // represented by the editable portfolio page. Keep them in the source PDF,
-  // but avoid repeating the identical slide in the public viewing sequence.
-  const isRepeatedReflectiveSlide = (pdf: PdfPage) => {
-    if (pdf.kind !== "Keynote") return false;
-    const slideNumber = Number(pdf.id.split("-").pop());
-    return slideNumber === 8 || slideNumber === 24;
-  };
   const asDisplayPage = (pdf: PdfPage): DisplayPage => {
     const isKeynote = pdf.kind === "Keynote";
     const slideNumber = Number(pdf.id.split("-").pop()) || 1;
-    const editableData = (editableKeynoteTextSlides as Record<string, EditableSlideData>)[String(slideNumber)];
+    const editableData = (editableKeynoteSlides as Record<string, EditableSlideData>)[String(slideNumber)];
     const displayTitle = isKeynote ? `Portfolio Slide ${slideNumber}` : pdf.title;
     return {
       id: pdf.id,
@@ -2789,6 +2839,22 @@ const buildDisplayPages = (pdfPages: PdfPage[]): DisplayPage[] => {
         : <PDFSlidePage dataUrl={pdf.dataUrl} title={pdf.title} section={pdf.section} />,
     };
   };
+
+  // The original Keynote is the portfolio's source of truth. Its editable
+  // reconstruction must not be combined with the separate hand-built page
+  // manifest, which repeats the same projects and caused duplicate slides.
+  const keynotePages = pdfPages
+    .filter(pdf => pdf.kind === "Keynote")
+    .sort((a, b) => (Number(a.id.split("-").pop()) || 0) - (Number(b.id.split("-").pop()) || 0));
+  if (keynotePages.length > 0) {
+    const seenSlides = new Set<number>();
+    return keynotePages.flatMap(pdf => {
+      const slideNumber = Number(pdf.id.split("-").pop()) || 0;
+      if (!slideNumber || seenSlides.has(slideNumber)) return [];
+      seenSlides.add(slideNumber);
+      return [asDisplayPage(pdf)];
+    });
+  }
 
   // Keep each Keynote-informed campaign slide intact, but gather the related
   // slides into one continuous art-direction chapter for navigation and review.
@@ -2813,7 +2879,7 @@ const buildDisplayPages = (pdfPages: PdfPage[]): DisplayPage[] => {
     const nextSection = orderedPages[index + 1]?.section;
     if (nextSection !== page.section) {
       pdfPages
-        .filter(pdf => pdf.section === page.section && !placed.has(pdf.id) && !isRepeatedReflectiveSlide(pdf))
+        .filter(pdf => pdf.section === page.section && !placed.has(pdf.id))
         .forEach(pdf => {
           placed.add(pdf.id);
           pages.push(asDisplayPage(pdf));
@@ -2821,7 +2887,7 @@ const buildDisplayPages = (pdfPages: PdfPage[]): DisplayPage[] => {
     }
   });
 
-  pdfPages.filter(pdf => !placed.has(pdf.id) && !isRepeatedReflectiveSlide(pdf)).forEach(pdf => {
+  pdfPages.filter(pdf => !placed.has(pdf.id)).forEach(pdf => {
     pages.push(asDisplayPage(pdf));
   });
 
@@ -3122,7 +3188,7 @@ const PAGES: PageEntry[] = [
 
   // ── BACK MATTER ───────────────────────────────────────────────────────────
   { id: "references",  title: "Reference List",              section: "Back Matter", render: () => <ReferenceList /> },
-  { id: "african-literature", title: "African Literature Researched", section: "Back Matter", render: () => <AfricanLiteratureResearch /> },
+  { id: "african-literature", title: "My Design Reading List", section: "Back Matter", render: () => <AfricanLiteratureResearch /> },
   { id: "rationale",   title: "Design Rationale",             section: "Back Matter", render: () => <DesignRationale /> },
   { id: "processidx",  title: "Process Index",                section: "Back Matter", render: () => <ProcessIndex /> },
   { id: "back",        title: "Back Cover & Colophon",        section: "Back Matter", render: () => <BackCover /> },
@@ -3525,28 +3591,57 @@ function Sidebar({ current, onSelect, total, displayPages, onAssetImport, pdfLoa
   const sections = [...new Set(displayPages.map(p => p.section))];
   const importSections = [...new Set(PAGES.map(p => p.section))];
   const [importSection, setImportSection] = useState(currentSection);
+  const [navQuery, setNavQuery] = useState("");
+  const [openSections, setOpenSections] = useState<Set<string>>(() => new Set([currentSection]));
   const fileRef = useRef<HTMLInputElement>(null);
 
   useEffect(() => {
     if (importSections.includes(currentSection)) setImportSection(currentSection);
+    setOpenSections(previous => {
+      const next = new Set(previous);
+      next.add(currentSection);
+      return next;
+    });
   }, [currentSection]);
 
   return (
     <aside style={{ width: 252, flexShrink: 0, height: "100vh", background: c.bg, borderRight: `0.5px solid ${c.rule}`, display: "flex", flexDirection: "column", overflow: "hidden" }}>
       <div style={{ padding: "16px 18px 12px", borderBottom: `0.5px solid ${c.rule}` }}>
         <div style={{ fontFamily: Fb, fontSize: 8.5, letterSpacing: "0.14em", textTransform: "uppercase" as const, color: c.ink, fontWeight: 600, marginBottom: 3 }}>RPL PORTFOLIO</div>
-        <div style={{ fontFamily: Fb, fontSize: 8, color: c.mid, letterSpacing: "0.1em" }}>Qinisile G. Mkhonto · Vol. 1 — 2026</div>
+        <div style={{ fontFamily: Fb, fontSize: 8, color: c.mid, letterSpacing: "0.1em", marginBottom: 10 }}>Qinisile G. Mkhonto · Vol. 1 — 2026</div>
+        <input
+          value={navQuery}
+          onChange={event => setNavQuery(event.currentTarget.value)}
+          placeholder="Find a slide"
+          aria-label="Find a slide"
+          style={{ width: "100%", height: 28, boxSizing: "border-box", background: c.white, border: `0.5px solid ${c.rule}`, padding: "0 9px", fontFamily: Fb, fontSize: 9, color: c.ink, outline: "none" }}
+        />
       </div>
 
       <div style={{ flex: 1, overflowY: "auto" }}>
         {sections.map(sec => {
           const accent = SECTION_ACCENTS[sec] || c.mid;
-          const pagesInSec = displayPages.map((p, i) => ({ ...p, index: i })).filter(p => p.section === sec);
+          const query = navQuery.trim().toLowerCase();
+          const pagesInSec = displayPages
+            .map((p, i) => ({ ...p, index: i }))
+            .filter(p => p.section === sec && (!query || `${p.title} ${p.section}`.toLowerCase().includes(query)));
+          if (pagesInSec.length === 0) return null;
           const isPartDiv = pagesInSec.length > 0 && pagesInSec[0].id.endsWith("div");
+          const isOpen = Boolean(query) || openSections.has(sec);
           return (
             <div key={sec} style={{ borderTop: isPartDiv ? `0.5px solid ${c.rule}` : "none" }}>
-              <div style={{ padding: "9px 18px 4px", fontFamily: Fb, fontSize: 7, letterSpacing: "0.14em", textTransform: "uppercase" as const, color: accent }}>{sec}</div>
-              {pagesInSec.map(p => (
+              <button
+                onClick={() => setOpenSections(previous => {
+                  const next = new Set(previous);
+                  if (next.has(sec)) next.delete(sec); else next.add(sec);
+                  return next;
+                })}
+                style={{ width: "100%", minHeight: 34, padding: "8px 16px 7px 18px", display: "flex", alignItems: "center", justifyContent: "space-between", gap: 10, background: isOpen ? accent + "0D" : "transparent", border: "none", borderBottom: `0.5px solid ${c.rule}`, cursor: "pointer", fontFamily: Fb, fontSize: 7, letterSpacing: "0.13em", textTransform: "uppercase" as const, color: accent, textAlign: "left" }}
+              >
+                <span>{sec}</span>
+                <span style={{ flexShrink: 0, fontFamily: Fm, fontSize: 7, letterSpacing: 0, color: c.mid }}>{String(pagesInSec.length).padStart(2, "0")} {isOpen ? "−" : "+"}</span>
+              </button>
+              {isOpen && pagesInSec.map(p => (
                 <div key={p.id} style={{ display: "flex", alignItems: "center" }}>
                   <button title={p.isImported ? `Asset · ${p.title}` : p.title} onClick={() => onSelect(p.index)} style={{
                     flex: 1, width: "100%", minHeight: p.id.endsWith("div") ? 26 : 24, textAlign: "left", padding: p.id.endsWith("div") ? "5px 18px" : "5px 8px 5px 28px",
@@ -3622,7 +3717,18 @@ export default function App() {
   const [scale, setScale]     = useState(1);
   const [visible, setVisible] = useState(true);
   const [printing, setPrinting] = useState(false);
-  const [pdfPages, setPdfPages] = useState<PdfPage[]>([]);
+  const [pdfPages, setPdfPages] = useState<PdfPage[]>(() =>
+    Object.keys(editableKeynoteSlides)
+      .map(Number)
+      .sort((a, b) => a - b)
+      .map(slideNumber => ({
+        id: `keynote-${slideNumber}`,
+        title: `Portfolio Slide ${slideNumber}`,
+        section: keynoteSectionForPage(slideNumber),
+        dataUrl: "",
+        kind: "Keynote" as const,
+      }))
+  );
   const [pdfLoading, setPdfLoading] = useState(false);
   const [artworkLoaded, setArtworkLoaded] = useState(false);
   const [intelligenceOpen, setIntelligenceOpen] = useState(false);
