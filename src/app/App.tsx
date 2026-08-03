@@ -61,6 +61,8 @@ import noveltiesPackagingCustom from "@/imports/novelties-packaging-custom.jpg";
 import grayciousMerchandise2017 from "@/imports/branding-graycious-merchandise-2017.jpg";
 import grayciousIdentity2017 from "@/imports/branding-graycious-identity-2017.jpg";
 import grayciousContact2018 from "@/imports/branding-graycious-contact-2018.jpg";
+import noveltiesRaffiaVesselProcess from "@/imports/novelties-raffia-vessel-process.jpg";
+import noveltiesRaffiaHeartStudy from "@/imports/novelties-raffia-heart-study.jpg";
 import ukuMockup from "@/imports/uku_poster_mock_up.png";
 import characterSketch from "@/imports/IMG_0561.PNG";
 import editorialManifestoImg from "@/imports/editorial-first-things-first-2020.png";
@@ -3049,6 +3051,19 @@ function GrayciousBrandingTimelinePage() {
   );
 }
 
+function NoveltiesRaffiaProcessPage() {
+  const works = [
+    { src: noveltiesRaffiaVesselProcess, number: "01", title: "Wrapped Glass Vessel", note: "A compact glass container is wrapped by hand, testing material tension, proportion and the visual contrast between transparent glass and natural fibre." },
+    { src: noveltiesRaffiaHeartStudy, number: "02", title: "Woven Heart Study", note: "A small-form weaving experiment explores repetition, directional wrapping and how raffia can hold a recognisable sculptural silhouette." },
+  ];
+  return <div style={{ height: "100%", display: "grid", gridTemplateRows: "104px 1fr" }}>
+    <div style={{ display: "grid", gridTemplateColumns: "1.15fr .85fr", alignItems: "end", borderBottom: `1px solid ${c.ink}`, paddingBottom: 14 }}><div><div style={{ fontFamily: Fm, fontSize: 8, letterSpacing: ".18em", color: c.ochre, marginBottom: 8 }}>GRAY'S NOVELTIES · PROCESS STUDIES</div><h1 style={{ fontFamily: Fd, fontSize: 41, fontWeight: 500, lineHeight: .96, margin: 0 }}>Raffia, Form & Handwork</h1></div><p style={{ fontFamily: Fb, fontSize: 9.5, lineHeight: 1.5, margin: 0, color: c.mid }}>Small material experiments documenting how wrapping and weaving develop into decorative, functional craft objects.</p></div>
+    <div style={{ display: "grid", gridTemplateColumns: "repeat(2, 1fr)", gap: 16, paddingTop: 16, minHeight: 0 }}>
+      {works.map(work => <figure key={work.title} style={{ margin: 0, display: "grid", gridTemplateRows: "1fr 98px", minHeight: 0 }}><div style={{ minHeight: 0, overflow: "hidden", background: c.grey }}><img src={work.src} alt={work.title} style={{ width: "100%", height: "100%", objectFit: "contain" }} /></div><figcaption style={{ display: "grid", gridTemplateColumns: "35px 1fr", gap: 10, paddingTop: 11, borderTop: `1px solid ${c.rule}` }}><div style={{ fontFamily: Fm, fontSize: 8, color: c.ochre }}>{work.number}</div><div><h2 style={{ fontFamily: Fd, fontSize: 19, fontWeight: 500, margin: "0 0 5px" }}>{work.title}</h2><p style={{ fontFamily: Fb, fontSize: 7.8, lineHeight: 1.42, color: c.mid, margin: 0 }}>{work.note}</p></div></figcaption></figure>)}
+    </div>
+  </div>;
+}
+
 interface PageEntry { id: string; title: string; section: string; render: () => React.ReactNode; }
 interface DisplayPage extends PageEntry { pdfId?: string; isImported?: boolean; }
 
@@ -3136,6 +3151,7 @@ const PAGES: PageEntry[] = [
   { id: "accessories-novelties-objects", title: "Gray's Novelties — Decorative Objects", section: "Part 03 — Accessories Craft", render: () => <NoveltiesObjectsPage /> },
   { id: "accessories-novelties-keyrings", title: "Gray's Novelties — Keyring Series", section: "Part 03 — Accessories Craft", render: () => <NoveltiesKeyringsPage /> },
   { id: "accessories-novelties-packaging", title: "Gray's Novelties — Packaging", section: "Part 03 — Accessories Craft", render: () => <NoveltiesPackagingPage /> },
+  { id: "accessories-novelties-raffia-process", title: "Gray's Novelties — Raffia Process", section: "Part 03 — Accessories Craft", render: () => <NoveltiesRaffiaProcessPage /> },
   { id: "drawing-portraits", title: "Drawing Gallery — Portrait Studies", section: "Part 03 — Drawing", render: () => <DrawingGallerySlide title="Portrait Studies" subtitle="Rapid and sustained portrait drawings use coloured pencil and oil pastel to test proportion, expression, contour and likeness." page="DRAWING · 01" works={[{src:drawing01,label:"Crayon portrait study"},{src:drawing02,label:"Tonal portrait study"},{src:drawing03,label:"Observed portrait"},{src:drawing04,label:"Colour portrait"},{src:drawing05,label:"Completed colour study"},{src:drawing13,label:"Expressive portrait"}]} /> },
   { id: "drawing-development", title: "Drawing Gallery — Colour Development", section: "Part 03 — Drawing", render: () => <DrawingGallerySlide title="Colour & Character" subtitle="Layered colour is used structurally: cool construction lines establish form before warmer hues develop volume, personality and visual emphasis." page="DRAWING · 02" accent={c.brown} works={[{src:drawing06,label:"Blue construction"},{src:drawing07,label:"Early colour block-in"},{src:drawing08,label:"Tonal build-up"},{src:drawing09,label:"Resolved hat portrait"},{src:drawing11,label:"Dual portrait study"},{src:drawing12,label:"Colour development"}]} /> },
   { id: "drawing-line-charcoal", title: "Drawing Gallery — Line & Charcoal", section: "Part 03 — Drawing", render: () => <DrawingGallerySlide title="Line, Gesture & Charcoal" subtitle="These studies shift between economical contour, expressive coloured line and dense charcoal, showing range across controlled observation and more instinctive mark-making." page="DRAWING · 03" accent={c.olive} works={[{src:drawing10,label:"Facial structure"},{src:drawing14,label:"Charcoal figure"},{src:drawing15,label:"Charcoal study"},{src:drawing16,label:"Recent drawing study"},{src:drawingGraphitePortrait,label:"Graphite portrait construction"},{src:drawingCharcoalPortrait,label:"Charcoal tonal portrait"}]} /> },
