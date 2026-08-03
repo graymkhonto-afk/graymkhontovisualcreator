@@ -2199,27 +2199,54 @@ function EditableTextSlidePage({ slideNumber, section, data }: { slideNumber: nu
         const heightBoundPt = (boxHeightPx / (Math.max(1, textLines.length) * 1.18)) * 0.75;
         const frameBoundPt = Math.max(5.5, Math.min(widthBoundPt, heightBoundPt));
         const isEdgeMatter = item.y < 10 || item.y > 95;
-        const isDefaultExtractedSize = Math.abs((item.fontSize || 11) - 11) < 0.01;
-        const isDisplayText = isDefaultExtractedSize && rawText.length <= 110 && item.h >= 8;
-        const isMidLevelText = isDefaultExtractedSize && rawText.length <= 70 && item.h >= 5;
+        const lettersOnly = rawText.replace(/[^A-Za-zÀ-ž]/g, "");
+        const isAllCaps = lettersOnly.length > 1 && lettersOnly === lettersOnly.toUpperCase();
+        const isDisplayText = !isEdgeMatter && rawText.length <= 110 && item.h >= 8;
+        const isMidLevelText = !isEdgeMatter && rawText.length <= 70 && item.h >= 5;
+        const isLabelText = !isEdgeMatter && isAllCaps && rawText.length <= 80 && item.h < 8;
+        const characterStyle = isEdgeMatter
+          ? "folio"
+          : isDisplayText
+            ? "display"
+            : isMidLevelText
+              ? "subheading"
+              : isLabelText
+                ? "label"
+                : "body";
         const preferredFontSize = slideNumber === 108 && index === 14
           ? 8
           : isPhotographyTitle
-          ? 22
-          : isEdgeMatter
-            ? 7.2
-            : !isDefaultExtractedSize
-              ? Math.max(5.5, Math.min(item.fontSize || 11, item.h * 2.1))
-              : isDisplayText
-                ? Math.min(34, Math.max(16, item.h * 2.1))
-                : isMidLevelText
-                  ? 14
-                  : 7.5;
+            ? 30
+            : characterStyle === "display"
+              ? item.h >= 15 ? 38 : 30
+              : characterStyle === "subheading"
+                ? 14
+                : characterStyle === "body"
+                  ? 9
+                  : characterStyle === "label"
+                    ? 7.5
+                    : 7;
         const resolvedFontSize = Math.min(preferredFontSize, frameBoundPt);
-        const extractedTracking = item.letterSpacing || 0;
-        const resolvedTracking = isPhotographyTitle
+        const resolvedTracking = characterStyle === "display"
           ? -0.35
-          : Math.max(-0.4, Math.min(2, extractedTracking));
+          : characterStyle === "label"
+            ? 1.35
+            : characterStyle === "folio"
+              ? 0.65
+              : 0;
+        const resolvedFamily = characterStyle === "display" ? Fd : characterStyle === "folio" ? Fm : Fb;
+        const resolvedWeight = characterStyle === "display"
+          ? 600
+          : characterStyle === "subheading" || characterStyle === "label"
+            ? 600
+            : 400;
+        const resolvedLineHeight = characterStyle === "display"
+          ? 0.98
+          : characterStyle === "subheading"
+            ? 1.18
+            : characterStyle === "body"
+              ? 1.45
+              : 1.2;
         const adjustedHeight = item.y > 95 ? Math.min(item.h, 2.55) : item.h;
         const shared: React.CSSProperties = {
           position: "absolute",
@@ -2266,6 +2293,7 @@ function EditableTextSlidePage({ slideNumber, section, data }: { slideNumber: nu
           <div
             key={index}
             data-editable-slide-text="true"
+            data-character-style={characterStyle}
             contentEditable
             suppressContentEditableWarning
             spellCheck
@@ -2275,12 +2303,12 @@ function EditableTextSlidePage({ slideNumber, section, data }: { slideNumber: nu
               alignItems: item.vertical || "flex-start",
               whiteSpace: "pre-wrap",
               overflow: "hidden",
-              fontFamily: item.fontFamily === "Playfair Display" ? Fd : item.fontFamily === "DM Mono" ? Fm : Fb,
+              fontFamily: resolvedFamily,
               fontSize: `${resolvedFontSize}pt`,
-              fontWeight: item.fontWeight || 400,
-              fontStyle: item.fontStyle || "normal",
+              fontWeight: resolvedWeight,
+              fontStyle: characterStyle === "display" ? item.fontStyle || "normal" : "normal",
               letterSpacing: `${resolvedTracking}pt`,
-              lineHeight: isDisplayText || isPhotographyTitle ? 1.04 : 1.18,
+              lineHeight: resolvedLineHeight,
               color: resolvedColor(item.color) || c.ink,
               textAlign: item.align || "left",
               outline: "none",
