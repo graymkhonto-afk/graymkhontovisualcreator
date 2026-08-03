@@ -17,6 +17,24 @@ import paintingProcess02 from "@/imports/painting-portrait-process-02.jpg";
 import paintingProcess03 from "@/imports/painting-portrait-process-03.jpg";
 import paintingProcess04 from "@/imports/painting-portrait-process-04.jpg";
 import paintingPortraitFinal from "@/imports/painting-portrait-final.jpg";
+import drawing01 from "@/imports/drawing-01.jpg";
+import drawing02 from "@/imports/drawing-02.jpg";
+import drawing03 from "@/imports/drawing-03.jpg";
+import drawing04 from "@/imports/drawing-04.jpg";
+import drawing05 from "@/imports/drawing-05.jpg";
+import drawing06 from "@/imports/drawing-06.jpg";
+import drawing07 from "@/imports/drawing-07.jpg";
+import drawing08 from "@/imports/drawing-08.jpg";
+import drawing09 from "@/imports/drawing-09.jpg";
+import drawing10 from "@/imports/drawing-10.jpg";
+import drawing11 from "@/imports/drawing-11.jpg";
+import drawing12 from "@/imports/drawing-12.jpg";
+import drawing13 from "@/imports/drawing-13.jpg";
+import drawing14 from "@/imports/drawing-14.jpg";
+import drawing15 from "@/imports/drawing-15.jpg";
+import drawing16 from "@/imports/drawing-16.jpg";
+import drawingMotion01 from "@/imports/drawing-motion-01.gif";
+import drawingMotion02 from "@/imports/drawing-motion-02.gif";
 import ukuMockup from "@/imports/uku_poster_mock_up.png";
 import characterSketch from "@/imports/IMG_0561.PNG";
 import editorialManifestoImg from "@/imports/editorial-first-things-first-2020.png";
@@ -2916,6 +2934,22 @@ function PaintingProcessPage() {
   </EPage>;
 }
 
+function DrawingGallerySlide({ title, subtitle, page, works, accent = c.ochre }: { title: string; subtitle: string; page: string; works: { src: string; label: string; position?: string }[]; accent?: string }) {
+  return <EPage section="PART THREE · DRAWING" page={page} footerRight="GRACIOUS MKHONTO · DRAWING PRACTICE">
+    <div style={{ height: "100%", display: "grid", gridTemplateRows: "108px 1fr" }}>
+      <div style={{ display: "grid", gridTemplateColumns: "1.15fr .85fr", alignItems: "end", borderBottom: `1px solid ${c.ink}`, paddingBottom: 15 }}><div><div style={{ fontFamily: Fm, fontSize: 8, letterSpacing: ".18em", color: accent, marginBottom: 8 }}>SKETCHBOOK · OBSERVATION · DEVELOPMENT</div><h1 style={{ fontFamily: Fd, fontSize: 42, fontWeight: 500, lineHeight: .96, margin: 0 }}>{title}</h1></div><p style={{ fontFamily: Fb, fontSize: 9.5, lineHeight: 1.5, margin: 0, color: c.mid }}>{subtitle}</p></div>
+      <div style={{ display: "grid", gridTemplateColumns: "repeat(3, 1fr)", gridTemplateRows: "repeat(2, 1fr)", gap: 11, paddingTop: 15, minHeight: 0 }}>{works.map((work, index) => <figure key={`${work.label}-${index}`} style={{ margin: 0, display: "grid", gridTemplateRows: "1fr 24px", minHeight: 0 }}><img src={work.src} style={{ width: "100%", height: "100%", objectFit: "cover", objectPosition: work.position || "center" }} /><figcaption style={{ fontFamily: Fm, fontSize: 6.8, letterSpacing: ".1em", paddingTop: 7 }}>0{index + 1} · {work.label.toUpperCase()}</figcaption></figure>)}</div>
+    </div>
+  </EPage>;
+}
+
+function DrawingMotionSlide() {
+  const works = [{ src: drawingMotion01, label: "Portrait construction · animated sequence" }, { src: drawingMotion02, label: "Facial structure · animated sequence" }];
+  return <EPage section="PART THREE · DRAWING" page="DRAWING · 04" footerRight="GRACIOUS MKHONTO · DRAWING IN MOTION">
+    <div style={{ height: "100%", display: "grid", gridTemplateRows: "108px 1fr" }}><div style={{ display: "grid", gridTemplateColumns: "1.15fr .85fr", alignItems: "end", borderBottom: `1px solid ${c.ink}`, paddingBottom: 15 }}><div><div style={{ fontFamily: Fm, fontSize: 8, letterSpacing: ".18em", color: c.brown, marginBottom: 8 }}>PROCESS CAPTURE · ANIMATED STUDIES</div><h1 style={{ fontFamily: Fd, fontSize: 42, fontWeight: 500, lineHeight: .96, margin: 0 }}>Drawing in Motion</h1></div><p style={{ fontFamily: Fb, fontSize: 9.5, lineHeight: 1.5, margin: 0, color: c.mid }}>Short animated records reveal how facial proportion, contour and colour are developed through successive marks.</p></div><div style={{ display: "grid", gridTemplateColumns: "1fr 1fr", gap: 18, paddingTop: 16, minHeight: 0 }}>{works.map((work, index) => <figure key={work.src} style={{ margin: 0, display: "grid", gridTemplateRows: "1fr 38px", minHeight: 0 }}><div style={{ background: c.ink, display: "flex", alignItems: "center", justifyContent: "center", overflow: "hidden" }}><img src={work.src} style={{ width: "100%", height: "100%", objectFit: "contain" }} /></div><figcaption style={{ display: "flex", alignItems: "center", justifyContent: "space-between", fontFamily: Fm, fontSize: 7, letterSpacing: ".1em" }}><span>0{index + 1} · {work.label.toUpperCase()}</span><span style={{ color: c.ochre }}>GIF · PROCESS</span></figcaption></figure>)}</div></div>
+  </EPage>;
+}
+
 interface PageEntry { id: string; title: string; section: string; render: () => React.ReactNode; }
 interface DisplayPage extends PageEntry { pdfId?: string; isImported?: boolean; }
 
@@ -2955,7 +2989,7 @@ const buildDisplayPages = (pdfPages: PdfPage[]): DisplayPage[] => {
       seenSlides.add(slideNumber);
       return [asDisplayPage(pdf)];
     });
-    return [...originalPages, ...PAGES.filter(page => page.id.startsWith("gold-rush-") || page.id.startsWith("painting-"))];
+    return [...originalPages, ...PAGES.filter(page => page.id.startsWith("gold-rush-") || page.id.startsWith("painting-") || page.id.startsWith("drawing-"))];
   }
 
   // Keep each Keynote-informed campaign slide intact, but gather the related
@@ -2997,6 +3031,10 @@ const buildDisplayPages = (pdfPages: PdfPage[]): DisplayPage[] => {
 };
 
 const PAGES: PageEntry[] = [
+  { id: "drawing-portraits", title: "Drawing Gallery — Portrait Studies", section: "Part 03 — Drawing", render: () => <DrawingGallerySlide title="Portrait Studies" subtitle="Rapid and sustained portrait drawings use coloured pencil and oil pastel to test proportion, expression, contour and likeness." page="DRAWING · 01" works={[{src:drawing01,label:"Crayon portrait study"},{src:drawing02,label:"Tonal portrait study"},{src:drawing03,label:"Observed portrait"},{src:drawing04,label:"Colour portrait"},{src:drawing05,label:"Completed colour study"},{src:drawing13,label:"Expressive portrait"}]} /> },
+  { id: "drawing-development", title: "Drawing Gallery — Colour Development", section: "Part 03 — Drawing", render: () => <DrawingGallerySlide title="Colour & Character" subtitle="Layered colour is used structurally: cool construction lines establish form before warmer hues develop volume, personality and visual emphasis." page="DRAWING · 02" accent={c.brown} works={[{src:drawing06,label:"Blue construction"},{src:drawing07,label:"Early colour block-in"},{src:drawing08,label:"Tonal build-up"},{src:drawing09,label:"Resolved hat portrait"},{src:drawing11,label:"Dual portrait study"},{src:drawing12,label:"Colour development"}]} /> },
+  { id: "drawing-line-charcoal", title: "Drawing Gallery — Line & Charcoal", section: "Part 03 — Drawing", render: () => <DrawingGallerySlide title="Line, Gesture & Charcoal" subtitle="These studies shift between economical contour, expressive coloured line and dense charcoal, showing range across controlled observation and more instinctive mark-making." page="DRAWING · 03" accent={c.olive} works={[{src:drawing10,label:"Facial structure"},{src:drawing14,label:"Charcoal figure"},{src:drawing15,label:"Charcoal study"},{src:drawing16,label:"Recent drawing study"},{src:drawing03,label:"Line and gesture"},{src:drawing08,label:"Layered portrait"}]} /> },
+  { id: "drawing-motion", title: "Drawing Gallery — Animated Process", section: "Part 03 — Drawing", render: () => <DrawingMotionSlide /> },
   { id: "painting-gallery", title: "Painting Gallery — Selected Works", section: "Part 03 — Painting", render: () => <PaintingGalleryPage /> },
   { id: "painting-process", title: "Painting Gallery — Portrait Process", section: "Part 03 — Painting", render: () => <PaintingProcessPage /> },
   { id: "gold-rush-cover", title: "The Gold Rush — From Waste to Wealth", section: "Featured Case Study — The Gold Rush", render: () => <GoldRushCover /> },
