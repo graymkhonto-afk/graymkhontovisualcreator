@@ -37,6 +37,12 @@ import drawingMotion01 from "@/imports/drawing-motion-01.gif";
 import drawingMotion02 from "@/imports/drawing-motion-02.gif";
 import drawingGraphitePortrait from "@/imports/drawing-graphite-portrait.jpg";
 import drawingCharcoalPortrait from "@/imports/drawing-charcoal-portrait.jpg";
+import accessoriesFabricShoeWorn from "@/imports/accessories-fabric-shoe-worn.jpg";
+import accessoriesFabricShoeProcess from "@/imports/accessories-fabric-shoe-process.jpg";
+import accessoriesRedShoeHatSet from "@/imports/accessories-red-shoe-hat-set.jpg";
+import accessoriesShoeBagSet from "@/imports/accessories-shoe-bag-set.jpg";
+import accessoriesWhiteLaceFront from "@/imports/accessories-white-lace-front.jpg";
+import accessoriesWhiteLaceSide from "@/imports/accessories-white-lace-side.jpg";
 import ukuMockup from "@/imports/uku_poster_mock_up.png";
 import characterSketch from "@/imports/IMG_0561.PNG";
 import editorialManifestoImg from "@/imports/editorial-first-things-first-2020.png";
@@ -2952,6 +2958,40 @@ function DrawingMotionSlide() {
   </EPage>;
 }
 
+function AccessoriesCraftGalleryPage() {
+  const supporting = [
+    { src: accessoriesFabricShoeWorn, label: "Fabric-covered flat · worn view", position: "center" },
+    { src: accessoriesRedShoeHatSet, label: "Coordinated footwear & visor", position: "center" },
+    { src: accessoriesWhiteLaceFront, label: "Floral appliqué flats · top view", position: "center 54%" },
+    { src: accessoriesWhiteLaceSide, label: "Floral appliqué flats · side view", position: "center" },
+  ];
+  return <EPage section="PART THREE · ACCESSORIES CRAFT" page="ACCESSORIES · 01" footerRight="GRACIOUS MKHONTO · HANDCRAFTED ACCESSORIES">
+    <div style={{ height: "100%", display: "grid", gridTemplateRows: "112px 1fr" }}>
+      <div style={{ display: "grid", gridTemplateColumns: "1.16fr .84fr", alignItems: "end", borderBottom: `1px solid ${c.ink}`, paddingBottom: 16 }}>
+        <div><div style={{ fontFamily: Fm, fontSize: 8, letterSpacing: ".18em", color: c.ochre, marginBottom: 8 }}>WEARABLE OBJECTS · SURFACE CRAFT · COORDINATED SETS</div><h1 style={{ fontFamily: Fd, fontSize: 44, fontWeight: 500, lineHeight: .96, margin: 0 }}>Accessories Craft</h1></div>
+        <p style={{ fontFamily: Fb, fontSize: 9.7, lineHeight: 1.52, margin: 0, color: c.mid }}>Hand-finished footwear, coordinated bags and wearable accessories developed through fabric covering, appliqué and surface transformation.</p>
+      </div>
+      <div style={{ display: "grid", gridTemplateColumns: "1.05fr .95fr", gap: 12, paddingTop: 15, minHeight: 0 }}>
+        <figure style={{ margin: 0, display: "grid", gridTemplateRows: "1fr 27px", minHeight: 0 }}><img src={accessoriesShoeBagSet} style={{ width: "100%", height: "100%", objectFit: "cover" }} /><figcaption style={{ fontFamily: Fm, fontSize: 7.2, letterSpacing: ".1em", paddingTop: 8 }}>01 · MATCHING FABRIC BAG & FLATS</figcaption></figure>
+        <div style={{ display: "grid", gridTemplateColumns: "1fr 1fr", gridTemplateRows: "1fr 1fr", gap: 11, minHeight: 0 }}>{supporting.map((work, index) => <figure key={work.label} style={{ margin: 0, display: "grid", gridTemplateRows: "1fr 23px", minHeight: 0 }}><img src={work.src} style={{ width: "100%", height: "100%", objectFit: "cover", objectPosition: work.position }} /><figcaption style={{ fontFamily: Fm, fontSize: 6.3, letterSpacing: ".08em", paddingTop: 6 }}>0{index + 2} · {work.label.toUpperCase()}</figcaption></figure>)}</div>
+      </div>
+    </div>
+  </EPage>;
+}
+
+function AccessoriesCraftProcessPage() {
+  const steps = [["01", "SELECT", "Choose the base form and textile or appliqué treatment."], ["02", "COVER", "Shape the material around the shoe while preserving its profile."], ["03", "FINISH", "Secure edges, seams and decorative surface details by hand."], ["04", "STYLE", "Present the finished object alone or as part of a coordinated set."]];
+  return <EPage section="PART THREE · ACCESSORIES CRAFT" page="ACCESSORIES · 02" footerRight="GRACIOUS MKHONTO · MATERIAL TRANSFORMATION">
+    <div style={{ height: "100%", display: "grid", gridTemplateRows: "108px 1fr" }}>
+      <div style={{ display: "grid", gridTemplateColumns: "1.18fr .82fr", alignItems: "end", borderBottom: `1px solid ${c.ink}`, paddingBottom: 15 }}><div><div style={{ fontFamily: Fm, fontSize: 8, letterSpacing: ".18em", color: c.brown, marginBottom: 8 }}>PROCESS DOCUMENTATION · FOOTWEAR</div><h1 style={{ fontFamily: Fd, fontSize: 40, fontWeight: 500, lineHeight: .96, margin: 0 }}>From Base Shoe to Crafted Object</h1></div><p style={{ fontFamily: Fb, fontSize: 9.5, lineHeight: 1.5, margin: 0, color: c.mid }}>The photographs record how familiar footwear becomes a distinctive accessory through hand-applied fabric and decorative finishing.</p></div>
+      <div style={{ display: "grid", gridTemplateColumns: "1.18fr .82fr", gap: 14, paddingTop: 15, minHeight: 0 }}>
+        <div style={{ display: "grid", gridTemplateRows: "1fr 146px", gap: 11, minHeight: 0 }}><figure style={{ margin: 0, display: "grid", gridTemplateRows: "1fr 25px", minHeight: 0 }}><img src={accessoriesFabricShoeProcess} style={{ width: "100%", height: "100%", objectFit: "cover", objectPosition: "center" }} /><figcaption style={{ fontFamily: Fm, fontSize: 6.8, letterSpacing: ".1em", paddingTop: 7 }}>PROCESS · FABRIC COVERING IN PROGRESS</figcaption></figure><div style={{ display: "grid", gridTemplateColumns: "1fr 1fr", gap: 11 }}><img src={accessoriesWhiteLaceFront} style={{ width: "100%", height: "100%", objectFit: "cover", objectPosition: "center 58%" }} /><img src={accessoriesWhiteLaceSide} style={{ width: "100%", height: "100%", objectFit: "cover" }} /></div></div>
+        <div style={{ borderLeft: `1px solid ${c.rule}`, paddingLeft: 14, display: "grid", gridTemplateRows: "220px 1fr", gap: 12, minHeight: 0 }}><img src={accessoriesFabricShoeWorn} style={{ width: "100%", height: "100%", objectFit: "cover" }} /><div>{steps.map(([number, title, description]) => <div key={number} style={{ display: "grid", gridTemplateColumns: "34px 70px 1fr", gap: 7, alignItems: "start", borderTop: `1px solid ${c.rule}`, padding: "8px 0" }}><span style={{ fontFamily: Fm, fontSize: 7, color: c.ochre }}>{number}</span><b style={{ fontFamily: Fb, fontSize: 7.4, letterSpacing: ".1em" }}>{title}</b><span style={{ fontFamily: Fb, fontSize: 7.5, lineHeight: 1.35, color: c.mid }}>{description}</span></div>)}</div></div>
+      </div>
+    </div>
+  </EPage>;
+}
+
 interface PageEntry { id: string; title: string; section: string; render: () => React.ReactNode; }
 interface DisplayPage extends PageEntry { pdfId?: string; isImported?: boolean; }
 
@@ -2991,7 +3031,7 @@ const buildDisplayPages = (pdfPages: PdfPage[]): DisplayPage[] => {
       seenSlides.add(slideNumber);
       return [asDisplayPage(pdf)];
     });
-    return [...originalPages, ...PAGES.filter(page => page.id.startsWith("gold-rush-") || page.id.startsWith("painting-") || page.id.startsWith("drawing-"))];
+    return [...originalPages, ...PAGES.filter(page => page.id.startsWith("gold-rush-") || page.id.startsWith("painting-") || page.id.startsWith("drawing-") || page.id.startsWith("accessories-"))];
   }
 
   // Keep each Keynote-informed campaign slide intact, but gather the related
@@ -3033,6 +3073,8 @@ const buildDisplayPages = (pdfPages: PdfPage[]): DisplayPage[] => {
 };
 
 const PAGES: PageEntry[] = [
+  { id: "accessories-gallery", title: "Accessories Craft — Selected Works", section: "Part 03 — Accessories Craft", render: () => <AccessoriesCraftGalleryPage /> },
+  { id: "accessories-process", title: "Accessories Craft — Process", section: "Part 03 — Accessories Craft", render: () => <AccessoriesCraftProcessPage /> },
   { id: "drawing-portraits", title: "Drawing Gallery — Portrait Studies", section: "Part 03 — Drawing", render: () => <DrawingGallerySlide title="Portrait Studies" subtitle="Rapid and sustained portrait drawings use coloured pencil and oil pastel to test proportion, expression, contour and likeness." page="DRAWING · 01" works={[{src:drawing01,label:"Crayon portrait study"},{src:drawing02,label:"Tonal portrait study"},{src:drawing03,label:"Observed portrait"},{src:drawing04,label:"Colour portrait"},{src:drawing05,label:"Completed colour study"},{src:drawing13,label:"Expressive portrait"}]} /> },
   { id: "drawing-development", title: "Drawing Gallery — Colour Development", section: "Part 03 — Drawing", render: () => <DrawingGallerySlide title="Colour & Character" subtitle="Layered colour is used structurally: cool construction lines establish form before warmer hues develop volume, personality and visual emphasis." page="DRAWING · 02" accent={c.brown} works={[{src:drawing06,label:"Blue construction"},{src:drawing07,label:"Early colour block-in"},{src:drawing08,label:"Tonal build-up"},{src:drawing09,label:"Resolved hat portrait"},{src:drawing11,label:"Dual portrait study"},{src:drawing12,label:"Colour development"}]} /> },
   { id: "drawing-line-charcoal", title: "Drawing Gallery — Line & Charcoal", section: "Part 03 — Drawing", render: () => <DrawingGallerySlide title="Line, Gesture & Charcoal" subtitle="These studies shift between economical contour, expressive coloured line and dense charcoal, showing range across controlled observation and more instinctive mark-making." page="DRAWING · 03" accent={c.olive} works={[{src:drawing10,label:"Facial structure"},{src:drawing14,label:"Charcoal figure"},{src:drawing15,label:"Charcoal study"},{src:drawing16,label:"Recent drawing study"},{src:drawingGraphitePortrait,label:"Graphite portrait construction"},{src:drawingCharcoalPortrait,label:"Charcoal tonal portrait"}]} /> },
