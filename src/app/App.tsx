@@ -43,6 +43,21 @@ import accessoriesRedShoeHatSet from "@/imports/accessories-red-shoe-hat-set.jpg
 import accessoriesShoeBagSet from "@/imports/accessories-shoe-bag-set.jpg";
 import accessoriesWhiteLaceFront from "@/imports/accessories-white-lace-front.jpg";
 import accessoriesWhiteLaceSide from "@/imports/accessories-white-lace-side.jpg";
+import noveltiesBottleDecor from "@/imports/novelties-bottle-decor.jpg";
+import noveltiesBrandIdentity from "@/imports/novelties-brand-identity.jpg";
+import noveltiesBottleSet from "@/imports/novelties-bottle-set.jpg";
+import noveltiesKeyringCharacter from "@/imports/novelties-keyring-character.jpg";
+import noveltiesKeyringLove from "@/imports/novelties-keyring-love.jpg";
+import noveltiesKeyringRain from "@/imports/novelties-keyring-rain.jpg";
+import noveltiesKeyringMessage from "@/imports/novelties-keyring-message.jpg";
+import noveltiesKeyringPhotography from "@/imports/novelties-keyring-photography.jpg";
+import noveltiesKeyringHearts from "@/imports/novelties-keyring-hearts.jpg";
+import noveltiesKeyringCharacterPair from "@/imports/novelties-keyring-character-pair.jpg";
+import noveltiesKeyringZebra from "@/imports/novelties-keyring-zebra.jpg";
+import noveltiesKeyringMkhonto from "@/imports/novelties-keyring-mkhonto.jpg";
+import noveltiesPackagingRibbon from "@/imports/novelties-packaging-ribbon.jpg";
+import noveltiesPackagingBranded from "@/imports/novelties-packaging-branded.jpg";
+import noveltiesPackagingCustom from "@/imports/novelties-packaging-custom.jpg";
 import ukuMockup from "@/imports/uku_poster_mock_up.png";
 import characterSketch from "@/imports/IMG_0561.PNG";
 import editorialManifestoImg from "@/imports/editorial-first-things-first-2020.png";
@@ -2992,6 +3007,22 @@ function AccessoriesCraftProcessPage() {
   </EPage>;
 }
 
+function NoveltiesObjectsPage() {
+  return <EPage section="PART THREE · ACCESSORIES CRAFT" page="ACCESSORIES · 03" footerRight="GRAY'S NOVELTIES · OBJECT & IDENTITY">
+    <div style={{ height: "100%", display: "grid", gridTemplateRows: "108px 1fr" }}><div style={{ display: "grid", gridTemplateColumns: "1.18fr .82fr", alignItems: "end", borderBottom: `1px solid ${c.ink}`, paddingBottom: 15 }}><div><div style={{ fontFamily: Fm, fontSize: 8, letterSpacing: ".18em", color: c.ochre, marginBottom: 8 }}>GRAY'S NOVELTIES · HANDMADE OBJECTS</div><h1 style={{ fontFamily: Fd, fontSize: 42, fontWeight: 500, lineHeight: .96, margin: 0 }}>Decorative Objects & Identity</h1></div><p style={{ fontFamily: Fb, fontSize: 9.5, lineHeight: 1.5, margin: 0, color: c.mid }}>A small-scale craft identity extending across decorative vessels, personalised objects and accessible gift products.</p></div><div style={{ display: "grid", gridTemplateColumns: "1.05fr .95fr", gap: 12, paddingTop: 15, minHeight: 0 }}><figure style={{ margin: 0, display: "grid", gridTemplateRows: "1fr 25px", minHeight: 0 }}><img src={noveltiesBottleSet} style={{ width: "100%", height: "100%", objectFit: "cover", objectPosition: "center" }} /><figcaption style={{ fontFamily: Fm, fontSize: 6.8, letterSpacing: ".1em", paddingTop: 7 }}>01 · DECORATIVE BOTTLE & VESSEL SET</figcaption></figure><div style={{ display: "grid", gridTemplateRows: "1fr 1fr", gap: 12, minHeight: 0 }}><figure style={{ margin: 0, display: "grid", gridTemplateRows: "1fr 24px", minHeight: 0 }}><img src={noveltiesBrandIdentity} style={{ width: "100%", height: "100%", objectFit: "contain", background: "#fff" }} /><figcaption style={{ fontFamily: Fm, fontSize: 6.8, letterSpacing: ".1em", paddingTop: 7 }}>02 · GRAY'S NOVELTIES IDENTITY</figcaption></figure><figure style={{ margin: 0, display: "grid", gridTemplateRows: "1fr 24px", minHeight: 0 }}><img src={noveltiesBottleDecor} style={{ width: "100%", height: "100%", objectFit: "cover" }} /><figcaption style={{ fontFamily: Fm, fontSize: 6.8, letterSpacing: ".1em", paddingTop: 7 }}>03 · RAFFIA-WRAPPED GLASS DECOR</figcaption></figure></div></div></div>
+  </EPage>;
+}
+
+function NoveltiesKeyringsPage() {
+  const works = [{src:noveltiesKeyringCharacter,label:"Character illustration"},{src:noveltiesKeyringLove,label:"Personalised love message"},{src:noveltiesKeyringRain,label:"Illustrated message"},{src:noveltiesKeyringPhotography,label:"Photography identity"},{src:noveltiesKeyringZebra,label:"Photographic keepsake"},{src:noveltiesKeyringMkhonto,label:"Personal identity"}];
+  return <EPage section="PART THREE · ACCESSORIES CRAFT" page="ACCESSORIES · 04" footerRight="GRAY'S NOVELTIES · PERSONALISED KEYRINGS"><div style={{ height: "100%", display: "grid", gridTemplateRows: "108px 1fr" }}><div style={{ display: "grid", gridTemplateColumns: "1.15fr .85fr", alignItems: "end", borderBottom: `1px solid ${c.ink}`, paddingBottom: 15 }}><div><div style={{ fontFamily: Fm, fontSize: 8, letterSpacing: ".18em", color: c.brown, marginBottom: 8 }}>CUSTOM GRAPHICS · SMALL-FORMAT PRODUCTS</div><h1 style={{ fontFamily: Fd, fontSize: 42, fontWeight: 500, lineHeight: .96, margin: 0 }}>Personalised Keyring Series</h1></div><p style={{ fontFamily: Fb, fontSize: 9.5, lineHeight: 1.5, margin: 0, color: c.mid }}>Compact illustrations, photographs, names and short messages are adapted into practical personalised keepsakes.</p></div><div style={{ display: "grid", gridTemplateColumns: "repeat(3, 1fr)", gridTemplateRows: "repeat(2, 1fr)", gap: 11, paddingTop: 15, minHeight: 0 }}>{works.map((work,index)=><figure key={work.label} style={{ margin:0, display:"grid", gridTemplateRows:"1fr 23px", minHeight:0 }}><img src={work.src} style={{ width:"100%",height:"100%",objectFit:"cover" }}/><figcaption style={{fontFamily:Fm,fontSize:6.5,letterSpacing:".08em",paddingTop:6}}>0{index+1} · {work.label.toUpperCase()}</figcaption></figure>)}</div></div></EPage>;
+}
+
+function NoveltiesPackagingPage() {
+  const works=[{src:noveltiesKeyringHearts,label:"Custom message option"},{src:noveltiesKeyringCharacterPair,label:"Character front & back"},{src:noveltiesPackagingRibbon,label:"Ribbon gift pack"},{src:noveltiesPackagingBranded,label:"Branded gift pack"},{src:noveltiesPackagingCustom,label:"Custom gift pack"}];
+  return <EPage section="PART THREE · ACCESSORIES CRAFT" page="ACCESSORIES · 05" footerRight="GRAY'S NOVELTIES · PRODUCT PRESENTATION"><div style={{height:"100%",display:"grid",gridTemplateRows:"108px 1fr"}}><div style={{display:"grid",gridTemplateColumns:"1.16fr .84fr",alignItems:"end",borderBottom:`1px solid ${c.ink}`,paddingBottom:15}}><div><div style={{fontFamily:Fm,fontSize:8,letterSpacing:".18em",color:c.olive,marginBottom:8}}>CUSTOMISATION · PACKAGING · GIFT PRESENTATION</div><h1 style={{fontFamily:Fd,fontSize:42,fontWeight:500,lineHeight:.96,margin:0}}>From Personalisation to Pack</h1></div><p style={{fontFamily:Fb,fontSize:9.5,lineHeight:1.5,margin:0,color:c.mid}}>The product system continues beyond the object itself, using simple ribbon, transparent sleeves and printed inserts to create a complete gift-ready presentation.</p></div><div style={{display:"grid",gridTemplateColumns:"1.08fr .92fr",gap:12,paddingTop:15,minHeight:0}}><div style={{display:"grid",gridTemplateColumns:"1fr 1fr",gridTemplateRows:"1fr 1fr",gap:11,minHeight:0}}>{works.slice(0,4).map((work,index)=><figure key={work.label} style={{margin:0,display:"grid",gridTemplateRows:"1fr 23px",minHeight:0}}><img src={work.src} style={{width:"100%",height:"100%",objectFit:"cover"}}/><figcaption style={{fontFamily:Fm,fontSize:6.3,letterSpacing:".08em",paddingTop:6}}>0{index+1} · {work.label.toUpperCase()}</figcaption></figure>)}</div><figure style={{margin:0,display:"grid",gridTemplateRows:"1fr 25px",minHeight:0}}><img src={works[4].src} style={{width:"100%",height:"100%",objectFit:"cover"}}/><figcaption style={{fontFamily:Fm,fontSize:6.8,letterSpacing:".1em",paddingTop:7}}>05 · {works[4].label.toUpperCase()}</figcaption></figure></div></div></EPage>;
+}
+
 interface PageEntry { id: string; title: string; section: string; render: () => React.ReactNode; }
 interface DisplayPage extends PageEntry { pdfId?: string; isImported?: boolean; }
 
@@ -3075,6 +3106,9 @@ const buildDisplayPages = (pdfPages: PdfPage[]): DisplayPage[] => {
 const PAGES: PageEntry[] = [
   { id: "accessories-gallery", title: "Accessories Craft — Selected Works", section: "Part 03 — Accessories Craft", render: () => <AccessoriesCraftGalleryPage /> },
   { id: "accessories-process", title: "Accessories Craft — Process", section: "Part 03 — Accessories Craft", render: () => <AccessoriesCraftProcessPage /> },
+  { id: "accessories-novelties-objects", title: "Gray's Novelties — Decorative Objects", section: "Part 03 — Accessories Craft", render: () => <NoveltiesObjectsPage /> },
+  { id: "accessories-novelties-keyrings", title: "Gray's Novelties — Keyring Series", section: "Part 03 — Accessories Craft", render: () => <NoveltiesKeyringsPage /> },
+  { id: "accessories-novelties-packaging", title: "Gray's Novelties — Packaging", section: "Part 03 — Accessories Craft", render: () => <NoveltiesPackagingPage /> },
   { id: "drawing-portraits", title: "Drawing Gallery — Portrait Studies", section: "Part 03 — Drawing", render: () => <DrawingGallerySlide title="Portrait Studies" subtitle="Rapid and sustained portrait drawings use coloured pencil and oil pastel to test proportion, expression, contour and likeness." page="DRAWING · 01" works={[{src:drawing01,label:"Crayon portrait study"},{src:drawing02,label:"Tonal portrait study"},{src:drawing03,label:"Observed portrait"},{src:drawing04,label:"Colour portrait"},{src:drawing05,label:"Completed colour study"},{src:drawing13,label:"Expressive portrait"}]} /> },
   { id: "drawing-development", title: "Drawing Gallery — Colour Development", section: "Part 03 — Drawing", render: () => <DrawingGallerySlide title="Colour & Character" subtitle="Layered colour is used structurally: cool construction lines establish form before warmer hues develop volume, personality and visual emphasis." page="DRAWING · 02" accent={c.brown} works={[{src:drawing06,label:"Blue construction"},{src:drawing07,label:"Early colour block-in"},{src:drawing08,label:"Tonal build-up"},{src:drawing09,label:"Resolved hat portrait"},{src:drawing11,label:"Dual portrait study"},{src:drawing12,label:"Colour development"}]} /> },
   { id: "drawing-line-charcoal", title: "Drawing Gallery — Line & Charcoal", section: "Part 03 — Drawing", render: () => <DrawingGallerySlide title="Line, Gesture & Charcoal" subtitle="These studies shift between economical contour, expressive coloured line and dense charcoal, showing range across controlled observation and more instinctive mark-making." page="DRAWING · 03" accent={c.olive} works={[{src:drawing10,label:"Facial structure"},{src:drawing14,label:"Charcoal figure"},{src:drawing15,label:"Charcoal study"},{src:drawing16,label:"Recent drawing study"},{src:drawingGraphitePortrait,label:"Graphite portrait construction"},{src:drawingCharcoalPortrait,label:"Charcoal tonal portrait"}]} /> },
