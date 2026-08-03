@@ -9,6 +9,14 @@ import goldRushTableSetting from "@/imports/gold-rush-table-setting.jpeg";
 import goldRushProductRange from "@/imports/gold-rush-product-range.jpeg";
 import goldRushYellowOrnament from "@/imports/gold-rush-yellow-ornament.png";
 import goldRushWallMockup from "@/imports/gold-rush-wall-mockup.png";
+import paintingFeature from "@/imports/painting-gallery-feature.jpg";
+import paintingKingfisher from "@/imports/painting-kingfisher.jpg";
+import paintingRhino from "@/imports/painting-rhino.jpg";
+import paintingProcess01 from "@/imports/painting-portrait-process-01.jpg";
+import paintingProcess02 from "@/imports/painting-portrait-process-02.jpg";
+import paintingProcess03 from "@/imports/painting-portrait-process-03.jpg";
+import paintingProcess04 from "@/imports/painting-portrait-process-04.jpg";
+import paintingPortraitFinal from "@/imports/painting-portrait-final.jpg";
 import ukuMockup from "@/imports/uku_poster_mock_up.png";
 import characterSketch from "@/imports/IMG_0561.PNG";
 import editorialManifestoImg from "@/imports/editorial-first-things-first-2020.png";
@@ -2869,6 +2877,45 @@ function GoldRushImpact() {
   return <div style={{ width: PW, height: PH, background: news.paper, color: news.ink, padding: "28px 34px 24px", overflow: "hidden" }}><GoldRushMasthead folio="IMPACT · 03" strap="CULTURE · CREATIVITY · CONSCIOUSNESS" /><div style={{ display: "flex", justifyContent: "space-between", alignItems: "end", padding: "14px 0 11px", borderBottom: `1px solid ${news.ink}` }}><h2 style={{ fontFamily: Fnews, fontSize: 49, lineHeight: .88, margin: 0, textTransform: "uppercase" }}>A second life,<br /><span style={{ color: news.gold }}>made visible.</span></h2><div style={{ width: 340, fontFamily: Fd, fontSize: 14, lineHeight: 1.28, fontStyle: "italic", textAlign: "right" }}>From intimate table objects to confident wall pieces, the system expands without losing the hand of its maker.</div></div><div style={{ display: "grid", gridTemplateColumns: "1.35fr .75fr .75fr", gridTemplateRows: "278px 170px", gap: 10, paddingTop: 12 }}><img src={goldRushTableSetting} style={{ width: "100%", height: "100%", objectFit: "cover", gridRow: "1 / 3" }} /><img src={goldRushProductRange} style={{ width: "100%", height: "100%", objectFit: "cover" }} /><img src={goldRushWallMockup} style={{ width: "100%", height: "100%", objectFit: "cover" }} /><div style={{ background: news.ink, color: news.paper, padding: 15 }}><div style={{ fontFamily: Fnews, fontSize: 23, lineHeight: .95 }}>ONE MATERIAL.<br /><span style={{ color: "#D5AA3E" }}>MANY FORMS.</span></div><p style={{ fontFamily: Fb, fontSize: 8.5, lineHeight: 1.45 }}>Ornaments, table settings, accessories and display pieces reveal a flexible product language.</p></div><div style={{ border: `1px solid ${news.ink}`, padding: 14 }}><div style={{ fontFamily: Fnews, fontSize: 23, lineHeight: .95 }}>DESIGN FOR<br /><span style={{ color: news.gold }}>EVERYDAY LIFE.</span></div><p style={{ fontFamily: Fb, fontSize: 8.5, lineHeight: 1.45 }}>A familiar textile becomes an expressive object for contemporary interiors and gatherings.</p></div></div><div style={{ display: "grid", gridTemplateColumns: "1fr 1fr 1fr", borderTop: `5px solid ${news.gold}`, borderBottom: `1px solid ${news.ink}`, marginTop: 12 }}>{[["MATERIAL", "Keeping usable cloth in circulation."], ["CRAFT", "Building value through skilled handwork."], ["CULTURE", "Letting pattern and local visual language lead."]].map(([t,d], i) => <div key={t} style={{ padding: "10px 13px", borderLeft: i ? `1px solid ${news.ink}` : "none" }}><b style={{ fontFamily: Fnews, fontSize: 17 }}>{t}</b><span style={{ fontFamily: Fb, fontSize: 8.5, marginLeft: 8 }}>{d}</span></div>)}</div><div style={{ marginTop: 12, display: "flex", justifyContent: "space-between", alignItems: "center", background: news.ink, color: news.paper, padding: "10px 14px" }}><div style={{ fontFamily: Fnews, fontSize: 23, textTransform: "uppercase" }}>Your home is the mine. <span style={{ color: "#D5AA3E" }}>Invest in the Gold Rush.</span></div><div style={{ fontFamily: Fm, fontSize: 7, letterSpacing: ".12em" }}>HANDMADE · UPCYCLED · PURPOSEFUL</div></div></div>;
 }
 
+function PaintingGalleryPage() {
+  const works = [
+    { src: paintingFeature, label: "Portrait study", position: "center 43%" },
+    { src: paintingKingfisher, label: "Kingfisher study", position: "center" },
+    { src: paintingRhino, label: "Rhino study", position: "center" },
+    { src: paintingPortraitFinal, label: "Portrait study", position: "center" },
+  ];
+  return <EPage section="PART THREE · PAINTING" page="PAINTING · 01" footerRight="GRACIOUS MKHONTO · SELECTED PAINTINGS">
+    <div style={{ height: "100%", display: "grid", gridTemplateRows: "118px 1fr" }}>
+      <div style={{ display: "grid", gridTemplateColumns: "1.2fr .8fr", alignItems: "end", borderBottom: `1px solid ${c.ink}`, paddingBottom: 18 }}>
+        <div><div style={{ fontFamily: Fm, fontSize: 8, letterSpacing: ".18em", color: c.ochre, marginBottom: 8 }}>SELECTED WORKS · PAINTING</div><h1 style={{ fontFamily: Fd, fontSize: 45, fontWeight: 500, lineHeight: .96, margin: 0 }}>Painting Gallery</h1></div>
+        <p style={{ fontFamily: Fb, fontSize: 10, lineHeight: 1.55, margin: 0, color: c.mid }}>Portraiture and wildlife studies exploring observation, likeness, atmosphere and expressive mark-making across personal painting practice.</p>
+      </div>
+      <div style={{ display: "grid", gridTemplateColumns: "1.16fr .84fr", gap: 12, paddingTop: 16, minHeight: 0 }}>
+        <figure style={{ margin: 0, display: "grid", gridTemplateRows: "1fr 26px", minHeight: 0 }}><img src={works[0].src} style={{ width: "100%", height: "100%", objectFit: "cover", objectPosition: works[0].position }} /><figcaption style={{ fontFamily: Fm, fontSize: 7.5, letterSpacing: ".11em", paddingTop: 8 }}>01 · {works[0].label.toUpperCase()}</figcaption></figure>
+        <div style={{ display: "grid", gridTemplateColumns: "1fr 1fr", gridTemplateRows: "1fr 1fr", gap: 12, minHeight: 0 }}>{works.slice(1).map((work, index) => <figure key={work.src} style={{ margin: 0, display: "grid", gridTemplateRows: "1fr 24px", minHeight: 0, gridColumn: index === 2 ? "1 / 3" : undefined }}><img src={work.src} style={{ width: "100%", height: "100%", objectFit: "cover", objectPosition: work.position }} /><figcaption style={{ fontFamily: Fm, fontSize: 7, letterSpacing: ".1em", paddingTop: 7 }}>0{index + 2} · {work.label.toUpperCase()}</figcaption></figure>)}</div>
+      </div>
+    </div>
+  </EPage>;
+}
+
+function PaintingProcessPage() {
+  const stages = [
+    { src: paintingProcess01, tag: "01 · UNDERPAINTING" },
+    { src: paintingProcess02, tag: "02 · FORM & VALUE" },
+    { src: paintingProcess03, tag: "03 · TONAL DEVELOPMENT" },
+    { src: paintingProcess04, tag: "04 · COLOUR & DETAIL" },
+  ];
+  return <EPage section="PART THREE · PAINTING" page="PAINTING · 02" footerRight="GRACIOUS MKHONTO · PROCESS STUDY">
+    <div style={{ height: "100%", display: "grid", gridTemplateRows: "112px 1fr" }}>
+      <div style={{ display: "grid", gridTemplateColumns: "1.2fr .8fr", alignItems: "end", borderBottom: `1px solid ${c.ink}`, paddingBottom: 16 }}><div><div style={{ fontFamily: Fm, fontSize: 8, letterSpacing: ".18em", color: c.brown, marginBottom: 8 }}>PROCESS DOCUMENTATION · PORTRAITURE</div><h1 style={{ fontFamily: Fd, fontSize: 42, fontWeight: 500, lineHeight: .96, margin: 0 }}>Building the Portrait</h1></div><p style={{ fontFamily: Fb, fontSize: 10, lineHeight: 1.55, margin: 0, color: c.mid }}>The sequence records the portrait as it moves from a loose structural drawing through tonal modelling, colour and final likeness.</p></div>
+      <div style={{ display: "grid", gridTemplateColumns: "1.4fr .6fr", gap: 14, paddingTop: 16, minHeight: 0 }}>
+        <div style={{ display: "grid", gridTemplateColumns: "repeat(4, 1fr)", gap: 10, minHeight: 0 }}>{stages.map(stage => <figure key={stage.tag} style={{ margin: 0, display: "grid", gridTemplateRows: "1fr 28px", minHeight: 0 }}><img src={stage.src} style={{ width: "100%", height: "100%", objectFit: "cover" }} /><figcaption style={{ fontFamily: Fm, fontSize: 6.8, letterSpacing: ".08em", paddingTop: 8 }}>{stage.tag}</figcaption></figure>)}</div>
+        <div style={{ borderLeft: `1px solid ${c.rule}`, paddingLeft: 14, display: "grid", gridTemplateRows: "1fr auto", minHeight: 0 }}><img src={paintingPortraitFinal} style={{ width: "100%", height: "100%", objectFit: "cover" }} /><div style={{ paddingTop: 10 }}><div style={{ fontFamily: Fm, fontSize: 7, letterSpacing: ".14em", color: c.ochre }}>FINAL STUDY</div><div style={{ fontFamily: Fd, fontSize: 19, marginTop: 4 }}>Observation into likeness</div><p style={{ fontFamily: Fb, fontSize: 8.5, lineHeight: 1.45, margin: "5px 0 0", color: c.mid }}>Layered brushwork and controlled contrast establish facial form while retaining the directness of the hand-painted surface.</p></div></div>
+      </div>
+    </div>
+  </EPage>;
+}
+
 interface PageEntry { id: string; title: string; section: string; render: () => React.ReactNode; }
 interface DisplayPage extends PageEntry { pdfId?: string; isImported?: boolean; }
 
@@ -2908,7 +2955,7 @@ const buildDisplayPages = (pdfPages: PdfPage[]): DisplayPage[] => {
       seenSlides.add(slideNumber);
       return [asDisplayPage(pdf)];
     });
-    return [...originalPages, ...PAGES.filter(page => page.id.startsWith("gold-rush-"))];
+    return [...originalPages, ...PAGES.filter(page => page.id.startsWith("gold-rush-") || page.id.startsWith("painting-"))];
   }
 
   // Keep each Keynote-informed campaign slide intact, but gather the related
@@ -2950,6 +2997,8 @@ const buildDisplayPages = (pdfPages: PdfPage[]): DisplayPage[] => {
 };
 
 const PAGES: PageEntry[] = [
+  { id: "painting-gallery", title: "Painting Gallery — Selected Works", section: "Part 03 — Painting", render: () => <PaintingGalleryPage /> },
+  { id: "painting-process", title: "Painting Gallery — Portrait Process", section: "Part 03 — Painting", render: () => <PaintingProcessPage /> },
   { id: "gold-rush-cover", title: "The Gold Rush — From Waste to Wealth", section: "Featured Case Study — The Gold Rush", render: () => <GoldRushCover /> },
   { id: "gold-rush-profile", title: "The Gold Rush — Maker Profile", section: "Featured Case Study — The Gold Rush", render: () => <GoldRushProfile /> },
   { id: "gold-rush-impact", title: "The Gold Rush — Product & Impact", section: "Featured Case Study — The Gold Rush", render: () => <GoldRushImpact /> },
