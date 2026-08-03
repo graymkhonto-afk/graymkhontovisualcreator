@@ -1,0 +1,11 @@
+{
+  "name": "Gray Mkhonto | Communication Designer",
+  "short_name": "Gray Mkhonto",
+  "description": "Award-winning South African communication design portfolio.",
+  "start_url": "/graymkhontovisualcreator/",
+  "scope": "/graymkhontovisualcreator/",
+  "display": "standalone",
+  "background_color": "#EDEAE5",
+  "theme_color": "#1A1815",
+  "icons": [{ "src": "favicon.svg", "sizes": "any", "type": "image/svg+xml" }]
+}

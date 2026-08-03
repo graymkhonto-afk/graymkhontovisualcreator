@@ -1,0 +1,4 @@
+User-agent: *
+Allow: /
+
+Sitemap: https://graymkhonto-afk.github.io/graymkhontovisualcreator/sitemap.xml

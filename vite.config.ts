@@ -17,9 +17,9 @@ function figmaAssetResolver() {
 }
 
 export default defineConfig({
-  // Relative asset paths keep the portfolio portable on GitHub Pages,
-  // including project sites hosted below /owner/repository/.
-  base: './',
+  // This is a GitHub Pages project site (not the account-level user site),
+  // so every emitted URL must include the repository name.
+  base: '/graymkhontovisualcreator/',
   plugins: [
     figmaAssetResolver(),
     // The React and Tailwind plugins are both required for Make, even if
@@ -36,4 +36,19 @@ export default defineConfig({
 
   // File types to support raw imports. Never add .css, .tsx, or .ts files to this.
   assetsInclude: ['**/*.svg', '**/*.csv', '**/*.pdf'],
+
+  build: {
+    target: 'es2020',
+    cssCodeSplit: true,
+    sourcemap: false,
+    reportCompressedSize: true,
+    rollupOptions: {
+      output: {
+        manualChunks(id) {
+          if (id.includes('node_modules/react/') || id.includes('node_modules/react-dom/')) return 'react-vendor'
+          if (id.includes('node_modules/lucide-react/')) return 'icons'
+        },
+      },
+    },
+  },
 })

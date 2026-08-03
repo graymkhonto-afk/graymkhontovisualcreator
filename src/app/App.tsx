@@ -1,7 +1,7 @@
 import React, { useState, useEffect, useRef } from "react";
 import { BookOpen, ChevronLeft, ChevronRight, Download, Eye, FileText, FileUp, LayoutTemplate, Linkedin, Pencil, Plus, ShieldCheck, Sparkles, X } from "lucide-react";
 import { ImageWithFallback } from "@/app/components/figma/ImageWithFallback";
-import { exportEditablePptx } from "@/app/pptxExport";
+import { getPdfRuntime } from "@/app/pdfRuntime";
 import portraitImg from "@/imports/gray-profile-headshot.png";
 import goldRushMakerPortrait from "@/imports/gold-rush-maker-portrait.jpg";
 import goldRushTextileOrnament from "@/imports/gold-rush-textile-ornament.jpeg";
@@ -121,8 +121,6 @@ import svgFigs151 from "@/imports/QG_rpl_prog.svg_for_figs_151.svg";
 import svgFigs157 from "@/imports/QG_rpl_prog.svg_for_figs_157.svg";
 import svgFigs159 from "@/imports/QG_rpl_prog.svg_for_figs_159.svg";
 import editableKeynoteSlides from "@/imports/editable-keynote-slides.json";
-import * as pdfjsLib from "pdfjs-dist";
-pdfjsLib.GlobalWorkerOptions.workerSrc = "https://unpkg.com/pdfjs-dist@6.1.200/build/pdf.worker.min.mjs";
 
 // ─── Uploaded PDF assets — rendered at startup via PDF.js ────────────────────
 import pdf_gauta_mood    from "@/imports/3dc54475a1-84cd72d2af126de0a9a7.pdf";
@@ -307,21 +305,21 @@ const CapLabel = ({ children, color = c.mid }: { children: React.ReactNode; colo
 // ─── Page chrome ─────────────────────────────────────────────────────────────
 function TopNav({ right = "A4 LANDSCAPE · 297 × 210 MM", active = "" }: { right?: string; active?: string }) {
   return (
-    <div style={{ height: TH, borderBottom: `0.5px solid ${c.rule}`, display: "flex", alignItems: "center", justifyContent: "space-between", padding: `0 ${M}px`, flexShrink: 0 }}>
-      <span style={{ fontFamily: Fb, fontSize: 8.5, letterSpacing: "0.14em", textTransform: "uppercase" as const, color: c.ink, fontWeight: 600 }}>RPL PORTFOLIO</span>
-      <div style={{ display: "flex", gap: 28 }}>
+    <div className="editorial-top-nav" style={{ height: TH, borderBottom: `0.5px solid ${c.rule}`, display: "grid", gridTemplateColumns: "1fr auto 1fr", alignItems: "center", padding: `0 ${M}px`, flexShrink: 0 }}>
+      <span className="editorial-running-title" style={{ fontFamily: Fb, fontSize: 8.5, letterSpacing: "0.14em", textTransform: "uppercase" as const, color: c.ink, fontWeight: 600 }}>RPL PORTFOLIO</span>
+      <div className="editorial-nav-index" style={{ display: "flex", gap: 28, justifySelf: "center" }}>
         {(["MANIFESTO", "INDEX", "ARCHIVE"] as const).map(n => (
           <span key={n} style={{ fontFamily: Fb, fontSize: 8.5, letterSpacing: "0.12em", textTransform: "uppercase" as const, color: n === active ? c.ochre : c.mid }}>{n}</span>
         ))}
       </div>
-      <span style={{ fontFamily: Fb, fontSize: 8.5, letterSpacing: "0.1em", color: c.mid }}>{right}</span>
+      <span className="editorial-format" style={{ fontFamily: Fb, fontSize: 8.5, letterSpacing: "0.1em", color: c.mid, justifySelf: "end" }}>{right}</span>
     </div>
   );
 }
 
 function SubHeader({ left = "", right = "" }: { left?: string; right?: string }) {
   return (
-    <div style={{ height: SH, borderBottom: `0.5px solid ${c.rule}`, display: "flex", alignItems: "center", padding: `0 ${M}px`, gap: 16, flexShrink: 0 }}>
+    <div className="editorial-subheader" style={{ height: SH, borderBottom: `0.5px solid ${c.rule}`, display: "flex", alignItems: "center", padding: `0 ${M}px`, gap: 16, flexShrink: 0 }}>
       <span style={{ fontFamily: Fb, fontSize: 8, letterSpacing: "0.14em", textTransform: "uppercase" as const, color: c.ochre, flexShrink: 0 }}>{left}</span>
       <div style={{ flex: 1, height: 0.5, background: c.rule }} />
       <span style={{ fontFamily: Fb, fontSize: 8.5, letterSpacing: "0.1em", color: c.mid, flexShrink: 0 }}>{right}</span>
@@ -331,10 +329,10 @@ function SubHeader({ left = "", right = "" }: { left?: string; right?: string })
 
 function PageFooter({ center = "", right = "RECOGNITION OF PRIOR LEARNING" }: { center?: string; right?: string }) {
   return (
-    <div style={{ height: FH, borderTop: `0.5px solid ${c.rule}`, display: "flex", alignItems: "center", justifyContent: "space-between", padding: `0 ${M}px`, flexShrink: 0 }}>
+    <div className="editorial-footer" style={{ height: FH, borderTop: `0.5px solid ${c.rule}`, display: "grid", gridTemplateColumns: "1fr auto 1fr", alignItems: "center", padding: `0 ${M}px`, flexShrink: 0 }}>
       <span style={{ fontFamily: Fb, fontSize: 7.5, letterSpacing: "0.08em", textTransform: "uppercase" as const, color: c.mid }}>2026 Qinisile Gracious Mkhonto, Graphic Design Portfolio</span>
-      <span style={{ fontFamily: Fb, fontSize: 7.5, letterSpacing: "0.1em", textTransform: "uppercase" as const, color: c.mid }}>{center}</span>
-      <span style={{ fontFamily: Fb, fontSize: 7.5, letterSpacing: "0.1em", textTransform: "uppercase" as const, color: c.mid }}>{right}</span>
+      <span style={{ fontFamily: Fb, fontSize: 7.5, letterSpacing: "0.1em", textTransform: "uppercase" as const, color: c.mid, justifySelf: "center" }}>{center}</span>
+      <span style={{ fontFamily: Fb, fontSize: 7.5, letterSpacing: "0.1em", textTransform: "uppercase" as const, color: c.mid, justifySelf: "end" }}>{right}</span>
     </div>
   );
 }
@@ -343,12 +341,12 @@ function EPage({ children, section = "", page = "", navActive = "", footerRight 
   children: React.ReactNode; section?: string; page?: string; navActive?: string; footerRight?: string;
 }) {
   return (
-    <div style={{ width: PW, height: PH, background: c.bg, display: "flex", flexDirection: "column", overflow: "hidden", fontFamily: Fb, color: c.ink }}>
+    <article className="editorial-page" style={{ width: PW, height: PH, background: c.bg, display: "flex", flexDirection: "column", overflow: "hidden", fontFamily: Fb, color: c.ink }}>
       <TopNav active={navActive} />
       <SubHeader left={section} right={page} />
-      <div style={{ height: CH, overflow: "hidden", position: "relative" }}>{children}</div>
+      <div className="editorial-page-content" style={{ height: CH, overflow: "hidden", position: "relative" }}>{children}</div>
       <PageFooter right={footerRight} />
-    </div>
+    </article>
   );
 }
 
@@ -3871,7 +3869,7 @@ function Sidebar({ current, onSelect, total, displayPages, onAssetImport, pdfLoa
   }, [currentSection]);
 
   return (
-    <aside style={{ width: 252, flexShrink: 0, height: "100vh", background: c.bg, borderRight: `0.5px solid ${c.rule}`, display: "flex", flexDirection: "column", overflow: "hidden" }}>
+    <aside className="portfolio-sidebar" aria-label="Portfolio slide navigation" style={{ width: 252, flexShrink: 0, height: "100vh", background: c.bg, borderRight: `0.5px solid ${c.rule}`, display: "flex", flexDirection: "column", overflow: "hidden" }}>
       <div style={{ padding: "16px 18px 12px", borderBottom: `0.5px solid ${c.rule}` }}>
         <div style={{ fontFamily: Fb, fontSize: 8.5, letterSpacing: "0.14em", textTransform: "uppercase" as const, color: c.ink, fontWeight: 600, marginBottom: 3 }}>RPL PORTFOLIO</div>
         <div style={{ fontFamily: Fb, fontSize: 8, color: c.mid, letterSpacing: "0.1em", marginBottom: 10 }}>Qinisile G. Mkhonto · Vol. 1 — 2026</div>
@@ -4024,12 +4022,34 @@ export default function App() {
     }
   });
   const containerRef = useRef<HTMLDivElement>(null);
+  const stageRef = useRef<HTMLDivElement>(null);
   const displayPages = buildDisplayPages(pdfPages);
   const totalPages = displayPages.length;
 
   useEffect(() => {
     const el = document.createElement("style"); el.textContent = PRINT_CSS;
     document.head.appendChild(el); return () => el.remove();
+  }, []);
+
+  useEffect(() => {
+    const improveImages = (root: ParentNode = document) => {
+      root.querySelectorAll<HTMLImageElement>("img").forEach((image) => {
+        if (!image.hasAttribute("loading")) image.loading = "lazy";
+        if (!image.hasAttribute("decoding")) image.decoding = "async";
+        if (!image.hasAttribute("alt")) {
+          const caption = image.closest("figure")?.querySelector("figcaption")?.textContent?.trim();
+          image.alt = caption || "Gray Mkhonto portfolio artwork";
+        }
+      });
+    };
+    improveImages();
+    const observer = new MutationObserver((records) => records.forEach((record) => {
+      record.addedNodes.forEach((node) => {
+        if (node instanceof HTMLElement) improveImages(node);
+      });
+    }));
+    observer.observe(document.body, { childList: true, subtree: true });
+    return () => observer.disconnect();
   }, []);
 
   useEffect(() => {
@@ -4047,6 +4067,7 @@ export default function App() {
 
     const renderPdf = async (url: string, baseTitle: string, section: string): Promise<PdfPage[]> => {
       try {
+        const pdfjsLib = await getPdfRuntime();
         const pdf = await pdfjsLib.getDocument({ url: url as string }).promise;
         const pages: PdfPage[] = [];
         const isKeynote = baseTitle === "Complete Keynote Portfolio";
@@ -4091,15 +4112,19 @@ export default function App() {
 
   useEffect(() => {
     const update = () => {
-      if (!containerRef.current) return;
-      const { width, height } = containerRef.current.getBoundingClientRect();
-      setScale(Math.max(0.18, Math.min((width - 56) / PW, (height - 98) / PH, 1)));
+      if (!stageRef.current) return;
+      const { width, height } = stageRef.current.getBoundingClientRect();
+      const stageStyles = window.getComputedStyle(stageRef.current);
+      const availableWidth = width - parseFloat(stageStyles.paddingLeft) - parseFloat(stageStyles.paddingRight);
+      const availableHeight = height - parseFloat(stageStyles.paddingTop) - parseFloat(stageStyles.paddingBottom);
+      const presentationWidth = flipbookMode ? PW * 2 + 24 : PW;
+      setScale(Math.max(0.18, Math.min(availableWidth / presentationWidth, availableHeight / PH, 1)));
     };
     update();
     const ro = new ResizeObserver(update);
-    if (containerRef.current) ro.observe(containerRef.current);
+    if (stageRef.current) ro.observe(stageRef.current);
     return () => ro.disconnect();
-  }, []);
+  }, [flipbookMode]);
 
   const goToIdx = (i: number) => { setVisible(false); setTimeout(() => { setCurrent(i); setVisible(true); }, 140); };
   const go = (dir: number) => { const n = Math.max(0, Math.min(totalPages - 1, current + dir)); if (n !== current) goToIdx(n); };
@@ -4107,8 +4132,12 @@ export default function App() {
 
   useEffect(() => {
     const h = (e: KeyboardEvent) => {
+      const target = e.target as HTMLElement | null;
+      if (target?.matches("input, textarea, select, [contenteditable='true']")) return;
       if (e.key === "ArrowRight" || e.key === "ArrowDown") go(1);
       if (e.key === "ArrowLeft"  || e.key === "ArrowUp")   go(-1);
+      if (e.key === "Home") goTo(0);
+      if (e.key === "End") goTo(totalPages - 1);
     };
     window.addEventListener("keydown", h); return () => window.removeEventListener("keydown", h);
   }, [current, totalPages]);
@@ -4127,6 +4156,7 @@ export default function App() {
 
       if (file.type === "application/pdf" || /\.pdf$/i.test(file.name)) {
         const buffer = await file.arrayBuffer();
+        const pdfjsLib = await getPdfRuntime();
         const pdf = await pdfjsLib.getDocument({ data: buffer }).promise;
         for (let i = 1; i <= pdf.numPages; i++) {
           const pg = await pdf.getPage(i);
@@ -4186,7 +4216,7 @@ export default function App() {
     }, 600);
   };
 
-  const handleExportPPTX = () => {
+  const handleExportPPTX = async () => {
     const toPptxOverlays = (pageId: string) => (keynoteEdits[pageId] || []).map(box => ({
       text: box.text,
       x: (box.x / PW) * 13.333,
@@ -4196,6 +4226,7 @@ export default function App() {
       fontSize: box.fontSize,
     }));
 
+    const { exportEditablePptx } = await import("@/app/pptxExport");
     exportEditablePptx(
       [
         ...displayPages
@@ -4450,7 +4481,7 @@ export default function App() {
   };
 
   const renderPageWithKeynote = (page: DisplayPage, editable: boolean) => (
-    <div style={{ width: PW, height: PH, position: "relative", overflow: "hidden" }}>
+    <div className="portfolio-page-shell" data-page-id={page.id} data-page-section={page.section} style={{ width: PW, height: PH, position: "relative", overflow: "hidden" }}>
       {page.render()}
       <KeynoteEditLayer
         pageId={page.id}
@@ -4470,7 +4501,7 @@ export default function App() {
         </>}
       </div>
 
-      <div id="rpl-app-shell" style={{ display: "flex", height: "100vh", width: "100vw", background: "#D4D0CA", overflow: "hidden" }}>
+      <main id="main-content" tabIndex={-1} style={{ display: "flex", height: "100vh", width: "100vw", background: "#D4D0CA", overflow: "hidden" }}>
         <Sidebar current={current} onSelect={goTo} total={totalPages} displayPages={displayPages} onAssetImport={handleAssetImport} pdfLoading={pdfLoading} onRemovePdf={handleRemovePdf} currentSection={activePage?.section || "Part 03 — Portfolio"} viewOnly={viewOnly} uploadStatus={uploadStatus} />
         <div ref={containerRef} style={{ flex: 1, minWidth: 0, display: "flex", flexDirection: "column", overflow: "hidden" }}>
           <div style={{ minHeight: 42, background: c.bg, borderBottom: `0.5px solid ${c.rule}`, display: "flex", alignItems: "center", justifyContent: "space-between", gap: 14, padding: "7px 18px", flexShrink: 0 }}>
@@ -4505,6 +4536,9 @@ export default function App() {
               <a href="https://www.linkedin.com/in/graciousgraymkhonto" target="_blank" rel="noreferrer" aria-label="Open Gracious Gray Mkhonto's LinkedIn profile" style={{ display: "flex", alignItems: "center", gap: 5, height: 24, padding: "0 10px", boxSizing: "border-box", background: c.white, border: `0.5px solid ${c.rule}`, color: c.ink, textDecoration: "none", fontFamily: Fb, fontSize: 7.5, letterSpacing: "0.1em", textTransform: "uppercase" as const, flexShrink: 0 }}>
                 <Linkedin size={9} />LinkedIn
               </a>
+              <a href="https://www.behance.net/graymkhonto1" target="_blank" rel="noreferrer" aria-label="Open Gracious Gray Mkhonto's Behance profile" style={{ display: "flex", alignItems: "center", gap: 5, height: 24, padding: "0 10px", boxSizing: "border-box", background: c.white, border: `0.5px solid ${c.rule}`, color: c.ink, textDecoration: "none", fontFamily: Fb, fontSize: 7.5, letterSpacing: "0.1em", textTransform: "uppercase" as const, flexShrink: 0 }}>
+                Bē Behance
+              </a>
               {!viewOnly && (
                 <>
                   <button onClick={() => setIntelligenceOpen(true)} style={{ display: "flex", alignItems: "center", gap: 5, height: 24, padding: "0 10px", background: c.dark, border: "none", cursor: "pointer", color: c.white, fontFamily: Fb, fontSize: 7.5, letterSpacing: "0.1em", textTransform: "uppercase" as const }}>
@@ -4524,11 +4558,11 @@ export default function App() {
                   </button>
                 </>
               )}
-              <button onClick={() => go(-1)} disabled={current === 0} style={{ width: 24, height: 24, display: "flex", alignItems: "center", justifyContent: "center", background: "transparent", border: `0.5px solid ${current === 0 ? c.rule : c.mid}`, cursor: current === 0 ? "default" : "pointer", color: current === 0 ? c.rule : c.mid }}>
+              <button aria-label="Previous slide" onClick={() => go(-1)} disabled={current === 0} style={{ width: 24, height: 24, display: "flex", alignItems: "center", justifyContent: "center", background: "transparent", border: `0.5px solid ${current === 0 ? c.rule : c.mid}`, cursor: current === 0 ? "default" : "pointer", color: current === 0 ? c.rule : c.mid }}>
                 <ChevronLeft size={11} />
               </button>
               <span style={{ fontFamily: Fm, fontSize: 8, color: c.mid, minWidth: 44, textAlign: "center" }}>{current + 1}/{totalPages}</span>
-              <button onClick={() => go(1)} disabled={current === totalPages - 1} style={{ width: 24, height: 24, display: "flex", alignItems: "center", justifyContent: "center", background: "transparent", border: `0.5px solid ${current === totalPages - 1 ? c.rule : c.mid}`, cursor: current === totalPages - 1 ? "default" : "pointer", color: current === totalPages - 1 ? c.rule : c.mid }}>
+              <button aria-label="Next slide" onClick={() => go(1)} disabled={current === totalPages - 1} style={{ width: 24, height: 24, display: "flex", alignItems: "center", justifyContent: "center", background: "transparent", border: `0.5px solid ${current === totalPages - 1 ? c.rule : c.mid}`, cursor: current === totalPages - 1 ? "default" : "pointer", color: current === totalPages - 1 ? c.rule : c.mid }}>
                 <ChevronRight size={11} />
               </button>
             </div>
@@ -4569,10 +4603,10 @@ export default function App() {
               onApply={applyAutoLayout}
             />
           )}
-          <div style={{ flex: 1, display: "flex", alignItems: "center", justifyContent: "center", padding: 28, overflow: "hidden" }}>
+          <section ref={stageRef} className="portfolio-stage" aria-label={activePage ? `Current slide: ${activePage.title}` : "Portfolio slide"} style={{ flex: 1, minHeight: 0, display: "flex", alignItems: "center", justifyContent: "center", padding: 28, overflow: "hidden" }}>
             {flipbookMode ? (
-              <div style={{ position: "relative", width: (PW * 2 + 24) * scale * 0.5, height: PH * scale * 0.5, flexShrink: 0 }}>
-                <div data-page-scale={scale * 0.5} style={{ width: PW * 2 + 24, height: PH, transform: `scale(${scale * 0.5})`, transformOrigin: "top left", position: "absolute", top: 0, left: 0, opacity: visible ? 1 : 0, transition: "opacity 0.14s ease", display: "flex", gap: 24 }}>
+              <div style={{ position: "relative", width: (PW * 2 + 24) * scale, height: PH * scale, flexShrink: 0 }}>
+                <div className="portfolio-page-spread" data-page-scale={scale} style={{ width: PW * 2 + 24, height: PH, transform: `scale(${scale})`, transformOrigin: "top left", position: "absolute", top: 0, left: 0, opacity: visible ? 1 : 0, transition: "opacity 0.14s ease", display: "flex", gap: 24 }}>
                   {spreadPages.map(page => (
                     <div key={page.id} style={{ width: PW, height: PH, boxShadow: "0 2px 32px rgba(26,24,21,0.22)", background: c.bg, flexShrink: 0 }}>
                       {renderPageWithKeynote(page, false)}
@@ -4582,14 +4616,14 @@ export default function App() {
               </div>
             ) : (
               <div style={{ position: "relative", width: PW * scale, height: PH * scale, flexShrink: 0 }}>
-                <div data-page-scale={scale} style={{ width: PW, height: PH, transform: `scale(${scale})`, transformOrigin: "top left", position: "absolute", top: 0, left: 0, opacity: visible ? 1 : 0, transition: "opacity 0.14s ease", boxShadow: "0 2px 32px rgba(26,24,21,0.22)" }}>
+                <div className="portfolio-page-presentation" data-page-scale={scale} style={{ width: PW, height: PH, transform: `scale(${scale})`, transformOrigin: "top left", position: "absolute", top: 0, left: 0, opacity: visible ? 1 : 0, transition: "opacity 0.14s ease", boxShadow: "0 2px 32px rgba(26,24,21,0.22)" }}>
                   {activePage ? renderPageWithKeynote(activePage, keynoteMode && !viewOnly) : null}
                 </div>
               </div>
             )}
-          </div>
+          </section>
         </div>
-      </div>
+      </main>
     </>
   );
 }
