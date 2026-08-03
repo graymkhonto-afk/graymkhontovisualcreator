@@ -58,6 +58,9 @@ import noveltiesKeyringMkhonto from "@/imports/novelties-keyring-mkhonto.jpg";
 import noveltiesPackagingRibbon from "@/imports/novelties-packaging-ribbon.jpg";
 import noveltiesPackagingBranded from "@/imports/novelties-packaging-branded.jpg";
 import noveltiesPackagingCustom from "@/imports/novelties-packaging-custom.jpg";
+import grayciousMerchandise2017 from "@/imports/branding-graycious-merchandise-2017.jpg";
+import grayciousIdentity2017 from "@/imports/branding-graycious-identity-2017.jpg";
+import grayciousContact2018 from "@/imports/branding-graycious-contact-2018.jpg";
 import ukuMockup from "@/imports/uku_poster_mock_up.png";
 import characterSketch from "@/imports/IMG_0561.PNG";
 import editorialManifestoImg from "@/imports/editorial-first-things-first-2020.png";
@@ -3023,6 +3026,29 @@ function NoveltiesPackagingPage() {
   return <EPage section="PART THREE · ACCESSORIES CRAFT" page="ACCESSORIES · 05" footerRight="GRAY'S NOVELTIES · PRODUCT PRESENTATION"><div style={{height:"100%",display:"grid",gridTemplateRows:"108px 1fr"}}><div style={{display:"grid",gridTemplateColumns:"1.16fr .84fr",alignItems:"end",borderBottom:`1px solid ${c.ink}`,paddingBottom:15}}><div><div style={{fontFamily:Fm,fontSize:8,letterSpacing:".18em",color:c.olive,marginBottom:8}}>CUSTOMISATION · PACKAGING · GIFT PRESENTATION</div><h1 style={{fontFamily:Fd,fontSize:42,fontWeight:500,lineHeight:.96,margin:0}}>From Personalisation to Pack</h1></div><p style={{fontFamily:Fb,fontSize:9.5,lineHeight:1.5,margin:0,color:c.mid}}>The product system continues beyond the object itself, using simple ribbon, transparent sleeves and printed inserts to create a complete gift-ready presentation.</p></div><div style={{display:"grid",gridTemplateColumns:"1.08fr .92fr",gap:12,paddingTop:15,minHeight:0}}><div style={{display:"grid",gridTemplateColumns:"1fr 1fr",gridTemplateRows:"1fr 1fr",gap:11,minHeight:0}}>{works.slice(0,4).map((work,index)=><figure key={work.label} style={{margin:0,display:"grid",gridTemplateRows:"1fr 23px",minHeight:0}}><img src={work.src} style={{width:"100%",height:"100%",objectFit:"cover"}}/><figcaption style={{fontFamily:Fm,fontSize:6.3,letterSpacing:".08em",paddingTop:6}}>0{index+1} · {work.label.toUpperCase()}</figcaption></figure>)}</div><figure style={{margin:0,display:"grid",gridTemplateRows:"1fr 25px",minHeight:0}}><img src={works[4].src} style={{width:"100%",height:"100%",objectFit:"cover"}}/><figcaption style={{fontFamily:Fm,fontSize:6.8,letterSpacing:".1em",paddingTop:7}}>05 · {works[4].label.toUpperCase()}</figcaption></figure></div></div></EPage>;
 }
 
+function GrayciousBrandingTimelinePage() {
+  const milestones = [
+    { year: "2017", title: "Identity System", src: grayciousIdentity2017, note: "Script wordmark, photographic aperture symbol and the ‘moments of forever’ brand line establish the original Graycious Photography identity." },
+    { year: "2017", title: "Merchandise Application", src: grayciousMerchandise2017, note: "Early T-shirt concepts test scale, lock-up hierarchy and how the identity performs across wearable promotional surfaces." },
+    { year: "2018", title: "Contact Collateral", src: grayciousContact2018, note: "The identity expands into practical client-facing communication through a branded contact card and social-media touchpoints." },
+  ];
+  return (
+    <div style={{ height: "100%", display: "grid", gridTemplateRows: "102px 1fr", color: c.ink }}>
+      <div style={{ display: "grid", gridTemplateColumns: "1.18fr .82fr", alignItems: "end", borderBottom: `1px solid ${c.ink}`, paddingBottom: 14 }}>
+        <div><div style={{ fontFamily: Fm, fontSize: 8, letterSpacing: ".18em", color: c.ochre, marginBottom: 8 }}>BRANDING TIMELINE · 2017—2018</div><h1 style={{ fontFamily: Fd, fontSize: 41, fontWeight: 500, lineHeight: .96, margin: 0 }}>Graycious Photography</h1></div>
+        <p style={{ fontFamily: Fb, fontSize: 9.5, lineHeight: 1.5, margin: 0, color: c.mid }}>An early identity system moving from logo development into merchandise and direct client communication.</p>
+      </div>
+      <div style={{ display: "grid", gridTemplateColumns: "repeat(3, 1fr)", gap: 13, paddingTop: 16, minHeight: 0 }}>
+        {milestones.map((item, index) => <article key={item.title} style={{ display: "grid", gridTemplateRows: "24px 1fr 92px", minHeight: 0, borderTop: `3px solid ${index === 2 ? c.brown : c.ochre}` }}>
+          <div style={{ display: "flex", justifyContent: "space-between", alignItems: "end", paddingBottom: 5, fontFamily: Fm, fontSize: 7, letterSpacing: ".12em" }}><span>{item.year}</span><span>0{index + 1}</span></div>
+          <div style={{ minHeight: 0, overflow: "hidden", background: "#fff", border: `1px solid ${c.rule}` }}><img src={item.src} alt={item.title} style={{ width: "100%", height: "100%", objectFit: "contain" }} /></div>
+          <div style={{ paddingTop: 10 }}><h2 style={{ fontFamily: Fd, fontSize: 18, fontWeight: 500, margin: "0 0 5px" }}>{item.title}</h2><p style={{ fontFamily: Fb, fontSize: 7.6, lineHeight: 1.42, color: c.mid, margin: 0 }}>{item.note}</p></div>
+        </article>)}
+      </div>
+    </div>
+  );
+}
+
 interface PageEntry { id: string; title: string; section: string; render: () => React.ReactNode; }
 interface DisplayPage extends PageEntry { pdfId?: string; isImported?: boolean; }
 
@@ -3062,7 +3088,7 @@ const buildDisplayPages = (pdfPages: PdfPage[]): DisplayPage[] => {
       seenSlides.add(slideNumber);
       return [asDisplayPage(pdf)];
     });
-    return [...originalPages, ...PAGES.filter(page => page.id.startsWith("gold-rush-") || page.id.startsWith("painting-") || page.id.startsWith("drawing-") || page.id.startsWith("accessories-"))];
+    return [...originalPages, ...PAGES.filter(page => page.id.startsWith("gold-rush-") || page.id.startsWith("painting-") || page.id.startsWith("drawing-") || page.id.startsWith("accessories-") || page.id.startsWith("branding-timeline-"))];
   }
 
   // Keep each Keynote-informed campaign slide intact, but gather the related
@@ -3104,6 +3130,7 @@ const buildDisplayPages = (pdfPages: PdfPage[]): DisplayPage[] => {
 };
 
 const PAGES: PageEntry[] = [
+  { id: "branding-timeline-graycious", title: "Branding Timeline — Graycious Photography", section: "Part 03 — Branding", render: () => <GrayciousBrandingTimelinePage /> },
   { id: "accessories-gallery", title: "Accessories Craft — Selected Works", section: "Part 03 — Accessories Craft", render: () => <AccessoriesCraftGalleryPage /> },
   { id: "accessories-process", title: "Accessories Craft — Process", section: "Part 03 — Accessories Craft", render: () => <AccessoriesCraftProcessPage /> },
   { id: "accessories-novelties-objects", title: "Gray's Novelties — Decorative Objects", section: "Part 03 — Accessories Craft", render: () => <NoveltiesObjectsPage /> },
