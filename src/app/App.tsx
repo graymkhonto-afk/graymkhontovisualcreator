@@ -1,5 +1,5 @@
 import React, { useState, useEffect, useRef } from "react";
-import { BookOpen, ChevronLeft, ChevronRight, Download, Eye, FileText, FileUp, LayoutTemplate, Pencil, Plus, ShieldCheck, Sparkles, X } from "lucide-react";
+import { BookOpen, ChevronLeft, ChevronRight, Download, Eye, FileText, FileUp, LayoutTemplate, Linkedin, Pencil, Plus, ShieldCheck, Sparkles, X } from "lucide-react";
 import { ImageWithFallback } from "@/app/components/figma/ImageWithFallback";
 import { exportEditablePptx } from "@/app/pptxExport";
 import portraitImg from "@/imports/gray-profile-headshot.png";
@@ -4502,6 +4502,9 @@ export default function App() {
               <button onClick={() => setFlipbookMode(v => !v)} style={{ display: "flex", alignItems: "center", gap: 5, height: 24, padding: "0 10px", background: flipbookMode ? c.ochre : c.white, border: `0.5px solid ${flipbookMode ? c.ochre : c.rule}`, cursor: "pointer", color: flipbookMode ? c.white : c.ink, fontFamily: Fb, fontSize: 7.5, letterSpacing: "0.1em", textTransform: "uppercase" as const }}>
                 <BookOpen size={9} />Flipbook
               </button>
+              <a href="https://www.linkedin.com/in/graciousgraymkhonto" target="_blank" rel="noreferrer" aria-label="Open Gracious Gray Mkhonto's LinkedIn profile" style={{ display: "flex", alignItems: "center", gap: 5, height: 24, padding: "0 10px", boxSizing: "border-box", background: c.white, border: `0.5px solid ${c.rule}`, color: c.ink, textDecoration: "none", fontFamily: Fb, fontSize: 7.5, letterSpacing: "0.1em", textTransform: "uppercase" as const, flexShrink: 0 }}>
+                <Linkedin size={9} />LinkedIn
+              </a>
               {!viewOnly && (
                 <>
                   <button onClick={() => setIntelligenceOpen(true)} style={{ display: "flex", alignItems: "center", gap: 5, height: 24, padding: "0 10px", background: c.dark, border: "none", cursor: "pointer", color: c.white, fontFamily: Fb, fontSize: 7.5, letterSpacing: "0.1em", textTransform: "uppercase" as const }}>
