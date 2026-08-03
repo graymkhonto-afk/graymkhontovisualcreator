@@ -2218,21 +2218,21 @@ function EditableTextSlidePage({ slideNumber, section, data }: { slideNumber: nu
           : isPhotographyTitle
             ? 30
             : characterStyle === "display"
-              ? item.h >= 15 ? 38 : 30
+              ? item.h >= 18 ? 52 : item.h >= 12 ? 38 : 32
               : characterStyle === "subheading"
-                ? 14
+                ? 16
                 : characterStyle === "body"
-                  ? 9
+                  ? 10.5
                   : characterStyle === "label"
-                    ? 7.5
-                    : 7;
+                    ? 8
+                    : 7.5;
         const resolvedFontSize = Math.min(preferredFontSize, frameBoundPt);
         const resolvedTracking = characterStyle === "display"
           ? -0.35
           : characterStyle === "label"
-            ? 1.35
+            ? 0.96
             : characterStyle === "folio"
-              ? 0.65
+              ? 0.6
               : 0;
         const resolvedFamily = characterStyle === "display" ? Fd : characterStyle === "folio" ? Fm : Fb;
         const resolvedWeight = characterStyle === "display"
@@ -2245,7 +2245,7 @@ function EditableTextSlidePage({ slideNumber, section, data }: { slideNumber: nu
           : characterStyle === "subheading"
             ? 1.18
             : characterStyle === "body"
-              ? 1.45
+              ? 1.7
               : 1.2;
         const adjustedHeight = item.y > 95 ? Math.min(item.h, 2.55) : item.h;
         const shared: React.CSSProperties = {
