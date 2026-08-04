@@ -2,6 +2,11 @@ import React, { useState, useEffect, useRef } from "react";
 import { BookOpen, ChevronLeft, ChevronRight, Download, Eye, FileText, FileUp, LayoutTemplate, Linkedin, Pencil, Plus, ShieldCheck, Sparkles, X } from "lucide-react";
 import { ImageWithFallback } from "@/app/components/figma/ImageWithFallback";
 import { getPdfRuntime } from "@/app/pdfRuntime";
+
+// GitHub Pages is built with VITE_PUBLIC_VIEWER=true. This is a build-time
+// boundary: public visitors never receive active editing surfaces, while the
+// local development server remains the owner's editing workspace.
+const IS_PUBLIC_VIEWER = import.meta.env.VITE_PUBLIC_VIEWER === "true";
 import portraitImg from "@/imports/gray-profile-headshot.png";
 import goldRushMakerPortrait from "@/imports/gold-rush-maker-portrait.jpg";
 import goldRushTextileOrnament from "@/imports/gold-rush-textile-ornament.jpeg";
@@ -408,11 +413,11 @@ function PartOpener({ partNum, partTitle, subtitle, quote, sections, accent = c.
           <div style={{ fontFamily: Fd, fontSize: 160, fontWeight: 700, color: accent, lineHeight: 1, opacity: 0.85, letterSpacing: "-0.04em" }}>{partNum}</div>
         </div>
         {/* Content */}
-        <div style={{ flex: 1, display: "flex", flexDirection: "column", justifyContent: "center", padding: `0 ${M}px` }}>
-          <div style={{ fontFamily: Fb, fontSize: 8, letterSpacing: "0.18em", textTransform: "uppercase" as const, color: "rgba(250,250,250,0.35)", marginBottom: 18 }}>{subtitle}</div>
-          <div style={{ fontFamily: Fd, fontSize: 52, fontWeight: 400, color: c.white, lineHeight: 1.0, letterSpacing: "-0.02em", marginBottom: 28 }}>{partTitle}</div>
+        <div className="premium-project-copy premium-project-copy--dark" style={{ flex: 1, display: "flex", flexDirection: "column", justifyContent: "center", padding: `0 ${M}px` }}>
+          <div className="premium-project-category" style={{ fontFamily: Fb, letterSpacing: "0.12em", textTransform: "uppercase" as const, color: "rgba(250,250,250,0.55)" }}>{subtitle}</div>
+          <div className="premium-project-title" style={{ fontFamily: Fd, fontWeight: 400, color: c.white, letterSpacing: "-0.035em" }}>{partTitle}</div>
           <div style={{ width: 40, height: 1, background: accent, marginBottom: 24 }} />
-          <div style={{ fontFamily: Fd, fontSize: 15, fontStyle: "italic", color: accent, lineHeight: 1.55, maxWidth: 460, marginBottom: 36 }}>"{quote}"</div>
+          <div className="premium-project-body" style={{ fontFamily: Fd, fontStyle: "italic", color: accent, maxWidth: 560 }}>"{quote}"</div>
           {/* Sections index */}
           <div style={{ display: "flex", flexWrap: "wrap" as const, gap: "6px 16px" }}>
             {sections.map((s, i) => (
@@ -438,11 +443,11 @@ function DisciplinePage({ title, section, page, description, subItems, imgUrl, a
     <EPage section={section} page={page} navActive="ARCHIVE">
       <div style={{ position: "absolute", inset: 0, display: "grid", gridTemplateColumns: "1fr 1fr", overflow: "hidden" }}>
         {/* Left — text */}
-        <div style={{ padding: `28px ${M}px 24px`, borderRight: `0.5px solid ${c.rule}`, display: "flex", flexDirection: "column" }}>
-          <CapLabel color={accent}>{title}</CapLabel>
-          <div style={{ fontFamily: Fd, fontSize: 38, fontWeight: 400, color: c.ink, lineHeight: 1.0, letterSpacing: "-0.02em", marginBottom: 18 }}>{title}</div>
-          <HR color={c.rule} mb={18} />
-          <p style={{ fontFamily: Fb, fontSize: 11.5, lineHeight: 1.8, color: c.ink, marginBottom: 24 }}>{description}</p>
+        <div className="premium-project-copy" style={{ padding: `28px ${M}px 24px`, borderRight: `0.5px solid ${c.rule}`, display: "flex", flexDirection: "column" }}>
+          <div className="premium-project-category" style={{ color: accent }}>{section}</div>
+          <div className="premium-project-title" style={{ fontFamily: Fd, fontWeight: 400, color: c.ink, letterSpacing: "-0.035em" }}>{title}</div>
+          <HR color={c.rule} mb={0} />
+          <p className="premium-project-body" style={{ fontFamily: Fb, color: c.ink }}>{description}</p>
           <div>
             {subItems.map((item, i) => (
               <div key={i} style={{ display: "flex", gap: 10, alignItems: "center", padding: "7px 0", borderBottom: `0.5px solid ${c.rule}` }}>
@@ -493,7 +498,7 @@ function Cover() {
           <div style={{ display: "flex", justifyContent: "center" }}>
             <svg width="56" height="56" viewBox="0 0 56 56">
               <polygon points="28,3 53,28 28,53 3,28" fill="none" stroke={c.ochre} strokeWidth="1"/>
-              <rect x="22" y="22" width="12" height="12" fill={c.ochre} transform="rotate(45 28 28)"/>
+              <polygon points="20,22 36,22 28,37" fill={c.ochre}/>
             </svg>
           </div>
           <div style={{ textAlign: "center" }}>
@@ -1406,12 +1411,12 @@ const PROJECT_RATIONALES = [
 function ProjectRationalePage({ project, index }: { project: typeof PROJECT_RATIONALES[number]; index: number }) {
   return (
     <EPage section={`PROJECT RATIONALE · ${project.discipline.toUpperCase()}`} page={`R.${String(index + 1).padStart(2, "0")}`} navActive="ARCHIVE">
-      <div style={{ position: "absolute", inset: 0, padding: `26px ${M}px 18px`, display: "grid", gridTemplateColumns: "0.72fr 1.28fr", gap: 38 }}>
+      <div className="premium-project-grid" style={{ position: "absolute", inset: 0, padding: `26px ${M}px 18px`, display: "grid", gridTemplateColumns: "0.72fr 1.28fr" }}>
         <div style={{ borderRight: `0.5px solid ${c.rule}`, paddingRight: 30, display: "flex", flexDirection: "column", justifyContent: "space-between" }}>
           <div>
-            <CapLabel color={project.accent}>Project Rationale</CapLabel>
+            <div className="premium-project-category" style={{ color: project.accent }}>Project Rationale</div>
             <div style={{ fontFamily: Fm, fontSize: 9, color: c.mid, letterSpacing: "0.14em", marginBottom: 14 }}>{project.code} · {project.discipline.toUpperCase()}</div>
-            <div style={{ fontFamily: Fd, fontSize: 48, lineHeight: 0.9, color: c.ink, letterSpacing: "-0.025em" }}>{project.title}</div>
+            <div className="premium-project-title" style={{ fontFamily: Fd, color: c.ink, letterSpacing: "-0.035em" }}>{project.title}</div>
           </div>
           <div>
             <div style={{ width: 42, height: 4, background: project.accent, marginBottom: 14 }} />
@@ -1422,7 +1427,7 @@ function ProjectRationalePage({ project, index }: { project: typeof PROJECT_RATI
           <div>
             <div style={{ fontFamily: Fm, fontSize: 8, color: project.accent, letterSpacing: "0.16em", textTransform: "uppercase" as const, marginBottom: 24 }}>Design intention and resolved communication</div>
             <div style={{ fontFamily: Fd, fontSize: 30, lineHeight: 1.1, color: c.ink, maxWidth: 610, marginBottom: 24 }}>The outcome connects research, visual reasoning and purposeful making.</div>
-            <p style={{ fontFamily: Fb, fontSize: 15, lineHeight: 1.72, color: c.text, maxWidth: 650, margin: 0 }}>{project.rationale}</p>
+            <p className="premium-project-body" style={{ fontFamily: Fb, color: c.text, maxWidth: 650, margin: 0 }}>{project.rationale}</p>
           </div>
           <div style={{ borderTop: `0.5px solid ${c.rule}`, paddingTop: 14, display: "grid", gridTemplateColumns: "1fr 1fr", gap: 24 }}>
             <div>
@@ -2284,6 +2289,8 @@ function EditableTextSlidePage({ slideNumber, section, data }: { slideNumber: nu
                   : characterStyle === "label"
                     ? 8
                     : 7.5;
+        // Respect the original Keynote frame. The former forced minimum enlarged copy
+        // beyond its available box and produced overlaps across the reconstructed deck.
         const resolvedFontSize = Math.min(preferredFontSize, frameBoundPt);
         const resolvedTracking = characterStyle === "display"
           ? -0.35
@@ -2303,7 +2310,7 @@ function EditableTextSlidePage({ slideNumber, section, data }: { slideNumber: nu
           : characterStyle === "subheading"
             ? 1.18
             : characterStyle === "body"
-              ? 1.7
+              ? 1.5
               : 1.2;
         const adjustedHeight = item.y > 95 ? Math.min(item.h, 2.55) : item.h;
         const shared: React.CSSProperties = {
@@ -2323,6 +2330,7 @@ function EditableTextSlidePage({ slideNumber, section, data }: { slideNumber: nu
 
         if (item.kind === "image" && item.src) {
           const crop = item.crop || { l: 0, t: 0, r: 0, b: 0 };
+          const hasCrop = crop.l > 0.01 || crop.t > 0.01 || crop.r > 0.01 || crop.b > 0.01;
           const visibleW = Math.max(1, 100 - crop.l - crop.r);
           const visibleH = Math.max(1, 100 - crop.t - crop.b);
           return (
@@ -2338,7 +2346,8 @@ function EditableTextSlidePage({ slideNumber, section, data }: { slideNumber: nu
                   height: `${10000 / visibleH}%`,
                   left: `${-crop.l * 100 / visibleW}%`,
                   top: `${-crop.t * 100 / visibleH}%`,
-                  objectFit: "fill",
+                  objectFit: hasCrop ? "cover" : "contain",
+                  objectPosition: "center",
                   maxWidth: "none",
                   display: "block",
                 }}
@@ -2352,9 +2361,10 @@ function EditableTextSlidePage({ slideNumber, section, data }: { slideNumber: nu
             key={index}
             data-editable-slide-text="true"
             data-character-style={characterStyle}
-            contentEditable
+            contentEditable={!IS_PUBLIC_VIEWER}
             suppressContentEditableWarning
-            spellCheck
+            spellCheck={!IS_PUBLIC_VIEWER}
+            aria-readonly={IS_PUBLIC_VIEWER || undefined}
             style={{
               ...shared,
               display: "flex",
@@ -2367,7 +2377,24 @@ function EditableTextSlidePage({ slideNumber, section, data }: { slideNumber: nu
               fontStyle: characterStyle === "display" ? item.fontStyle || "normal" : "normal",
               letterSpacing: `${resolvedTracking}pt`,
               lineHeight: resolvedLineHeight,
-              color: resolvedColor(item.color) || c.ink,
+              color: (() => {
+                const colour = resolvedColor(item.color);
+                if (slideNumber !== 1) return colour || c.ink;
+
+                const normalized = (colour || "").replace(/\s+/g, "").toUpperCase();
+                const darkCoverColours = new Set([
+                  "#1A1815",
+                  "#000000",
+                  "#111111",
+                  "#222222",
+                  "RGB(26,24,21)",
+                  "RGB(0,0,0)",
+                  "RGB(17,17,17)",
+                  "RGB(34,34,34)",
+                ]);
+
+                return !colour || darkCoverColours.has(normalized) ? c.white : colour;
+              })(),
               textAlign: item.align || "left",
               outline: "none",
               cursor: "text",
@@ -4005,7 +4032,7 @@ export default function App() {
   const [creatorOpen, setCreatorOpen] = useState(false);
   const [shareStatus, setShareStatus] = useState("");
   const [uploadStatus, setUploadStatus] = useState("");
-  const [viewOnly] = useState(() => new URLSearchParams(window.location.search).get("view") === "share");
+  const [viewOnly] = useState(() => IS_PUBLIC_VIEWER || new URLSearchParams(window.location.search).get("view") === "share");
   const [keynoteEdits, setKeynoteEdits] = useState<KeynoteEdits>(() => {
     try {
       return JSON.parse(localStorage.getItem("qg-keynote-edits") || "{}") as KeynoteEdits;
@@ -4053,12 +4080,14 @@ export default function App() {
   }, []);
 
   useEffect(() => {
+    if (viewOnly) return;
     localStorage.setItem("qg-keynote-edits", JSON.stringify(keynoteEdits));
-  }, [keynoteEdits]);
+  }, [keynoteEdits, viewOnly]);
 
   useEffect(() => {
+    if (viewOnly) return;
     localStorage.setItem("qg-auto-layout", JSON.stringify(autoLayoutSettings));
-  }, [autoLayoutSettings]);
+  }, [autoLayoutSettings, viewOnly]);
 
   // ── Auto-load all uploaded PDFs as artwork slides on mount ─────────────────
   useEffect(() => {
@@ -4143,6 +4172,10 @@ export default function App() {
   }, [current, totalPages]);
 
   const handleAssetImport = async (file: File, section: string) => {
+    if (viewOnly) {
+      setUploadStatus("This published portfolio is view-only.");
+      return;
+    }
     const validationMessage = validateSafeUpload(file);
     if (validationMessage) {
       setUploadStatus(validationMessage);
@@ -4198,6 +4231,7 @@ export default function App() {
   };
 
   const handleRemovePdf = (id: string) => {
+    if (viewOnly) return;
     setPdfPages(prev => {
       const next = prev.filter(p => p.id !== id);
       const nextTotal = buildDisplayPages(next).length;
@@ -4217,6 +4251,7 @@ export default function App() {
   };
 
   const handleExportPPTX = async () => {
+    if (viewOnly) return;
     const toPptxOverlays = (pageId: string) => (keynoteEdits[pageId] || []).map(box => ({
       text: box.text,
       x: (box.x / PW) * 13.333,

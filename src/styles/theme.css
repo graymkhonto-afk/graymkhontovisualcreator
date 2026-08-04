@@ -226,6 +226,13 @@ img { transition: opacity 180ms ease, filter 180ms ease; }
   container-type: size;
   background: #edeae5;
   color: #1a1815;
+  --editorial-title: clamp(72px, 7.2cqw, 96px);
+  --editorial-category: 22px;
+  --editorial-body: 18px;
+  --editorial-body-secondary: 16px;
+  --editorial-section-gap: 120px;
+  --editorial-element-gap: 80px;
+  --editorial-text-gap: 40px;
   text-rendering: geometricPrecision;
   font-kerning: normal;
   font-optical-sizing: auto;
@@ -250,7 +257,8 @@ img { transition: opacity 180ms ease, filter 180ms ease; }
 }
 
 .portfolio-page-shell :where(h1, h2, h3, h4, p) {
-  overflow-wrap: break-word;
+  overflow-wrap: normal;
+  word-break: normal;
   text-wrap: pretty;
 }
 
@@ -277,6 +285,19 @@ img { transition: opacity 180ms ease, filter 180ms ease; }
   isolation: isolate;
 }
 
+/* Fixed A4 layouts retain their authored and frame-fitted type sizes. Larger
+   web-readable prose is applied only through the premium project classes
+   below, preventing the global overrides that previously caused collisions. */
+.editorial-page-content p {
+  max-width: 68ch;
+}
+
+[data-editable-slide-text="true"] {
+  overflow-wrap: normal !important;
+  word-break: normal !important;
+  text-wrap: pretty;
+}
+
 .editorial-running-title,
 .editorial-format,
 .editorial-nav-index,
@@ -287,6 +308,55 @@ img { transition: opacity 180ms ease, filter 180ms ease; }
 
 .editorial-footer > span {
   min-width: 0;
+}
+
+/* Premium project grid: full-width title band, split feature row, full-width
+   divider band, narrow narrative row and an asymmetric closing row. */
+.premium-project-grid {
+  grid-template-columns: repeat(12, minmax(0, 1fr));
+  column-gap: var(--editorial-element-gap);
+}
+
+.premium-project-copy {
+  gap: var(--editorial-text-gap);
+  min-width: 0;
+}
+
+.premium-project-copy--dark {
+  --editorial-body-colour: rgba(250, 250, 250, 0.82);
+}
+
+.premium-project-title {
+  font-size: var(--editorial-title) !important;
+  line-height: 0.88 !important;
+  margin: 0 !important;
+  max-width: 100%;
+  text-wrap: balance;
+}
+
+.premium-project-category {
+  font-family: Inter, sans-serif;
+  font-size: var(--editorial-category) !important;
+  font-weight: 600;
+  line-height: 1.05;
+  letter-spacing: 0.08em;
+  text-transform: uppercase;
+  margin: 0;
+}
+
+.premium-project-body {
+  font-size: var(--editorial-body) !important;
+  line-height: 1.62 !important;
+  margin: 0 !important;
+  color: var(--editorial-body-colour, inherit);
+}
+
+/* Artwork-led evidence pages intentionally keep compact folio captions. The
+   artwork remains the dominant field and is never cropped to satisfy type. */
+.premium-evidence-grid {
+  display: grid;
+  grid-template-columns: minmax(0, 8fr) minmax(220px, 4fr);
+  gap: 40px;
 }
 
 @media (max-width: 760px) {

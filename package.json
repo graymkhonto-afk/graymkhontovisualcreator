@@ -5,6 +5,7 @@
   "type": "module",
   "scripts": {
     "build": "vite build",
+    "build:public": "VITE_PUBLIC_VIEWER=true vite build",
     "dev": "vite",
     "preview": "vite preview",
     "check": "vite build"
