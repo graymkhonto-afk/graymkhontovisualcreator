@@ -85,6 +85,7 @@ import abstractPosterPaintedImg from "@/imports/abstract-poster-painted.JPG";
 import ukuvuselelaFractalPoster01 from "@/imports/ukuvuselela-fractal-poster-01.jpg";
 import ukuvuselelaFractalPoster02 from "@/imports/ukuvuselela-fractal-poster-02.jpg";
 import ukuvuselelaFractalPoster03 from "@/imports/ukuvuselela-fractal-poster-03.jpg";
+import ukuvuselelaFractalVideo from "@/imports/behance_uku_fractal_1080.mp4";
 import framedNetAbstractIllustrationImg from "@/imports/framed-net-abstract-illustration.png";
 import qgVisualsPhotographyBannerImg from "@/imports/qg-visuals-photography-banner.jpg";
 import gautaEtengTypesOfWasteImg from "@/imports/gauta-eteng-types-of-waste.png";
@@ -545,7 +546,7 @@ function TitlePage() {
         <div style={{ fontFamily: Fd, fontSize: 28, fontStyle: "italic", color: c.ochre, marginBottom: 36 }}>Communication Design</div>
         <HR color={c.rule} mb={32} />
         <div style={{ display: "grid", gridTemplateColumns: "160px 1fr", gap: "10px 0" }}>
-          {[["APPLICANT", "Qinisile Gracious Mkhonto"], ["QUALIFICATION", "BA Design (Communication Design)"], ["INSTITUTION", "University of Johannesburg"], ["SUBMISSION", "November 2026"], ["ARCHIVE REF.", "RPL–2024–GE–V01"]].map(([k, v], i) => (
+          {[["APPLICANT", "Qinisile Gracious Mkhonto"], ["QUALIFICATION", "BA Design (Communication Design)"], ["INSTITUTION", "University of Johannesburg"], ["SUBMISSION", "November 2026"], ["ARCHIVE REF.", "RPL–2026–GE–V01"]].map(([k, v], i) => (
             <React.Fragment key={i}>
               <span style={{ fontFamily: Fb, fontSize: 8, letterSpacing: "0.12em", textTransform: "uppercase" as const, color: c.mid }}>{k}</span>
               <span style={{ fontFamily: Fb, fontSize: 12, color: c.ink }}>{v}</span>
@@ -715,7 +716,7 @@ function CoverLetter() {
           </div>
           <HR color={c.rule} mb={16} />
           <div style={{ fontFamily: Fb, fontSize: 12, color: c.ink, marginBottom: 14 }}>Dear Assessor,</div>
-          {["I am writing to submit my Recognition of Prior Learning portfolio in support of my application for the Bachelor of Arts in Design (Communication Design). My nine years of professional practice have equipped me with knowledge, skills, and competencies equivalent to those expected of a graduate of this programme.",
+          {["I am writing to submit my Recognition of Prior Learning portfolio in support of my application for the Bachelor of Arts in Design (Communication Design). My 14 years of professional practice (2012–2026) have equipped me with knowledge, skills, and competencies equivalent to those expected of a graduate of this programme.",
             "My design journey spans brand identity, editorial design, typography, photography, illustration, UX/UI, and motion graphics — working for commercial clients, NGOs, government bodies, and cultural institutions. What distinguishes my practice is its research foundation and African-centred methodology.",
             "This portfolio documents evidence across seven structured parts: Designer Profile, Evidence of Learning, Design Portfolio, Professional Practice, Research & Writing, Awards, and Supporting Documents."
           ].map((p, i) => (
@@ -765,7 +766,7 @@ function ExecutiveSummary() {
                 "Design is not mere decoration — it is the architecture of lived meaning."
               </div>
             </div>
-            {["Nine years of professional practice across brand identity, editorial design, typography, photography, UX/UI, and motion graphics — spanning commercial, cultural, governmental, and community sectors.",
+            {["Fourteen years of professional practice (2012–2026) across brand identity, editorial design, typography, photography, UX/UI, and motion graphics — spanning commercial, cultural, governmental, and community sectors.",
               "This portfolio is organised into seven parts documenting the full breadth of skills, knowledge, and professional competencies acquired through formal education, independent learning, and sustained practice.",
               "Each section maps directly to the qualification outcomes for BA Design (Communication Design), supported by project evidence, reflective writing, and professional documentation."
             ].map((p, i) => (
@@ -777,7 +778,7 @@ function ExecutiveSummary() {
             {[
               { label: "Previous Studies", body: "National Diploma: Graphic Design — Tshwane University of Technology. Foundation in visual communication, typography, print production, and design thinking." },
               { label: "Independent Learning", body: "Systematic study of design literature, online certification in UX Design and Motion Graphics, and engagement with international design discourse." },
-              { label: "Professional Practice", body: "Nine years client-facing design practice. 20+ projects across commercial, cultural, NGO, and government sectors. Sustained graduate-level competency." },
+              { label: "Professional Practice", body: "Fourteen years of client-facing design practice (2012–2026). 20+ projects across commercial, cultural, NGO, and government sectors. Sustained graduate-level competency." },
               { label: "Photography & Research", body: "Professional photography practice as both a service and research methodology. Primary source material for culturally authentic visual communication." },
               { label: "Community Leadership", body: "Community Advisory Board membership, peer mentoring, informal co-lecturer experience in African-centred and user-centred design." },
             ].map((item, i) => (
@@ -1073,7 +1074,7 @@ function ReflectiveLearning() {
   const domains = [
     { title: "Previous University Studies", desc: "National Diploma: Graphic Design. Foundation in visual communication, typography, print production, and critical design thinking." },
     { title: "Independent Learning", desc: "Design literature, online certification, typographic research, and sustained engagement with international design discourse." },
-    { title: "Graphic Design", desc: "Nine years professional practice across all major communication design disciplines — client briefs, iterative development, delivery." },
+    { title: "Graphic Design", desc: "Fourteen years of professional practice (2012–2026) across major communication design disciplines — client briefs, iterative development, and delivery." },
     { title: "Photography", desc: "Professional documentary, portrait, product, and environmental photography. Post-production workflow. Visual storytelling." },
     { title: "Property Management", desc: "Financial management, team leadership, logistical planning, decision-making under uncertainty — transferable professional competencies." },
     { title: "Farm Management", desc: "Systems thinking, resource management, long-term planning, stakeholder communication in complex operational contexts." },
@@ -1120,29 +1121,31 @@ function ReflectiveLearning() {
 
 function OutcomeMapping() {
   const rows = [
-    ["Typography", "Editorial Layouts, Zulu Fractal typeface, Communication Arts Magazine", "Part Three · Portfolio"],
-    ["Branding", "Ukuvuselela identity, Logo design, Ghost in the Grid system", "Part Three · Portfolio"],
-    ["Editorial Design", "Ghost in the Grid publication, Communication Arts Magazine", "Part Three · Portfolio"],
-    ["UX/UI", "UX Pilot platform, Interface concepts, Responsive layouts", "Part Three · Portfolio"],
-    ["Motion Graphics", "Zulu Fractal animation, Motion identity, After Effects", "Part Three · Portfolio"],
-    ["Photography", "Portrait, documentary, product, environmental portfolios", "Part Three · Portfolio"],
-    ["Research Methods", "Literature reviews, visual audits, ethnographic research, personas", "Part Five · Research"],
-    ["Professional Practice", "Client briefs, Behance portfolio, presentations, project management", "Part Four · Practice"],
+    ["CD01", "Typography", "Zulu Fractal typeface · editorial systems", "Part 03 · P. 31–36, 58–62", "Process files · App. F, G"],
+    ["CD02", "Brand identity", "Ukuvuselela · Gauta Eteng · identity systems", "Part 03 · project evidence", "Briefs + source files · App. A, F"],
+    ["CD03", "Editorial design", "Publications · grids · hierarchy · print mockups", "Part 03 · editorial projects", "PDF/source files · App. H, L"],
+    ["CD04", "UX/UI", "Research · information architecture · prototypes", "Part 03 · interface projects", "Wireframes + prototypes · App. E, J"],
+    ["CD05", "Motion", "Zulu Fractal animation · time-based identity", "Part 03 · motion evidence", "Animation/source files · App. F"],
+    ["CD06", "Photography", "Portrait · documentary · product · environment", "Part 03 · galleries", "Original image files · App. D"],
+    ["CD07", "Research", "Literature · visual audits · field inquiry · reflection", "Part 05 · research", "Journal + references · App. C, L"],
+    ["CD08", "Practice", "Brief analysis · client communication · production", "Part 04 · professional practice", "Approvals/testimonials · App. K"],
   ];
   return (
     <EPage section="PART TWO · QUALIFICATION OUTCOME MAPPING" page="P. 17">
       <div style={{ position: "absolute", inset: 0, padding: `24px ${M}px 16px` }}>
         <CapLabel>Qualification Outcome Mapping</CapLabel>
-        <div style={{ display: "grid", gridTemplateColumns: "140px 1fr 160px", borderBottom: `1.5px solid ${c.ink}`, paddingBottom: 8, marginBottom: 4 }}>
-          {["OUTCOME", "LEARNING & EVIDENCE", "PORTFOLIO SECTION"].map((h, i) => (
+        <div style={{ display: "grid", gridTemplateColumns: "62px 118px 1fr 178px 190px", gap: 12, borderBottom: `1.5px solid ${c.ink}`, paddingBottom: 8, marginBottom: 4 }}>
+          {["CODE", "OUTCOME", "ARTEFACT", "EVIDENCE LOCATION", "VERIFICATION"].map((h, i) => (
             <span key={i} style={{ fontFamily: Fb, fontSize: 7.5, letterSpacing: "0.12em", textTransform: "uppercase" as const, color: c.mid }}>{h}</span>
           ))}
         </div>
-        {rows.map(([outcome, evidence, section], i) => (
-          <div key={i} style={{ display: "grid", gridTemplateColumns: "140px 1fr 160px", padding: "9px 0", borderBottom: `0.5px solid ${c.rule}`, alignItems: "start" }}>
-            <span style={{ fontFamily: Fb, fontSize: 11, fontWeight: 600, color: c.brown }}>{outcome}</span>
-            <span style={{ fontFamily: Fb, fontSize: 10.5, color: c.ink, paddingRight: 20 }}>{evidence}</span>
-            <span style={{ fontFamily: Fb, fontSize: 9.5, color: c.ochre }}>{section}</span>
+        {rows.map(([code, outcome, artefact, location, verification], i) => (
+          <div key={i} style={{ display: "grid", gridTemplateColumns: "62px 118px 1fr 178px 190px", gap: 12, padding: "10px 0", borderBottom: `0.5px solid ${c.rule}`, alignItems: "start" }}>
+            <span style={{ fontFamily: Fm, fontSize: 9.5, color: c.ochre }}>{code}</span>
+            <span style={{ fontFamily: Fb, fontSize: 10.5, fontWeight: 600, color: c.brown }}>{outcome}</span>
+            <span style={{ fontFamily: Fb, fontSize: 10, lineHeight: 1.35, color: c.ink }}>{artefact}</span>
+            <span style={{ fontFamily: Fb, fontSize: 9.5, lineHeight: 1.35, color: c.mid }}>{location}</span>
+            <span style={{ fontFamily: Fb, fontSize: 9.5, lineHeight: 1.35, color: c.ink }}>{verification}</span>
           </div>
         ))}
       </div>
@@ -1152,36 +1155,37 @@ function OutcomeMapping() {
 
 function EvidenceMatrix() {
   const rows = [
-    ["Editorial Spreads", "Typography, layout hierarchy, grid systems"],
-    ["Sketchbooks", "Concept development, visual thinking, iterative process"],
-    ["Research Journal", "Design thinking, theoretical engagement, reflective practice"],
-    ["Mood Boards", "Visual research, aesthetic direction, design strategy"],
-    ["Brand Guidelines", "Identity design, systems thinking, professional documentation"],
-    ["Process Books", "Design process, methodology, problem-solving"],
-    ["Motion Graphics Files", "Animation, time-based media, brand motion"],
-    ["Photography Portfolio", "Visual communication, composition, storytelling"],
-    ["UX Wireframes", "Information architecture, interface logic, UX design"],
-    ["Client Presentations", "Professional practice, communication, project management"],
-    ["Academic Essays", "Design theory, critical analysis, APA referencing"],
-    ["Certificates", "Formal qualifications, professional development"],
+    ["2012–2026", "Professional design projects", "Lead designer · art director", "Briefs · approvals · production files", "A · E · H"],
+    ["2023–2026", "Gauta Eteng campaign", "Researcher · designer · maker", "Dated photos · material tests · outputs", "A · I"],
+    ["2024–2026", "Ukuvuselela / Zulu Fractal", "Researcher · typographer · motion designer", "Sketches · source files · animation", "F · G"],
+    ["2026", "Lucky Star campaign", "Art director · illustrator", "Concept sheets · packaging · mockups", "A · G"],
+    ["2012–2026", "Photography portfolio", "Photographer · editor", "Original images · commissions", "D"],
+    ["2025–2026", "Editorial publications", "Designer · editor", "InDesign/PDF source · print mockups", "H · L"],
+    ["2024–2026", "UX/UI projects", "Researcher · interface designer", "Wireframes · prototypes · presentations", "E · J"],
+    ["2021–2026", "Research and writing", "Author · researcher", "Essays · journal · references", "C · L"],
+    ["2026", "Awards and recognition", "Entrant · designer", "Certificate · award record", "K"],
+    ["2012–2026", "Professional verification", "Designer · project lead", "Testimonials · approvals · client records", "K"],
   ];
   return (
     <EPage section="PART TWO · EVIDENCE MATRIX" page="P. 18">
       <div style={{ position: "absolute", inset: 0, padding: `24px ${M}px 16px` }}>
         <CapLabel>Evidence Matrix</CapLabel>
-        <div style={{ display: "grid", gridTemplateColumns: "200px 1fr", borderBottom: `1.5px solid ${c.ink}`, paddingBottom: 8, marginBottom: 4 }}>
-          {["EVIDENCE", "DEMONSTRATES COMPETENCY IN"].map((h, i) => (
+        <div style={{ display: "grid", gridTemplateColumns: "82px 160px 1fr 220px 78px", gap: 12, borderBottom: `1.5px solid ${c.ink}`, paddingBottom: 8, marginBottom: 4 }}>
+          {["DATE", "EVIDENCE", "MY ROLE", "VERIFICATION", "APPENDIX"].map((h, i) => (
             <span key={i} style={{ fontFamily: Fb, fontSize: 7.5, letterSpacing: "0.12em", textTransform: "uppercase" as const, color: c.mid }}>{h}</span>
           ))}
         </div>
-        {rows.map(([ev, dem], i) => (
-          <div key={i} style={{ display: "grid", gridTemplateColumns: "200px 1fr", padding: "8px 0", borderBottom: `0.5px solid ${c.rule}` }}>
-            <span style={{ fontFamily: Fb, fontSize: 11, fontWeight: 600, color: c.brown }}>{ev}</span>
-            <span style={{ fontFamily: Fb, fontSize: 10.5, color: c.ink }}>{dem}</span>
+        {rows.map(([date, evidence, role, verification, appendix], i) => (
+          <div key={i} style={{ display: "grid", gridTemplateColumns: "82px 160px 1fr 220px 78px", padding: "9px 0", borderBottom: `0.5px solid ${c.rule}`, gap: 12 }}>
+            <span style={{ fontFamily: Fm, fontSize: 9, color: c.ochre }}>{date}</span>
+            <span style={{ fontFamily: Fb, fontSize: 10, lineHeight: 1.35, fontWeight: 600, color: c.brown }}>{evidence}</span>
+            <span style={{ fontFamily: Fb, fontSize: 9.5, lineHeight: 1.35, color: c.ink }}>{role}</span>
+            <span style={{ fontFamily: Fb, fontSize: 9.5, lineHeight: 1.35, color: c.mid }}>{verification}</span>
+            <span style={{ fontFamily: Fm, fontSize: 9.5, color: c.ink }}>{appendix}</span>
           </div>
         ))}
         <div style={{ background: c.grey, padding: "12px 18px", borderLeft: `2px solid ${c.ochre}`, marginTop: 14 }}>
-          <p style={{ fontFamily: Fb, fontSize: 10.5, color: c.ink, margin: 0 }}>All evidence is included in the appendices of this submission or referenced directly in relevant project sections. Physical evidence — sketchbooks, printed materials, photography prints — is available for review upon request.</p>
+          <p style={{ fontFamily: Fb, fontSize: 10.5, lineHeight: 1.4, color: c.ink, margin: 0 }}>Evidence locations are cross-referenced to project pages and appendices. Original source files, printed artefacts, sketchbooks, image files, and client verification remain available for authenticity review.</p>
         </div>
       </div>
     </EPage>
@@ -1664,7 +1668,7 @@ function ProfessionalPractice() {
         <div style={{ display: "grid", gridTemplateColumns: "1fr 1fr", gap: "0 48px" }}>
           <div>
             <CapLabel>Professional Workflow</CapLabel>
-            {[["Client Communication", "Nine years of brief analysis, expectation management, and professional written and verbal communication across all project phases."],
+            {[["Client Communication", "Fourteen years of brief analysis, expectation management, and professional written and verbal communication across all project phases."],
               ["Presentations", "Structured concept reviews, development presentations, and final presentations communicating design rationale to non-design audiences."],
               ["Creative Process", "Research-led ideation, iterative development, client-integrated feedback loops, and production-quality final delivery."],
               ["Time Management", "Managing concurrent projects using structured briefs, timelines, and milestone systems for quality delivery within agreed parameters."],
@@ -2113,7 +2117,7 @@ function ProcessIndex() {
         <div>
           <CapLabel>COLOPHON</CapLabel>
           <div style={{ display: "grid", gridTemplateColumns: "1fr 1fr", gap: "0 20px" }}>
-            {[["DESIGN & ART DIRECTION","Editorial RPL Portfolio, 2026"],["PRINT SPECIFICATION","297 × 210mm · 300gsm Uncoated"],["PRINTING METHOD","Offset Lithography, Soy-Based Inks"],["FINISHING","Blind Emboss · Spot UV · Foil Stamp"],["EDITION","Limited — 250 Copies"],["ARCHIVE REFERENCE","RPL–2024–GE–V01"]].map(([k,v],i) => (
+            {[["DESIGN & ART DIRECTION","Editorial RPL Portfolio, 2026"],["PRINT SPECIFICATION","297 × 210mm · 300gsm Uncoated"],["PRINTING METHOD","Offset Lithography, Soy-Based Inks"],["FINISHING","Blind Emboss · Spot UV · Foil Stamp"],["EDITION","Limited — 250 Copies"],["ARCHIVE REFERENCE","RPL–2026–GE–V01"]].map(([k,v],i) => (
               <div key={i} style={{ padding: "7px 0", borderBottom: `0.5px solid ${c.rule}` }}>
                 <div style={{ fontFamily: Fb, fontSize: 7.5, letterSpacing: "0.1em", textTransform: "uppercase" as const, color: c.mid, marginBottom: 3 }}>{k}</div>
                 <div style={{ fontFamily: Fb, fontSize: 10.5, color: c.ink }}>{v}</div>
@@ -2159,7 +2163,7 @@ function BackCover() {
           <div style={{ display: "grid", gridTemplateColumns: "1fr 1fr 1fr", gap: "0 16px", flex: 1 }}>
             {[{head:"TYPOGRAPHY",items:[["Playfair Display","Display · Regular · Italic · Bold"],["Inter","Body · 300–600"],["Source","Local Project Fonts · OFL"],["Baseline","8px · 12-col · 24px gutter"]]},
               {head:"SOFTWARE & PRODUCTION",items:[["Design","Adobe InDesign 2024"],["Paper","150gsm Uncoated Munken"],["Cover","300gsm · Emboss · Spot UV"],["Print","Offset · Soy-Based Inks"]]},
-              {head:"COPYRIGHT & ARCHIVE",items:[["©","2026 Qinisile Gracious Mkhonto"],["Country","Printed in South Africa"],["Archive","RPL–2024–GE–V01"],["Client","Gauta Eteng · Lagos · Accra"]]}
+              {head:"COPYRIGHT & ARCHIVE",items:[["©","2026 Qinisile Gracious Mkhonto"],["Country","Printed in South Africa"],["Archive","RPL–2026–GE–V01"],["Client","Gauta Eteng · Lagos · Accra"]]}
             ].map((col, ci) => (
               <div key={ci}>
                 <div style={{ fontFamily: Fb, fontSize: 7.5, letterSpacing: "0.12em", textTransform: "uppercase" as const, color: c.ochre, marginBottom: 8 }}>{col.head}</div>
@@ -2238,7 +2242,167 @@ interface EditableSlideData {
   items: EditableSlideItem[];
 }
 
+function CoverEditorialPage({ data }: { data: EditableSlideData }) {
+  const artwork = [...data.items].reverse().find((item) => item.kind === "image" && item.src);
+  return (
+    <div aria-label="Editorial RPL Portfolio cover" style={{ width: PW, height: PH, position: "relative", overflow: "hidden", background: c.dark, color: c.white }}>
+      <div style={{ position: "absolute", inset: "0 48% 0 0", padding: "54px 52px 42px", display: "grid", gridTemplateRows: "auto 1fr auto", borderRight: `1px solid ${c.ochre}` }}>
+        <div style={{ display: "flex", justifyContent: "space-between", alignItems: "center", paddingBottom: 18, borderBottom: `1px solid rgba(250,250,250,.36)` }}>
+          <span style={{ fontFamily: Fm, fontSize: 11, letterSpacing: 1.5 }}>RPL PORTFOLIO</span>
+          <span style={{ fontFamily: Fm, fontSize: 11, letterSpacing: 1.2 }}>A4 LANDSCAPE · 2026</span>
+        </div>
+        <div style={{ alignSelf: "center", maxWidth: 430 }}>
+          <div aria-hidden="true" style={{ width: 0, height: 0, borderLeft: "23px solid transparent", borderRight: "23px solid transparent", borderTop: `34px solid ${c.ochre}`, marginBottom: 34 }} />
+          <h1 style={{ fontFamily: Fd, fontSize: 69, fontWeight: 600, lineHeight: .9, letterSpacing: -2.2, margin: 0 }}>Editorial<br />RPL Portfolio</h1>
+          <div style={{ display: "grid", gridTemplateColumns: "38px 1fr 38px", alignItems: "center", gap: 14, marginTop: 28 }}>
+            <span style={{ height: 1, background: c.ochre }} />
+            <span style={{ fontFamily: Fm, fontSize: 10.5, lineHeight: 1.35, letterSpacing: 1.4, textAlign: "center" }}>RECOGNITION OF PRIOR LEARNING</span>
+            <span style={{ height: 1, background: c.ochre }} />
+          </div>
+          <p style={{ fontFamily: Fb, fontSize: 15, lineHeight: 1.55, maxWidth: 360, margin: "27px 0 0", color: "rgba(250,250,250,.8)" }}>A document of process, observation, and the permanence of lived experience.</p>
+        </div>
+        <div style={{ paddingTop: 18, borderTop: `1px solid rgba(250,250,250,.36)` }}>
+          <div style={{ fontFamily: Fm, fontSize: 9.5, letterSpacing: 1.3, color: c.ochre, marginBottom: 9 }}>SUBMITTED BY</div>
+          <div style={{ fontFamily: Fd, fontSize: 21, lineHeight: 1.1 }}>Qinisile Gracious Mkhonto</div>
+          <div style={{ fontFamily: Fb, fontSize: 10.5, lineHeight: 1.35, letterSpacing: .55, marginTop: 7, color: "rgba(250,250,250,.72)" }}>COMMUNICATION DESIGN · RECOGNITION OF PRIOR LEARNING · 2026</div>
+        </div>
+      </div>
+      <div style={{ position: "absolute", inset: "0 0 0 52%", background: "#0f0e0d" }}>
+        {artwork?.src && <img src={`${import.meta.env.BASE_URL}${artwork.src.replace(/^\//, "")}`} alt="Selected portfolio artwork" decoding="async" style={{ width: "100%", height: "100%", objectFit: "cover", objectPosition: "center", display: "block" }} />}
+        <div style={{ position: "absolute", inset: 0, background: "linear-gradient(90deg, rgba(15,14,13,.22), transparent 30%)" }} />
+        <div style={{ position: "absolute", left: 26, right: 26, bottom: 23, display: "flex", justifyContent: "space-between", fontFamily: Fm, fontSize: 10, lineHeight: 1.2, letterSpacing: 1.1, color: c.white }}>
+          <span>AFRICA INTERNATIONAL DESIGN AWARDS · WINNER 2026</span><span>VOL. 1</span>
+        </div>
+      </div>
+    </div>
+  );
+}
+
+function PortfolioDetailsPage() {
+  const metadata = [
+    ["Applicant", "Qinisile Gracious Mkhonto"],
+    ["Qualification", "BA Design (Communication Design)"],
+    ["Institution", "University of Johannesburg"],
+    ["Submission", "November 2026"],
+    ["Archive ref.", "RPL–2026–GE–V01"],
+  ];
+  return (
+    <div aria-label="Recognition of Prior Learning portfolio details" style={{ width: PW, height: PH, position: "relative", overflow: "hidden", background: c.bg, color: c.ink, padding: "34px 52px 30px", boxSizing: "border-box", display: "grid", gridTemplateRows: "34px 1fr 26px" }}>
+      <header style={{ display: "flex", alignItems: "center", justifyContent: "space-between", borderBottom: `1px solid ${c.rule}`, paddingBottom: 11, fontFamily: Fm, fontSize: 10.5, lineHeight: 1, letterSpacing: 1.25 }}>
+        <span>RPL PORTFOLIO</span><span>PORTFOLIO DETAILS · 2026</span>
+      </header>
+      <main style={{ display: "grid", gridTemplateColumns: "1.05fr .95fr", gap: 74, alignItems: "center", padding: "42px 52px 34px" }}>
+        <section>
+          <div style={{ fontFamily: Fm, fontSize: 10.5, letterSpacing: 1.55, color: c.ochre, marginBottom: 24 }}>RECOGNITION OF PRIOR LEARNING</div>
+          <h1 style={{ fontFamily: Fd, fontSize: 57, lineHeight: .94, letterSpacing: -1.6, margin: 0, maxWidth: 470 }}>Bachelor of Arts in Design<br /><em style={{ fontWeight: 400 }}>Communication Design</em></h1>
+          <div style={{ width: 58, height: 1, background: c.ochre, marginTop: 32 }} />
+        </section>
+        <section style={{ borderTop: `1px solid ${c.ink}`, borderBottom: `1px solid ${c.rule}`, padding: "6px 0 4px" }}>
+          {metadata.map(([label, value]) => (
+            <div key={label} style={{ display: "grid", gridTemplateColumns: "128px 1fr", columnGap: 28, alignItems: "baseline", minHeight: 61, padding: "18px 0 13px", borderBottom: label === "Archive ref." ? "none" : `1px solid ${c.rule}` }}>
+              <div style={{ fontFamily: Fm, fontSize: 10.5, lineHeight: 1.25, letterSpacing: 1.15, textTransform: "uppercase", color: c.mid }}>{label}</div>
+              <div style={{ fontFamily: Fb, fontSize: 15, lineHeight: 1.38, fontWeight: 500 }}>{value}</div>
+            </div>
+          ))}
+        </section>
+      </main>
+      <footer style={{ display: "flex", alignItems: "flex-end", justifyContent: "space-between", borderTop: `1px solid ${c.rule}`, paddingTop: 10, fontFamily: Fm, fontSize: 9.5, lineHeight: 1, letterSpacing: 1 }}>
+        <span>QINISILE GRACIOUS MKHONTO · COMMUNICATION DESIGN</span><span>P. 02</span>
+      </footer>
+    </div>
+  );
+}
+
+function EditorialPageShell({ page, eyebrow, children }: { page: string; eyebrow: string; children: React.ReactNode }) {
+  return (
+    <div style={{ width: PW, height: PH, position: "relative", overflow: "hidden", background: c.bg, color: c.ink, padding: "34px 52px 30px", boxSizing: "border-box", display: "grid", gridTemplateRows: "34px 1fr 26px" }}>
+      <header style={{ display: "flex", alignItems: "center", justifyContent: "space-between", borderBottom: `1px solid ${c.rule}`, paddingBottom: 11, fontFamily: Fm, fontSize: 11, lineHeight: 1, letterSpacing: 1.25 }}>
+        <span>RPL PORTFOLIO</span><span>{eyebrow}</span>
+      </header>
+      {children}
+      <footer style={{ display: "flex", alignItems: "flex-end", justifyContent: "space-between", borderTop: `1px solid ${c.rule}`, paddingTop: 10, fontFamily: Fm, fontSize: 10, lineHeight: 1, letterSpacing: 1 }}>
+        <span>QINISILE GRACIOUS MKHONTO · COMMUNICATION DESIGN</span><span>{page}</span>
+      </footer>
+    </div>
+  );
+}
+
+const ContentsGroup = ({ title, lines }: { title: string; lines: string[] }) => (
+  <section style={{ breakInside: "avoid", marginBottom: 18 }}>
+    <h2 style={{ fontFamily: Fd, fontSize: 20, lineHeight: 1, margin: "0 0 8px", fontWeight: 600 }}>{title}</h2>
+    {lines.map((line) => <div key={line} style={{ fontFamily: Fb, fontSize: 12.5, lineHeight: 1.35, padding: "3px 0", borderBottom: `1px solid ${c.rule}` }}>{line}</div>)}
+  </section>
+);
+
+function ContentsEditorialPage() {
+  const left = [
+    ["Front Matter", ["01 Cover", "02 Title Page", "03 Table of Contents", "04 Cover Letter", "05 Executive Summary", "06 Programme Framework — B8CD2Q", "07 Curriculum Vitae"]],
+    ["Part One — Designer", ["01 Professional Profile", "02 Design Philosophy", "03 My Strengths (×10)", "04 Reflective Learning Statement"]],
+    ["Part Two — Evidence", ["01 Qualification Outcome Mapping", "02 Evidence Matrix"]],
+  ] as const;
+  const right = [
+    ["Part Three — Design Portfolio", ["Portfolio Overview", "Standard Project Template", "Brand Identity · Packaging · Editorial", "Typography · Illustration · Photography"]],
+    ["Parts Four–Six", ["Professional Practice · Workflow · Leadership", "Research & Writing · Theory · Reflection", "Awards · Certificates · Recognition"]],
+    ["Part Seven & Back Matter", ["CV · Transcripts · Certificates · Letters", "Behance · LinkedIn · Adobe", "References · Appendices A–L", "Design Rationale · Colophon · Declaration"]],
+  ] as const;
+  return <EditorialPageShell page="P. 03" eyebrow="CONTENTS · 2026"><main style={{ padding: "36px 52px 26px", display: "grid", gridTemplateRows: "auto 1fr", gap: 24 }}><div><div style={{ fontFamily: Fm, color: c.ochre, fontSize: 11, letterSpacing: 1.7, marginBottom: 12 }}>RECOGNITION OF PRIOR LEARNING</div><h1 style={{ fontFamily: Fd, fontSize: 50, lineHeight: .95, margin: 0 }}>Portfolio Contents</h1></div><div style={{ display: "grid", gridTemplateColumns: "1fr 1fr", gap: 64 }}>{[left, right].map((column, index) => <div key={index}>{column.map(([title, lines]) => <ContentsGroup key={title} title={title} lines={[...lines]} />)}</div>)}</div></main></EditorialPageShell>;
+}
+
+function ProfileEditorialPage({ data }: { data: EditableSlideData }) {
+  const portrait = data.items.find((item) => item.kind === "image" && item.src);
+  const practices = ["Communication Design", "Editorial Design", "Brand Systems", "Photography", "Art Direction", "Research"];
+  return <EditorialPageShell page="P. 04" eyebrow="PROFESSIONAL PROFILE"><main style={{ padding: "38px 52px 30px", display: "grid", gridTemplateColumns: "1fr 290px", gap: 60 }}><section><div style={{ fontFamily: Fm, fontSize: 11, color: c.ochre, letterSpacing: 1.7, marginBottom: 12 }}>PROFESSIONAL PROFILE</div><h1 style={{ fontFamily: Fd, fontSize: 54, lineHeight: .95, margin: "0 0 28px" }}>About Me</h1><div style={{ maxWidth: 680, fontFamily: Fb, fontSize: 15.5, lineHeight: 1.52 }}><p>Qinisile Gracious Mkhonto is a South African communication designer, researcher, and photographer with 14 years of multidisciplinary professional practice spanning brand identity, editorial design, typography, illustration, photography, and digital media.</p><p>My practice is rooted in African-centred design philosophy, rigorous research methodology, and a deep commitment to socially responsible communication. I approach each project as an investigation—beginning with context and concluding with a visual solution that is purposeful, accessible, and culturally informed.</p><p>Working across commercial, cultural, governmental, and community sectors, I have developed a distinctive practice that integrates conceptual thinking with technical craft.</p><blockquote style={{ margin: "27px 0 0", paddingLeft: 18, borderLeft: `3px solid ${c.ochre}`, fontFamily: Fd, fontSize: 21, lineHeight: 1.3 }}>Communication designer · Researcher · Photographer · Multidisciplinary creative</blockquote></div></section><aside style={{ borderLeft: `1px solid ${c.rule}`, paddingLeft: 26 }}>{portrait?.src && <img src={`${import.meta.env.BASE_URL}${portrait.src.replace(/^\//, "")}`} alt="Qinisile Gracious Mkhonto" style={{ width: "100%", height: 132, objectFit: "cover", objectPosition: "center 20%", marginBottom: 18 }} />}<div style={{ fontFamily: Fm, fontSize: 10.5, letterSpacing: 1.6, marginBottom: 8 }}>VERIFIABLE PROFILE</div>{[["PERIOD", "2012–2026 · 14 years"], ["SELECTED WORK", "Campaigns · identities · publications"], ["RECOGNITION", "AIDA Winner · 2026"], ["EVIDENCE", "Parts 03–07 · Appendices A–L"]].map(([label, value]) => <div key={label} style={{ padding: "6px 0", borderTop: `1px solid ${c.rule}` }}><div style={{ fontFamily: Fm, fontSize: 8.5, letterSpacing: 1.1, color: c.ochre }}>{label}</div><div style={{ fontFamily: Fb, fontSize: 11.5, lineHeight: 1.3 }}>{value}</div></div>)}<div style={{ fontFamily: Fm, fontSize: 10.5, letterSpacing: 1.6, margin: "14px 0 5px" }}>CORE PRACTICE</div>{practices.map((item) => <div key={item} style={{ fontFamily: Fb, fontSize: 12.5, lineHeight: 1.25, padding: "4px 0", borderBottom: `1px solid ${c.rule}` }}>{item}</div>)}</aside></main></EditorialPageShell>;
+}
+
+function CoverLetterEditorialPage() {
+  const structure = ["Front Matter — Cover · Title · Contents · Letter · Summary · CV", "Part One — Designer profile · Philosophy · Strengths · Reflection", "Part Two — Qualification mapping · Evidence matrix", "Part Three — Portfolio disciplines · Case studies", "Parts Four–Six — Practice · Research · Awards", "Part Seven — Supporting documents", "Back Matter — References · Appendices · Declaration"];
+  return <EditorialPageShell page="P. 05" eyebrow="COVER LETTER"><main style={{ padding: "38px 52px 28px", display: "grid", gridTemplateColumns: "1.2fr .8fr", gap: 72 }}><section><div style={{ fontFamily: Fm, fontSize: 11, color: c.ochre, letterSpacing: 1.7, marginBottom: 12 }}>COVER LETTER</div><h1 style={{ fontFamily: Fd, fontSize: 52, lineHeight: .95, margin: "0 0 24px" }}>To the RPL Assessor</h1><div style={{ fontFamily: Fb, fontSize: 14.5, lineHeight: 1.48 }}><p>Faculty of Art, Design and Architecture<br />University of Johannesburg</p><p>Dear Assessor,</p><p>I am submitting my Recognition of Prior Learning portfolio in support of my application for the Bachelor of Arts in Design (Communication Design). My 14 years of professional practice have equipped me with knowledge, skills, and competencies aligned with those expected of a graduate of this programme.</p><p>My design journey spans brand identity, editorial design, typography, photography, illustration, UX/UI, and motion graphics—across commercial, cultural, governmental, and community contexts. What distinguishes my practice is its research foundation and African-centred methodology.</p><p>This portfolio documents evidence across seven structured parts: Designer Profile, Evidence of Learning, Design Portfolio, Professional Practice, Research and Writing, Awards, and Supporting Documents.</p><p style={{ marginTop: 25, fontFamily: Fd, fontSize: 20 }}>Qinisile G. Mkhonto</p><div style={{ fontFamily: Fm, fontSize: 10.5, letterSpacing: 1.2 }}>APPLICANT · NOVEMBER 2026</div></div></section><aside style={{ borderTop: `1px solid ${c.ink}`, paddingTop: 16 }}><div style={{ fontFamily: Fm, fontSize: 11, letterSpacing: 1.7, marginBottom: 15 }}>PORTFOLIO STRUCTURE</div>{structure.map((item) => <div key={item} style={{ fontFamily: Fb, fontSize: 13, lineHeight: 1.35, padding: "10px 0", borderBottom: `1px solid ${c.rule}` }}>{item}</div>)}</aside></main></EditorialPageShell>;
+}
+
+function ExecutiveSummaryEditorialPage() {
+  const journey = [["Previous Studies", "Foundation in visual communication, typography, print production, photography, and design thinking."], ["Independent Learning", "Design literature, UX and motion study, and sustained engagement with international design discourse."], ["Professional Practice", "14 years of client-facing work across commercial, cultural, NGO, governmental, and community sectors."], ["Photography & Research", "Professional photography used as both a service and a primary research methodology."], ["Community Leadership", "Advisory-board participation, peer mentoring, and teaching experience in African-centred design."]];
+  return <EditorialPageShell page="P. 06" eyebrow="EXECUTIVE SUMMARY"><main style={{ padding: "38px 52px 28px", display: "grid", gridTemplateColumns: ".9fr 1.1fr", gap: 74 }}><section><div style={{ fontFamily: Fm, fontSize: 11, color: c.ochre, letterSpacing: 1.7, marginBottom: 12 }}>EXECUTIVE SUMMARY</div><h1 style={{ fontFamily: Fd, fontSize: 48, lineHeight: .98, margin: "0 0 25px" }}>A design journey rooted in research and practice</h1><blockquote style={{ margin: "0 0 26px", paddingLeft: 18, borderLeft: `3px solid ${c.ochre}`, fontFamily: Fd, fontSize: 23, lineHeight: 1.28 }}>“Design is not mere decoration—it is the architecture of lived meaning.”</blockquote><div style={{ fontFamily: Fb, fontSize: 14.5, lineHeight: 1.5 }}><p>Fourteen years of professional practice across brand identity, editorial design, typography, photography, UX/UI, and motion graphics—spanning commercial, cultural, governmental, and community sectors.</p><p>This portfolio documents the full breadth of my skills, knowledge, and professional competencies acquired through formal education, independent learning, and sustained practice.</p><p>Each section maps to the qualification outcomes for BA Design (Communication Design), supported by project evidence, reflective writing, and professional documentation.</p></div></section><section><div style={{ fontFamily: Fm, fontSize: 11, letterSpacing: 1.7, marginBottom: 14 }}>LEARNING JOURNEY OVERVIEW</div>{journey.map(([title, text]) => <div key={title} style={{ display: "grid", gridTemplateColumns: "150px 1fr", gap: 20, padding: "14px 0", borderTop: `1px solid ${c.rule}` }}><h2 style={{ fontFamily: Fd, fontSize: 18, lineHeight: 1.1, margin: 0 }}>{title}</h2><p style={{ fontFamily: Fb, fontSize: 13.5, lineHeight: 1.4, margin: 0 }}>{text}</p></div>)}</section></main></EditorialPageShell>;
+}
+
+function CvEditorialPage() {
+  const experience = [["2012–Present", "Independent Communication Designer", "Branding, editorial, photography, campaign and information design. · See Appendices A, E, H"], ["Ongoing", "Brand Ambassador & Campaign Model", "Sta-Sof-Fro · Alushi Models · Heads · Spotlight Agency. · See Appendix K"], ["Ongoing", "Social Media Manager · Host · MC · Interviewer", "Discovery · Take My Hand · Spotlight Agency platforms. · See Appendices E, K"], ["Ongoing", "Documentary & Brand Photographer", "Portrait, event, product, architectural and documentary practice. · See Appendix D"], ["Ongoing", "Agricultural & Property Management", "Resource planning, stakeholder communication, operations and financial oversight. · See Appendix K"]];
+  const education = [["2026", "BA Communication Design — RPL Application", "University of Johannesburg"], ["2025", "BA Graphic Design Year 1 — Pass", "Greenside Design Center · IIE"], ["2024", "Graphic Design Short Course · 100 hrs", "University of Cape Town · GetSmarter"], ["2021", "Digital Photography Short Course · 100 hrs", "University of Cape Town · GetSmarter"], ["2015–2018", "BA Graphic Design (NQF 7)", "Design School of Southern Africa"]];
+  const Row = ({ item }: { item: string[] }) => <div style={{ display: "grid", gridTemplateColumns: "92px 1fr", gap: 16, padding: "9px 0", borderTop: `1px solid ${c.rule}` }}><div style={{ fontFamily: Fm, fontSize: 10.5, lineHeight: 1.3, letterSpacing: .5, color: c.mid }}>{item[0]}</div><div><div style={{ fontFamily: Fb, fontSize: 13.5, lineHeight: 1.25, fontWeight: 600 }}>{item[1]}</div><div style={{ fontFamily: Fb, fontSize: 11.5, lineHeight: 1.35, marginTop: 3 }}>{item[2]}</div></div></div>;
+  return <EditorialPageShell page="P. 07" eyebrow="CURRICULUM VITAE"><main style={{ padding: "34px 52px 25px", display: "grid", gridTemplateRows: "auto 1fr", gap: 25 }}><div><h1 style={{ fontFamily: Fd, fontSize: 48, lineHeight: .95, margin: 0 }}>Qinisile Gracious Mkhonto</h1><div style={{ fontFamily: Fm, fontSize: 11, letterSpacing: 1.5, color: c.ochre, marginTop: 13 }}>COMMUNICATION DESIGNER · RESEARCHER · PHOTOGRAPHER · 14 YEARS</div></div><div style={{ display: "grid", gridTemplateColumns: "1.08fr .92fr", gap: 64 }}><section><div style={{ fontFamily: Fm, fontSize: 11, letterSpacing: 1.6, marginBottom: 10 }}>PROFESSIONAL EXPERIENCE</div>{experience.map((item) => <Row key={item[1]} item={item} />)}</section><section><div style={{ fontFamily: Fm, fontSize: 11, letterSpacing: 1.6, marginBottom: 10 }}>EDUCATION</div>{education.map((item) => <Row key={item[1]} item={item} />)}<div style={{ marginTop: 20, display: "grid", gridTemplateColumns: "1fr 1fr", gap: 25 }}><div><div style={{ fontFamily: Fm, fontSize: 10.5, letterSpacing: 1.3, marginBottom: 8 }}>SOFTWARE</div><p style={{ fontFamily: Fb, fontSize: 11.5, lineHeight: 1.45, margin: 0 }}>Adobe InDesign · Illustrator · Photoshop · Lightroom · After Effects · Figma · Glyphs · Cinema 4D · Procreate</p></div><div><div style={{ fontFamily: Fm, fontSize: 10.5, letterSpacing: 1.3, marginBottom: 8 }}>AWARDS</div><p style={{ fontFamily: Fb, fontSize: 11.5, lineHeight: 1.45, margin: 0 }}>2026 AIDA Winner<br />Ukuvuselela · AR017</p></div></div></section></div></main></EditorialPageShell>;
+}
+
+function ReflectiveLearningEditorialPage() {
+  const stages = [
+    ["01 · Experience", "Fourteen years of practice (2012–2026) across identity, editorial, photography, digital, motion, community, and entrepreneurial contexts.", "Evidence · Parts 03–04 · Appendices A, D, E"],
+    ["02 · Reflection", "Visual journals, research writing, critiques, and post-project reviews identify what succeeded, what failed, and what changed in my judgement.", "Evidence · Part 05 · Appendices C, L"],
+    ["03 · Application", "Learning is applied through iterative projects including Gauta Eteng, Ukuvuselela, Zulu Fractal, Lucky Star, and professional client work.", "Evidence · Part 03 · Appendices F, G, I"],
+    ["04 · Verification", "Process files, dated artefacts, approvals, awards, testimonials, and original image files establish authorship and professional competence.", "Evidence · Parts 06–07 · Appendices D, K"],
+  ];
+  return <EditorialPageShell page="P. 08" eyebrow="PART ONE · REFLECTIVE LEARNING"><main style={{ padding: "32px 52px 24px", display: "grid", gridTemplateColumns: "230px 1fr", gap: 52 }}><section><div style={{ fontFamily: Fm, fontSize: 11, color: c.ochre, letterSpacing: 1.7, marginBottom: 15 }}>EVIDENCE-LED REFLECTION</div><h1 style={{ fontFamily: Fd, fontSize: 42, lineHeight: .96, margin: "0 0 25px" }}>Practice becomes learning when it is examined</h1><blockquote style={{ margin: "0 0 24px", paddingLeft: 16, borderLeft: `3px solid ${c.ochre}`, fontFamily: Fd, fontSize: 17, lineHeight: 1.35 }}>“The most significant growth occurs at the intersection of discomfort and discipline.”</blockquote><p style={{ fontFamily: Fb, fontSize: 13.5, lineHeight: 1.48, margin: 0 }}>This four-stage framework connects professional experience to reflection, application, and verifiable evidence.</p></section><section style={{ display: "grid", gridTemplateColumns: "repeat(2, 1fr)", columnGap: 28, rowGap: 22, alignContent: "start" }}>{stages.map(([title, text, evidence]) => <article key={title} style={{ padding: "14px 0 15px", borderTop: `2px solid ${c.ochre}`, minHeight: 165 }}><h2 style={{ fontFamily: Fd, fontSize: 22, lineHeight: 1.08, margin: "0 0 10px" }}>{title}</h2><p style={{ fontFamily: Fb, fontSize: 12.5, lineHeight: 1.45, margin: "0 0 14px" }}>{text}</p><p style={{ fontFamily: Fm, fontSize: 9.5, lineHeight: 1.35, letterSpacing: .45, color: c.ochre, margin: 0 }}>{evidence}</p></article>)}</section></main></EditorialPageShell>;
+}
+
+function normalizeEditableSlideText(slideNumber: number, value = "") {
+  let text = value
+    .replace("This portfolio is documents  the full breadth", "This portfolio documents the full breadth")
+    .replace("Social media posts designed to build anticipations", "Social media posts designed to build anticipation")
+    .replace("Uncategorized work\nDocumented Evidence · 2018–2024", "Community, Enterprise and Event Practice\nDocumented Evidence · 2018–2024")
+    .replace("assessedforauthenticity", "assessed for authenticity")
+    .replace("In western design green and sharp geometric lines are associated with villains in Africa prehistorically green is associated with health, growth, fertility. Triangles are feminine, While the diamonds shape means balance.", "In Western design, green and sharp geometric lines are often associated with villains. In precolonial African visual culture, green is associated with health, growth, and fertility. Triangles are feminine forms, while the diamond represents balance.");
+
+  const correctedFolios: Record<number, string> = { 183: "P. 115", 184: "P. 116", 185: "P. 117", 192: "P. 118" };
+  if (correctedFolios[slideNumber]) text = text.replaceAll("P. 114", correctedFolios[slideNumber]);
+  return text;
+}
+
 function EditableTextSlidePage({ slideNumber, section, data }: { slideNumber: number; section: string; data: EditableSlideData }) {
+  if (slideNumber === 1) return <CoverEditorialPage data={data} />;
+  if (slideNumber === 2) return <PortfolioDetailsPage />;
+  if (slideNumber === 3) return <ContentsEditorialPage />;
+  if (slideNumber === 4) return <ProfileEditorialPage data={data} />;
+  if (slideNumber === 5) return <CoverLetterEditorialPage />;
+  if (slideNumber === 6) return <ExecutiveSummaryEditorialPage />;
+  if (slideNumber === 7) return <CvEditorialPage />;
+  if (slideNumber === 8) return <ReflectiveLearningEditorialPage />;
   const resolvedColor = (value?: string | null) => {
     if (!value || slideNumber !== 14) return value;
     const normalized = value.toUpperCase();
@@ -2253,14 +2417,14 @@ function EditableTextSlidePage({ slideNumber, section, data }: { slideNumber: nu
         const isPhotographyTitle = index === 9 && slideNumber >= 45 && slideNumber <= 47;
         const adjustedWidth = isPhotographyTitle && slideNumber === 45 ? 24.5 : item.w;
         const adjustedTop = slideNumber === 108 && index === 56 ? 15.2 : item.y;
-        const rawText = item.text || "";
+        const rawText = normalizeEditableSlideText(slideNumber, item.text);
         const textLines = rawText.split("\n");
         const longestLine = Math.max(1, ...textLines.map(line => line.length));
         const boxWidthPx = (adjustedWidth / 100) * PW;
         const boxHeightPx = (item.h / 100) * PH;
         const widthBoundPt = (boxWidthPx / (longestLine * 0.54)) * 0.75;
         const heightBoundPt = (boxHeightPx / (Math.max(1, textLines.length) * 1.18)) * 0.75;
-        const frameBoundPt = Math.max(5.5, Math.min(widthBoundPt, heightBoundPt));
+        const frameBoundPt = Math.max(9, Math.min(widthBoundPt, heightBoundPt));
         const isEdgeMatter = item.y < 10 || item.y > 95;
         const lettersOnly = rawText.replace(/[^A-Za-zÀ-ž]/g, "");
         const isAllCaps = lettersOnly.length > 1 && lettersOnly === lettersOnly.toUpperCase();
@@ -2283,15 +2447,16 @@ function EditableTextSlidePage({ slideNumber, section, data }: { slideNumber: nu
             : characterStyle === "display"
               ? item.h >= 18 ? 52 : item.h >= 12 ? 38 : 32
               : characterStyle === "subheading"
-                ? 16
+                ? 18
                 : characterStyle === "body"
-                  ? 10.5
+                  ? 11.5
                   : characterStyle === "label"
-                    ? 8
-                    : 7.5;
+                    ? 9.5
+                    : 9;
         // Respect the original Keynote frame. The former forced minimum enlarged copy
         // beyond its available box and produced overlaps across the reconstructed deck.
-        const resolvedFontSize = Math.min(preferredFontSize, frameBoundPt);
+        const minimumReadableSize = characterStyle === "display" ? 18 : characterStyle === "subheading" ? 12 : 9;
+        const resolvedFontSize = Math.max(minimumReadableSize, Math.min(preferredFontSize, frameBoundPt));
         const resolvedTracking = characterStyle === "display"
           ? -0.35
           : characterStyle === "label"
@@ -2400,7 +2565,7 @@ function EditableTextSlidePage({ slideNumber, section, data }: { slideNumber: nu
               cursor: "text",
             }}
           >
-            {item.text}
+            {rawText}
           </div>
         );
       })}
@@ -2438,6 +2603,60 @@ function ImageEvidencePage({ src, title, section, page, caption, accent = c.brow
             <div>
               <div style={{ fontFamily: Fb, fontSize: 8, letterSpacing: "0.14em", textTransform: "uppercase" as const, color: accent, marginBottom: 18 }}>{category}</div>
               <div style={{ fontFamily: Fd, fontSize: 34, lineHeight: 0.94, color: c.ink, marginBottom: 20 }}>{title}</div>
+              <p style={{ fontFamily: Fm, fontSize: 9.5, lineHeight: 1.55, color: c.text }}>{caption}</p>
+            </div>
+            <div style={{ borderTop: `0.5px solid ${c.rule}`, paddingTop: 14 }}>
+              <div style={{ fontFamily: Fb, fontSize: 7.5, letterSpacing: "0.12em", textTransform: "uppercase" as const, color: c.mid, marginBottom: 8 }}>Evidence Type</div>
+              <div style={{ fontFamily: Fm, fontSize: 9, color: c.ink, lineHeight: 1.55 }}>{evidence}</div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </EPage>
+  );
+}
+
+function VideoEvidencePage({ src, title, section, page, caption, accent = c.olive, label = "Motion Evidence", category = "Fractal Motion Design", evidence }: {
+  src: string;
+  title: string;
+  section: string;
+  page: string;
+  caption: string;
+  accent?: string;
+  label?: string;
+  category?: string;
+  evidence: string;
+}) {
+  return (
+    <EPage section={section} page={page}>
+      <div style={{ position: "absolute", inset: 0, padding: `18px ${M}px 14px` }}>
+        <div style={{ display: "flex", justifyContent: "space-between", alignItems: "baseline", marginBottom: 12 }}>
+          <div style={{ display: "flex", alignItems: "baseline", gap: 14 }}>
+            <div style={{ fontFamily: Fd, fontSize: 22, color: c.ink, letterSpacing: "-0.01em" }}>{title}</div>
+            <div style={{ fontFamily: Fd, fontSize: 16, fontStyle: "italic", color: accent }}>{label}</div>
+          </div>
+          <span style={{ fontFamily: Fm, fontSize: 8, letterSpacing: "0.12em", textTransform: "uppercase" as const, color: c.mid }}>Moving Image</span>
+        </div>
+        <HR color={c.rule} mb={12} />
+        <div style={{ display: "grid", gridTemplateColumns: "2fr 0.72fr", gap: 18, height: CH - 74 }}>
+          <div style={{ background: c.dark, display: "flex", alignItems: "center", justifyContent: "center", overflow: "hidden", border: `0.5px solid ${c.rule}` }}>
+            <video
+              src={src}
+              title={title}
+              controls
+              muted
+              loop
+              playsInline
+              preload="metadata"
+              style={{ width: "100%", height: "100%", objectFit: "contain", background: c.dark }}
+            >
+              Your browser does not support embedded video.
+            </video>
+          </div>
+          <div style={{ display: "flex", flexDirection: "column", justifyContent: "space-between" }}>
+            <div>
+              <div style={{ fontFamily: Fb, fontSize: 8, letterSpacing: "0.14em", textTransform: "uppercase" as const, color: accent, marginBottom: 18 }}>{category}</div>
+              <div style={{ fontFamily: Fd, fontSize: 32, lineHeight: 0.94, color: c.ink, marginBottom: 20 }}>{title}</div>
               <p style={{ fontFamily: Fm, fontSize: 9.5, lineHeight: 1.55, color: c.text }}>{caption}</p>
             </div>
             <div style={{ borderTop: `0.5px solid ${c.rule}`, paddingTop: 14 }}>
@@ -2551,6 +2770,111 @@ function PosterSeriesPage({ images, title, section, page, caption, accent = c.ol
               <div style={{ fontFamily: Fb, fontSize: 7.5, letterSpacing: "0.12em", textTransform: "uppercase" as const, color: c.mid, marginBottom: 8 }}>Evidence Type</div>
               <div style={{ fontFamily: Fm, fontSize: 9, color: c.ink, lineHeight: 1.55 }}>{evidence}</div>
             </div>
+          </div>
+        </div>
+      </div>
+    </EPage>
+  );
+}
+
+function UkuvuselelaGroupConceptPage() {
+  const principles = [
+    "African artefacts were designed with the knowledge that they would decay one day — and be built anew.",
+    "Design meets the circular economy through natural, biodegradable or reused materials, embracing change, erosion and rebirth as part of the design cycle.",
+    "Reimagine the element of shape.",
+    "Use expanding fractal spirals rather than closed circles.",
+    "Express the cycle of life, decay, rebirth and spirituality.",
+    "Shift the idea of progress from a linear path to a looping, returning system.",
+  ];
+  return (
+    <EPage section="PART THREE · 05 POSTER DESIGN · UKUVUSELELA" page="P. 66A">
+      <div style={{ position: "absolute", inset: 0, padding: `24px ${M}px 18px`, display: "grid", gridTemplateColumns: "0.82fr 1.18fr", gap: 34 }}>
+        <div style={{ display: "flex", flexDirection: "column", justifyContent: "space-between", borderRight: `0.5px solid ${c.rule}`, paddingRight: 30 }}>
+          <div>
+            <CapLabel color={c.olive}>Missing History · Group Concept</CapLabel>
+            <div style={{ fontFamily: Fd, fontSize: 48, lineHeight: 0.92, color: c.ink, letterSpacing: "-0.035em", marginBottom: 18 }}>The Group<br/><em>Concept.</em></div>
+            <p style={{ fontFamily: Fb, fontSize: 12.5, lineHeight: 1.65, color: c.brown, maxWidth: 330 }}>Ukuvuselela reframes design as a living cycle: material, form and meaning shift, decay and return.</p>
+          </div>
+          <div style={{ display: "grid", gridTemplateColumns: "repeat(3, 1fr)", gap: 7, height: 118 }}>
+            {[ukuvuselelaFractalPoster01, ukuvuselelaFractalPoster02, ukuvuselelaFractalPoster03].map((src, index) => (
+              <ImageWithFallback key={src} src={src} alt={`Ukuvuselela fractal concept poster ${index + 1}`} style={{ width: "100%", height: "100%", objectFit: "cover", border: `0.5px solid ${c.rule}` }} />
+            ))}
+          </div>
+        </div>
+        <div style={{ display: "flex", flexDirection: "column", justifyContent: "space-between" }}>
+          <div>
+            <div style={{ fontFamily: Fm, fontSize: 8, letterSpacing: "0.16em", textTransform: "uppercase", color: c.olive, marginBottom: 18 }}>Concept principles extracted from the original Keynote</div>
+            <div style={{ display: "grid", gridTemplateColumns: "1fr 1fr", gap: "18px 28px" }}>
+              {principles.map((principle, index) => (
+                <div key={principle} style={{ borderTop: `1px solid ${index === 0 ? c.olive : c.rule}`, paddingTop: 10 }}>
+                  <div style={{ fontFamily: Fm, fontSize: 8, color: c.olive, marginBottom: 6 }}>{String(index + 1).padStart(2, "0")}</div>
+                  <div style={{ fontFamily: Fb, fontSize: 12, lineHeight: 1.55, color: c.ink }}>{principle}</div>
+                </div>
+              ))}
+            </div>
+          </div>
+          <div style={{ borderTop: `0.5px solid ${c.rule}`, paddingTop: 12, fontFamily: Fm, fontSize: 9.5, lineHeight: 1.55, color: c.mid }}>Cultural renewal · circular systems · fractal movement · decay and rebirth</div>
+        </div>
+      </div>
+    </EPage>
+  );
+}
+
+function UkuvuselelaPracticeChangePage() {
+  const symbols = ["A big African cat", "A dove", "Working the land", "Mama Africa as shield and crown", "A traditional mortar and pestle", "A dancing human figure", "African landscapes and terrain", "Growth of a seedling", "A somersaulting human figure"];
+  return (
+    <EPage section="PART THREE · 05 POSTER DESIGN · UKUVUSELELA" page="P. 66B">
+      <div style={{ position: "absolute", inset: 0, padding: `26px ${M}px 18px`, display: "grid", gridTemplateColumns: "1.12fr 0.88fr", gap: 38 }}>
+        <div style={{ display: "flex", flexDirection: "column", justifyContent: "space-between" }}>
+          <div>
+            <CapLabel color={c.olive}>Reflection · Research-Led Practice</CapLabel>
+            <div style={{ fontFamily: Fd, fontSize: 45, lineHeight: 0.98, letterSpacing: "-0.035em", color: c.ink, maxWidth: 570, marginBottom: 22 }}>The project that changed <em>my practice.</em></div>
+            <p style={{ fontFamily: Fb, fontSize: 14, lineHeight: 1.72, color: c.brown, maxWidth: 590 }}>The Missing History brief asked whose histories define design knowledge. Ukuvuselela turned research into the generator of the work, connecting collaboration, cultural responsibility and experimentation. The pattern was not decoration; its logic became the system.</p>
+          </div>
+          <div style={{ background: c.dark, padding: "16px 18px", borderLeft: `4px solid ${c.olive}` }}>
+            <div style={{ fontFamily: Fd, fontSize: 22, lineHeight: 1.2, color: c.white }}>“A pattern is not repeated. Its logic regenerates.”</div>
+          </div>
+        </div>
+        <div style={{ borderLeft: `0.5px solid ${c.rule}`, paddingLeft: 30, display: "flex", flexDirection: "column", justifyContent: "space-between" }}>
+          <div>
+            <div style={{ fontFamily: Fm, fontSize: 8, letterSpacing: "0.16em", color: c.olive, textTransform: "uppercase", marginBottom: 14 }}>Forms discovered through the fractal process</div>
+            {symbols.map((symbol, index) => (
+              <div key={symbol} style={{ display: "grid", gridTemplateColumns: "28px 1fr", gap: 10, borderTop: `0.5px solid ${c.rule}`, padding: "7px 0" }}>
+                <span style={{ fontFamily: Fm, fontSize: 8, color: c.olive }}>{String(index + 1).padStart(2, "0")}</span>
+                <span style={{ fontFamily: Fb, fontSize: 10.5, color: c.ink }}>{symbol}</span>
+              </div>
+            ))}
+          </div>
+          <div style={{ fontFamily: Fm, fontSize: 9, lineHeight: 1.5, color: c.mid }}>Visual discovery · ancestral knowledge · shared experience · cyclical systems</div>
+        </div>
+      </div>
+    </EPage>
+  );
+}
+
+function GautaEtengCampaignReflectionPage() {
+  return (
+    <EPage section="PART FOUR · ART DIRECTION · GAUTA ETENG" page="P. 143A">
+      <div style={{ position: "absolute", inset: 0, padding: `24px ${M}px 18px`, display: "grid", gridTemplateColumns: "0.9fr 1.1fr", gap: 34 }}>
+        <div style={{ display: "flex", flexDirection: "column", justifyContent: "space-between", borderRight: `0.5px solid ${c.rule}`, paddingRight: 30 }}>
+          <div>
+            <CapLabel color={c.brown}>Campaign Reflection</CapLabel>
+            <div style={{ fontFamily: Fd, fontSize: 46, lineHeight: 0.95, letterSpacing: "-0.035em", color: c.ink, marginBottom: 20 }}>One campaign.<br/><em>Many directions.</em></div>
+            <p style={{ fontFamily: Fb, fontSize: 13, lineHeight: 1.7, color: c.brown }}>Gauta Eteng shows my art-direction capabilities and the potential for one visual language to branch into many communication touchpoints.</p>
+          </div>
+          <div style={{ display: "grid", gridTemplateColumns: "1fr 1fr", gap: 8, height: 150 }}>
+            <ImageWithFallback src={gautaEtengTypesOfWasteImg} alt="Gauta Eteng waste education campaign artwork" style={{ width: "100%", height: "100%", objectFit: "cover", border: `0.5px solid ${c.rule}` }} />
+            <ImageWithFallback src={gautaEtengHouseholdWasteMapImg} alt="Gauta Eteng household waste map" style={{ width: "100%", height: "100%", objectFit: "cover", border: `0.5px solid ${c.rule}` }} />
+          </div>
+        </div>
+        <div style={{ display: "flex", flexDirection: "column", justifyContent: "space-between" }}>
+          <div>
+            <div style={{ fontFamily: Fm, fontSize: 8, letterSpacing: "0.16em", textTransform: "uppercase", color: c.brown, marginBottom: 18 }}>Resilience through continued making</div>
+            <p style={{ fontFamily: Fb, fontSize: 14, lineHeight: 1.72, color: c.ink, margin: 0 }}>Despite the failure of the group project—and my unsuccessful attempts to mentor my counterparts and support community-based activations using knowledge from prior professional practice—I continued developing the idea through prototypes.</p>
+            <p style={{ fontFamily: Fb, fontSize: 14, lineHeight: 1.72, color: c.ink, marginTop: 18 }}>I challenged my own household to find the wealth in waste. My mother worked with textiles, while my daughter used paper, cardboard and plastic. This small-scale activation proved the campaign’s potential and became evidence of my ability to direct an idea across people, materials and communication outputs.</p>
+          </div>
+          <div style={{ display: "grid", gridTemplateColumns: "repeat(3, 1fr)", gap: 12, borderTop: `0.5px solid ${c.rule}`, paddingTop: 13 }}>
+            {["Household activation", "Prototype development", "Campaign art direction"].map((item, index) => <div key={item}><div style={{ fontFamily: Fm, fontSize: 8, color: c.brown, marginBottom: 5 }}>0{index + 1}</div><div style={{ fontFamily: Fb, fontSize: 10.5, lineHeight: 1.45, color: c.ink }}>{item}</div></div>)}
           </div>
         </div>
       </div>
@@ -3274,10 +3598,12 @@ const PAGES: PageEntry[] = [
     render: () => <FileReferencePage title="Abstract Poster — Keynote Concepts" section="PART THREE · 05 POSTER DESIGN" page="P. 65" fileName="Gracious Mkhonto Product Photography concepts.key" fileType="Keynote Source File" caption="Keynote concept deck added as a safe source reference for the abstract poster section. The raw file is preserved outside the browser bundle until selected slides are exported as PDF or image pages." category="Abstract Poster Evidence" evidence="Concept presentation source, poster ideation, visual direction, layout experimentation, abstract composition planning, and editable Keynote workflow." accent={c.olive} /> },
   { id: "ukuvuselela-fractal-poster-series", title: "Ukuvuselela Fractal Poster Series", section: "Part 03 — Poster Design",
     render: () => <PosterSeriesPage images={[{ src: ukuvuselelaFractalPoster01, label: "Poster 01" }, { src: ukuvuselelaFractalPoster02, label: "Poster 02" }, { src: ukuvuselelaFractalPoster03, label: "Poster 03" }]} title="Ukuvuselela Fractal Poster Series" section="PART THREE · 05 POSTER DESIGN" page="P. 66" caption="Three-poster fractal design system for Ukuvuselela, exploring cultural pattern repetition, decay, renewal, and campaign identity through bold colour fields and modular symbolic geometry." label="Poster Series" category="Fractal Poster Design" evidence="Poster system, fractal pattern design, campaign typography, modular cultural symbol, colour variation, and visual identity extension." accent={c.olive} /> },
+  { id: "ukuvuselela-group-concept", title: "Ukuvuselela — The Group Concept", section: "Part 03 — Poster Design", render: () => <UkuvuselelaGroupConceptPage /> },
+  { id: "ukuvuselela-practice-change", title: "Ukuvuselela — The Project That Changed My Practice", section: "Part 03 — Poster Design", render: () => <UkuvuselelaPracticeChangePage /> },
   { id: "ukuvuselela-design-drives-culture-video", title: "Ukuvuselela — Design Drives Culture Video", section: "Part 03 — Poster Design",
     render: () => <FileReferencePage title="Ukuvuselela — Design Drives Culture Video" section="PART THREE · 05 POSTER DESIGN" page="P. 67" fileName="Ukuvuselela_ Group1_Design Drives Culture_10P.mp4" fileType="MP4 Campaign Source" caption="Campaign video source connected to the Ukuvuselela poster system. Kept as a source reference so the portfolio can document the motion/campaign context without bloating the printable poster spread." category="Poster Campaign Evidence" evidence="Campaign presentation video, poster system context, design culture narrative, motion-supported poster identity, and group project documentation." accent={c.olive} /> },
   { id: "uku-fractal-design-video", title: "Ukuvuselela Fractal Design Video", section: "Part 03 — Poster Design",
-    render: () => <FileReferencePage title="Ukuvuselela Fractal Design Video" section="PART THREE · 05 POSTER DESIGN" page="P. 67B" fileName="uku fractal video.mov" fileType="MOV Fractal Design Source" caption="Short motion source connected to the Ukuvuselela fractal design system, documenting how the poster identity extends into moving pattern and campaign presentation." category="Fractal Motion Evidence" evidence="Fractal design motion, poster-to-video extension, campaign identity, cultural pattern system, and motion-supported visual communication." accent={c.olive} /> },
+    render: () => <VideoEvidencePage src={ukuvuselelaFractalVideo} title="Ukuvuselela Fractal Motion" section="PART THREE · 05 POSTER DESIGN" page="P. 67B" caption="A motion extension of the Ukuvuselela fractal system, translating repeated cultural geometry, rhythm, renewal, and the campaign's modular visual language into moving image." label="Motion Study" category="Fractal Motion Design" evidence="Embedded campaign motion, fractal pattern animation, poster-to-motion extension, rhythmic visual sequencing, modular identity behaviour, and digital presentation." accent={c.olive} /> },
 
   { id: "p3-advertising","title": "Advertising",                  section: "Part 03 — Portfolio",
     render: () => <DisciplinePage title="Advertising" section="PART THREE · 06 ADVERTISING" page="P. 68" description="Advertising practice encompasses illustrative print advertising, campaign development, art direction, and visual storytelling. Advertising work is conceptually rather than commercially driven — campaigns designed to change minds, shift behaviour, or celebrate culture." subItems={["Illustrative Print Advertising","Campaign Development","Art Direction","Visual Storytelling","Promotional Design"]} imgUrl="https://images.unsplash.com/photo-1512917774080-9991f1c4c750?w=600&h=700&fit=crop&auto=format" accent={c.brown} /> },
@@ -3351,7 +3677,7 @@ const PAGES: PageEntry[] = [
     render: () => <CharacterDesignSheetPortfolio /> },
 
   { id: "p3-photography","title": "Photography",                  section: "Part 03 — Portfolio",
-    render: () => <DisciplinePage title="Photography" section="PART THREE · 07 PHOTOGRAPHY" page="P. 76" description="Photography practice spans nine years of documentary, portrait, architectural, environmental, and product photography. Photography functions as both a professional service and a research methodology — primary source material for authentic visual communication." subItems={["Portrait Photography","Architectural Photography","Environmental Photography","Product Photography","Documentary Photography"]} imgUrl="https://images.unsplash.com/photo-1547471080-7cc2caa01a7e?w=600&h=700&fit=crop&auto=format" /> },
+    render: () => <DisciplinePage title="Photography" section="PART THREE · 07 PHOTOGRAPHY" page="P. 76" description="Photography practice spans 14 years (2012–2026) of documentary, portrait, architectural, environmental, and product photography. Photography functions as both a professional service and a research methodology — primary source material for authentic visual communication." subItems={["Portrait Photography","Architectural Photography","Environmental Photography","Product Photography","Documentary Photography"]} imgUrl="https://images.unsplash.com/photo-1547471080-7cc2caa01a7e?w=600&h=700&fit=crop&auto=format" /> },
   { id: "gal-photography","title": "Photography — Gallery",       section: "Part 03 — Portfolio",
     render: () => <GalleryGrid title="Photography" section="PART THREE · 07 PHOTOGRAPHY" page="P. 78" items={GALLERIES.photography} accent={c.ochre} columns={3} /> },
   { id: "svg-108", title: "Fig. 108 — Photography Work",  section: "Part 03 — Photography", render: () => <SVGPage src={svgFigs108} figNum={108} label="PART THREE · 07 PHOTOGRAPHY EVIDENCE" /> },
@@ -3459,6 +3785,7 @@ const PAGES: PageEntry[] = [
     render: () => <ImageEvidencePage src={gautaEtengTypesOfWasteImg} title="Gauta Eteng — Types of Waste" section="PART FOUR · ART DIRECTION · GAUTA ETENG" page="P. 142" caption="Campaign infographic direction for Gauta Eteng, using kraft-paper texture, map-based storytelling, waste-category icons, percentage callouts, and educational layout structure." label="Art Direction Evidence" category="Waste Education Infographic" evidence="Campaign art direction, infographic layout, environmental communication, icon system, map narrative, waste education, and textured visual language." accent={c.brown} /> },
   { id: "gauta-eteng-household-waste-map", title: "Gauta Eteng — Household Waste Map", section: ART_DIRECTION_CAMPAIGNS,
     render: () => <ImageEvidencePage src={gautaEtengHouseholdWasteMapImg} title="Gauta Eteng — Household Waste Map" section="PART FOUR · ART DIRECTION · GAUTA ETENG" page="P. 143" caption="Household waste-mapping concept for Gauta Eteng, translating sustainable behaviour into a simple room-by-room visual system with icon categories, architectural plan language, and campaign messaging." label="Art Direction Evidence" category="Household Waste Mapping" evidence="Art direction, campaign touchpoint, household waste mapping, icon taxonomy, environmental behaviour design, and sustainable communication system." accent={c.brown} /> },
+  { id: "gauta-eteng-campaign-reflection", title: "Gauta Eteng — Campaign Reflection", section: ART_DIRECTION_CAMPAIGNS, render: () => <GautaEtengCampaignReflectionPage /> },
 
   // ── PART FIVE — RESEARCH AND WRITING ─────────────────────────────────────
   { id: "p5div", title: "Part Five — Research & Writing", section: "Part 05 — Research",
