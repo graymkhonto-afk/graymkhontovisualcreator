@@ -4329,8 +4329,233 @@ function Sidebar({ current, onSelect, total, displayPages, onAssetImport, pdfLoa
   );
 }
 
+type PublicCaseStudy = {
+  slug: string;
+  title: string;
+  discipline: string;
+  year: string;
+  image: string;
+  imageAlt: string;
+  summary: string;
+  problem: string;
+  research: string;
+  insight: string;
+  strategy: string;
+  outcome: string;
+  reflection: string;
+  skills: string[];
+};
+
+const PUBLIC_CASE_STUDIES: PublicCaseStudy[] = [
+  {
+    slug: "gauta-eteng",
+    title: "Gauta Eteng",
+    discipline: "Art Direction · Social Impact Campaign",
+    year: "2024",
+    image: gautaEtengHouseholdWasteMapImg,
+    imageAlt: "Gauta Eteng household waste map and visual research evidence",
+    summary: "A communication system shaped from local waste behaviour, material culture and SDG 12 research.",
+    problem: "The brief required a campaign that could make sustainable behaviour feel local, specific and usable rather than generic or imported.",
+    research: "The work begins with observed urban texture, household waste categories, behavioural friction and visual references already present in Gauteng environments.",
+    insight: "The strongest identity was not invented from a style reference; it emerged from materials, colours and systems the audience could already recognise.",
+    strategy: "Build an African-centred visual language using mapped waste types, muted civic colour, direct messaging and modular information design.",
+    outcome: "The final system resolves research, campaign hierarchy and visual identity into a set of print and digital touchpoints.",
+    reflection: "The project demonstrates the portfolio philosophy most clearly: context led the medium, and research determined the visual system.",
+    skills: ["Research", "Campaign strategy", "Information design", "Art direction", "Systems thinking"],
+  },
+  {
+    slug: "ukuvuselela",
+    title: "Ukuvuselela",
+    discipline: "Poster Design · Motion · Awarded Work",
+    year: "2026",
+    image: ukuvuselelaFractalPoster01,
+    imageAlt: "Ukuvuselela fractal poster design outcome",
+    summary: "An awarded visual system using fractal structure, cultural renewal and poster rhythm.",
+    problem: "The challenge was to create a contemporary communication piece that could carry cultural memory without becoming decorative.",
+    research: "The process investigated pattern, repetition, renewal, African visual systems and the expressive potential of motion from a static poster base.",
+    insight: "A fractal structure allowed the work to communicate regeneration through both image logic and composition.",
+    strategy: "Use disciplined repetition, high-contrast form and restrained colour movement to connect cultural symbolism with contemporary poster language.",
+    outcome: "The project became a resolved poster and motion system recognised by the Africa International Design Awards.",
+    reflection: "The award evidence strengthens professional credibility, but the design value sits in how research becomes form.",
+    skills: ["Poster design", "Motion design", "Cultural research", "Visual systems", "Professional presentation"],
+  },
+  {
+    slug: "lucky-star",
+    title: "Lucky Star Campaign",
+    discipline: "Advertising · Illustration · 3D",
+    year: "2024",
+    image: luckyStar3dCampaign01,
+    imageAlt: "Lucky Star campaign character-led 3D advertising application",
+    summary: "A character-led advertising system extending a familiar South African product into illustration, packaging and 3D.",
+    problem: "A familiar consumer product needed a more memorable campaign world without losing recognition or shelf-level clarity.",
+    research: "The process explored product cues, character archetypes, flame motifs, shield symbolism, sketch iterations and model development.",
+    insight: "The product could become a narrative character if its existing brand recognition was treated as a story asset.",
+    strategy: "Develop a fish-superhero system with repeatable poses, product colours and campaign applications across flat and dimensional media.",
+    outcome: "The final campaign demonstrates integrated art direction across illustration, 3D modelling, poster language and consumer touchpoints.",
+    reflection: "The project shows iteration at scale: one core idea tested through drawing, object-making, rendering and campaign layout.",
+    skills: ["Advertising", "Character design", "3D modelling", "Packaging thinking", "Campaign systems"],
+  },
+  {
+    slug: "ghost-grid",
+    title: "Ghost in the Grid",
+    discipline: "Editorial Design · Research",
+    year: "2022",
+    image: editorialManifestoImg,
+    imageAlt: "Editorial manifesto spread demonstrating typographic hierarchy and grid structure",
+    summary: "A publication-led investigation into grid ideology, typographic hierarchy and African visual systems.",
+    problem: "The work needed to question the grid while still using the grid with discipline and clarity.",
+    research: "The project connects modernist grid theory, editorial pacing, African pattern systems and critical design writing.",
+    insight: "A grid is never neutral: it carries assumptions about order, hierarchy, authority and legibility.",
+    strategy: "Use a disciplined publication system with moments of rupture, contrast and typographic interruption.",
+    outcome: "The result is an editorial sequence where structure becomes both the subject and the method.",
+    reflection: "This is key RPL evidence for design theory, research, writing, typography and independent learning.",
+    skills: ["Editorial design", "Typography", "Critical writing", "Grid systems", "Independent research"],
+  },
+];
+
+const METHOD_STEPS = [
+  ["Problem", "Define the communication challenge before selecting a medium."],
+  ["Research", "Investigate audience, context, material culture, visual references and constraints."],
+  ["Insights", "Translate findings into a precise design opportunity."],
+  ["Strategy", "Choose the visual system, touchpoints and hierarchy that the evidence supports."],
+  ["Iterations", "Test composition, type, colour, image and production decisions."],
+  ["Outcome", "Resolve the work into a clear, professional communication system."],
+  ["Reflection", "Assess what changed, what worked, what failed and what the project proves."],
+];
+
+const RPL_EVIDENCE = [
+  ["Critical thinking", "Design theory, reflection, cultural context and problem framing across case studies."],
+  ["Independent learning", "Self-directed research in typography, UX/UI, motion, photography and African-centred visual systems."],
+  ["Professional practice", "Client communication, project management, production delivery, presentation and stakeholder work."],
+  ["Research methodology", "Mood boards, visual audits, audience/context studies, experimentation and documented rationale."],
+  ["Systems thinking", "Identity, campaign, editorial and packaging systems developed from repeatable visual rules."],
+  ["Iterative process", "Sketches, prototypes, grids, process photography, rejected routes and final refinements."],
+];
+
+function PublicPortfolio({ onOpenDossier }: { onOpenDossier: () => void }) {
+  const currentYear = new Date().getFullYear();
+
+  return (
+    <main id="main-content" className="public-portfolio" tabIndex={-1}>
+      <header className="public-nav" aria-label="Portfolio navigation">
+        <a className="public-brand" href="#top" aria-label="Gray Mkhonto portfolio home">Gray Mkhonto</a>
+        <nav>
+          <a href="#work">Work</a>
+          <a href="#methodology">Methodology</a>
+          <a href="#rpl">RPL Evidence</a>
+          <a href="#contact">Contact</a>
+          <button type="button" onClick={onOpenDossier}>RPL Dossier</button>
+        </nav>
+      </header>
+
+      <section id="top" className="public-hero" aria-labelledby="portfolio-title">
+        <div className="public-hero__copy">
+          <p className="public-eyebrow">Communication Design · Research · Systems · South Africa</p>
+          <h1 id="portfolio-title">Research-led communication design with an editorial eye.</h1>
+          <p className="public-hero__statement">I investigate communication systems first and allow the appropriate visual system to emerge through research rather than selecting a medium first.</p>
+          <div className="public-actions" aria-label="Primary portfolio actions">
+            <a href="#work">View selected work <ChevronRight aria-hidden="true" size={16} /></a>
+            <button type="button" onClick={onOpenDossier}>Open RPL dossier <BookOpen aria-hidden="true" size={16} /></button>
+          </div>
+        </div>
+        <figure className="public-hero__image">
+          <ImageWithFallback src={portraitImg} alt="Gray Mkhonto, communication designer" />
+          <figcaption>Qinisile Gracious Mkhonto · Communication Designer</figcaption>
+        </figure>
+      </section>
+
+      <section className="public-section public-intro" aria-labelledby="intro-title">
+        <p className="public-kicker">Positioning</p>
+        <h2 id="intro-title">The portfolio remains recognisably yours: warm, minimal, editorial and evidence-led.</h2>
+        <p>What changes is the route through the work. Recruiters can now scan selected projects quickly, while assessors can follow a mapped trail of research, reflection, process and professional practice.</p>
+      </section>
+
+      <section id="work" className="public-section" aria-labelledby="work-title">
+        <div className="public-section__heading">
+          <p className="public-kicker">Selected Work</p>
+          <h2 id="work-title">Case studies structured by problem, research, strategy and reflection.</h2>
+        </div>
+        <div className="case-study-list">
+          {PUBLIC_CASE_STUDIES.map((study, index) => (
+            <article className="case-study-card" id={study.slug} key={study.slug}>
+              <div className="case-study-card__media">
+                <ImageWithFallback src={study.image} alt={study.imageAlt} />
+              </div>
+              <div className="case-study-card__content">
+                <p className="public-kicker">{String(index + 1).padStart(2, "0")} · {study.year} · {study.discipline}</p>
+                <h3>{study.title}</h3>
+                <p className="case-study-card__summary">{study.summary}</p>
+                <dl className="case-study-narrative">
+                  <div><dt>Problem</dt><dd>{study.problem}</dd></div>
+                  <div><dt>Research</dt><dd>{study.research}</dd></div>
+                  <div><dt>Insights</dt><dd>{study.insight}</dd></div>
+                  <div><dt>Strategy</dt><dd>{study.strategy}</dd></div>
+                  <div><dt>Final Outcome</dt><dd>{study.outcome}</dd></div>
+                  <div><dt>Reflection</dt><dd>{study.reflection}</dd></div>
+                </dl>
+                <ul className="skill-tags" aria-label={`${study.title} skills demonstrated`}>
+                  {study.skills.map((skill) => <li key={skill}>{skill}</li>)}
+                </ul>
+              </div>
+            </article>
+          ))}
+        </div>
+      </section>
+
+      <section id="methodology" className="public-section public-method" aria-labelledby="method-title">
+        <div>
+          <p className="public-kicker">Methodology</p>
+          <h2 id="method-title">A consistent narrative for every project.</h2>
+          <p>The structure makes your philosophy assessable: research produces insight, insight produces strategy, and strategy determines the visual system.</p>
+        </div>
+        <ol className="method-list">
+          {METHOD_STEPS.map(([title, text]) => (
+            <li key={title}>
+              <span>{title}</span>
+              <p>{text}</p>
+            </li>
+          ))}
+        </ol>
+      </section>
+
+      <section id="rpl" className="public-section" aria-labelledby="rpl-title">
+        <div className="public-section__heading">
+          <p className="public-kicker">RPL Assessment Readiness</p>
+          <h2 id="rpl-title">Evidence mapped to Bachelor of Design communication-design competencies.</h2>
+        </div>
+        <div className="evidence-grid">
+          {RPL_EVIDENCE.map(([title, text]) => (
+            <article key={title}>
+              <h3>{title}</h3>
+              <p>{text}</p>
+            </article>
+          ))}
+        </div>
+      </section>
+
+      <section id="contact" className="public-contact" aria-labelledby="contact-title">
+        <div>
+          <p className="public-kicker">Contact</p>
+          <h2 id="contact-title">Available for communication design, editorial systems, campaign identity and research-led visual strategy.</h2>
+        </div>
+        <div className="public-contact__links">
+          <a href="https://www.linkedin.com/in/graciousgraymkhonto" target="_blank" rel="noreferrer">LinkedIn</a>
+          <a href="https://www.behance.net/graymkhonto1" target="_blank" rel="noreferrer">Behance</a>
+          <button type="button" onClick={onOpenDossier}>Review RPL dossier</button>
+        </div>
+      </section>
+
+      <footer className="public-footer">
+        <span>Qinisile Gracious Mkhonto · Communication Design Portfolio</span>
+        <span>{currentYear}</span>
+      </footer>
+    </main>
+  );
+}
+
 // ─── App ─────────────────────────────────────────────────────────────────────
 export default function App() {
+  const [publicMode, setPublicMode] = useState(() => IS_PUBLIC_VIEWER && new URLSearchParams(window.location.search).get("dossier") !== "true");
   const [current, setCurrent] = useState(0);
   const [scale, setScale]     = useState(1);
   const [visible, setVisible] = useState(true);
@@ -4418,7 +4643,7 @@ export default function App() {
 
   // ── Auto-load all uploaded PDFs as artwork slides on mount ─────────────────
   useEffect(() => {
-    if (artworkLoaded) return;
+    if (publicMode || artworkLoaded) return;
     setArtworkLoaded(true);
 
     const renderPdf = async (url: string, baseTitle: string, section: string): Promise<PdfPage[]> => {
@@ -4464,9 +4689,10 @@ export default function App() {
         return [...allPages, ...manual];
       });
     })();
-  }, []);
+  }, [artworkLoaded, publicMode]);
 
   useEffect(() => {
+    if (publicMode) return;
     const update = () => {
       if (!stageRef.current) return;
       const { width, height } = stageRef.current.getBoundingClientRect();
@@ -4480,13 +4706,14 @@ export default function App() {
     const ro = new ResizeObserver(update);
     if (stageRef.current) ro.observe(stageRef.current);
     return () => ro.disconnect();
-  }, [flipbookMode]);
+  }, [flipbookMode, publicMode]);
 
   const goToIdx = (i: number) => { setVisible(false); setTimeout(() => { setCurrent(i); setVisible(true); }, 140); };
   const go = (dir: number) => { const n = Math.max(0, Math.min(totalPages - 1, current + dir)); if (n !== current) goToIdx(n); };
   const goTo = (i: number) => { if (i !== current) goToIdx(i); };
 
   useEffect(() => {
+    if (publicMode) return;
     const h = (e: KeyboardEvent) => {
       const target = e.target as HTMLElement | null;
       if (target?.matches("input, textarea, select, [contenteditable='true']")) return;
@@ -4496,7 +4723,7 @@ export default function App() {
       if (e.key === "End") goTo(totalPages - 1);
     };
     window.addEventListener("keydown", h); return () => window.removeEventListener("keydown", h);
-  }, [current, totalPages]);
+  }, [current, publicMode, totalPages]);
 
   const handleAssetImport = async (file: File, section: string) => {
     if (viewOnly) {
@@ -4855,6 +5082,10 @@ export default function App() {
     </div>
   );
 
+  if (publicMode) {
+    return <PublicPortfolio onOpenDossier={() => setPublicMode(false)} />;
+  }
+
   return (
     <>
       <div id="rpl-print-container">
@@ -4869,6 +5100,11 @@ export default function App() {
           <div style={{ minHeight: 42, background: c.bg, borderBottom: `0.5px solid ${c.rule}`, display: "flex", alignItems: "center", justifyContent: "space-between", gap: 14, padding: "7px 18px", flexShrink: 0 }}>
             <span title={viewOnly ? `VIEW ONLY · ${label}` : label} style={{ flex: "1 1 auto", minWidth: 120, maxWidth: "min(44vw, 560px)", overflow: "hidden", textOverflow: "ellipsis", whiteSpace: "nowrap" as const, fontFamily: Fb, fontSize: 7.5, letterSpacing: "0.1em", textTransform: "uppercase" as const, color: c.mid }}>{viewOnly ? `VIEW ONLY · ${label}` : label}</span>
             <div style={{ flex: "0 1 auto", minWidth: 0, display: "flex", gap: 5, alignItems: "center", justifyContent: "flex-end", overflowX: "auto", overflowY: "hidden", paddingBottom: 1 }}>
+              {IS_PUBLIC_VIEWER && (
+                <button onClick={() => setPublicMode(true)} style={{ display: "flex", alignItems: "center", gap: 5, height: 24, padding: "0 10px", background: c.dark, border: "none", cursor: "pointer", color: c.white, fontFamily: Fb, fontSize: 7.5, letterSpacing: "0.1em", textTransform: "uppercase" as const }}>
+                  Portfolio
+                </button>
+              )}
               {!viewOnly && (
                 <>
                   <button onClick={() => setKeynoteMode(v => !v)} style={{ display: "flex", alignItems: "center", gap: 5, height: 24, padding: "0 10px", background: keynoteMode ? c.ochre : c.brown, border: "none", cursor: "pointer", color: c.white, fontFamily: Fb, fontSize: 7.5, letterSpacing: "0.1em", textTransform: "uppercase" as const }}>
