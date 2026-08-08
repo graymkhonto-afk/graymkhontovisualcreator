@@ -1,5 +1,5 @@
 import React, { useState, useEffect, useRef } from "react";
-import { BookOpen, ChevronLeft, ChevronRight, Download, Eye, FileText, FileUp, LayoutTemplate, Linkedin, Pencil, Plus, ShieldCheck, Sparkles, X } from "lucide-react";
+import { BookOpen, ChevronLeft, ChevronRight, Download, Eye, LayoutTemplate, Linkedin, Mail, Plus, Sparkles, X } from "lucide-react";
 import { ImageWithFallback } from "@/app/components/figma/ImageWithFallback";
 import { getPdfRuntime } from "@/app/pdfRuntime";
 
@@ -14,6 +14,8 @@ import goldRushTableSetting from "@/imports/gold-rush-table-setting.jpeg";
 import goldRushProductRange from "@/imports/gold-rush-product-range.jpeg";
 import goldRushYellowOrnament from "@/imports/gold-rush-yellow-ornament.png";
 import goldRushWallMockup from "@/imports/gold-rush-wall-mockup.png";
+import gautaEtengGoldRushNewspaperOutput from "@/imports/gauta-eteng-gold-rush-newspaper-output.png";
+import gautaEtengTextileOrnamentOutput from "@/imports/gauta-eteng-textile-ornament-output.png";
 import paintingFeature from "@/imports/painting-gallery-feature.jpg";
 import paintingKingfisher from "@/imports/painting-kingfisher.jpg";
 import paintingRhino from "@/imports/painting-rhino.jpg";
@@ -48,6 +50,7 @@ import accessoriesRedShoeHatSet from "@/imports/accessories-red-shoe-hat-set.jpg
 import accessoriesShoeBagSet from "@/imports/accessories-shoe-bag-set.jpg";
 import accessoriesWhiteLaceFront from "@/imports/accessories-white-lace-front.jpg";
 import accessoriesWhiteLaceSide from "@/imports/accessories-white-lace-side.jpg";
+import textileProfileBlanketMockup from "@/imports/textile-profile-blanket-mockup.png";
 import noveltiesBottleDecor from "@/imports/novelties-bottle-decor.jpg";
 import noveltiesBrandIdentity from "@/imports/novelties-brand-identity.jpg";
 import noveltiesBottleSet from "@/imports/novelties-bottle-set.jpg";
@@ -86,8 +89,20 @@ import ukuvuselelaFractalPoster01 from "@/imports/ukuvuselela-fractal-poster-01.
 import ukuvuselelaFractalPoster02 from "@/imports/ukuvuselela-fractal-poster-02.jpg";
 import ukuvuselelaFractalPoster03 from "@/imports/ukuvuselela-fractal-poster-03.jpg";
 import ukuvuselelaFractalVideo from "@/imports/behance_uku_fractal_1080.mp4";
+import ukuvuselelaPosterTrioPlain from "@/imports/ukuvuselela-poster-trio-plain.png";
 import framedNetAbstractIllustrationImg from "@/imports/framed-net-abstract-illustration.png";
 import qgVisualsPhotographyBannerImg from "@/imports/qg-visuals-photography-banner.jpg";
+import qgMkhontoPhotographyBannerBlack from "@/imports/qg-mkhonto-photography-banner-black.png";
+import qgHauteApparelLogo from "@/imports/qg-haute-apparel-logo.png";
+import qgHauteFacebookPromo from "@/imports/qg-haute-facebook-promo.jpg";
+import qgHauteWhatsAppStyling from "@/imports/qg-haute-whatsapp-styling.jpg";
+import qgHauteFacebookBrandPage from "@/imports/qg-haute-facebook-brand-page.jpg";
+import qgHauteFacebookProfile from "@/imports/qg-haute-facebook-profile.jpg";
+import qgHauteWorkspace from "@/imports/qg-haute-workspace.jpg";
+import qgHauteSocialPost from "@/imports/qg-haute-social-post.jpeg";
+import cellphoneCover3d from "@/imports/cellphone-cover-3d.png";
+import cellphoneCoverFlatMockup from "@/imports/cellphone-cover-flat-mockup.png";
+import cellphoneCoverDeviceMockup from "@/imports/cellphone-cover-device-mockup.png";
 import gautaEtengTypesOfWasteImg from "@/imports/gauta-eteng-types-of-waste.png";
 import gautaEtengHouseholdWasteMapImg from "@/imports/gauta-eteng-household-waste-map.png";
 import bobRossLogoBlackWebImg from "@/imports/bob-ross-logo-black-webdesign.png";
@@ -535,6 +550,80 @@ function Cover() {
   );
 }
 
+function ArtworkIntegrationIndex() {
+  const features = [
+    {
+      src: ukuMockup,
+      title: "Ukuvuselela",
+      discipline: "Awarded poster system",
+      note: "AIDA-winning communication design evidence with finished print mockup and principles-led visual language.",
+    },
+    {
+      src: menziImpazamoVinylPackagingPosterImg,
+      title: "Menzi Impazamo",
+      discipline: "Music packaging",
+      note: "Vinyl sleeve, track hierarchy, illustration and red-black identity system carried across release artwork.",
+    },
+    {
+      src: goldRushProductRange,
+      title: "Gauta Eteng · The Gold Rush",
+      discipline: "Textile upcycling campaign",
+      note: "A Gauta Eteng waste-to-wealth chapter documenting maker, material transformation, product range and impact.",
+    },
+    {
+      src: luckyStar3dFinalImg,
+      title: "Lucky Star",
+      discipline: "Character-led campaign",
+      note: "Sketch, sculpture, modelling and final render evidence integrated into one art-direction chapter.",
+    },
+    {
+      src: paintingFeature,
+      title: "Painting",
+      discipline: "Observation practice",
+      note: "Portrait and wildlife studies showing process, likeness, colour and expressive mark-making.",
+    },
+    {
+      src: accessoriesShoeBagSet,
+      title: "Accessories Craft",
+      discipline: "Surface and material work",
+      note: "Hand-finished footwear, bags and decorative objects presented as evidence of craft and production thinking.",
+    },
+  ];
+
+  return (
+    <EPage section="ARTWORK INTEGRATION" page="SUPP. 01" navActive="ARCHIVE" footerRight="KEYNOTE STRUCTURE · INTEGRATED ARTWORK">
+      <div style={{ position: "absolute", inset: 0, padding: `24px ${M}px 18px`, display: "grid", gridTemplateRows: "112px 1fr", gap: 16 }}>
+        <div style={{ display: "grid", gridTemplateColumns: "0.92fr 1.08fr", gap: 34, alignItems: "end", borderBottom: `0.5px solid ${c.rule}`, paddingBottom: 18 }}>
+          <div>
+            <CapLabel color={c.ochre}>Premium Portfolio Integration</CapLabel>
+            <div style={{ fontFamily: Fd, fontSize: 42, lineHeight: 0.96, letterSpacing: "-0.02em", color: c.ink }}>
+              Keynote structure,<br /><em style={{ color: c.ochre }}>actual artwork.</em>
+            </div>
+          </div>
+          <p style={{ fontFamily: Fb, fontSize: 11.2, lineHeight: 1.65, color: c.brown, margin: 0 }}>
+            The original Keynote deck remains the reading order and assessment structure. This supplement integrates selected project evidence as premium editorial spreads, so finished work, process, craft and campaign systems are visible without replacing the publication identity.
+          </p>
+        </div>
+        <div style={{ display: "grid", gridTemplateColumns: "repeat(3, 1fr)", gridTemplateRows: "repeat(2, 1fr)", gap: 12, minHeight: 0 }}>
+          {features.map((item, index) => (
+            <article key={item.title} style={{ display: "grid", gridTemplateRows: "1fr 86px", minHeight: 0, background: c.white, border: `0.5px solid ${c.rule}`, overflow: "hidden" }}>
+              <div style={{ position: "relative", minHeight: 0, background: c.grey }}>
+                <img src={item.src} alt={`${item.title} selected portfolio artwork`} style={{ width: "100%", height: "100%", objectFit: "cover", objectPosition: "center" }} />
+                <div style={{ position: "absolute", top: 8, left: 8, background: "rgba(26,24,21,0.78)", color: c.white, fontFamily: Fm, fontSize: 7, padding: "4px 6px" }}>{String(index + 1).padStart(2, "0")}</div>
+              </div>
+              <div style={{ padding: "10px 12px", borderTop: `2px solid ${index % 2 === 0 ? c.ochre : c.brown}` }}>
+                <div style={{ fontFamily: Fb, fontSize: 7.5, letterSpacing: "0.12em", textTransform: "uppercase" as const, color: c.mid, marginBottom: 4 }}>{item.discipline}</div>
+                <div style={{ fontFamily: Fd, fontSize: 17, lineHeight: 1, color: c.ink, marginBottom: 5 }}>{item.title}</div>
+                <p style={{ fontFamily: Fb, fontSize: 7.8, lineHeight: 1.4, color: c.brown, margin: 0 }}>{item.note}</p>
+              </div>
+            </article>
+          ))}
+        </div>
+      </div>
+    </EPage>
+  );
+}
+
 function TitlePage() {
   return (
     <EPage section="TITLE PAGE" page="P. 01" navActive="INDEX">
@@ -970,10 +1059,12 @@ function ProfessionalProfile() {
           <div style={{ fontFamily: Fd, fontSize: 17, fontWeight: 600, lineHeight: 1.2, marginBottom: 4 }}>Qinisile Gracious<br/>Mkhonto</div>
           <div style={{ fontFamily: Fb, fontSize: 8, letterSpacing: "0.12em", textTransform: "uppercase" as const, color: c.ochre, marginBottom: 14 }}>COMMUNICATION DESIGNER</div>
           <HR color={c.rule} mb={14} />
-          {[["SPECIALISATION", "Social & Env. Campaigns"], ["METHODOLOGY", "African-Centred Design"], ["FOCUS AREA", "User-Centred Research"], ["CAMPAIGN", "Gauta Eteng — SAG12"], ["INSTITUTION", "University of Johannesburg, 2024"]].map(([k, v], i) => (
+          {[["SPECIALISATION", "Social & Env. Campaigns"], ["METHODOLOGY", "African-Centred Design"], ["FOCUS AREA", "User-Centred Research"], ["CAMPAIGN", "Gauta Eteng — SAG12"], ["INSTITUTION", "University of Johannesburg, 2024"], ["EMAIL", "graymkhonto@gmail.com"]].map(([k, v], i) => (
             <div key={i} style={{ display: "grid", gridTemplateColumns: "84px 1fr", padding: "7px 0", borderBottom: `0.5px solid ${c.rule}` }}>
               <span style={{ fontFamily: Fb, fontSize: 7.5, letterSpacing: "0.08em", textTransform: "uppercase" as const, color: c.mid }}>{k}</span>
-              <span style={{ fontFamily: Fb, fontSize: 10.5, color: i === 3 ? c.ochre : c.ink }}>{v}</span>
+              {k === "EMAIL"
+                ? <a href={`mailto:${v}`} style={{ fontFamily: Fb, fontSize: 9.5, color: c.ochre, textDecoration: "none", overflowWrap: "anywhere" }}>{v}</a>
+                : <span style={{ fontFamily: Fb, fontSize: 10.5, color: i === 3 ? c.ochre : c.ink }}>{v}</span>}
             </div>
           ))}
           <div style={{ marginTop: 14 }}>
@@ -1024,6 +1115,108 @@ function ProfessionalProfile() {
             <div key={i} style={{ padding: "6px 0", borderBottom: `0.5px solid ${c.rule}` }}>
               <span style={{ fontFamily: Fb, fontSize: 10.5, color: c.ink }}>{s}</span>
             </div>
+          ))}
+        </div>
+      </div>
+    </EPage>
+  );
+}
+
+function ProfessionalReachPage() {
+  const columns = [
+    {
+      symbol: "◆",
+      title: "Commercial Brands",
+      accent: c.ochre,
+      items: [
+        ["Sta-Sof-Fro", "Face of Brand · Glycerine Hair Food campaign lead across photography, advertising and in-store activation."],
+        ["Shoprite", "Design and photography commissions for brand campaigns and community initiative communication."],
+        ["Checkers", "Supplier registration and commercial photography practice supporting formal professional engagement."],
+        ["Lucky Star", "Campaign concept, character design, packaging, web, illustration and 3D product visualisation."],
+        ["Gin & Co · Inyanza Leya", "Brand identity, packaging, editorial system, photography and culturally grounded narrative."],
+      ],
+    },
+    {
+      symbol: "◈",
+      title: "Editorial & Publications",
+      accent: c.brown,
+      items: [
+        ["Queendom Magazine", "Editorial design and photographic contribution to Dark & Lovely's hair-care culture publication."],
+        ["Communication Arts", "Eight-page design magazine showing page architecture, hierarchy and sustained publication design."],
+      ],
+    },
+    {
+      symbol: "◎",
+      title: "Community & Social Impact",
+      accent: c.olive,
+      items: [
+        ["Take My Hand NPC", "Campaign identity and communication design for community empowerment and social advocacy."],
+        ["Shoprite Community Network", "Photography and visual communication supporting public-facing information campaigns."],
+        ["Hospital Advisory Board", "Stakeholder consultation and healthcare communication strategy contribution."],
+        ["Gauta Eteng", "10% Make Shift response turning overlooked cultural resources into African-centred communication."],
+      ],
+    },
+    {
+      symbol: "◉",
+      title: "Photography & Documentation",
+      accent: "#6A7EA0",
+      items: [
+        ["Championship Boerewors", "Top 10 finalist in national food photography and documentation competition."],
+        ["Portraiture", "Commercial weddings, parties and portrait work in competitive professional contexts."],
+        ["Ethembeni", "Documentary photography and investigative storytelling rooted in observation and empathy."],
+        ["Events", "Cinematic commercial sessions across weddings, events and branded documentation."],
+      ],
+    },
+    {
+      symbol: "★",
+      title: "Recognition & Awards",
+      accent: c.ochre,
+      items: [
+        ["AIDA Winner 2026", "International recognition for Ukuvuselela Fractal Design in Communication Design."],
+        ["2025 What IF Top 20 · DEFSA", "Ukuvuselela is a 2025 What IF Top 20 DEFSA project."],
+        ["NCLD Scholarship", "Leadership-development recognition for community contribution and professional growth."],
+        ["Model · Host · Brand Ambassador", "Agency-represented public communication and brand-alignment experience."],
+      ],
+    },
+  ];
+
+  return (
+    <EPage section="PART ONE · PROFESSIONAL REACH" page="P. 10" navActive="INDEX" footerRight="SELECTED CLIENTS · PUBLICATIONS · COLLABORATIONS">
+      <div style={{ position: "absolute", inset: 0, padding: `24px ${M}px 16px`, display: "grid", gridTemplateRows: "126px 1fr", gap: 18 }}>
+        <div style={{ display: "grid", gridTemplateColumns: "0.95fr 1.05fr", gap: 34, alignItems: "end", borderBottom: `1px solid ${c.ink}`, paddingBottom: 18 }}>
+          <div>
+            <CapLabel color={c.ochre}>Professional Reach</CapLabel>
+            <div style={{ fontFamily: Fd, fontSize: 39, lineHeight: .96, color: c.ink }}>Selected clients,<br /><em style={{ color: c.ochre }}>publications & collaborations.</em></div>
+          </div>
+          <div>
+            <p style={{ fontFamily: Fb, fontSize: 10.2, lineHeight: 1.58, color: c.brown, margin: "0 0 10px" }}>
+              A snapshot of real-world work that preceded and informed formal study at Greenside Design Center.
+            </p>
+            <p style={{ fontFamily: Fb, fontSize: 8.6, lineHeight: 1.48, color: c.mid, margin: 0 }}>
+              RPL context: these engagements evidence professional communication, public-facing responsibility, client practice, community contribution and applied visual production.
+            </p>
+          </div>
+        </div>
+
+        <div style={{ display: "grid", gridTemplateColumns: "repeat(5, 1fr)", gap: 10, minHeight: 0 }}>
+          {columns.map((column, columnIndex) => (
+            <section key={column.title} style={{ background: columnIndex % 2 ? c.white : c.grey, border: `0.5px solid ${c.rule}`, padding: "14px 13px", display: "grid", gridTemplateRows: "auto 1fr", gap: 11, minHeight: 0 }}>
+              <div>
+                <div style={{ display: "flex", justifyContent: "space-between", alignItems: "center", marginBottom: 8 }}>
+                  <span style={{ fontFamily: Fm, fontSize: 11, color: column.accent }}>{column.symbol}</span>
+                  <span style={{ fontFamily: Fm, fontSize: 7, color: c.mid }}>{String(columnIndex + 1).padStart(2, "0")}</span>
+                </div>
+                <h2 style={{ fontFamily: Fd, fontSize: 18, lineHeight: 1.02, color: c.ink, margin: 0 }}>{column.title}</h2>
+              </div>
+              <div style={{ minHeight: 0 }}>
+                {column.items.map(([name, detail]) => (
+                  <article key={name} style={{ borderTop: `1px solid ${column.accent}55`, padding: "7px 0 6px" }}>
+                    <div style={{ fontFamily: Fb, fontSize: 7.6, lineHeight: 1.12, letterSpacing: ".08em", textTransform: "uppercase" as const, color: column.accent, marginBottom: 4 }}>{name}</div>
+                    <p style={{ fontFamily: Fb, fontSize: 7.25, lineHeight: 1.32, color: c.ink, margin: 0 }}>{detail}</p>
+                  </article>
+                ))}
+              </div>
+            </section>
           ))}
         </div>
       </div>
@@ -1345,7 +1538,13 @@ const PROJECT_RATIONALES = [
     discipline: "Illustration",
     accent: "#3178A8",
     theme: "World-building · spatial systems · digital illustration",
-    rationale: "Isometric World constructs a self-contained visual environment through consistent perspective, modular form and narrative detail. The isometric grid provides spatial discipline while colour, scale and object selection communicate the atmosphere of an imagined refuge. Every element contributes to the logic of the world rather than functioning as decoration. The final illustration demonstrates technical control, visual storytelling and the ability to communicate a complex environment clearly within a single image.",
+    rationale: "Isometric World develops a self-contained visual environment from research into organic architecture, nature-led interior spaces, modular object references and isometric world-building. The concept book shows how I moved from reference gathering into a controlled spatial system: furniture, plants, surfaces, scale and perspective were selected to communicate refuge, calm and a believable designed habitat. For RPL assessment, the value is in the process as much as the final image: research was translated into a structured illustration language where every object supports the world logic instead of acting as decoration.",
+    process: [
+      "Reference research into organic architecture and nature-integrated spaces shaped the atmosphere, material language and refuge concept.",
+      "Isometric-world examples informed the grid discipline, object scale, viewpoint consistency and modular construction method.",
+      "Product and plant-stand references were translated into simplified objects, proving observation, selection and adaptation rather than direct copying.",
+      "The final illustration evidences spatial planning, digital drawing control, visual hierarchy and environmental storytelling in one resolved composition.",
+    ],
   },
   {
     id: "notan",
@@ -1413,6 +1612,8 @@ const PROJECT_RATIONALES = [
 ];
 
 function ProjectRationalePage({ project, index }: { project: typeof PROJECT_RATIONALES[number]; index: number }) {
+  const processEvidence = "process" in project ? project.process : undefined;
+
   return (
     <EPage section={`PROJECT RATIONALE · ${project.discipline.toUpperCase()}`} page={`R.${String(index + 1).padStart(2, "0")}`} navActive="ARCHIVE">
       <div className="premium-project-grid" style={{ position: "absolute", inset: 0, padding: `26px ${M}px 18px`, display: "grid", gridTemplateColumns: "0.72fr 1.28fr" }}>
@@ -1431,7 +1632,17 @@ function ProjectRationalePage({ project, index }: { project: typeof PROJECT_RATI
           <div>
             <div style={{ fontFamily: Fm, fontSize: 8, color: project.accent, letterSpacing: "0.16em", textTransform: "uppercase" as const, marginBottom: 24 }}>Design intention and resolved communication</div>
             <div style={{ fontFamily: Fd, fontSize: 30, lineHeight: 1.1, color: c.ink, maxWidth: 610, marginBottom: 24 }}>The outcome connects research, visual reasoning and purposeful making.</div>
-            <p className="premium-project-body" style={{ fontFamily: Fb, color: c.text, maxWidth: 650, margin: 0 }}>{project.rationale}</p>
+            <p className="premium-project-body" style={{ fontFamily: Fb, fontSize: processEvidence ? 12.5 : undefined, lineHeight: processEvidence ? 1.58 : undefined, color: c.text, maxWidth: 650, margin: 0 }}>{project.rationale}</p>
+            {processEvidence && (
+              <div style={{ marginTop: 18, display: "grid", gridTemplateColumns: "1fr 1fr", gap: 10 }}>
+                {processEvidence.map((item, processIndex) => (
+                  <div key={item} style={{ borderTop: `2px solid ${processIndex < 2 ? project.accent : c.rule}`, paddingTop: 8 }}>
+                    <div style={{ fontFamily: Fm, fontSize: 7.5, color: project.accent, marginBottom: 5 }}>{String(processIndex + 1).padStart(2, "0")}</div>
+                    <p style={{ fontFamily: Fb, fontSize: 8.2, lineHeight: 1.4, color: c.ink, margin: 0 }}>{item}</p>
+                  </div>
+                ))}
+              </div>
+            )}
           </div>
           <div style={{ borderTop: `0.5px solid ${c.rule}`, paddingTop: 14, display: "grid", gridTemplateColumns: "1fr 1fr", gap: 24 }}>
             <div>
@@ -1597,17 +1808,17 @@ function AppliedTouchpoints() {
 
 function GhostInGrid() {
   return (
-    <EPage section="FEATURED CASE STUDY · GHOST IN THE GRID" page="EDITORIAL DESIGN" navActive="ARCHIVE">
+    <EPage section="FEATURED CASE STUDY · GHOST IN THE GRID" page="TYPE RULES" navActive="ARCHIVE">
       <div style={{ position: "absolute", inset: 0, display: "grid", gridTemplateColumns: "1fr 1fr" }}>
         <div style={{ padding: `28px ${M}px`, borderRight: `0.5px solid ${c.rule}` }}>
           <CapLabel>Ghost in the Grid</CapLabel>
           <div style={{ fontFamily: Fd, fontSize: 40, fontWeight: 400, color: c.ink, lineHeight: 1.0, letterSpacing: "-0.02em", marginBottom: 18 }}>Ghost in<br/>the Grid.</div>
-          <div style={{ fontFamily: Fd, fontSize: 16, fontStyle: "italic", color: c.ochre, marginBottom: 20 }}>Self-initiated editorial design investigation</div>
+          <div style={{ fontFamily: Fd, fontSize: 16, fontStyle: "italic", color: c.ochre, marginBottom: 20 }}>Type Rules project</div>
           <HR color={c.rule} mb={20} />
           <p style={{ fontFamily: Fb, fontSize: 11.5, lineHeight: 1.8, color: c.ink, marginBottom: 16 }}>A 40-page self-initiated publication investigating the ideological dimensions of grid-based design — arguing that every grid system encodes cultural assumptions about order, hierarchy, and legibility.</p>
           <p style={{ fontFamily: Fb, fontSize: 11.5, lineHeight: 1.8, color: c.ink, marginBottom: 24 }}>The project both uses and critiques the modular grid, introducing programmed 'glitch' variations that reference African geometric systems and reveal the grid's constructed nature.</p>
           <div style={{ display: "grid", gridTemplateColumns: "1fr 1fr", gap: 16 }}>
-            {[["Editorial Design", "Typographic hierarchy, modular grid, 12-column publication system"], ["Research", "Müller-Brockmann, African pattern systems, algorithmic aesthetics — 28-page visual journal"], ["Typography", "Systematic type hierarchy, grid-driven spacing, experimental layout structures"], ["Reflection", "Most intellectually demanding project to date — confirming that the strongest work occurs at the intersection of research and making"]].map(([t, d], i) => (
+            {[["Type Rules", "Typographic hierarchy, modular grid, 12-column publication system"], ["Research", "Müller-Brockmann, African pattern systems, algorithmic aesthetics — 28-page visual journal"], ["Typography", "Systematic type hierarchy, grid-driven spacing, experimental layout structures"], ["Reflection", "Most intellectually demanding project to date — confirming that the strongest work occurs at the intersection of research and making"]].map(([t, d], i) => (
               <div key={i} style={{ borderTop: `1.5px solid ${i < 2 ? c.ochre : c.rule}`, paddingTop: 12 }}>
                 <div style={{ fontFamily: Fb, fontSize: 11, fontWeight: 600, color: c.ink, marginBottom: 6 }}>{t}</div>
                 <p style={{ fontFamily: Fb, fontSize: 10, color: c.mid, lineHeight: 1.6 }}>{d}</p>
@@ -1821,6 +2032,7 @@ function UkuvuselalaAwardSpread() {
         {[
           ["AWARD",                    "Africa International Design Awards\nWinner"],
           ["PROJECT NAME",             "Ukuvuselela Principles Of Design"],
+          ["RECOGNITION",              "AIDA 2026 Winner · 2025 What IF Top 20 DEFSA"],
           ["SCHOOL / UNIVERSITY",      "Greenside Design Center"],
           ["LEAD DESIGNER",            "Kiara Dos Reis"],
           ["DESIGN TEAM",              "Asmaa Mahomed · Luam Naudé · Gracious Mkhonto\nCaitlyn Karalic · Harshil Naka · Marissa Cronje"],
@@ -1914,7 +2126,7 @@ function SupportingDocuments() {
             <div key={ci} style={{ marginBottom: 16 }}>
               <div style={{ fontFamily: Fb, fontSize: 7.5, letterSpacing: "0.12em", textTransform: "uppercase" as const, color: c.ochre, marginBottom: 6 }}>{cat}</div>
               <div style={{ background: c.grey, padding: "8px 12px" }}>
-                <span style={{ fontFamily: Fb, fontSize: 9.5, color: c.mid }}>References available on request</span>
+                <span style={{ fontFamily: Fb, fontSize: 9.5, color: c.mid }}>See complete reference list · REF. 01–03</span>
               </div>
             </div>
           ))}
@@ -1938,11 +2150,17 @@ function SupportingDocuments() {
 function ReferenceList() {
   const academic = [
     "Decolonising Design. (2016). Decolonising Design manifesto.",
+    "African Life-Centric Design. (n.d.). African Life-Centric Design: A manifesto.",
+    "Abimbola, O. (2012). The mathematics of Nigerian house painting. In Mathematical cultures: The London meetings 2012-2014 (pp. 129-138).",
+    "Bekker, M. G. (2020). Symmetry and complexity in Ndebele patterns. Symmetry: Culture and Science, 31(1), 1-16.",
+    "Courtney-Clarke, M. (1986). Ndebele: The art of an African tribe. Rizzoli.",
+    "Eglash, R. (1999). African fractals: Modern computing and indigenous design. Rutgers University Press.",
+    "Mandelbrot, B. B. (1982). The fractal geometry of nature. W. H. Freeman.",
     "Escobar, A. (2018). Designs for the pluriverse: Radical interdependence, autonomy, and the making of worlds. Duke University Press.",
-    "Lupton, E. (2010). Thinking with type: A critical guide for designers, writers, editors, & students (2nd rev. ed.). Princeton Architectural Press.",
-    "McLuhan, M. (1964). Understanding media: The extensions of man. McGraw-Hill.",
     "Meggs, P. B., & Purvis, A. W. (2016). Meggs' history of graphic design (6th ed.). Wiley.",
-    "Samara, T. (2005). Making and breaking the grid: A graphic design layout workshop. Rockport Publishers.",
+    "Mbembe, A. (2001). On the postcolony. University of California Press.",
+    "Shepherd, N., & Robins, S. (Eds.). (2008). New South African keywords. Jacana Media / Ohio University Press.",
+    "Nettleton, A. (2006). African dream machines: Style, identity and meaning of African headrests. Wits University Press.",
   ];
   const professional = [
     "South African Qualifications Authority. (2019). National policy and criteria for the implementation of Recognition of Prior Learning (amended March 2019).",
@@ -1954,6 +2172,7 @@ function ReferenceList() {
   ];
   const primary = [
     "Mkhonto, Q. G. (2017–2026). Original portfolio artwork, process books, research journals, presentations, photography, motion studies, and campaign documentation [Unpublished professional work].",
+    "Mkhonto, Q. G. (2025). Individual portfolio of evidence: Design Drives Culture, Ukuvuselela, decolonial design history, African fractal systems, and visual-culture research [Unpublished year-end submission].",
     "Gauta Eteng. (2023–2026). Campaign briefs, environmental communication research, visual-development material, and applied touchpoint documentation [Primary project evidence].",
     "Lucky Star. (2023–2026). Character-development studies, advertising concepts, packaging references, wire models, and 3D campaign renders [Primary project evidence].",
     "Client correspondence, project briefs, feedback, testimonials, and approval records are retained in the supporting evidence archive and are available for assessment on request.",
@@ -1963,9 +2182,9 @@ function ReferenceList() {
     <div>
       <div style={{ fontFamily: Fb, fontSize: 8, letterSpacing: "0.14em", textTransform: "uppercase" as const, color: accent, marginBottom: 12 }}>{title}</div>
       {items.map((item, index) => (
-        <div key={index} style={{ display: "grid", gridTemplateColumns: "22px 1fr", gap: 8, borderTop: `0.5px solid ${c.rule}`, padding: "8px 0" }}>
-          <span style={{ fontFamily: Fm, fontSize: 7.5, color: c.mid }}>{String(index + 1).padStart(2, "0")}</span>
-          <p style={{ fontFamily: Fb, fontSize: 9.5, lineHeight: 1.5, color: c.ink, margin: 0 }}>{item}</p>
+        <div key={index} style={{ display: "grid", gridTemplateColumns: "22px 1fr", gap: 8, borderTop: `0.5px solid ${c.rule}`, padding: "6px 0" }}>
+          <span style={{ fontFamily: Fm, fontSize: 7, color: c.mid }}>{String(index + 1).padStart(2, "0")}</span>
+          <p style={{ fontFamily: Fb, fontSize: 8.1, lineHeight: 1.38, color: c.ink, margin: 0, overflowWrap: "anywhere" as const }}>{item}</p>
         </div>
       ))}
     </div>
@@ -1992,58 +2211,150 @@ function ReferenceList() {
   );
 }
 
-function AfricanLiteratureResearch() {
-  const books = [
+function SourceLinksReference() {
+  const links = [
     {
-      number: "01",
-      author: "Achille Mbembe",
-      title: "On the Postcolony",
-      citation: "Mbembe, A. (2001). On the postcolony. University of California Press.",
-      relevance: "Postcolonial power, identity, representation, and the cultural structures surrounding the Black Modernisms research.",
-      project: "Black Modernisms",
+      group: "Isometric World · Concept",
+      title: "Omnifique — What is organic architecture",
+      url: "https://omnifique.com/what-is-organic-architecture/",
     },
     {
-      number: "02",
-      author: "Nick Shepherd & Steven Robins",
-      title: "New South African Keywords",
-      citation: "Shepherd, N., & Robins, S. (Eds.). (2008). New South African keywords. Jacana Media / Ohio University Press.",
-      relevance: "South African identity, xenophobia, social language, cultural mobility, and the meaning carried by contested terms.",
-      project: "Identity & Cultural Discourse",
+      group: "Isometric World · Concept",
+      title: "Impakter — Organic architecture: Reinterpreting the principles of nature",
+      url: "https://impakter.com/organic-architecture-reinterpreting-the-principles-of-nature/",
     },
     {
-      number: "03",
-      author: "Anitra Nettleton",
-      title: "African Dream Machines",
-      citation: "Nettleton, A. (2006). African dream machines: Style, identity and meaning of African headrests. Wits University Press.",
-      relevance: "African material culture, symbolic form, personal identity, style, and the relationship between designed objects and social meaning.",
-      project: "45 Afro Hairstyle Symbols",
+      group: "Isometric World · Concept",
+      title: "Quiet Minimal — Organic modern architecture",
+      url: "https://quietminimal.com/organic-modern-architecture/",
     },
     {
-      number: "04",
-      author: "Frank & S. Jolles",
-      title: "African Art and Culture",
-      citation: "Jolles, F., & Jolles, S. (2004). African art and culture. David Philip Publishers.",
-      relevance: "African visual communication, cultural symbolism, traditional knowledge systems, and image-making as a form of social memory.",
-      project: "Visual Language Research",
+      group: "Isometric World · Visual References",
+      title: "Dribbble — Isometric world tag",
+      url: "https://dribbble.com/tags/isometric-world",
     },
     {
-      number: "05",
-      author: "Lizelle Bisschoff",
-      title: "An Introduction to African Digital Arts",
-      citation: "Bisschoff, L. (2017). An introduction to African digital arts. Enlighten Publications.",
-      relevance: "Digital authorship, African screen culture, representation, new-media practice, and technology as a tool for reclaiming narratives.",
-      project: "The Medium Is the Message",
+      group: "Isometric World · Visual References",
+      title: "Behance — 36 mini worlds isometric photorealistic 3D icons",
+      url: "https://www.behance.net/gallery/165856267/36-mini-worlds-isometric-photorealistic-3D-icons",
+    },
+    {
+      group: "Isometric World · Visual References",
+      title: "Behance — The world underneath our skin",
+      url: "https://www.behance.net/gallery/194750677/The-world-underneath-our-skin",
+    },
+    {
+      group: "Isometric World · Object & Space",
+      title: "Takealot — 5-tier plant stand",
+      url: "https://www.takealot.com/5-tier-plant-stand-metal-wood-mdf-standing-106cm-tall/PLID95469740",
+    },
+    {
+      group: "Isometric World · Object & Space",
+      title: "Amazing Architecture — Organic house in Moscow",
+      url: "https://amazingarchitecture.com/organic-house/amazing-organic-house-in-moscow-designed-by-niko-architect",
+    },
+    {
+      group: "Isometric World · Object & Space",
+      title: "BBC Culture — Buildings that bring nature inside",
+      url: "https://www.bbc.com/culture/article/20240420-12-stunning-buildings-that-bring-nature-inside",
     },
   ];
 
   return (
-    <EPage section="BACK MATTER · DESIGN READING" page="REF. 02" navActive="INDEX">
+    <EPage section="BACK MATTER · SOURCE LINKS" page="REF. 02" navActive="INDEX">
+      <div style={{ position: "absolute", inset: 0, padding: `24px ${M}px 16px`, display: "grid", gridTemplateColumns: "250px 1fr", gap: 34 }}>
+        <div style={{ borderRight: `1px solid ${c.rule}`, paddingRight: 26, display: "flex", flexDirection: "column", justifyContent: "space-between" }}>
+          <div>
+            <CapLabel color={c.brown}>Project Source Links</CapLabel>
+            <div style={{ fontFamily: Fd, fontSize: 32, lineHeight: 1, color: c.ink, marginBottom: 14 }}>Process references<br /><em style={{ color: c.brown }}>and visual anchors.</em></div>
+            <p style={{ fontFamily: Fb, fontSize: 9.5, lineHeight: 1.58, color: c.mid, margin: 0 }}>
+              Selected links from concept books and research files. They support process, reference gathering, visual comparison and design decision-making without crowding the main bibliography.
+            </p>
+          </div>
+          <div style={{ background: c.dark, color: c.white, padding: 14 }}>
+            <div style={{ fontFamily: Fm, fontSize: 7.5, letterSpacing: ".12em", textTransform: "uppercase" as const, color: c.ochre, marginBottom: 7 }}>RPL Evidence Lens</div>
+            <p style={{ fontFamily: Fb, fontSize: 8.2, lineHeight: 1.45, color: "rgba(250,250,250,.78)", margin: 0 }}>
+              References are included to show how research moved into composition, perspective, object choice, atmosphere and final visual storytelling.
+            </p>
+          </div>
+        </div>
+        <div style={{ display: "grid", gridTemplateColumns: "1fr 1fr 1fr", gap: "0 18px" }}>
+          {links.map((link, index) => (
+            <div key={link.url} style={{ borderTop: `2px solid ${index < 3 ? c.brown : c.rule}`, paddingTop: 8, marginBottom: 13 }}>
+              <div style={{ display: "flex", justifyContent: "space-between", gap: 10, marginBottom: 5 }}>
+                <span style={{ fontFamily: Fm, fontSize: 7, color: c.brown }}>{String(index + 1).padStart(2, "0")}</span>
+                <span style={{ fontFamily: Fm, fontSize: 6.8, color: c.mid, letterSpacing: ".08em", textTransform: "uppercase" as const, textAlign: "right" }}>{link.group}</span>
+              </div>
+              <div style={{ fontFamily: Fd, fontSize: 14.5, lineHeight: 1.08, color: c.ink, marginBottom: 6 }}>{link.title}</div>
+              <p style={{ fontFamily: Fm, fontSize: 6.8, lineHeight: 1.32, color: c.mid, margin: 0, overflowWrap: "anywhere" as const }}>{link.url}</p>
+            </div>
+          ))}
+        </div>
+      </div>
+    </EPage>
+  );
+}
+
+function AfricanLiteratureResearch() {
+  const books = [
+    {
+      number: "01",
+      author: "Ron Eglash",
+      title: "African Fractals",
+      citation: "Eglash, R. (1999). African fractals: Modern computing and indigenous design. Rutgers University Press.",
+      relevance: "Fractal thinking helped me argue that African visual systems are not decorative leftovers; they carry mathematics, memory, pattern, and design intelligence.",
+      project: "Ukuvuselela",
+    },
+    {
+      number: "02",
+      author: "Margaret Courtney-Clarke",
+      title: "Ndebele: The Art of an African Tribe",
+      citation: "Courtney-Clarke, M. (1986). Ndebele: The art of an African tribe. Rizzoli.",
+      relevance: "A key visual source for understanding Ndebele pattern, colour, home painting, women-led image systems, and cultural preservation.",
+      project: "Design Drives Culture",
+    },
+    {
+      number: "03",
+      author: "Benoit B. Mandelbrot",
+      title: "The Fractal Geometry of Nature",
+      citation: "Mandelbrot, B. B. (1982). The fractal geometry of nature. W. H. Freeman.",
+      relevance: "A mathematical reference that helped connect natural repetition, growth, spirals, pattern systems, and the poster's renewal logic.",
+      project: "Fractal Form",
+    },
+    {
+      number: "04",
+      author: "Achille Mbembe",
+      title: "On the Postcolony",
+      citation: "Mbembe, A. (2001). On the postcolony. University of California Press.",
+      relevance: "Postcolonial power, identity, representation, and the cultural structures surrounding missing history research.",
+      project: "Decolonial Context",
+    },
+    {
+      number: "05",
+      author: "Nick Shepherd & Steven Robins",
+      title: "New South African Keywords",
+      citation: "Shepherd, N., & Robins, S. (Eds.). (2008). New South African keywords. Jacana Media / Ohio University Press.",
+      relevance: "South African identity, cultural language, contested terms, and the social meanings carried by design vocabulary.",
+      project: "Identity & Discourse",
+    },
+    {
+      number: "06",
+      author: "Anitra Nettleton",
+      title: "African Dream Machines",
+      citation: "Nettleton, A. (2006). African dream machines: Style, identity and meaning of African headrests. Wits University Press.",
+      relevance: "African material culture, symbolic form, personal identity, style, and the relationship between designed objects and social meaning.",
+      project: "Material Meaning",
+    },
+  ];
+
+  return (
+    <EPage section="BACK MATTER · DESIGN READING" page="REF. 03" navActive="INDEX">
       <div style={{ position: "absolute", inset: 0, padding: `24px ${M}px 16px` }}>
         <div style={{ display: "grid", gridTemplateColumns: "235px 1fr", gap: 34, marginBottom: 18 }}>
           <div>
             <CapLabel color={c.olive}>Research Library</CapLabel>
             <div style={{ fontFamily: Fd, fontSize: 31, lineHeight: 1, color: c.ink, marginBottom: 14 }}>My Design<br/><em style={{ color: c.olive }}>Reading List.</em></div>
-            <p style={{ fontFamily: Fb, fontSize: 10, lineHeight: 1.6, color: c.mid, margin: 0 }}>Selected only from books cited in my year-end essays and concept books. These texts informed how I understand African identity, visual culture, material meaning, decolonial representation, and digital authorship.</p>
+            <p style={{ fontFamily: Fb, fontSize: 9.5, lineHeight: 1.55, color: c.mid, margin: 0 }}>Selected from my year-end submission and concept books. These texts support my interest in missing design history: African visual systems, cultural symbolism, fractal intelligence, decolonial representation and material meaning.</p>
           </div>
           <div style={{ borderLeft: `1px solid ${c.rule}`, paddingLeft: 28, display: "grid", gridTemplateColumns: "1fr 1fr", gap: "0 24px" }}>
             {books.map((book, index) => (
@@ -2052,10 +2363,10 @@ function AfricanLiteratureResearch() {
                   <span style={{ fontFamily: Fm, fontSize: 7.5, color: c.olive }}>{book.number}</span>
                   <span style={{ fontFamily: Fm, fontSize: 7, color: c.mid, letterSpacing: "0.08em", textTransform: "uppercase" as const }}>{book.project}</span>
                 </div>
-                <div style={{ fontFamily: Fd, fontSize: 17, lineHeight: 1.05, color: c.ink }}>{book.title}</div>
-                <div style={{ fontFamily: Fb, fontSize: 8.5, color: c.olive, margin: "4px 0 7px" }}>{book.author}</div>
-                <p style={{ fontFamily: Fb, fontSize: 8.5, lineHeight: 1.45, color: c.ink, margin: "0 0 6px" }}>{book.relevance}</p>
-                <p style={{ fontFamily: Fm, fontSize: 7, lineHeight: 1.4, color: c.mid, margin: 0 }}>{book.citation}</p>
+                <div style={{ fontFamily: Fd, fontSize: 16, lineHeight: 1.05, color: c.ink }}>{book.title}</div>
+                <div style={{ fontFamily: Fb, fontSize: 8.2, color: c.olive, margin: "4px 0 6px" }}>{book.author}</div>
+                <p style={{ fontFamily: Fb, fontSize: 8, lineHeight: 1.38, color: c.ink, margin: "0 0 5px" }}>{book.relevance}</p>
+                <p style={{ fontFamily: Fm, fontSize: 6.8, lineHeight: 1.32, color: c.mid, margin: 0 }}>{book.citation}</p>
               </div>
             ))}
           </div>
@@ -2063,6 +2374,83 @@ function AfricanLiteratureResearch() {
         <div style={{ borderTop: `0.5px solid ${c.rule}`, paddingTop: 10, display: "flex", justifyContent: "space-between" }}>
           <span style={{ fontFamily: Fb, fontSize: 7.5, letterSpacing: "0.12em", textTransform: "uppercase" as const, color: c.olive }}>Research provenance</span>
           <span style={{ fontFamily: Fb, fontSize: 8.5, color: c.mid }}>Year-end submissions · Critical Studies · Concept books · 2024–2025</span>
+        </div>
+      </div>
+    </EPage>
+  );
+}
+
+function UkuvuselelaResearchReference() {
+  const principles = [
+    ["01", "Missing History", "Design history is often taught through European structures, while African marking systems, artefacts, pattern logic and visual methodologies are treated as craft or decoration."],
+    ["02", "Culture as Method", "The project asks designers to understand symbols, colours, stories, materials and audience histories before borrowing from a culture."],
+    ["03", "Fractal Intelligence", "Ndebele pattern, natural repetition, spirals and modular triangles become a design system for renewal rather than a surface style."],
+    ["04", "Life-Centric Futures", "African Life-Centric Design centres lived experience, collective responsibility, sustainability and African narratives as future-making tools."],
+  ];
+
+  const references = [
+    "Eglash, R. (1999). African fractals.",
+    "Courtney-Clarke, M. (1986). Ndebele.",
+    "Mandelbrot, B. B. (1982). The fractal geometry of nature.",
+    "Bekker, M. G. (2020). Symmetry and complexity in Ndebele patterns.",
+    "African Life-Centric Design: A manifesto.",
+  ];
+
+  return (
+    <EPage section="PART THREE · UKUVUSELELA RESEARCH" page="P. 66A" navActive="ARCHIVE" footerRight="DESIGN DRIVES CULTURE · RESEARCH REFERENCE">
+      <div style={{ position: "absolute", inset: 0, padding: `24px ${M}px 16px`, display: "grid", gridTemplateRows: "142px 1fr", gap: 18 }}>
+        <div style={{ display: "grid", gridTemplateColumns: "1.05fr .95fr", gap: 34, alignItems: "end", borderBottom: `1px solid ${c.ink}`, paddingBottom: 18 }}>
+          <div>
+            <CapLabel color={c.olive}>Ukuvuselela · Design Drives Culture</CapLabel>
+            <div style={{ fontFamily: Fd, fontSize: 40, lineHeight: .96, color: c.ink }}>
+              Missing history<br /><em style={{ color: c.olive }}>as design evidence.</em>
+            </div>
+          </div>
+          <p style={{ fontFamily: Fb, fontSize: 10.4, lineHeight: 1.62, color: c.brown, margin: 0 }}>
+            My interest in this project was not only the poster. It was the research: how African design knowledge is excluded from mainstream graphic design history, and how visual communication can recover language, pattern, symbolism and memory for an African audience.
+          </p>
+        </div>
+
+        <div style={{ display: "grid", gridTemplateColumns: "1.18fr .82fr", gap: 24, minHeight: 0 }}>
+          <div style={{ display: "grid", gridTemplateColumns: "1fr 1fr", gap: 12, minHeight: 0 }}>
+            {principles.map(([number, title, text], index) => (
+              <article key={number} style={{ background: index === 0 ? c.dark : c.white, color: index === 0 ? c.white : c.ink, border: `0.5px solid ${c.rule}`, padding: 18, display: "flex", flexDirection: "column", justifyContent: "space-between" }}>
+                <div style={{ display: "flex", justifyContent: "space-between", alignItems: "center", marginBottom: 22 }}>
+                  <span style={{ fontFamily: Fm, fontSize: 8, color: index === 0 ? c.ochre : c.olive }}>{number}</span>
+                  <span style={{ fontFamily: Fm, fontSize: 7, letterSpacing: ".12em", textTransform: "uppercase" as const, color: index === 0 ? "rgba(250,250,250,.62)" : c.mid }}>Research Principle</span>
+                </div>
+                <div>
+                  <h2 style={{ fontFamily: Fd, fontSize: 24, lineHeight: 1, fontWeight: 500, margin: "0 0 10px", color: index === 0 ? c.white : c.ink }}>{title}</h2>
+                  <p style={{ fontFamily: Fb, fontSize: 9, lineHeight: 1.52, margin: 0, color: index === 0 ? "rgba(250,250,250,.78)" : c.brown }}>{text}</p>
+                </div>
+              </article>
+            ))}
+          </div>
+
+          <aside style={{ borderLeft: `1px solid ${c.rule}`, paddingLeft: 20, display: "grid", gridTemplateRows: "auto 1fr auto", gap: 14, minHeight: 0 }}>
+            <div>
+              <CapLabel color={c.ochre}>Research Voice</CapLabel>
+              <div style={{ fontFamily: Fd, fontSize: 25, lineHeight: 1, color: c.ink, marginBottom: 10 }}>Why this mattered.</div>
+              <p style={{ fontFamily: Fb, fontSize: 8.8, lineHeight: 1.55, color: c.mid, margin: 0 }}>
+                As an indigenous South African design student, I used this project to challenge the assumption that design theory must begin in Europe. Ukuvuselela became a way to ask what African design could look like if our histories were not treated as secondary.
+              </p>
+            </div>
+            <div style={{ background: c.grey, padding: 14, borderLeft: `3px solid ${c.olive}` }}>
+              <div style={{ fontFamily: Fm, fontSize: 7.5, letterSpacing: ".12em", textTransform: "uppercase" as const, color: c.olive, marginBottom: 8 }}>Vital Research Extract</div>
+              <p style={{ fontFamily: Fb, fontSize: 8.5, lineHeight: 1.5, color: c.ink, margin: 0 }}>
+                African design principles in this project were read through culture, symbolism, colour meaning, storytelling, communal values, traditional techniques, natural pattern systems and Ubuntu. The point was not to copy tribal aesthetics; it was to respect the knowledge systems that made those forms meaningful.
+              </p>
+            </div>
+            <div>
+              <div style={{ fontFamily: Fm, fontSize: 7.5, letterSpacing: ".12em", textTransform: "uppercase" as const, color: c.brown, marginBottom: 8 }}>Reference Anchor</div>
+              {references.map((item, index) => (
+                <div key={item} style={{ display: "grid", gridTemplateColumns: "20px 1fr", gap: 8, borderTop: `0.5px solid ${c.rule}`, padding: "7px 0" }}>
+                  <span style={{ fontFamily: Fm, fontSize: 7, color: c.ochre }}>{String(index + 1).padStart(2, "0")}</span>
+                  <span style={{ fontFamily: Fb, fontSize: 7.8, lineHeight: 1.35, color: c.ink }}>{item}</span>
+                </div>
+              ))}
+            </div>
+          </aside>
         </div>
       </div>
     </EPage>
@@ -2415,11 +2803,19 @@ function EditableTextSlidePage({ slideNumber, section, data }: { slideNumber: nu
       <div aria-label={`${section} — editable reconstruction of Portfolio Slide ${slideNumber}`} style={{ width: PW, height: PH, position: "relative", overflow: "hidden", background: c.bg }}>
       {data.items.map((item, index) => {
         const isPhotographyTitle = index === 9 && slideNumber >= 45 && slideNumber <= 47;
-        const adjustedWidth = isPhotographyTitle && slideNumber === 45 ? 24.5 : item.w;
+        const isSlide13Identity = slideNumber === 13 && item.kind === "text" && item.x >= 84 && item.y >= 15 && item.y <= 40;
+        const adjustedWidth = isPhotographyTitle && slideNumber === 45
+          ? 24.5
+          : isSlide13Identity
+            ? Math.max(item.w, 14)
+            : item.w;
         const adjustedTop = slideNumber === 108 && index === 56 ? 15.2 : item.y;
         const rawText = normalizeEditableSlideText(slideNumber, item.text);
+        const isSlide13ProfileTitle = slideNumber === 13 && index === 13;
+        const isSlide13Strength = slideNumber === 13 && rawText.startsWith("A Multifaceted Visual creator");
+        const hideCorruptCoverText = slideNumber === 1 && [20, 22, 24, 25, 26, 27].includes(index);
         const textLines = rawText.split("\n");
-        const longestLine = Math.max(1, ...textLines.map(line => line.length));
+        const isDenseList = textLines.length >= 3;
         const boxWidthPx = (adjustedWidth / 100) * PW;
         const boxHeightPx = (item.h / 100) * PH;
         const widthBoundPt = (boxWidthPx / (longestLine * 0.54)) * 0.75;
@@ -2428,10 +2824,12 @@ function EditableTextSlidePage({ slideNumber, section, data }: { slideNumber: nu
         const isEdgeMatter = item.y < 10 || item.y > 95;
         const lettersOnly = rawText.replace(/[^A-Za-zÀ-ž]/g, "");
         const isAllCaps = lettersOnly.length > 1 && lettersOnly === lettersOnly.toUpperCase();
-        const isDisplayText = !isEdgeMatter && rawText.length <= 110 && item.h >= 8;
-        const isMidLevelText = !isEdgeMatter && rawText.length <= 70 && item.h >= 5;
+        const isDisplayText = !isEdgeMatter && !isDenseList && rawText.length <= 110 && item.h >= 8;
+        const isMidLevelText = !isEdgeMatter && !isDenseList && rawText.length <= 70 && item.h >= 5;
         const isLabelText = !isEdgeMatter && isAllCaps && rawText.length <= 80 && item.h < 8;
-        const characterStyle = isEdgeMatter
+        const characterStyle = isSlide13ProfileTitle
+          ? "subheading"
+          : isEdgeMatter
           ? "folio"
           : isDisplayText
             ? "display"
@@ -2440,12 +2838,16 @@ function EditableTextSlidePage({ slideNumber, section, data }: { slideNumber: nu
               : isLabelText
                 ? "label"
                 : "body";
-        const preferredFontSize = slideNumber === 108 && index === 14
+        const preferredFontSize = isSlide13ProfileTitle
+          ? 9.5
+          : isSlide13Strength
+            ? 6.5
+          : slideNumber === 108 && index === 14
           ? 8
           : isPhotographyTitle
             ? 30
             : characterStyle === "display"
-              ? item.h >= 18 ? 52 : item.h >= 12 ? 38 : 32
+            ? item.h >= 18 ? 38 : item.h >= 12 ? 30 : 22
               : characterStyle === "subheading"
                 ? 18
                 : characterStyle === "body"
@@ -2470,10 +2872,12 @@ function EditableTextSlidePage({ slideNumber, section, data }: { slideNumber: nu
           : characterStyle === "subheading" || characterStyle === "label"
             ? 600
             : 400;
-        const resolvedLineHeight = characterStyle === "display"
-          ? 0.98
+        const resolvedLineHeight = isSlide13Strength
+          ? 1.2
+          : characterStyle === "display"
+          ? 1.04
           : characterStyle === "subheading"
-            ? 1.18
+            ? 1.12
             : characterStyle === "body"
               ? 1.5
               : 1.2;
@@ -2492,6 +2896,9 @@ function EditableTextSlidePage({ slideNumber, section, data }: { slideNumber: nu
         };
 
         if (item.kind === "shape") return <div key={index} style={shared} />;
+
+        if (slideNumber === 107 && item.kind === "image") return null;
+        if (slideNumber === 174 && item.kind === "image" && index > 0) return null;
 
         if (item.kind === "image" && item.src) {
           const crop = item.crop || { l: 0, t: 0, r: 0, b: 0 };
@@ -2532,7 +2939,7 @@ function EditableTextSlidePage({ slideNumber, section, data }: { slideNumber: nu
             aria-readonly={IS_PUBLIC_VIEWER || undefined}
             style={{
               ...shared,
-              display: "flex",
+              display: hideCorruptCoverText ? "none" : "flex",
               alignItems: item.vertical || "flex-start",
               whiteSpace: "pre-wrap",
               overflow: "hidden",
@@ -3255,21 +3662,21 @@ const GALLERIES: Record<string, GalleryItem[]> = {
 const news = { paper: "#F2EDE1", ink: "#171512", gold: "#B78A1E", soft: "#DDD4C1" };
 const Fnews = "'Arial Narrow', 'Helvetica Neue Condensed', Impact, sans-serif";
 
-function GoldRushMasthead({ folio, strap = "WASTE TO WEALTH · TEXTILE SUCCESS STORY" }: { folio: string; strap?: string }) {
+function GoldRushMasthead({ folio, strap = "GAUTA ETENG · WASTE TO WEALTH · TEXTILE SUCCESS STORY" }: { folio: string; strap?: string }) {
   return <><div style={{ height: 50, borderTop: `2px solid ${news.ink}`, borderBottom: `1px solid ${news.ink}`, display: "grid", gridTemplateColumns: "1fr 2fr 1fr", alignItems: "center" }}><div style={{ fontFamily: Fm, fontSize: 7, letterSpacing: ".13em" }}>GRACIOUS MKHONTO<br />PORTFOLIO EDITION</div><div style={{ textAlign: "center", fontFamily: Fd, fontWeight: 700, fontSize: 25, letterSpacing: ".03em" }}>THE GOLD RUSH</div><div style={{ textAlign: "right", fontFamily: Fm, fontSize: 7, letterSpacing: ".13em" }}>{folio}<br />2026</div></div><div style={{ height: 21, display: "flex", alignItems: "center", justifyContent: "center", borderBottom: `5px solid ${news.gold}`, fontFamily: Fb, fontSize: 7.5, fontWeight: 700, letterSpacing: ".18em" }}>{strap}</div></>;
 }
 
 function GoldRushCover() {
-  return <div style={{ width: PW, height: PH, background: news.paper, color: news.ink, padding: "28px 34px 24px", overflow: "hidden" }}><GoldRushMasthead folio="FRONT PAGE" /><div style={{ display: "grid", gridTemplateColumns: "1.1fr .9fr", gap: 20, height: 440, paddingTop: 18 }}><div style={{ borderRight: `1px solid ${news.ink}`, paddingRight: 20, position: "relative" }}><div style={{ fontFamily: Fb, fontSize: 8, fontWeight: 800, letterSpacing: ".2em", color: news.gold, marginBottom: 9 }}>YOUR WASTE IS WEALTH</div><h1 style={{ fontFamily: Fnews, fontSize: 76, lineHeight: .82, letterSpacing: "-.035em", margin: 0, textTransform: "uppercase" }}>From waste<br /><span style={{ color: news.gold }}>to wealth.</span></h1><div style={{ marginTop: 18, maxWidth: 420, fontFamily: Fd, fontSize: 17, lineHeight: 1.28, fontStyle: "italic" }}>A textile success story shaped by hand, culture and purposeful reuse.</div><img src={goldRushYellowOrnament} style={{ position: "absolute", right: -4, bottom: -12, width: 235, height: 235, objectFit: "contain" }} /><div style={{ position: "absolute", left: 0, bottom: 0, width: 235, fontFamily: Fb, fontSize: 9.5, lineHeight: 1.55 }}>Discarded and surplus textiles become sculptural objects for the home. Each folded form makes the value hidden in fabric visible again.</div></div><div style={{ display: "grid", gridTemplateRows: "1fr auto", gap: 11 }}><img src={goldRushMakerPortrait} style={{ width: "100%", height: 324, objectFit: "cover", objectPosition: "center 34%", filter: "saturate(.82) contrast(1.04)" }} /><div style={{ borderTop: `1px solid ${news.ink}`, paddingTop: 10 }}><div style={{ fontFamily: Fnews, fontSize: 24, lineHeight: .95, textTransform: "uppercase" }}>The maker behind<br />the material</div><p style={{ fontFamily: Fb, fontSize: 9, lineHeight: 1.48, margin: "8px 0 0" }}>Her practice begins with what others overlook. Through patient folding, stitching and assembly, textile remnants are transformed into expressive ornaments with presence, function and cultural character.</p></div></div></div><div style={{ borderTop: `6px solid ${news.ink}`, marginTop: 17, paddingTop: 12, display: "grid", gridTemplateColumns: "1.15fr 1fr 1fr", gap: 18 }}><div style={{ fontFamily: Fnews, fontSize: 31, lineHeight: .88, textTransform: "uppercase" }}>Handmade.<br /><span style={{ color: news.gold }}>Upcycled.</span><br />Purposeful.</div><div style={{ fontFamily: Fb, fontSize: 9, lineHeight: 1.52 }}><b>VALUE, REFRAMED.</b><br />The work turns textile waste into tactile design—showing that reuse can be desirable, considered and beautifully finished.</div><div style={{ background: news.ink, color: news.paper, padding: "12px 14px", fontFamily: Fnews, fontSize: 22, lineHeight: .96, textTransform: "uppercase" }}>Join the movement.<br /><span style={{ color: "#D5AA3E" }}>Make waste matter.</span></div></div></div>;
+  return <div style={{ width: PW, height: PH, background: news.paper, color: news.ink, padding: "28px 34px 24px", overflow: "hidden" }}><GoldRushMasthead folio="FRONT PAGE" /><div style={{ display: "grid", gridTemplateColumns: "1.1fr .9fr", gap: 20, height: 440, paddingTop: 18 }}><div style={{ borderRight: `1px solid ${news.ink}`, paddingRight: 20, position: "relative" }}><div style={{ fontFamily: Fb, fontSize: 8, fontWeight: 800, letterSpacing: ".2em", color: news.gold, marginBottom: 9 }}>YOUR WASTE IS WEALTH</div><h1 style={{ fontFamily: Fnews, fontSize: 76, lineHeight: .82, letterSpacing: "-.035em", margin: 0, textTransform: "uppercase" }}>From waste<br /><span style={{ color: news.gold }}>to wealth.</span></h1><div style={{ marginTop: 18, maxWidth: 420, fontFamily: Fd, fontSize: 17, lineHeight: 1.28, fontStyle: "italic" }}>A textile success story shaped by hand, culture and purposeful reuse.</div><img src={goldRushYellowOrnament} style={{ position: "absolute", right: -4, bottom: -12, width: 235, height: 235, objectFit: "contain" }} /><div style={{ position: "absolute", left: 0, bottom: 0, width: 235, fontFamily: Fb, fontSize: 9.5, lineHeight: 1.55 }}>Discarded and surplus textiles become sculptural objects for the home. Each folded form makes the value hidden in fabric visible again.</div></div><div style={{ display: "grid", gridTemplateRows: "1fr auto", gap: 11 }}><img src={goldRushMakerPortrait} style={{ width: "100%", height: 324, objectFit: "cover", objectPosition: "center 34%", filter: "saturate(.82) contrast(1.04)" }} /><div style={{ borderTop: `1px solid ${news.ink}`, paddingTop: 10 }}><div style={{ fontFamily: Fnews, fontSize: 24, lineHeight: .95, textTransform: "uppercase" }}>The maker behind<br />the material</div><p style={{ fontFamily: Fb, fontSize: 9, lineHeight: 1.48, margin: "8px 0 0" }}>Her practice begins with what others overlook. Through patient folding, stitching and assembly, textile remnants are transformed into expressive ornaments with presence, function and cultural character.</p></div></div></div><div style={{ borderTop: `6px solid ${news.ink}`, marginTop: 17, paddingTop: 12, display: "grid", gridTemplateColumns: "1.15fr 1fr 1fr", gap: 18 }}><div style={{ fontFamily: Fnews, fontSize: 31, lineHeight: .88, textTransform: "uppercase" }}>Handmade.<br /><span style={{ color: news.gold }}>Upcycled.</span><br />Purposeful.</div><div style={{ fontFamily: Fb, fontSize: 9, lineHeight: 1.52 }}><b>VALUE, REFRAMED.</b><br />The work turns textile waste into tactile design—showing that reuse can be desirable, considered and beautifully finished.</div><div style={{ background: news.ink, color: news.paper, padding: "12px 14px", fontFamily: Fnews, fontSize: 22, lineHeight: .96, textTransform: "uppercase" }}>Join the movement.<br /><span style={{ color: "#D5AA3E" }}>Gauta E Teng, Mahaeng A Rona!</span></div></div></div>;
 }
 
 function GoldRushProfile() {
   const process = [["01", "RECOVER", "Select surplus and discarded textiles with usable colour, pattern and structure."], ["02", "FOLD", "Build repeated modules by hand, preserving the fabric’s graphic identity."], ["03", "ASSEMBLE", "Stitch the forms into layered ornaments, accessories and functional pieces."], ["04", "REVALUE", "Return the material to daily life as an object of beauty, purpose and pride."]];
-  return <div style={{ width: PW, height: PH, background: news.paper, color: news.ink, padding: "28px 34px 24px", overflow: "hidden" }}><GoldRushMasthead folio="PROFILE · 02" strap="THE HAND, THE MATERIAL, THE TRANSFORMATION" /><div style={{ display: "grid", gridTemplateColumns: ".7fr 1.35fr .7fr", gap: 18, height: 630, paddingTop: 18 }}><div style={{ borderRight: `1px solid ${news.ink}`, paddingRight: 17 }}><h2 style={{ fontFamily: Fnews, fontSize: 45, lineHeight: .86, margin: "0 0 16px", textTransform: "uppercase" }}>The maker<br /><span style={{ color: news.gold }}>behind the rush</span></h2><img src={goldRushMakerPortrait} style={{ width: "100%", height: 215, objectFit: "cover", objectPosition: "center 30%", filter: "grayscale(1) contrast(1.08)" }} /><p style={{ fontFamily: Fb, fontSize: 9.3, lineHeight: 1.55, marginTop: 14 }}>The maker’s process is rooted in resourcefulness: working with available cloth, respecting its pattern and allowing the material to guide the final form.</p><div style={{ borderTop: `4px solid ${news.gold}`, marginTop: 15, paddingTop: 9, fontFamily: Fd, fontSize: 16, lineHeight: 1.22, fontStyle: "italic" }}>“Waste is not the end of the story. It is where another story can begin.”</div></div><div style={{ display: "grid", gridTemplateRows: "345px 1fr", gap: 14 }}><img src={goldRushTextileOrnament} style={{ width: "100%", height: "100%", objectFit: "cover" }} /><div style={{ columns: 2, columnGap: 22, columnRule: `1px solid ${news.soft}`, fontFamily: Fb, fontSize: 9.2, lineHeight: 1.55, textAlign: "justify" }}><b style={{ fontFamily: Fnews, fontSize: 16, textTransform: "uppercase" }}>A second life for cloth.</b> Discarded and surplus fabric is folded, stitched and assembled into sculptural ornaments, table accessories and wall pieces. Repetition creates rhythm; layered points create volume; bold prints make every object distinct.<br /><br />The result is both decorative and useful. Material already in circulation can hold new value when craft, imagination and care are applied to it.</div></div><div style={{ borderLeft: `1px solid ${news.ink}`, paddingLeft: 17 }}><div style={{ fontFamily: Fb, fontSize: 7.5, fontWeight: 800, letterSpacing: ".17em", color: news.gold }}>PROCESS NOTES</div>{process.map(([n,t,d]) => <div key={n} style={{ borderTop: `1px solid ${news.ink}`, padding: "11px 0 13px", marginTop: 9 }}><div style={{ fontFamily: Fm, fontSize: 7, color: news.gold }}>{n}</div><div style={{ fontFamily: Fnews, fontSize: 20, margin: "3px 0" }}>{t}</div><div style={{ fontFamily: Fb, fontSize: 8.5, lineHeight: 1.45 }}>{d}</div></div>)}</div></div></div>;
+  return <div style={{ width: PW, height: PH, background: news.paper, color: news.ink, padding: "28px 34px 24px", overflow: "hidden" }}><GoldRushMasthead folio="PROFILE · 02" strap="GAUTA ETENG · THE HAND, THE MATERIAL, THE TRANSFORMATION" /><div style={{ display: "grid", gridTemplateColumns: ".7fr 1.35fr .7fr", gap: 18, height: 630, paddingTop: 18 }}><div style={{ borderRight: `1px solid ${news.ink}`, paddingRight: 17 }}><h2 style={{ fontFamily: Fnews, fontSize: 45, lineHeight: .86, margin: "0 0 16px", textTransform: "uppercase" }}>The maker<br /><span style={{ color: news.gold }}>behind the rush</span></h2><img src={goldRushMakerPortrait} style={{ width: "100%", height: 215, objectFit: "cover", objectPosition: "center 30%", filter: "grayscale(1) contrast(1.08)" }} /><p style={{ fontFamily: Fb, fontSize: 9.3, lineHeight: 1.55, marginTop: 14 }}>The maker’s process is rooted in resourcefulness: working with available cloth, respecting its pattern and allowing the material to guide the final form.</p><div style={{ borderTop: `4px solid ${news.gold}`, marginTop: 15, paddingTop: 9, fontFamily: Fd, fontSize: 16, lineHeight: 1.22, fontStyle: "italic" }}>“Waste is not the end of the story. It is where another story can begin.”</div></div><div style={{ display: "grid", gridTemplateRows: "345px 1fr", gap: 14 }}><img src={goldRushTextileOrnament} style={{ width: "100%", height: "100%", objectFit: "cover" }} /><div style={{ columns: 2, columnGap: 22, columnRule: `1px solid ${news.soft}`, fontFamily: Fb, fontSize: 9.2, lineHeight: 1.55, textAlign: "justify" }}><b style={{ fontFamily: Fnews, fontSize: 16, textTransform: "uppercase" }}>A second life for cloth.</b> Discarded and surplus fabric is folded, stitched and assembled into sculptural ornaments, table accessories and wall pieces. Repetition creates rhythm; layered points create volume; bold prints make every object distinct.<br /><br />The result is both decorative and useful. Material already in circulation can hold new value when craft, imagination and care are applied to it.</div></div><div style={{ borderLeft: `1px solid ${news.ink}`, paddingLeft: 17 }}><div style={{ fontFamily: Fb, fontSize: 7.5, fontWeight: 800, letterSpacing: ".17em", color: news.gold }}>PROCESS NOTES</div>{process.map(([n,t,d]) => <div key={n} style={{ borderTop: `1px solid ${news.ink}`, padding: "11px 0 13px", marginTop: 9 }}><div style={{ fontFamily: Fm, fontSize: 7, color: news.gold }}>{n}</div><div style={{ fontFamily: Fnews, fontSize: 20, margin: "3px 0" }}>{t}</div><div style={{ fontFamily: Fb, fontSize: 8.5, lineHeight: 1.45 }}>{d}</div></div>)}</div></div></div>;
 }
 
 function GoldRushImpact() {
-  return <div style={{ width: PW, height: PH, background: news.paper, color: news.ink, padding: "28px 34px 24px", overflow: "hidden" }}><GoldRushMasthead folio="IMPACT · 03" strap="CULTURE · CREATIVITY · CONSCIOUSNESS" /><div style={{ display: "flex", justifyContent: "space-between", alignItems: "end", padding: "14px 0 11px", borderBottom: `1px solid ${news.ink}` }}><h2 style={{ fontFamily: Fnews, fontSize: 49, lineHeight: .88, margin: 0, textTransform: "uppercase" }}>A second life,<br /><span style={{ color: news.gold }}>made visible.</span></h2><div style={{ width: 340, fontFamily: Fd, fontSize: 14, lineHeight: 1.28, fontStyle: "italic", textAlign: "right" }}>From intimate table objects to confident wall pieces, the system expands without losing the hand of its maker.</div></div><div style={{ display: "grid", gridTemplateColumns: "1.35fr .75fr .75fr", gridTemplateRows: "278px 170px", gap: 10, paddingTop: 12 }}><img src={goldRushTableSetting} style={{ width: "100%", height: "100%", objectFit: "cover", gridRow: "1 / 3" }} /><img src={goldRushProductRange} style={{ width: "100%", height: "100%", objectFit: "cover" }} /><img src={goldRushWallMockup} style={{ width: "100%", height: "100%", objectFit: "cover" }} /><div style={{ background: news.ink, color: news.paper, padding: 15 }}><div style={{ fontFamily: Fnews, fontSize: 23, lineHeight: .95 }}>ONE MATERIAL.<br /><span style={{ color: "#D5AA3E" }}>MANY FORMS.</span></div><p style={{ fontFamily: Fb, fontSize: 8.5, lineHeight: 1.45 }}>Ornaments, table settings, accessories and display pieces reveal a flexible product language.</p></div><div style={{ border: `1px solid ${news.ink}`, padding: 14 }}><div style={{ fontFamily: Fnews, fontSize: 23, lineHeight: .95 }}>DESIGN FOR<br /><span style={{ color: news.gold }}>EVERYDAY LIFE.</span></div><p style={{ fontFamily: Fb, fontSize: 8.5, lineHeight: 1.45 }}>A familiar textile becomes an expressive object for contemporary interiors and gatherings.</p></div></div><div style={{ display: "grid", gridTemplateColumns: "1fr 1fr 1fr", borderTop: `5px solid ${news.gold}`, borderBottom: `1px solid ${news.ink}`, marginTop: 12 }}>{[["MATERIAL", "Keeping usable cloth in circulation."], ["CRAFT", "Building value through skilled handwork."], ["CULTURE", "Letting pattern and local visual language lead."]].map(([t,d], i) => <div key={t} style={{ padding: "10px 13px", borderLeft: i ? `1px solid ${news.ink}` : "none" }}><b style={{ fontFamily: Fnews, fontSize: 17 }}>{t}</b><span style={{ fontFamily: Fb, fontSize: 8.5, marginLeft: 8 }}>{d}</span></div>)}</div><div style={{ marginTop: 12, display: "flex", justifyContent: "space-between", alignItems: "center", background: news.ink, color: news.paper, padding: "10px 14px" }}><div style={{ fontFamily: Fnews, fontSize: 23, textTransform: "uppercase" }}>Your home is the mine. <span style={{ color: "#D5AA3E" }}>Invest in the Gold Rush.</span></div><div style={{ fontFamily: Fm, fontSize: 7, letterSpacing: ".12em" }}>HANDMADE · UPCYCLED · PURPOSEFUL</div></div></div>;
+  return <div style={{ width: PW, height: PH, background: news.paper, color: news.ink, padding: "28px 34px 24px", overflow: "hidden" }}><GoldRushMasthead folio="IMPACT · 03" strap="GAUTA ETENG · CULTURE · CREATIVITY · CONSCIOUSNESS" /><div style={{ display: "flex", justifyContent: "space-between", alignItems: "end", padding: "14px 0 11px", borderBottom: `1px solid ${news.ink}` }}><h2 style={{ fontFamily: Fnews, fontSize: 49, lineHeight: .88, margin: 0, textTransform: "uppercase" }}>A second life,<br /><span style={{ color: news.gold }}>made visible.</span></h2><div style={{ width: 340, fontFamily: Fd, fontSize: 14, lineHeight: 1.28, fontStyle: "italic", textAlign: "right" }}>From intimate table objects to confident wall pieces, the system expands without losing the hand of its maker.</div></div><div style={{ display: "grid", gridTemplateColumns: "1.35fr .75fr .75fr", gridTemplateRows: "278px 170px", gap: 10, paddingTop: 12 }}><img src={goldRushTableSetting} style={{ width: "100%", height: "100%", objectFit: "cover", gridRow: "1 / 3" }} /><img src={goldRushProductRange} style={{ width: "100%", height: "100%", objectFit: "cover" }} /><img src={goldRushWallMockup} style={{ width: "100%", height: "100%", objectFit: "cover" }} /><div style={{ background: news.ink, color: news.paper, padding: 15 }}><div style={{ fontFamily: Fnews, fontSize: 23, lineHeight: .95 }}>ONE MATERIAL.<br /><span style={{ color: "#D5AA3E" }}>MANY FORMS.</span></div><p style={{ fontFamily: Fb, fontSize: 8.5, lineHeight: 1.45 }}>Ornaments, table settings, accessories and display pieces reveal a flexible product language.</p></div><div style={{ border: `1px solid ${news.ink}`, padding: 14 }}><div style={{ fontFamily: Fnews, fontSize: 23, lineHeight: .95 }}>DESIGN FOR<br /><span style={{ color: news.gold }}>EVERYDAY LIFE.</span></div><p style={{ fontFamily: Fb, fontSize: 8.5, lineHeight: 1.45 }}>A familiar textile becomes an expressive object for contemporary interiors and gatherings.</p></div></div><div style={{ display: "grid", gridTemplateColumns: "1fr 1fr 1fr", borderTop: `5px solid ${news.gold}`, borderBottom: `1px solid ${news.ink}`, marginTop: 12 }}>{[["MATERIAL", "Keeping usable cloth in circulation."], ["CRAFT", "Building value through skilled handwork."], ["CULTURE", "Letting pattern and local visual language lead."]].map(([t,d], i) => <div key={t} style={{ padding: "10px 13px", borderLeft: i ? `1px solid ${news.ink}` : "none" }}><b style={{ fontFamily: Fnews, fontSize: 17 }}>{t}</b><span style={{ fontFamily: Fb, fontSize: 8.5, marginLeft: 8 }}>{d}</span></div>)}</div><div style={{ marginTop: 12, display: "flex", justifyContent: "space-between", alignItems: "center", background: news.ink, color: news.paper, padding: "10px 14px" }}><div style={{ fontFamily: Fnews, fontSize: 23, textTransform: "uppercase" }}>Your home is the mine. <span style={{ color: "#D5AA3E" }}>Invest in the Gold Rush.</span></div><div style={{ fontFamily: Fm, fontSize: 7, letterSpacing: ".12em" }}>HANDMADE · UPCYCLED · PURPOSEFUL</div></div></div>;
 }
 
 function PaintingGalleryPage() {
@@ -3377,6 +3784,77 @@ function NoveltiesPackagingPage() {
   return <EPage section="PART THREE · ACCESSORIES CRAFT" page="ACCESSORIES · 05" footerRight="GRAY'S NOVELTIES · PRODUCT PRESENTATION"><div style={{height:"100%",display:"grid",gridTemplateRows:"108px 1fr"}}><div style={{display:"grid",gridTemplateColumns:"1.16fr .84fr",alignItems:"end",borderBottom:`1px solid ${c.ink}`,paddingBottom:15}}><div><div style={{fontFamily:Fm,fontSize:8,letterSpacing:".18em",color:c.olive,marginBottom:8}}>CUSTOMISATION · PACKAGING · GIFT PRESENTATION</div><h1 style={{fontFamily:Fd,fontSize:42,fontWeight:500,lineHeight:.96,margin:0}}>From Personalisation to Pack</h1></div><p style={{fontFamily:Fb,fontSize:9.5,lineHeight:1.5,margin:0,color:c.mid}}>The product system continues beyond the object itself, using simple ribbon, transparent sleeves and printed inserts to create a complete gift-ready presentation.</p></div><div style={{display:"grid",gridTemplateColumns:"1.08fr .92fr",gap:12,paddingTop:15,minHeight:0}}><div style={{display:"grid",gridTemplateColumns:"1fr 1fr",gridTemplateRows:"1fr 1fr",gap:11,minHeight:0}}>{works.slice(0,4).map((work,index)=><figure key={work.label} style={{margin:0,display:"grid",gridTemplateRows:"1fr 23px",minHeight:0}}><img src={work.src} style={{width:"100%",height:"100%",objectFit:"cover"}}/><figcaption style={{fontFamily:Fm,fontSize:6.3,letterSpacing:".08em",paddingTop:6}}>0{index+1} · {work.label.toUpperCase()}</figcaption></figure>)}</div><figure style={{margin:0,display:"grid",gridTemplateRows:"1fr 25px",minHeight:0}}><img src={works[4].src} style={{width:"100%",height:"100%",objectFit:"cover"}}/><figcaption style={{fontFamily:Fm,fontSize:6.8,letterSpacing:".1em",paddingTop:7}}>05 · {works[4].label.toUpperCase()}</figcaption></figure></div></div></EPage>;
 }
 
+function NoveltiesConsolidatedPage() {
+  const highlights = [
+    { src: noveltiesBottleSet, label: "Decorative bottle set", group: "Objects", fit: "cover" },
+    { src: noveltiesBrandIdentity, label: "Gray's Novelties identity", group: "Brand", fit: "contain" },
+    { src: noveltiesKeyringCharacter, label: "Character keyring", group: "Personalised", fit: "cover" },
+    { src: noveltiesKeyringLove, label: "Message keyring", group: "Personalised", fit: "cover" },
+    { src: noveltiesPackagingBranded, label: "Branded gift pack", group: "Packaging", fit: "cover" },
+    { src: noveltiesPackagingCustom, label: "Custom packaging", group: "Packaging", fit: "cover" },
+    { src: noveltiesRaffiaVesselProcess, label: "Wrapped vessel process", group: "Raffia", fit: "cover" },
+    { src: noveltiesRaffiaHeartStudy, label: "Woven heart study", group: "Raffia", fit: "cover" },
+  ];
+
+  const evidence = [
+    ["01", "Object System", "Decorative vessels and small gifts establish the handmade product language."],
+    ["02", "Personalisation", "Illustration, names, photographs and messages adapt the work to individual buyers."],
+    ["03", "Packaging", "Ribbon, sleeves and branded inserts turn small objects into gift-ready products."],
+    ["04", "Process", "Raffia wrapping and weaving show material testing, handwork and form development."],
+  ];
+
+  return (
+    <EPage section="PART THREE · ACCESSORIES CRAFT" page="ACCESSORIES · 03–06" footerRight="GRAY'S NOVELTIES · CONSOLIDATED EVIDENCE">
+      <div style={{ height: "100%", display: "grid", gridTemplateRows: "108px 1fr", color: c.ink }}>
+        <div style={{ display: "grid", gridTemplateColumns: "1.08fr .92fr", alignItems: "end", borderBottom: `1px solid ${c.ink}`, paddingBottom: 15 }}>
+          <div>
+            <div style={{ fontFamily: Fm, fontSize: 8, letterSpacing: ".18em", color: c.ochre, marginBottom: 8 }}>GRAY'S NOVELTIES · OBJECTS · KEYRINGS · PACKAGING · PROCESS</div>
+            <h1 style={{ fontFamily: Fd, fontSize: 42, fontWeight: 500, lineHeight: .96, margin: 0 }}>Small Products,<br />Complete System</h1>
+          </div>
+          <p style={{ fontFamily: Fb, fontSize: 9.5, lineHeight: 1.5, margin: 0, color: c.mid }}>
+            A single product-family spread consolidating handmade decorative objects, personalised keyrings, gift packaging and raffia process evidence into one assessable system.
+          </p>
+        </div>
+        <div style={{ display: "grid", gridTemplateColumns: "1.42fr .58fr", gap: 14, paddingTop: 15, minHeight: 0 }}>
+          <div style={{ display: "grid", gridTemplateColumns: "repeat(4, 1fr)", gridTemplateRows: "repeat(2, 1fr)", gap: 8, minHeight: 0 }}>
+            {highlights.map((item, index) => (
+              <figure key={item.label} style={{ margin: 0, display: "grid", gridTemplateRows: "1fr 28px", minHeight: 0, background: c.white, border: `0.5px solid ${c.rule}`, overflow: "hidden" }}>
+                <div style={{ minHeight: 0, background: item.fit === "contain" ? c.white : c.grey, display: "flex", alignItems: "center", justifyContent: "center" }}>
+                  <img src={item.src} alt={`Gray's Novelties ${item.label}`} style={{ width: "100%", height: "100%", objectFit: item.fit as "cover" | "contain", objectPosition: "center" }} />
+                </div>
+                <figcaption style={{ display: "flex", alignItems: "center", justifyContent: "space-between", gap: 6, padding: "0 7px", fontFamily: Fm, fontSize: 5.8, letterSpacing: ".06em", color: c.ink }}>
+                  <span>{String(index + 1).padStart(2, "0")} · {item.label.toUpperCase()}</span>
+                  <span style={{ color: c.ochre }}>{item.group.toUpperCase()}</span>
+                </figcaption>
+              </figure>
+            ))}
+          </div>
+          <div style={{ borderLeft: `1px solid ${c.rule}`, paddingLeft: 14, display: "grid", gridTemplateRows: "auto 1fr", gap: 12, minHeight: 0 }}>
+            <div>
+              <CapLabel color={c.brown}>Evidence Summary</CapLabel>
+              <div style={{ fontFamily: Fd, fontSize: 24, lineHeight: 1, color: c.ink, marginBottom: 8 }}>From craft object<br />to product range.</div>
+              <p style={{ fontFamily: Fb, fontSize: 8.6, lineHeight: 1.48, color: c.mid, margin: 0 }}>
+                The consolidation reduces repetition and lets the page read as one premium micro-brand case study rather than separate fragments.
+              </p>
+            </div>
+            <div>
+              {evidence.map(([number, title, description]) => (
+                <div key={number} style={{ display: "grid", gridTemplateColumns: "28px 1fr", gap: 8, borderTop: `1px solid ${c.rule}`, padding: "9px 0" }}>
+                  <span style={{ fontFamily: Fm, fontSize: 7, color: c.ochre }}>{number}</span>
+                  <div>
+                    <div style={{ fontFamily: Fb, fontSize: 7.4, letterSpacing: ".1em", textTransform: "uppercase" as const, color: c.brown, marginBottom: 3 }}>{title}</div>
+                    <div style={{ fontFamily: Fb, fontSize: 7.5, lineHeight: 1.35, color: c.ink }}>{description}</div>
+                  </div>
+                </div>
+              ))}
+            </div>
+          </div>
+        </div>
+      </div>
+    </EPage>
+  );
+}
+
 function GrayciousBrandingTimelinePage() {
   const milestones = [
     { year: "2017", title: "Identity System", src: grayciousIdentity2017, note: "Script wordmark, photographic aperture symbol and the ‘moments of forever’ brand line establish the original Graycious Photography identity." },
@@ -3416,6 +3894,212 @@ function NoveltiesRaffiaProcessPage() {
 interface PageEntry { id: string; title: string; section: string; render: () => React.ReactNode; }
 interface DisplayPage extends PageEntry { pdfId?: string; isImported?: boolean; }
 
+type FinalOutputProject = {
+  id: string;
+  title: string;
+  discipline: string;
+  year: string;
+  statement: string;
+  images: string[];
+  palette: { background: string; foreground: string; accent: string; surface: string };
+  layout?: "hero" | "triptych" | "editorial";
+};
+
+const FINAL_OUTPUT_PROJECTS: FinalOutputProject[] = [
+  { id: "final-ukuvuselela", title: "Ukuvuselela", discipline: "Brand Identity · Cultural Design", year: "AIDA 2026 Winner", statement: "AIDA 2026 Winner · 2025 What IF Top 20 DEFSA Project", images: [ukuvuselelaFractalPoster01, ukuvuselelaFractalPoster02, ukuvuselelaFractalPoster03], palette: { background: "#17110D", foreground: "#F4ECDD", accent: "#D58B32", surface: "#2B1A12" }, layout: "triptych" },
+  { id: "final-gauta-eteng", title: "Gauta Eteng", discipline: "Art Direction · Behaviour Change", year: "Campaign System", statement: "From waste to wealth", images: [gautaEtengGoldRushNewspaperOutput, gautaEtengTextileOrnamentOutput, goldRushProductRange], palette: { background: "#EEE2C7", foreground: "#33261D", accent: "#A25A29", surface: "#D6C6A5" }, layout: "editorial" },
+  { id: "final-lucky-star", title: "Lucky Star", discipline: "Campaign · Character · 3D", year: "Integrated Project", statement: "A character-led communication world", images: [luckyStar3dFinalImg, luckyStar3dCampaign03, luckyStar3dCampaign08], palette: { background: "#082E55", foreground: "#FFFFFF", accent: "#F5C629", surface: "#0E477C" }, layout: "triptych" },
+  { id: "final-menzi", title: "Menzi Impazamo", discipline: "Music Identity · Packaging · Merchandise", year: "Integrated Project", statement: "Identity carried from vinyl sleeve to Impi Black T", images: [menziVinylSleevePackagingImg, menziImpazamoVinylPackagingPosterImg, impiBlackTPackagingImg], palette: { background: "#151515", foreground: "#F5F2ED", accent: "#D52D2D", surface: "#272727" }, layout: "editorial" },
+  { id: "final-first-things-first", title: "First Things First", discipline: "Editorial Design", year: "2020 Manifesto", statement: "A manifesto made physical", images: [editorialFoldedManifestoMockupImg, editorialManifestoImg], palette: { background: "#F4F0E7", foreground: "#161616", accent: "#CE4B32", surface: "#DED8CA" }, layout: "hero" },
+  { id: "final-ghost-grid", title: "Ghost in the Grid", discipline: "Typography · Type Rules", year: "2022", statement: "Type rules made visible through the grid", images: [GALLERIES.typography[3].url, GALLERIES.typography[1].url, GALLERIES.typography[2].url], palette: { background: "#E8E4DB", foreground: "#161616", accent: "#E24934", surface: "#CFC9BE" }, layout: "editorial" },
+  { id: "final-bob-ross", title: "Bob Ross", discipline: "Web Design · Brand Application", year: "Digital Experience", statement: "A calm identity system for screen", images: [bobRossWebBrandingImg, bobRossLogoBlackWebImg, bobRossLogoWhiteWebImg], palette: { background: "#173B31", foreground: "#F5F1E8", accent: "#DAA24C", surface: "#285849" }, layout: "triptych" },
+  { id: "final-graycious", title: "Graycious Photography", discipline: "Personal Brand Identity", year: "2017–2018", statement: "A personal mark across every touchpoint", images: [grayciousMerchandise2017, grayciousIdentity2017, grayciousContact2018], palette: { background: "#EEE8DF", foreground: "#241F1B", accent: "#996A45", surface: "#D4C7B8" }, layout: "editorial" },
+  { id: "final-textile", title: "Textile Design", discipline: "Surface Design · Textile Application", year: "Final Mockup", statement: "Abstract portrait translated into a textile surface", images: [textileProfileBlanketMockup], palette: { background: "#24162F", foreground: "#FFF3FA", accent: "#E65BAE", surface: "#F2ECE8" }, layout: "hero" },
+  { id: "final-cellphone-cover", title: "Cellphone Cover Design", discipline: "Product Design · Illustration · 3D Mockup", year: "Final Outputs", statement: "Expressive character illustration applied across a functional product", images: [cellphoneCoverDeviceMockup, cellphoneCover3d, cellphoneCoverFlatMockup], palette: { background: "#111111", foreground: "#FFF6F2", accent: "#F02B3F", surface: "#26201D" }, layout: "triptych" },
+  { id: "final-qg-visuals", title: "QG Visuals", discipline: "Photography · Visual Storytelling · Creative Direction", year: "Personal Brand", statement: "Authorship built into every image", images: [qgMkhontoPhotographyBannerBlack, qgVisualsLogoImg, grayPhotographyLogoImg], palette: { background: "#080808", foreground: "#F5F5F5", accent: "#B8B8B8", surface: "#161616" }, layout: "editorial" },
+  { id: "final-qg-haute-apparel", title: "QG Haute Apparel", discipline: "Brand Identity · Fashion Styling · Social Media", year: "2022–2023", statement: "A fashion identity carried through styling, digital content and customer-facing communication", images: [qgHauteApparelLogo, qgHauteFacebookPromo, qgHauteWhatsAppStyling, qgHauteFacebookBrandPage, qgHauteFacebookProfile, qgHauteWorkspace, qgHauteSocialPost], palette: { background: "#F2EFEC", foreground: "#242121", accent: "#A9A4A6", surface: "#DED9DA" }, layout: "editorial" },
+  { id: "final-painting", title: "Painting", discipline: "Fine Art · Observation", year: "Selected Works", statement: "Colour, character and observed form", images: [paintingFeature, paintingKingfisher, paintingPortraitFinal], palette: { background: "#243127", foreground: "#F3EADB", accent: "#DDA447", surface: "#405043" }, layout: "editorial" },
+  { id: "final-accessories", title: "Accessories Craft", discipline: "Material Practice · Product Design", year: "Selected Works", statement: "Form, fabric and hand-finished detail", images: [accessoriesRedShoeHatSet, accessoriesShoeBagSet, accessoriesWhiteLaceFront], palette: { background: "#EFE7DC", foreground: "#2C2521", accent: "#A33B35", surface: "#D3C3B5" }, layout: "triptych" },
+  { id: "final-grays-novelties", title: "Gray's Novelties", discipline: "Product · Craft · Packaging", year: "Product Collection", statement: "Handmade objects with a unified identity", images: [noveltiesBrandIdentity, noveltiesBottleSet, noveltiesPackagingBranded, noveltiesKeyringCharacter, noveltiesKeyringLove, noveltiesKeyringRain, noveltiesKeyringMessage, noveltiesKeyringPhotography, noveltiesKeyringHearts, noveltiesKeyringCharacterPair, noveltiesKeyringZebra, noveltiesKeyringMkhonto], palette: { background: "#3B1927", foreground: "#FFF5EA", accent: "#EEA6AE", surface: "#612D41" }, layout: "triptych" },
+  { id: "final-drawing", title: "Drawing", discipline: "Portraiture · Mark Making", year: "Selected Studies", statement: "Line and tone as visual inquiry", images: [drawing05, drawingGraphitePortrait, drawingCharcoalPortrait], palette: { background: "#E9E3D8", foreground: "#24211E", accent: "#8A4C3C", surface: "#CDC4B8" }, layout: "triptych" },
+];
+
+function FinalOutputSlide({ project, index, total }: { project: FinalOutputProject; index: number; total: number }) {
+  const { palette, images } = project;
+  const imageStyle: React.CSSProperties = { width: "100%", height: "100%", objectFit: "contain", objectPosition: "center", display: "block" };
+  if (project.id === "final-grays-novelties") {
+    return <section style={{ width: PW, height: PH, boxSizing: "border-box", padding: 40, background: palette.background, color: palette.foreground, position: "relative", overflow: "hidden", fontFamily: Fb }}>
+      <div style={{ position: "absolute", inset: "0 auto 0 0", width: 10, background: palette.accent }} />
+      <header style={{ height: 86, display: "grid", gridTemplateColumns: "1fr auto", gap: 24 }}>
+        <div>
+          <div style={{ fontFamily: Fm, fontSize: 9.5, letterSpacing: 2.3, textTransform: "uppercase", color: palette.accent, marginBottom: 8 }}>{project.discipline}</div>
+          <h1 style={{ fontFamily: Fd, fontSize: 46, lineHeight: .9, letterSpacing: -1.4, margin: 0, fontWeight: 700 }}>{project.title}</h1>
+        </div>
+        <div style={{ textAlign: "right" }}>
+          <div style={{ fontFamily: Fm, fontSize: 8.5, letterSpacing: 1.7, color: palette.accent, marginBottom: 7 }}>12 OBJECTS · SINGLE COLLECTION</div>
+          <div style={{ fontSize: 11.5 }}>{project.year}</div>
+        </div>
+      </header>
+      <div style={{ height: 526, marginTop: 12, display: "grid", gridTemplateColumns: "repeat(4, 1fr)", gridTemplateRows: "repeat(3, 1fr)", gap: 8 }}>
+        {images.map((src, imageIndex) => (
+          <figure key={src} style={{ margin: 0, minWidth: 0, minHeight: 0, overflow: "hidden", position: "relative", background: imageIndex < 3 ? palette.surface : "#E8DED4" }}>
+            <img src={src} alt={`Gray's Novelties collection item ${imageIndex + 1}`} loading="eager" decoding="async" style={{ width: "100%", height: "100%", objectFit: imageIndex < 3 ? "cover" : "contain", objectPosition: "center", display: "block" }} />
+            <div style={{ position: "absolute", inset: 0, boxShadow: "inset 0 0 0 1px rgba(255,245,234,.14)", pointerEvents: "none" }} />
+          </figure>
+        ))}
+      </div>
+      <footer style={{ height: 64, display: "grid", gridTemplateColumns: "1fr auto", gap: 22, alignItems: "end" }}>
+        <div style={{ fontFamily: Fd, fontSize: 18, lineHeight: 1.15 }}>{project.statement}</div>
+        <div style={{ fontFamily: Fm, fontSize: 9, letterSpacing: 1.6, color: palette.accent }}>{String(index + 1).padStart(2, "0")} / {String(total).padStart(2, "0")}</div>
+      </footer>
+    </section>;
+  }
+  if (project.id === "final-qg-haute-apparel") {
+    return <section style={{ width: PW, height: PH, boxSizing: "border-box", padding: 42, background: palette.background, color: palette.foreground, position: "relative", overflow: "hidden", fontFamily: Fb }}>
+      <div style={{ position: "absolute", inset: "0 auto 0 0", width: 10, background: palette.accent }} />
+      <header style={{ height: 92, display: "grid", gridTemplateColumns: "1fr auto", gap: 24 }}>
+        <div>
+          <div style={{ fontFamily: Fm, fontSize: 10, letterSpacing: 2.4, textTransform: "uppercase", color: "#777173", marginBottom: 9 }}>{project.discipline}</div>
+          <h1 style={{ fontFamily: Fd, fontSize: 48, lineHeight: .9, letterSpacing: -1.5, margin: 0, fontWeight: 700 }}>{project.title}</h1>
+        </div>
+        <div style={{ textAlign: "right" }}>
+          <div style={{ fontFamily: Fm, fontSize: 9, letterSpacing: 1.8, color: "#777173", marginBottom: 7 }}>SINGLE PROJECT · GALLERY</div>
+          <div style={{ fontSize: 12 }}>{project.year}</div>
+        </div>
+      </header>
+      <div style={{ height: 522, marginTop: 14, display: "grid", gridTemplateColumns: "1.12fr repeat(3, 1fr)", gridTemplateRows: "1fr 1fr", gap: 9 }}>
+        {images.map((src, imageIndex) => (
+          <figure key={src} style={{ margin: 0, minWidth: 0, minHeight: 0, overflow: "hidden", position: "relative", background: imageIndex === 0 ? "#FFFFFF" : palette.surface, gridRow: imageIndex === 0 ? "1 / 3" : undefined }}>
+            <img src={src} alt={imageIndex === 0 ? "QG Haute Apparel identity mark" : `QG Haute Apparel project evidence ${imageIndex}`} loading="eager" decoding="sync" style={{ width: "100%", height: "100%", objectFit: imageIndex === 0 ? "contain" : "cover", objectPosition: imageIndex === 5 ? "center 46%" : "center", display: "block" }} />
+            <div style={{ position: "absolute", inset: 0, boxShadow: "inset 0 0 0 1px rgba(36,33,33,.12)", pointerEvents: "none" }} />
+          </figure>
+        ))}
+      </div>
+      <footer style={{ height: 70, display: "grid", gridTemplateColumns: "1fr auto", gap: 24, alignItems: "end" }}>
+        <div style={{ fontFamily: Fd, fontSize: 18, lineHeight: 1.2 }}>{project.statement}</div>
+        <div style={{ fontFamily: Fm, fontSize: 9, letterSpacing: 1.6, color: "#777173" }}>{String(index + 1).padStart(2, "0")} / {String(total).padStart(2, "0")}</div>
+      </footer>
+    </section>;
+  }
+  const hero = project.layout === "hero";
+  const editorial = project.layout === "editorial";
+  const posterRow = project.id === "final-ukuvuselela";
+  const luckyStarLayout = project.id === "final-lucky-star";
+  const paintingLayout = project.id === "final-painting";
+  const drawingLayout = project.id === "final-drawing";
+  const accessoriesLayout = project.id === "final-accessories";
+  const balancedRow = posterRow || luckyStarLayout || paintingLayout || drawingLayout || accessoriesLayout;
+  const artworkHeight = luckyStarLayout || paintingLayout || drawingLayout || accessoriesLayout ? 390 : 500;
+  const imagePresentationStyle = (imageIndex: number): React.CSSProperties => drawingLayout
+    ? { ...imageStyle, objectFit: "cover", objectPosition: ["center 28%", "center 18%", "center 20%"][imageIndex] }
+    : imageStyle;
+  return <section style={{ width: PW, height: PH, boxSizing: "border-box", padding: 48, background: palette.background, color: palette.foreground, position: "relative", overflow: "hidden", fontFamily: Fb }}>
+    <div style={{ position: "absolute", left: 0, top: 0, bottom: 0, width: 10, background: palette.accent }} />
+    <header style={{ height: 92, display: "grid", gridTemplateColumns: "1fr auto", alignItems: "start", gap: 24 }}>
+      <div>
+        <div style={{ fontFamily: Fm, fontSize: 10, letterSpacing: 2.4, textTransform: "uppercase", color: palette.accent, marginBottom: 10 }}>{project.discipline}</div>
+        <h1 style={{ fontFamily: Fd, fontSize: project.title.length > 18 ? 43 : 54, lineHeight: .9, letterSpacing: -1.6, margin: 0, fontWeight: 700 }}>{project.title}</h1>
+      </div>
+      <div style={{ textAlign: "right" }}>
+        <div style={{ fontFamily: Fm, fontSize: 9, letterSpacing: 1.8, color: palette.accent, marginBottom: 7 }}>FINAL OUTPUT</div>
+        <div style={{ fontSize: 12, lineHeight: 1.25 }}>{project.year}</div>
+      </div>
+    </header>
+    <div style={{ height: artworkHeight, marginTop: 18, display: "grid", gridTemplateColumns: images.length === 1 ? "1fr" : balancedRow ? "1fr 2fr" : hero ? "1.55fr .75fr" : editorial ? "1.25fr .75fr" : "1.35fr .65fr", gap: 14 }}>
+      <figure style={{ margin: 0, minWidth: 0, overflow: "hidden", background: palette.surface, position: "relative" }}>
+        <img src={images[0]} alt={`${project.title} final output`} style={imagePresentationStyle(0)} />
+        <div style={{ position: "absolute", inset: 0, boxShadow: "inset 0 0 0 1px rgba(255,255,255,.12)" }} />
+      </figure>
+      {images.length > 1 && <div style={{ display: "grid", gridTemplateRows: balancedRow ? "1fr" : images.length > 2 ? "1fr 1fr" : "1fr", gridTemplateColumns: balancedRow ? "1fr 1fr" : "1fr", gap: 14, minWidth: 0 }}>
+        {images.slice(1, 3).map((src, imageIndex) => <figure key={src} style={{ margin: 0, minHeight: 0, overflow: "hidden", background: palette.surface, position: "relative" }}>
+          <img src={src} alt={`${project.title} supporting final ${imageIndex + 2}`} style={imagePresentationStyle(imageIndex + 1)} />
+          <div style={{ position: "absolute", inset: 0, boxShadow: "inset 0 0 0 1px rgba(255,255,255,.12)" }} />
+        </figure>)}
+      </div>}
+    </div>
+    <footer style={{ height: 64, display: "grid", gridTemplateColumns: "1fr auto", gap: 22, alignItems: "end" }}>
+      <div style={{ fontFamily: Fd, fontSize: 19, lineHeight: 1.15 }}>{project.statement}</div>
+      <div style={{ fontFamily: Fm, fontSize: 9, letterSpacing: 1.6, color: palette.accent }}>{String(index + 1).padStart(2, "0")} / {String(total).padStart(2, "0")}</div>
+    </footer>
+  </section>;
+}
+
+const grayciousPortfolioProject = FINAL_OUTPUT_PROJECTS.find(project => project.id === "final-graycious")!;
+const galleryProjects = FINAL_OUTPUT_PROJECTS.filter(project => project.id !== "final-graycious");
+const GALLERY_SLIDE_180_INSERTION = Math.max(0, galleryProjects.length - 4);
+const galleryProjectPages: DisplayPage[] = galleryProjects.map((project, index, projects) => ({
+  id: project.id,
+  title: project.title,
+  section: "Gallery",
+  render: () => <FinalOutputSlide project={project} index={index >= GALLERY_SLIDE_180_INSERTION ? index + 1 : index} total={projects.length + 1} />,
+}));
+
+const gallerySlide180Data = (editableKeynoteSlides as Record<string, EditableSlideData>)["180"];
+const gallerySlide180Page: DisplayPage = {
+  id: "gallery-keynote-180",
+  title: "Personal Brand Portfolio Gallery",
+  section: "Gallery",
+  render: () => <EditableTextSlidePage slideNumber={180} section="GALLERY · PERSONAL BRAND" data={gallerySlide180Data} />,
+};
+
+const FINAL_OUTPUT_PAGES: DisplayPage[] = [
+  ...galleryProjectPages.slice(0, GALLERY_SLIDE_180_INSERTION),
+  gallerySlide180Page,
+  ...galleryProjectPages.slice(GALLERY_SLIDE_180_INSERTION),
+];
+
+const grayciousPortfolioPage: DisplayPage = {
+  id: "portfolio-graycious-after-176",
+  title: "Graycious Photography",
+  section: "Part 03 — Branding",
+  render: () => <FinalOutputSlide project={grayciousPortfolioProject} index={176} total={194} />,
+};
+
+const SUPPLEMENT_PAGE_IDS = new Set([
+  "artwork-integration-index",
+  "branding-timeline-graycious",
+  "gold-rush-cover",
+  "gold-rush-profile",
+  "gold-rush-impact",
+  "painting-gallery",
+  "painting-process",
+  "drawing-portraits",
+  "drawing-development",
+  "drawing-line-charcoal",
+  "drawing-motion",
+  "accessories-gallery",
+  "accessories-process",
+  "accessories-novelties-consolidated",
+  "textile-profile-blanket",
+  "drawing-lucky-star-fire-can",
+  "lucky-star-3d-campaign-gallery",
+]);
+
+const HIDDEN_PUBLIC_KEYNOTE_SLIDES = new Set([29]);
+
+const keynoteTitleForSlide = (data: EditableSlideData | undefined, slideNumber: number) => {
+  if (!data) return `Keynote Slide ${slideNumber}`;
+
+  const blocked = new Set([
+    "RPL PORTFOLIO",
+    "VOL. 1",
+    "VOL. 1 — 2026",
+    "RECOGNITION OF PRIOR LEARNING",
+    "GRAPHIC DESIGN PORTFOLIO",
+  ]);
+
+  const candidate = data.items
+    .filter(item => item.kind === "text" && item.text?.trim())
+    .map(item => ({
+      text: item.text!.replace(/\s+/g, " ").trim(),
+      score: (item.fontSize || 0) + item.w * 0.16 + item.h * 0.42,
+    }))
+    .filter(item => item.text.length >= 3 && item.text.length <= 96 && !blocked.has(item.text.toUpperCase()))
+    .sort((a, b) => b.score - a.score)[0]?.text;
+
+  return candidate || `Keynote Slide ${slideNumber}`;
+};
+
 const buildDisplayPages = (pdfPages: PdfPage[]): DisplayPage[] => {
   const pages: DisplayPage[] = [];
   const placed = new Set<string>();
@@ -3423,7 +4107,7 @@ const buildDisplayPages = (pdfPages: PdfPage[]): DisplayPage[] => {
     const isKeynote = pdf.kind === "Keynote";
     const slideNumber = Number(pdf.id.split("-").pop()) || 1;
     const editableData = (editableKeynoteSlides as Record<string, EditableSlideData>)[String(slideNumber)];
-    const displayTitle = isKeynote ? `Portfolio Slide ${slideNumber}` : pdf.title;
+    const displayTitle = isKeynote && slideNumber === 10 ? "Professional Reach" : isKeynote ? keynoteTitleForSlide(editableData, slideNumber) : pdf.title;
     return {
       id: pdf.id,
       title: displayTitle,
@@ -3431,6 +4115,9 @@ const buildDisplayPages = (pdfPages: PdfPage[]): DisplayPage[] => {
       pdfId: isKeynote ? undefined : pdf.id,
       isImported: !isKeynote,
       render: () => isKeynote
+        && slideNumber === 10
+        ? <ProfessionalReachPage />
+        : isKeynote
         ? editableData
           ? <EditableTextSlidePage slideNumber={slideNumber} section={pdf.section} data={editableData} />
           : <KeynoteSlidePage dataUrl={pdf.dataUrl} title={displayTitle} section={pdf.section} slideNumber={slideNumber} />
@@ -3452,7 +4139,11 @@ const buildDisplayPages = (pdfPages: PdfPage[]): DisplayPage[] => {
       seenSlides.add(slideNumber);
       return [asDisplayPage(pdf)];
     });
-    return [...originalPages, ...PAGES.filter(page => page.id.startsWith("gold-rush-") || page.id.startsWith("painting-") || page.id.startsWith("drawing-") || page.id.startsWith("accessories-") || page.id.startsWith("branding-timeline-"))];
+    const slide176Index = originalPages.findIndex(page => page.id === "keynote-176");
+    const portfolioPages = slide176Index >= 0
+      ? [...originalPages.slice(0, slide176Index + 1), grayciousPortfolioPage, ...originalPages.slice(slide176Index + 1)]
+      : originalPages;
+    return [...portfolioPages, ...PAGES.filter(page => SUPPLEMENT_PAGE_IDS.has(page.id))];
   }
 
   // Keep each Keynote-informed campaign slide intact, but gather the related
@@ -3494,22 +4185,21 @@ const buildDisplayPages = (pdfPages: PdfPage[]): DisplayPage[] => {
 };
 
 const PAGES: PageEntry[] = [
+  { id: "artwork-integration-index", title: "Artwork Integration — Premium Index", section: "Artwork Integration Supplement", render: () => <ArtworkIntegrationIndex /> },
   { id: "branding-timeline-graycious", title: "Branding Timeline — Graycious Photography", section: "Part 03 — Branding", render: () => <GrayciousBrandingTimelinePage /> },
   { id: "accessories-gallery", title: "Accessories Craft — Selected Works", section: "Part 03 — Accessories Craft", render: () => <AccessoriesCraftGalleryPage /> },
   { id: "accessories-process", title: "Accessories Craft — Process", section: "Part 03 — Accessories Craft", render: () => <AccessoriesCraftProcessPage /> },
-  { id: "accessories-novelties-objects", title: "Gray's Novelties — Decorative Objects", section: "Part 03 — Accessories Craft", render: () => <NoveltiesObjectsPage /> },
-  { id: "accessories-novelties-keyrings", title: "Gray's Novelties — Keyring Series", section: "Part 03 — Accessories Craft", render: () => <NoveltiesKeyringsPage /> },
-  { id: "accessories-novelties-packaging", title: "Gray's Novelties — Packaging", section: "Part 03 — Accessories Craft", render: () => <NoveltiesPackagingPage /> },
-  { id: "accessories-novelties-raffia-process", title: "Gray's Novelties — Raffia Process", section: "Part 03 — Accessories Craft", render: () => <NoveltiesRaffiaProcessPage /> },
+  { id: "accessories-novelties-consolidated", title: "Gray's Novelties — Consolidated Product System", section: "Part 03 — Accessories Craft", render: () => <NoveltiesConsolidatedPage /> },
+  { id: "textile-profile-blanket", title: "Textile Design — Abstract Profile Blanket", section: "Part 03 — Textile Design", render: () => <ImageEvidencePage src={textileProfileBlanketMockup} title="Abstract Profile Blanket" section="PART THREE · TEXTILE DESIGN" page="TEXTILE · 01" caption="Finished textile mockup applying an abstract dual-profile composition in pink and deep purple across a soft blanket surface." label="Textile Design" category="Surface Pattern Application" evidence="Abstract portrait composition, textile surface design, two-colour graphic system, scale application, fabric mockup, and finished product presentation." accent="#E65BAE" /> },
   { id: "drawing-portraits", title: "Drawing Gallery — Portrait Studies", section: "Part 03 — Drawing", render: () => <DrawingGallerySlide title="Portrait Studies" subtitle="Rapid and sustained portrait drawings use coloured pencil and oil pastel to test proportion, expression, contour and likeness." page="DRAWING · 01" works={[{src:drawing01,label:"Crayon portrait study"},{src:drawing02,label:"Tonal portrait study"},{src:drawing03,label:"Observed portrait"},{src:drawing04,label:"Colour portrait"},{src:drawing05,label:"Completed colour study"},{src:drawing13,label:"Expressive portrait"}]} /> },
   { id: "drawing-development", title: "Drawing Gallery — Colour Development", section: "Part 03 — Drawing", render: () => <DrawingGallerySlide title="Colour & Character" subtitle="Layered colour is used structurally: cool construction lines establish form before warmer hues develop volume, personality and visual emphasis." page="DRAWING · 02" accent={c.brown} works={[{src:drawing06,label:"Blue construction"},{src:drawing07,label:"Early colour block-in"},{src:drawing08,label:"Tonal build-up"},{src:drawing09,label:"Resolved hat portrait"},{src:drawing11,label:"Dual portrait study"},{src:drawing12,label:"Colour development"}]} /> },
   { id: "drawing-line-charcoal", title: "Drawing Gallery — Line & Charcoal", section: "Part 03 — Drawing", render: () => <DrawingGallerySlide title="Line, Gesture & Charcoal" subtitle="These studies shift between economical contour, expressive coloured line and dense charcoal, showing range across controlled observation and more instinctive mark-making." page="DRAWING · 03" accent={c.olive} works={[{src:drawing10,label:"Facial structure"},{src:drawing14,label:"Charcoal figure"},{src:drawing15,label:"Charcoal study"},{src:drawing16,label:"Recent drawing study"},{src:drawingGraphitePortrait,label:"Graphite portrait construction"},{src:drawingCharcoalPortrait,label:"Charcoal tonal portrait"}]} /> },
   { id: "drawing-motion", title: "Drawing Gallery — Animated Process", section: "Part 03 — Drawing", render: () => <DrawingMotionSlide /> },
   { id: "painting-gallery", title: "Painting Gallery — Selected Works", section: "Part 03 — Painting", render: () => <PaintingGalleryPage /> },
   { id: "painting-process", title: "Painting Gallery — Portrait Process", section: "Part 03 — Painting", render: () => <PaintingProcessPage /> },
-  { id: "gold-rush-cover", title: "The Gold Rush — From Waste to Wealth", section: "Featured Case Study — The Gold Rush", render: () => <GoldRushCover /> },
-  { id: "gold-rush-profile", title: "The Gold Rush — Maker Profile", section: "Featured Case Study — The Gold Rush", render: () => <GoldRushProfile /> },
-  { id: "gold-rush-impact", title: "The Gold Rush — Product & Impact", section: "Featured Case Study — The Gold Rush", render: () => <GoldRushImpact /> },
+  { id: "gold-rush-cover", title: "Gauta Eteng — The Gold Rush · From Waste to Wealth", section: ART_DIRECTION_CAMPAIGNS, render: () => <GoldRushCover /> },
+  { id: "gold-rush-profile", title: "Gauta Eteng — The Gold Rush · Maker Profile", section: ART_DIRECTION_CAMPAIGNS, render: () => <GoldRushProfile /> },
+  { id: "gold-rush-impact", title: "Gauta Eteng — The Gold Rush · Product & Impact", section: ART_DIRECTION_CAMPAIGNS, render: () => <GoldRushImpact /> },
   // ── FRONT MATTER ─────────────────────────────────────────────────────────
   { id: "cover",      title: "Cover",                 section: "Front Matter", render: () => <Cover /> },
   { id: "title",      title: "Title Page",            section: "Front Matter", render: () => <TitlePage /> },
@@ -3559,8 +4249,8 @@ const PAGES: PageEntry[] = [
     render: () => <DisciplinePage title="Packaging Design" section="PART THREE · 02 PACKAGING DESIGN" page="P. 36" description="Packaging design practice encompasses consumer packaging, food packaging, sustainable packaging concepts, and high-fidelity product mock-ups. Work demonstrates ability to solve structural, visual, and commercial communication challenges simultaneously." subItems={["Consumer Packaging","Food Packaging","Sustainable Packaging","Structural Packaging","Product Mock-ups"]} imgUrl="https://images.unsplash.com/photo-1563013544-824ae1b704d3?w=600&h=700&fit=crop&auto=format" accent={c.olive} /> },
   { id: "gal-packaging","title": "Packaging Design — Gallery",    section: "Part 03 — Portfolio",
     render: () => <GalleryGrid title="Packaging Design" section="PART THREE · 02 PACKAGING DESIGN" page="P. 38" items={GALLERIES.packaging} accent={c.olive} /> },
-  { id: "impi-black-t-packaging", title: "Impi Black T Product Mockup", section: "Part 03 — Packaging Design",
-    render: () => <ImageEvidencePage src={impiBlackTPackagingImg} title="Impi Black T Product Mockup" section="PART THREE · 02 PACKAGING DESIGN" page="P. 39" caption="Black T-shirt merchandise mockup showing the Impi graphic applied as a high-contrast product surface, extending the visual identity into wearable packaging and retail presentation." label="Packaging Evidence" category="Merchandise Mockup" evidence="Product mockup, apparel packaging, brand extension, surface application, black-and-white graphic system, and retail-ready presentation." accent={c.olive} /> },
+  { id: "impi-black-t-packaging", title: "Menzi Impazamo — Impi Black T Product Mockup", section: "Part 03 — Packaging Design",
+    render: () => <ImageEvidencePage src={impiBlackTPackagingImg} title="Menzi Impazamo — Impi Black T" section="PART THREE · 02 PACKAGING DESIGN" page="P. 39" caption="Impi Black T merchandise mockup from the Menzi Impazamo project, showing the graphic applied as a high-contrast product surface and extending the project identity into wearable presentation." label="Menzi Impazamo Project" category="Merchandise Mockup" evidence="Menzi Impazamo, product mockup, apparel application, brand extension, black-and-white graphic system, and retail-ready presentation." accent={c.olive} /> },
   { id: "menzi-vinyl-sleeve-packaging", title: "Menzi Impazamo Vinyl Sleeve Packaging", section: "Part 03 — Packaging Design",
     render: () => <ImageEvidencePage src={menziVinylSleevePackagingImg} title="Menzi Impazamo Vinyl Sleeve Packaging" section="PART THREE · 02 PACKAGING DESIGN" page="P. 40" caption="Vinyl sleeve packaging artwork for Menzi Impazamo, combining track-list information, record imagery, monochrome texture, and bold red typographic contrast across the printed sleeve layout." label="Packaging Evidence" category="Vinyl Sleeve" evidence="Music packaging, vinyl sleeve design, cover typography, back-cover track listing, monochrome image treatment, print layout, and brand presentation." accent={c.olive} /> },
   { id: "menzi-impazamo-vinyl-packaging-poster", title: "Menzi Impazamo Vinyl Packaging Artwork", section: "Part 03 — Packaging Design",
@@ -3573,7 +4263,7 @@ const PAGES: PageEntry[] = [
     render: () => <PartOpener partNum="03.02" partTitle={"CD Cover\nDesign"} subtitle="Part Three — Portfolio" accent={c.olive} quote="Record label artwork demonstrates visual translation across format, mood, typography, image treatment, and packaging context." sections={["Record Label Cover","Music Packaging","Sleeve Layout","Cover Typography"]} /> },
 
   { id: "p3-editorial", title: "Editorial Design",                section: "Part 03 — Portfolio",
-    render: () => <DisciplinePage title="Editorial Design" section="PART THREE · 03 EDITORIAL DESIGN" page="P. 44" description="Editorial design practice spans magazine layouts, print publications, book design, grid systems, and publication systems. Key projects include Communication Arts magazine and Ghost in the Grid — a self-initiated typographic investigation." subItems={["Communication Arts","Ghost in the Grid","Magazine Design","Book Design","Publication Systems"]} imgUrl="https://images.unsplash.com/photo-1516979187457-637abb4f9353?w=600&h=700&fit=crop&auto=format" accent={c.brown} /> },
+    render: () => <DisciplinePage title="Editorial Design" section="PART THREE · 03 EDITORIAL DESIGN" page="P. 44" description="Editorial design practice spans magazine layouts, print publications, book design, grid systems, and publication systems. Key projects include Communication Arts magazine and First Things First." subItems={["Communication Arts","First Things First","Magazine Design","Book Design","Publication Systems"]} imgUrl="https://images.unsplash.com/photo-1516979187457-637abb4f9353?w=600&h=700&fit=crop&auto=format" accent={c.brown} /> },
   { id: "gal-editorial","title": "Editorial Design — Gallery",    section: "Part 03 — Portfolio",
     render: () => <GalleryGrid title="Editorial Design" section="PART THREE · 03 EDITORIAL DESIGN" page="P. 46" items={GALLERIES.editorial} accent={c.brown} /> },
   { id: "editorial-first-things-first", title: "First Things First 2020 Manifesto", section: "Part 03 — Editorial Design",
@@ -3582,7 +4272,7 @@ const PAGES: PageEntry[] = [
     render: () => <ImageEvidencePage src={editorialFoldedManifestoMockupImg} title="First Things First Folded Mockup" section="PART THREE · 03 EDITORIAL DESIGN" page="P. 48" caption="Folded brochure mockup showing the manifesto layout applied to a physical editorial format, demonstrating panel sequencing, typography, hierarchy, and print presentation." label="Editorial Mockup" category="Folded Brochure" evidence="Editorial mockup, folded print layout, typographic hierarchy, manifesto publication system, physical format testing, and print presentation." accent={c.brown} /> },
 
   { id: "p3-typography","title": "Typography",                    section: "Part 03 — Portfolio",
-    render: () => <DisciplinePage title="Typography" section="PART THREE · 04 TYPOGRAPHY" page="P. 52" description="Typography practice encompasses editorial typography, grid systems, publication design, and experimental typographic investigation. The Zulu Fractal display typeface demonstrates mastery of type design within an African-centred geometric framework." subItems={["Editorial Typography","Grid Systems","Publication Design","Experimental Typography","Zulu Fractal Typeface"]} imgUrl="https://images.unsplash.com/photo-1542744094-24638eff58bb?w=600&h=700&fit=crop&auto=format" /> },
+    render: () => <DisciplinePage title="Typography" section="PART THREE · 04 TYPOGRAPHY" page="P. 52" description="Typography practice encompasses type rules, editorial typography, grid systems, publication design, and experimental typographic investigation. Ghost in the Grid is a Type Rules project, while the Zulu Fractal display typeface demonstrates type design within an African-centred geometric framework." subItems={["Ghost in the Grid — Type Rules","Editorial Typography","Grid Systems","Experimental Typography","Zulu Fractal Typeface"]} imgUrl="https://images.unsplash.com/photo-1542744094-24638eff58bb?w=600&h=700&fit=crop&auto=format" /> },
   { id: "gal-typography","title": "Typography — Gallery",         section: "Part 03 — Portfolio",
     render: () => <GalleryGrid title="Typography" section="PART THREE · 04 TYPOGRAPHY" page="P. 54" items={GALLERIES.typography} accent={c.ochre} /> },
 
@@ -3600,6 +4290,7 @@ const PAGES: PageEntry[] = [
     render: () => <PosterSeriesPage images={[{ src: ukuvuselelaFractalPoster01, label: "Poster 01" }, { src: ukuvuselelaFractalPoster02, label: "Poster 02" }, { src: ukuvuselelaFractalPoster03, label: "Poster 03" }]} title="Ukuvuselela Fractal Poster Series" section="PART THREE · 05 POSTER DESIGN" page="P. 66" caption="Three-poster fractal design system for Ukuvuselela, exploring cultural pattern repetition, decay, renewal, and campaign identity through bold colour fields and modular symbolic geometry." label="Poster Series" category="Fractal Poster Design" evidence="Poster system, fractal pattern design, campaign typography, modular cultural symbol, colour variation, and visual identity extension." accent={c.olive} /> },
   { id: "ukuvuselela-group-concept", title: "Ukuvuselela — The Group Concept", section: "Part 03 — Poster Design", render: () => <UkuvuselelaGroupConceptPage /> },
   { id: "ukuvuselela-practice-change", title: "Ukuvuselela — The Project That Changed My Practice", section: "Part 03 — Poster Design", render: () => <UkuvuselelaPracticeChangePage /> },
+  { id: "ukuvuselela-design-drives-culture-research", title: "Ukuvuselela — Design Drives Culture Research", section: "Part 03 — Poster Design", render: () => <UkuvuselelaResearchReference /> },
   { id: "ukuvuselela-design-drives-culture-video", title: "Ukuvuselela — Design Drives Culture Video", section: "Part 03 — Poster Design",
     render: () => <FileReferencePage title="Ukuvuselela — Design Drives Culture Video" section="PART THREE · 05 POSTER DESIGN" page="P. 67" fileName="Ukuvuselela_ Group1_Design Drives Culture_10P.mp4" fileType="MP4 Campaign Source" caption="Campaign video source connected to the Ukuvuselela poster system. Kept as a source reference so the portfolio can document the motion/campaign context without bloating the printable poster spread." category="Poster Campaign Evidence" evidence="Campaign presentation video, poster system context, design culture narrative, motion-supported poster identity, and group project documentation." accent={c.olive} /> },
   { id: "uku-fractal-design-video", title: "Ukuvuselela Fractal Design Video", section: "Part 03 — Poster Design",
@@ -3692,10 +4383,8 @@ const PAGES: PageEntry[] = [
     render: () => <GalleryGrid title="Illustration" section="PART THREE · 08 ILLUSTRATION" page="P. 86" items={GALLERIES.illustration} accent={c.olive} /> },
   { id: "framed-net-abstract-illustration", title: "Framed Net Abstract Illustration", section: "Part 03 — Illustration",
     render: () => <ImageEvidencePage src={framedNetAbstractIllustrationImg} title="Framed Net Abstract Illustration" section="PART THREE · 08 ILLUSTRATION" page="P. 88" caption="Framed black-and-white abstract illustration using net-like texture, layered line movement, and gallery-style presentation as mixed-media visual evidence." label="Illustration Evidence" category="Mixed Media Illustration" evidence="Abstract illustration, framed artwork, net texture, monochrome composition, line movement, mixed-media presentation, and gallery mockup." accent={c.olive} /> },
-  { id: "drawing-lucky-star-fire-can", title: "Drawing — Lucky Star Fire Can", section: ART_DIRECTION_CAMPAIGNS,
-    render: () => <ImageEvidencePage src={drawingLuckyStarFireCanImg} title="Drawing — Lucky Star Fire Can" section="PART FOUR · ART DIRECTION · LUCKY STAR" page="P. 89" caption="Digital drawing study for the Lucky Star campaign, showing a fish emerging from a hot sauce can with flame, smoke, and expressive sketch marks." label="Art Direction Evidence" category="Digital Drawing" evidence="Digital illustration, campaign drawing, character concept, food packaging reference, flame effects, expressive mark making, and visual development." accent={c.olive} /> },
-  { id: "drawing-lucky-star-fire-study", title: "Drawing — Lucky Star Fire Study", section: ART_DIRECTION_CAMPAIGNS,
-    render: () => <ImageEvidencePage src={drawingLuckyStarFireStudyImg} title="Drawing — Lucky Star Fire Study" section="PART FOUR · ART DIRECTION · LUCKY STAR" page="P. 90" caption="Process drawing for the Lucky Star fire-can concept, testing composition, flame treatment, fish posture, and the relationship between product packaging and character illustration." label="Art Direction Evidence" category="Process Drawing" evidence="Concept drawing, visual development, campaign illustration process, character staging, packaging-to-image translation, and digital painting study." accent={c.olive} /> },
+  { id: "drawing-lucky-star-fire-can", title: "Lucky Star Campaign — Fire Can Drawings", section: ART_DIRECTION_CAMPAIGNS,
+    render: () => <DualImageEvidencePage leftSrc={drawingLuckyStarFireCanImg} rightSrc={drawingLuckyStarFireStudyImg} title="Lucky Star Campaign — Fire Can Drawings" section="PART FOUR · ART DIRECTION · LUCKY STAR" page="P. 89–90" caption="Paired drawing evidence for the Lucky Star fire-can campaign concept, showing the resolved fish-emerging-from-can visual beside the process study used to test flame treatment, fish posture, packaging cues, smoke and expressive mark-making." label="Lucky Star Campaign Evidence" category="Concept + Process Drawing" evidence="Lucky Star campaign concept, digital illustration, character development, process drawing, food packaging reference, flame effects, expressive mark making, visual development, and packaging-to-image translation." leftLabel="Resolved Concept" rightLabel="Process Study" accent={c.olive} /> },
 
   { id: "p3-digital",   title: "Digital Design",                  section: "Part 03 — Portfolio",
     render: () => <DisciplinePage title="Digital Design" section="PART THREE · 09 DIGITAL DESIGN" page="P. 92" description="Digital design practice spans UX/UI design, web design, responsive design, and interface concepts. The UX Pilot project demonstrates competency in user research, information architecture, wireframing, and prototyping for a mobile-first platform context." subItems={["UX/UI Design","Web Design","Responsive Design","Interface Concepts","User Research"]} imgUrl="https://images.unsplash.com/photo-1611532736597-de2d4265fba3?w=600&h=700&fit=crop&auto=format" accent={c.brown} /> },
@@ -3806,6 +4495,7 @@ const PAGES: PageEntry[] = [
 
   // ── BACK MATTER ───────────────────────────────────────────────────────────
   { id: "references",  title: "Reference List",              section: "Back Matter", render: () => <ReferenceList /> },
+  { id: "source-links", title: "Source Links",               section: "Back Matter", render: () => <SourceLinksReference /> },
   { id: "african-literature", title: "My Design Reading List", section: "Back Matter", render: () => <AfricanLiteratureResearch /> },
   { id: "rationale",   title: "Design Rationale",             section: "Back Matter", render: () => <DesignRationale /> },
   { id: "processidx",  title: "Process Index",                section: "Back Matter", render: () => <ProcessIndex /> },
@@ -3886,23 +4576,6 @@ const createScaffoldArtwork = (title: string, section: string, mode: "book" | "b
 
 interface KeynoteBox { id: string; text: string; x: number; y: number; w: number; h: number; fontSize: number; }
 type KeynoteEdits = Record<string, KeynoteBox[]>;
-type AutoLayoutDirection = "vertical" | "horizontal";
-type AutoLayoutAlign = "start" | "center" | "end" | "stretch";
-interface AutoLayoutSettings {
-  direction: AutoLayoutDirection;
-  align: AutoLayoutAlign;
-  gap: number;
-  padding: number;
-  frameWidth: number;
-}
-
-const DEFAULT_AUTO_LAYOUT: AutoLayoutSettings = {
-  direction: "vertical",
-  align: "start",
-  gap: 12,
-  padding: 24,
-  frameWidth: 360,
-};
 
 function KeynoteEditLayer({ pageId, boxes, editMode, onUpdate, onRemove }: {
   pageId: string;
@@ -3970,74 +4643,6 @@ function KeynoteEditLayer({ pageId, boxes, editMode, onUpdate, onRemove }: {
           </div>
         </div>
       ))}
-    </div>
-  );
-}
-
-function AutoLayoutPanel({ settings, boxCount, onChange, onApply }: {
-  settings: AutoLayoutSettings;
-  boxCount: number;
-  onChange: (patch: Partial<AutoLayoutSettings>) => void;
-  onApply: () => void;
-}) {
-  const inputStyle = {
-    height: 24,
-    border: `0.5px solid ${c.rule}`,
-    background: c.white,
-    color: c.ink,
-    fontFamily: Fm,
-    fontSize: 8,
-    padding: "0 7px",
-  };
-  const labelStyle = {
-    fontFamily: Fb,
-    fontSize: 7,
-    letterSpacing: "0.1em",
-    textTransform: "uppercase" as const,
-    color: c.mid,
-    marginBottom: 5,
-  };
-
-  return (
-    <div style={{ position: "absolute", top: 50, right: 18, zIndex: 20, width: 278, background: "rgba(250,250,250,0.96)", border: `0.5px solid ${c.rule}`, boxShadow: "0 12px 32px rgba(26,24,21,0.16)", padding: 12 }}>
-      <div style={{ display: "flex", alignItems: "baseline", justifyContent: "space-between", marginBottom: 10 }}>
-        <div style={{ fontFamily: Fd, fontSize: 17, color: c.ink }}>Auto Layout</div>
-        <div style={{ fontFamily: Fb, fontSize: 7, color: c.mid, letterSpacing: "0.1em", textTransform: "uppercase" as const }}>{boxCount} layers</div>
-      </div>
-      <div style={{ display: "grid", gridTemplateColumns: "1fr 1fr", gap: 8 }}>
-        <div>
-          <div style={labelStyle}>Direction</div>
-          <select value={settings.direction} onChange={e => onChange({ direction: e.currentTarget.value as AutoLayoutDirection })} style={{ ...inputStyle, width: "100%" }}>
-            <option value="vertical">Vertical</option>
-            <option value="horizontal">Horizontal</option>
-          </select>
-        </div>
-        <div>
-          <div style={labelStyle}>Align</div>
-          <select value={settings.align} onChange={e => onChange({ align: e.currentTarget.value as AutoLayoutAlign })} style={{ ...inputStyle, width: "100%" }}>
-            <option value="start">Start</option>
-            <option value="center">Center</option>
-            <option value="end">End</option>
-            <option value="stretch">Stretch</option>
-          </select>
-        </div>
-        <div>
-          <div style={labelStyle}>Gap</div>
-          <input type="number" min={0} max={96} value={settings.gap} onChange={e => onChange({ gap: Number(e.currentTarget.value) })} style={{ ...inputStyle, width: "100%" }} />
-        </div>
-        <div>
-          <div style={labelStyle}>Padding</div>
-          <input type="number" min={0} max={160} value={settings.padding} onChange={e => onChange({ padding: Number(e.currentTarget.value) })} style={{ ...inputStyle, width: "100%" }} />
-        </div>
-        <div style={{ gridColumn: "1 / span 2" }}>
-          <div style={labelStyle}>Frame Width</div>
-          <input type="range" min={180} max={760} step={10} value={settings.frameWidth} onChange={e => onChange({ frameWidth: Number(e.currentTarget.value) })} style={{ width: "100%" }} />
-          <div style={{ fontFamily: Fm, fontSize: 8, color: c.mid }}>{settings.frameWidth}px</div>
-        </div>
-      </div>
-      <button onClick={onApply} disabled={boxCount === 0} style={{ width: "100%", height: 28, marginTop: 10, background: boxCount === 0 ? c.grey : c.dark, color: boxCount === 0 ? c.mid : c.white, border: "none", cursor: boxCount === 0 ? "default" : "pointer", fontFamily: Fb, fontSize: 7.5, letterSpacing: "0.1em", textTransform: "uppercase" as const }}>
-        Apply to Current Page
-      </button>
     </div>
   );
 }
@@ -4199,22 +4804,115 @@ function CreatorPanel({ onCreate, onClose }: {
   );
 }
 
+function UkuvuselelaLandingPreview({ scale }: { scale: number }) {
+  return (
+    <div style={{ width: PW * scale, height: 430 * scale, marginTop: 24 * scale, position: "relative", flexShrink: 0 }}>
+      <section
+        aria-labelledby="ukuvuselela-landing-title"
+        style={{ width: PW, height: 430, position: "absolute", inset: 0, transform: `scale(${scale})`, transformOrigin: "top left", display: "grid", gridTemplateColumns: "348px 1fr", background: "#F7F5F1", color: c.ink, overflow: "hidden", boxShadow: "0 18px 55px rgba(26,24,21,.18)", border: `0.5px solid ${c.rule}` }}
+      >
+        <div style={{ padding: "42px 38px", display: "flex", flexDirection: "column", justifyContent: "space-between", borderRight: `0.5px solid ${c.rule}` }}>
+          <div>
+            <div style={{ fontFamily: Fm, fontSize: 9, letterSpacing: ".2em", color: c.ochre, textTransform: "uppercase" as const, marginBottom: 17 }}>Featured project · Communication design</div>
+            <h2 id="ukuvuselela-landing-title" style={{ fontFamily: Fd, fontSize: 43, fontWeight: 500, lineHeight: .9, letterSpacing: "-.035em", margin: "0 0 22px" }}>Ukuvuselela</h2>
+            <p style={{ fontFamily: Fd, fontSize: 17, lineHeight: 1.28, margin: "0 0 18px" }}>I investigate communication systems first and allow the appropriate visual system to emerge through research.</p>
+            <p style={{ fontFamily: Fb, fontSize: 10.5, lineHeight: 1.6, color: c.brown, margin: 0 }}>An African-centred poster system developed through fractal thinking, pattern, repetition and principles-led visual research.</p>
+          </div>
+          <div style={{ paddingTop: 16, borderTop: `0.5px solid ${c.rule}`, fontFamily: Fm, fontSize: 8.5, lineHeight: 1.55, letterSpacing: ".1em", textTransform: "uppercase" as const }}>AIDA 2026 Winner<br />2025 What IF Top 20 · DEFSA</div>
+        </div>
+        <figure style={{ margin: 0, padding: "28px 24px", display: "flex", alignItems: "center", justifyContent: "center", background: "#F1EEE8", overflow: "hidden" }}>
+          <img src={ukuvuselelaPosterTrioPlain} alt="Three Ukuvuselela poster designs presented together" loading="eager" decoding="sync" style={{ display: "block", width: "100%", height: "100%", objectFit: "contain", objectPosition: "center", filter: "drop-shadow(0 10px 18px rgba(28,23,18,.09))" }} />
+        </figure>
+      </section>
+    </div>
+  );
+}
+
+function UkuvuselelaCaseStudyPreview({ scale }: { scale: number }) {
+  const sections = [
+    ["Problem", "The challenge was to create a contemporary communication piece that could carry cultural memory without becoming decorative."],
+    ["Research", "The process investigated pattern, repetition, renewal, African visual systems and the expressive potential of motion from a static poster base."],
+    ["Insights", "A fractal structure allowed the work to communicate regeneration through both image logic and composition."],
+    ["Strategy", "Use disciplined repetition, high-contrast form and restrained colour movement to connect cultural symbolism with contemporary poster language."],
+    ["Final Outcome", "The project became a resolved poster and motion system recognised by the Africa International Design Awards."],
+    ["Reflection", "The award evidence strengthens professional credibility, but the design value sits in how research becomes form."],
+  ];
+  const skills = ["Poster design", "Motion design", "Cultural research", "Visual systems", "Professional presentation"];
+
+  return (
+    <div style={{ width: PW * scale, height: 610 * scale, marginTop: 24 * scale, position: "relative", flexShrink: 0 }}>
+      <section style={{ width: PW, height: 610, position: "absolute", inset: 0, transform: `scale(${scale})`, transformOrigin: "top left", display: "grid", gridTemplateColumns: "430px 1fr", background: "#F7F5F1", color: c.ink, overflow: "hidden", boxShadow: "0 18px 55px rgba(26,24,21,.18)", border: `0.5px solid ${c.rule}` }}>
+        <div style={{ padding: "32px 34px 28px", display: "flex", flexDirection: "column", minHeight: 0, borderRight: `0.5px solid ${c.rule}` }}>
+          <div style={{ fontFamily: Fm, fontSize: 9, letterSpacing: ".16em", color: c.ochre, textTransform: "uppercase" as const, marginBottom: 12 }}>02 · 2026 · Poster Design · Motion · Awarded Work</div>
+          <h2 style={{ fontFamily: Fd, fontSize: 39, fontWeight: 500, lineHeight: .94, letterSpacing: "-.03em", margin: "0 0 8px" }}>Ukuvuselela</h2>
+          <p style={{ fontFamily: Fd, fontSize: 15.5, lineHeight: 1.3, margin: "0 0 16px", color: c.brown }}>An awarded visual system using fractal structure, cultural renewal and poster rhythm.</p>
+          <div style={{ display: "grid", gridTemplateColumns: "1fr 1fr", gap: "11px 18px", minHeight: 0 }}>
+            {sections.map(([label, text]) => (
+              <div key={label} style={{ borderTop: `0.5px solid ${c.rule}`, paddingTop: 7 }}>
+                <div style={{ fontFamily: Fb, fontSize: 9.5, fontWeight: 700, color: c.ink, marginBottom: 3 }}>{label}</div>
+                <div style={{ fontFamily: Fb, fontSize: 8.7, lineHeight: 1.42, color: c.brown }}>{text}</div>
+              </div>
+            ))}
+          </div>
+          <div style={{ display: "flex", flexWrap: "wrap", gap: 6, marginTop: "auto", paddingTop: 14 }}>
+            {skills.map(skill => <span key={skill} style={{ padding: "5px 8px", border: `0.5px solid ${c.rule}`, background: c.white, fontFamily: Fm, fontSize: 7.5, letterSpacing: ".06em" }}>{skill}</span>)}
+          </div>
+        </div>
+        <figure style={{ margin: 0, padding: "38px 28px", display: "flex", alignItems: "center", justifyContent: "center", background: "#F1EEE8", overflow: "hidden" }}>
+          <img src={ukuvuselelaPosterTrioPlain} alt="Ukuvuselela poster and motion system: three-poster fractal series" loading="lazy" decoding="async" style={{ display: "block", width: "100%", height: "100%", objectFit: "contain", objectPosition: "center", filter: "drop-shadow(0 11px 20px rgba(28,23,18,.10))" }} />
+        </figure>
+      </section>
+    </div>
+  );
+}
+
+function BehanceLandingPreview({ scale }: { scale: number }) {
+  const projects = [
+    { title: "Gauta E Teng", image: gautaEtengGoldRushNewspaperOutput },
+    { title: "Ukuvuselela", image: ukuvuselelaFractalPoster01 },
+    { title: "Lucky Star", image: luckyStar3dCampaign03 },
+  ];
+
+  return (
+    <div style={{ width: PW * scale, height: 292 * scale, marginTop: 24 * scale, marginBottom: 28 * scale, position: "relative", flexShrink: 0 }}>
+      <a
+        href="https://www.behance.net/graymkhonto1"
+        target="_blank"
+        rel="noreferrer"
+        aria-label="View Gracious Gray Mkhonto's complete portfolio on Behance"
+        style={{ width: PW, height: 292, position: "absolute", inset: 0, transform: `scale(${scale})`, transformOrigin: "top left", display: "grid", gridTemplateColumns: "348px 1fr", background: c.dark, color: c.white, textDecoration: "none", overflow: "hidden", boxShadow: "0 18px 55px rgba(26,24,21,.24)" }}
+      >
+        <section style={{ padding: "34px 38px", display: "flex", flexDirection: "column", justifyContent: "space-between", borderRight: "1px solid rgba(250,250,250,.16)" }}>
+          <div>
+            <div style={{ fontFamily: Fm, fontSize: 10, letterSpacing: ".18em", color: c.ochre, marginBottom: 18 }}>EXTENDED PORTFOLIO · BEHANCE</div>
+            <h2 style={{ fontFamily: Fd, fontSize: 38, fontWeight: 500, lineHeight: .95, margin: "0 0 14px" }}>Continue exploring<br /><em style={{ color: c.ochre }}>the work.</em></h2>
+            <p style={{ fontFamily: Fb, fontSize: 12, lineHeight: 1.5, color: "rgba(250,250,250,.72)", margin: 0 }}>Gracious Gray Mkhonto · A Multifaceted Divergent creator · South Africa</p>
+          </div>
+          <span style={{ width: "fit-content", padding: "10px 14px", background: c.ochre, color: c.dark, fontFamily: Fb, fontSize: 10, fontWeight: 700, letterSpacing: ".12em", textTransform: "uppercase" as const }}>View Behance profile ↗</span>
+        </section>
+        <div style={{ display: "grid", gridTemplateColumns: "repeat(3, 1fr)", gap: 2, minWidth: 0 }}>
+          {projects.map(project => (
+            <figure key={project.title} style={{ margin: 0, position: "relative", overflow: "hidden", minWidth: 0 }}>
+              <img src={project.image} alt={`${project.title} project preview on Behance`} loading="lazy" decoding="async" style={{ width: "100%", height: "100%", objectFit: "cover" }} />
+              <figcaption style={{ position: "absolute", left: 0, right: 0, bottom: 0, padding: "34px 16px 14px", background: "linear-gradient(transparent,rgba(0,0,0,.82))", fontFamily: Fb, fontSize: 10, letterSpacing: ".1em", textTransform: "uppercase" as const }}>{project.title}</figcaption>
+            </figure>
+          ))}
+        </div>
+      </a>
+    </div>
+  );
+}
+
 // ─── Sidebar ─────────────────────────────────────────────────────────────────
-function Sidebar({ current, onSelect, total, displayPages, onAssetImport, pdfLoading, onRemovePdf, currentSection, viewOnly, uploadStatus }: {
+function Sidebar({ current, onSelect, total, displayPages, currentSection }: {
   current: number; onSelect: (i: number) => void; total: number;
-  displayPages: DisplayPage[]; onAssetImport: (file: File, section: string) => void;
-  pdfLoading: boolean; onRemovePdf: (id: string) => void; currentSection: string;
-  viewOnly: boolean; uploadStatus: string;
+  displayPages: DisplayPage[]; currentSection: string;
 }) {
   const sections = [...new Set(displayPages.map(p => p.section))];
-  const importSections = [...new Set(PAGES.map(p => p.section))];
-  const [importSection, setImportSection] = useState(currentSection);
   const [navQuery, setNavQuery] = useState("");
   const [openSections, setOpenSections] = useState<Set<string>>(() => new Set([currentSection]));
-  const fileRef = useRef<HTMLInputElement>(null);
 
   useEffect(() => {
-    if (importSections.includes(currentSection)) setImportSection(currentSection);
     setOpenSections(previous => {
       const next = new Set(previous);
       next.add(currentSection);
@@ -4275,11 +4973,6 @@ function Sidebar({ current, onSelect, total, displayPages, onAssetImport, pdfLoa
                     WebkitLineClamp: 2,
                     WebkitBoxOrient: "vertical" as const,
                   }}>{p.isImported ? `Asset · ${p.title}` : p.title}</button>
-                  {p.pdfId && !viewOnly && (
-                    <button onClick={() => onRemovePdf(p.pdfId!)} style={{ width: 22, height: 22, display: "flex", alignItems: "center", justifyContent: "center", background: "transparent", border: "none", cursor: "pointer", color: c.mid, flexShrink: 0, marginRight: 4 }}>
-                      <X size={10} />
-                    </button>
-                  )}
                 </div>
               ))}
             </div>
@@ -4288,38 +4981,10 @@ function Sidebar({ current, onSelect, total, displayPages, onAssetImport, pdfLoa
       </div>
 
       <div style={{ padding: "10px 16px", borderTop: `0.5px solid ${c.rule}` }}>
-        {!viewOnly && (
-          <>
-            <select
-              value={importSection}
-              onChange={e => setImportSection(e.target.value)}
-              style={{ width: "100%", height: 26, marginBottom: 7, background: c.white, border: `0.5px solid ${c.rule}`, color: c.ink, fontFamily: Fb, fontSize: 9, padding: "0 8px" }}
-            >
-              {importSections.map(sec => <option key={sec} value={sec}>{sec}</option>)}
-            </select>
-            <input ref={fileRef} type="file" accept="application/pdf,image/png,image/jpeg,image/webp" style={{ display: "none" }}
-              onChange={async e => {
-                const f = e.target.files?.[0]; if (!f) return;
-                e.target.value = "";
-                onAssetImport(f, importSection);
-              }} />
-            <button onClick={() => fileRef.current?.click()} disabled={pdfLoading}
-              style={{ display: "flex", alignItems: "center", gap: 5, width: "100%", height: 24, padding: "0 10px", background: pdfLoading ? c.grey : c.brown, border: "none", cursor: pdfLoading ? "default" : "pointer", color: pdfLoading ? c.mid : c.white, fontFamily: Fb, fontSize: 7.5, letterSpacing: "0.1em", textTransform: "uppercase" as const, marginBottom: 7 }}>
-              <FileUp size={9} />
-              {pdfLoading ? "Loading…" : "Upload Asset"}
-            </button>
-            <div style={{ display: "flex", gap: 6, alignItems: "flex-start", fontFamily: Fb, fontSize: 7.2, lineHeight: 1.35, color: uploadStatus.includes("Blocked") ? "#9F2D20" : c.mid, marginBottom: 7 }}>
-              <ShieldCheck size={10} style={{ flexShrink: 0, marginTop: 1 }} />
-              <span>{uploadStatus || "Safe upload: PDF, PNG, JPG, and WebP only. Risky PowerPoint, macro, script, SVG, archive, and installer files are blocked."}</span>
-            </div>
-          </>
-        )}
-        {viewOnly && (
-          <div style={{ display: "flex", gap: 6, alignItems: "flex-start", fontFamily: Fb, fontSize: 7.2, lineHeight: 1.35, color: c.mid, marginBottom: 7 }}>
-            <Eye size={10} style={{ flexShrink: 0, marginTop: 1 }} />
-            <span>View-only link. Editing, uploading, deleting, and exporting are hidden in this mode.</span>
-          </div>
-        )}
+        <div style={{ display: "flex", gap: 6, alignItems: "flex-start", fontFamily: Fb, fontSize: 7.2, lineHeight: 1.35, color: c.mid, marginBottom: 7 }}>
+          <Eye size={10} style={{ flexShrink: 0, marginTop: 1 }} />
+          <span>Assessment view · curated RPL evidence archive · research, process and final outcomes.</span>
+        </div>
         <div style={{ fontFamily: Fb, fontSize: 7, color: c.mid, marginBottom: 4 }}>Slide {current + 1} of {total}</div>
         <div style={{ height: 1.5, background: c.rule }}>
           <div style={{ height: "100%", width: `${((current + 1) / total) * 100}%`, background: c.ochre, transition: "width 0.3s" }} />
@@ -4339,6 +5004,7 @@ export default function App() {
     Object.keys(editableKeynoteSlides)
       .map(Number)
       .sort((a, b) => a - b)
+      .filter(slideNumber => !HIDDEN_PUBLIC_KEYNOTE_SLIDES.has(slideNumber))
       .map(slideNumber => ({
         id: `keynote-${slideNumber}`,
         title: `Portfolio Slide ${slideNumber}`,
@@ -4356,6 +5022,8 @@ export default function App() {
   const [imagePrompt, setImagePrompt] = useState("");
   const [keynoteMode, setKeynoteMode] = useState(false);
   const [flipbookMode, setFlipbookMode] = useState(false);
+  const [finalOutputsMode, setFinalOutputsMode] = useState(false);
+  const [researchMode, setResearchMode] = useState(false);
   const [creatorOpen, setCreatorOpen] = useState(false);
   const [shareStatus, setShareStatus] = useState("");
   const [uploadStatus, setUploadStatus] = useState("");
@@ -4367,18 +5035,21 @@ export default function App() {
       return {};
     }
   });
-  const [autoLayoutOpen, setAutoLayoutOpen] = useState(false);
-  const [autoLayoutSettings, setAutoLayoutSettings] = useState<AutoLayoutSettings>(() => {
-    try {
-      return { ...DEFAULT_AUTO_LAYOUT, ...JSON.parse(localStorage.getItem("qg-auto-layout") || "{}") };
-    } catch {
-      return DEFAULT_AUTO_LAYOUT;
-    }
-  });
   const containerRef = useRef<HTMLDivElement>(null);
   const stageRef = useRef<HTMLDivElement>(null);
   const displayPages = buildDisplayPages(pdfPages);
-  const totalPages = displayPages.length;
+  const accessiblePortfolioPages = viewOnly
+    ? displayPages
+    : displayPages.filter(page => page.id !== "p1-profile");
+  const researchPages = accessiblePortfolioPages.filter(page => {
+    const searchable = `${page.section} ${page.title}`.toLowerCase();
+    return searchable.includes("research")
+      || searchable.includes("academic writing")
+      || searchable.includes("design reading")
+      || page.id === "processidx";
+  });
+  const viewerPages = researchMode ? researchPages : finalOutputsMode ? FINAL_OUTPUT_PAGES : accessiblePortfolioPages;
+  const totalPages = viewerPages.length;
 
   useEffect(() => {
     const el = document.createElement("style"); el.textContent = PRINT_CSS;
@@ -4415,7 +5086,6 @@ export default function App() {
     if (viewOnly) return;
     localStorage.setItem("qg-auto-layout", JSON.stringify(autoLayoutSettings));
   }, [autoLayoutSettings, viewOnly]);
-
   // ── Auto-load all uploaded PDFs as artwork slides on mount ─────────────────
   useEffect(() => {
     if (artworkLoaded) return;
@@ -4474,13 +5144,16 @@ export default function App() {
       const availableWidth = width - parseFloat(stageStyles.paddingLeft) - parseFloat(stageStyles.paddingRight);
       const availableHeight = height - parseFloat(stageStyles.paddingTop) - parseFloat(stageStyles.paddingBottom);
       const presentationWidth = flipbookMode ? PW * 2 + 24 : PW;
-      setScale(Math.max(0.18, Math.min(availableWidth / presentationWidth, availableHeight / PH, 1)));
+      const compactViewer = window.matchMedia("(max-width: 980px)").matches;
+      const widthScale = availableWidth / presentationWidth;
+      const heightScale = availableHeight / PH;
+      setScale(Math.max(0.18, Math.min(widthScale, compactViewer ? 1 : heightScale, 1)));
     };
     update();
     const ro = new ResizeObserver(update);
     if (stageRef.current) ro.observe(stageRef.current);
     return () => ro.disconnect();
-  }, [flipbookMode]);
+  }, [flipbookMode, finalOutputsMode, researchMode]);
 
   const goToIdx = (i: number) => { setVisible(false); setTimeout(() => { setCurrent(i); setVisible(true); }, 140); };
   const go = (dir: number) => { const n = Math.max(0, Math.min(totalPages - 1, current + dir)); if (n !== current) goToIdx(n); };
@@ -4490,8 +5163,8 @@ export default function App() {
     const h = (e: KeyboardEvent) => {
       const target = e.target as HTMLElement | null;
       if (target?.matches("input, textarea, select, [contenteditable='true']")) return;
-      if (e.key === "ArrowRight" || e.key === "ArrowDown") go(1);
-      if (e.key === "ArrowLeft"  || e.key === "ArrowUp")   go(-1);
+      if (e.key === "ArrowRight") go(1);
+      if (e.key === "ArrowLeft") go(-1);
       if (e.key === "Home") goTo(0);
       if (e.key === "End") goTo(totalPages - 1);
     };
@@ -4600,9 +5273,20 @@ export default function App() {
     );
   };
 
-  const activePage = displayPages[current] || displayPages[0];
+  const activePage = viewerPages[current] || viewerPages[0];
   const label = activePage ? `${activePage.section} · ${activePage.title}` : "";
-  const spreadPages = flipbookMode ? ([activePage, displayPages[current + 1]].filter(Boolean) as DisplayPage[]) : [];
+  const spreadPages = flipbookMode ? ([activePage, viewerPages[current + 1]].filter(Boolean) as DisplayPage[]) : [];
+
+  const setViewerMode = (mode: "portfolio" | "final-outputs" | "research") => {
+    setVisible(false);
+    window.setTimeout(() => {
+      setFinalOutputsMode(mode === "final-outputs");
+      setResearchMode(mode === "research");
+      setFlipbookMode(false);
+      setCurrent(0);
+      setVisible(true);
+    }, 140);
+  };
 
   const handleShareLink = async () => {
     const url = new URL(window.location.href);
@@ -4804,44 +5488,6 @@ export default function App() {
     setKeynoteMode(true);
   };
 
-  const applyAutoLayout = () => {
-    if (!activePage) return;
-    const currentBoxes = keynoteEdits[activePage.id] || [];
-    if (!currentBoxes.length) return;
-
-    const { direction, align, gap, padding, frameWidth } = autoLayoutSettings;
-    const sorted = [...currentBoxes].sort((a, b) => direction === "vertical" ? a.y - b.y || a.x - b.x : a.x - b.x || a.y - b.y);
-    const startX = Math.max(0, Math.min(PW - frameWidth - padding, padding));
-    const startY = padding;
-    const frameInnerWidth = Math.max(80, frameWidth - padding * 2);
-    let cursor = direction === "vertical" ? startY : startX;
-
-    const arranged = sorted.map(box => {
-      const next: KeynoteBox = { ...box };
-      if (direction === "vertical") {
-        const width = align === "stretch" ? frameInnerWidth : Math.min(box.w, frameInnerWidth);
-        next.w = width;
-        next.x = align === "center" ? startX + padding + (frameInnerWidth - width) / 2 :
-          align === "end" ? startX + padding + frameInnerWidth - width :
-          startX + padding;
-        next.y = cursor;
-        cursor += Math.max(box.h, 32) + gap;
-      } else {
-        next.x = cursor;
-        next.y = align === "center" ? (PH - Math.max(box.h, 32)) / 2 :
-          align === "end" ? PH - padding - Math.max(box.h, 32) :
-          startY;
-        if (align === "stretch") next.h = Math.max(box.h, PH - padding * 2);
-        cursor += box.w + gap;
-      }
-      next.x = Math.max(0, Math.min(PW - next.w, next.x));
-      next.y = Math.max(0, Math.min(PH - Math.max(next.h, 32), next.y));
-      return next;
-    });
-
-    setKeynoteEdits(prev => ({ ...prev, [activePage.id]: arranged }));
-  };
-
   const renderPageWithKeynote = (page: DisplayPage, editable: boolean) => (
     <div className="portfolio-page-shell" data-page-id={page.id} data-page-section={page.section} style={{ width: PW, height: PH, position: "relative", overflow: "hidden" }}>
       {page.render()}
@@ -4859,39 +5505,21 @@ export default function App() {
     <>
       <div id="rpl-print-container">
         {printing && <>
-          {displayPages.map(p => (<div key={p.id} style={{ width: PW, height: PH, overflow: "hidden", pageBreakAfter: "always", breakAfter: "page" }}>{renderPageWithKeynote(p, false)}</div>))}
+          {viewerPages.map(p => (<div key={p.id} style={{ width: PW, height: PH, overflow: "hidden", pageBreakAfter: "always", breakAfter: "page" }}>{renderPageWithKeynote(p, false)}</div>))}
         </>}
       </div>
 
-      <main id="main-content" tabIndex={-1} style={{ display: "flex", height: "100vh", width: "100vw", background: "#D4D0CA", overflow: "hidden" }}>
-        <Sidebar current={current} onSelect={goTo} total={totalPages} displayPages={displayPages} onAssetImport={handleAssetImport} pdfLoading={pdfLoading} onRemovePdf={handleRemovePdf} currentSection={activePage?.section || "Part 03 — Portfolio"} viewOnly={viewOnly} uploadStatus={uploadStatus} />
-        <div ref={containerRef} style={{ flex: 1, minWidth: 0, display: "flex", flexDirection: "column", overflow: "hidden" }}>
-          <div style={{ minHeight: 42, background: c.bg, borderBottom: `0.5px solid ${c.rule}`, display: "flex", alignItems: "center", justifyContent: "space-between", gap: 14, padding: "7px 18px", flexShrink: 0 }}>
-            <span title={viewOnly ? `VIEW ONLY · ${label}` : label} style={{ flex: "1 1 auto", minWidth: 120, maxWidth: "min(44vw, 560px)", overflow: "hidden", textOverflow: "ellipsis", whiteSpace: "nowrap" as const, fontFamily: Fb, fontSize: 7.5, letterSpacing: "0.1em", textTransform: "uppercase" as const, color: c.mid }}>{viewOnly ? `VIEW ONLY · ${label}` : label}</span>
-            <div style={{ flex: "0 1 auto", minWidth: 0, display: "flex", gap: 5, alignItems: "center", justifyContent: "flex-end", overflowX: "auto", overflowY: "hidden", paddingBottom: 1 }}>
-              {!viewOnly && (
-                <>
-                  <button onClick={() => setKeynoteMode(v => !v)} style={{ display: "flex", alignItems: "center", gap: 5, height: 24, padding: "0 10px", background: keynoteMode ? c.ochre : c.brown, border: "none", cursor: "pointer", color: c.white, fontFamily: Fb, fontSize: 7.5, letterSpacing: "0.1em", textTransform: "uppercase" as const }}>
-                    <Pencil size={9} />Keynote
-                  </button>
-                  {keynoteMode && (
-                    <>
-                      <button onClick={addKeynoteBox} style={{ display: "flex", alignItems: "center", gap: 5, height: 24, padding: "0 10px", background: c.white, border: `0.5px solid ${c.rule}`, cursor: "pointer", color: c.ink, fontFamily: Fb, fontSize: 7.5, letterSpacing: "0.1em", textTransform: "uppercase" as const }}>
-                        <Plus size={9} />Text
-                      </button>
-                      <button onClick={reapplyTemplate} style={{ display: "flex", alignItems: "center", gap: 5, height: 24, padding: "0 10px", background: c.white, border: `0.5px solid ${c.rule}`, cursor: "pointer", color: c.ink, fontFamily: Fb, fontSize: 7.5, letterSpacing: "0.1em", textTransform: "uppercase" as const }}>
-                        Template
-                      </button>
-                      <button onClick={() => setAutoLayoutOpen(v => !v)} style={{ display: "flex", alignItems: "center", gap: 5, height: 24, padding: "0 10px", background: autoLayoutOpen ? c.dark : c.white, border: `0.5px solid ${autoLayoutOpen ? c.dark : c.rule}`, cursor: "pointer", color: autoLayoutOpen ? c.white : c.ink, fontFamily: Fb, fontSize: 7.5, letterSpacing: "0.1em", textTransform: "uppercase" as const }}>
-                        Auto Layout
-                      </button>
-                    </>
-                  )}
-                  <button onClick={() => setCreatorOpen(v => !v)} style={{ display: "flex", alignItems: "center", gap: 5, height: 24, padding: "0 10px", background: creatorOpen ? c.ochre : c.white, border: `0.5px solid ${creatorOpen ? c.ochre : c.rule}`, cursor: "pointer", color: creatorOpen ? c.white : c.ink, fontFamily: Fb, fontSize: 7.5, letterSpacing: "0.1em", textTransform: "uppercase" as const }}>
-                    <LayoutTemplate size={9} />Create
-                  </button>
-                </>
-              )}
+      <main id="main-content" className="portfolio-viewer" tabIndex={-1} style={{ display: "flex", height: "100dvh", minHeight: "100vh", width: "100vw", background: "#D4D0CA", overflow: "hidden" }}>
+        <Sidebar current={current} onSelect={goTo} total={totalPages} displayPages={viewerPages} currentSection={activePage?.section || "Part 03 — Portfolio"} />
+        <div ref={containerRef} className="portfolio-workspace" style={{ flex: 1, minWidth: 0, display: "flex", flexDirection: "column", overflow: "hidden" }}>
+          <div className="portfolio-toolbar" style={{ minHeight: 42, background: c.bg, borderBottom: `0.5px solid ${c.rule}`, display: "flex", alignItems: "center", justifyContent: "space-between", gap: 14, padding: "7px 18px", flexShrink: 0 }}>
+            <span className="portfolio-toolbar-label" title={viewOnly ? `VIEW ONLY · ${label}` : label} style={{ flex: "1 1 auto", minWidth: 120, maxWidth: "min(44vw, 560px)", overflow: "hidden", textOverflow: "ellipsis", whiteSpace: "nowrap" as const, fontFamily: Fb, fontSize: 7.5, letterSpacing: "0.1em", textTransform: "uppercase" as const, color: c.mid }}>{viewOnly ? `VIEW ONLY · ${label}` : label}</span>
+            <div className="portfolio-toolbar-actions" style={{ flex: "0 1 auto", minWidth: 0, display: "flex", gap: 5, alignItems: "center", justifyContent: "flex-end", overflowX: "auto", overflowY: "hidden", paddingBottom: 1 }}>
+              <div role="group" aria-label="Portfolio view" style={{ display: "flex", height: 24, flexShrink: 0 }}>
+                <button onClick={() => setViewerMode("portfolio")} aria-pressed={!finalOutputsMode && !researchMode} style={{ height: 24, padding: "0 10px", background: !finalOutputsMode && !researchMode ? c.ink : c.white, border: `0.5px solid ${!finalOutputsMode && !researchMode ? c.ink : c.rule}`, cursor: "pointer", color: !finalOutputsMode && !researchMode ? c.white : c.ink, fontFamily: Fb, fontSize: 7.5, letterSpacing: "0.1em", textTransform: "uppercase" as const }}>Portfolio</button>
+                <button onClick={() => setViewerMode("final-outputs")} aria-pressed={finalOutputsMode} style={{ height: 24, padding: "0 10px", background: finalOutputsMode ? c.ochre : c.white, border: `0.5px solid ${finalOutputsMode ? c.ochre : c.rule}`, borderLeft: 0, cursor: "pointer", color: finalOutputsMode ? c.white : c.ink, fontFamily: Fb, fontSize: 7.5, letterSpacing: "0.1em", textTransform: "uppercase" as const, display: "flex", alignItems: "center", gap: 5 }}><LayoutTemplate size={9} />Gallery</button>
+                <button onClick={() => setViewerMode("research")} aria-pressed={researchMode} style={{ height: 24, padding: "0 10px", background: researchMode ? c.olive : c.white, border: `0.5px solid ${researchMode ? c.olive : c.rule}`, borderLeft: 0, cursor: "pointer", color: researchMode ? c.white : c.ink, fontFamily: Fb, fontSize: 7.5, letterSpacing: "0.1em", textTransform: "uppercase" as const, display: "flex", alignItems: "center", gap: 5 }}><BookOpen size={9} />Research</button>
+              </div>
               <button onClick={() => setFlipbookMode(v => !v)} style={{ display: "flex", alignItems: "center", gap: 5, height: 24, padding: "0 10px", background: flipbookMode ? c.ochre : c.white, border: `0.5px solid ${flipbookMode ? c.ochre : c.rule}`, cursor: "pointer", color: flipbookMode ? c.white : c.ink, fontFamily: Fb, fontSize: 7.5, letterSpacing: "0.1em", textTransform: "uppercase" as const }}>
                 <BookOpen size={9} />Flipbook
               </button>
@@ -4901,25 +5529,15 @@ export default function App() {
               <a href="https://www.behance.net/graymkhonto1" target="_blank" rel="noreferrer" aria-label="Open Gracious Gray Mkhonto's Behance profile" style={{ display: "flex", alignItems: "center", gap: 5, height: 24, padding: "0 10px", boxSizing: "border-box", background: c.white, border: `0.5px solid ${c.rule}`, color: c.ink, textDecoration: "none", fontFamily: Fb, fontSize: 7.5, letterSpacing: "0.1em", textTransform: "uppercase" as const, flexShrink: 0 }}>
                 Bē Behance
               </a>
-              {!viewOnly && (
-                <>
-                  <button onClick={() => setIntelligenceOpen(true)} style={{ display: "flex", alignItems: "center", gap: 5, height: 24, padding: "0 10px", background: c.dark, border: "none", cursor: "pointer", color: c.white, fontFamily: Fb, fontSize: 7.5, letterSpacing: "0.1em", textTransform: "uppercase" as const }}>
-                    <Sparkles size={9} />GPT
-                  </button>
-                  <button onClick={() => setImageIntelligenceOpen(true)} style={{ display: "flex", alignItems: "center", gap: 5, height: 24, padding: "0 10px", background: c.olive, border: "none", cursor: "pointer", color: c.white, fontFamily: Fb, fontSize: 7.5, letterSpacing: "0.1em", textTransform: "uppercase" as const }}>
-                    <Sparkles size={9} />Image AI
-                  </button>
-                  <button onClick={handleShareLink} style={{ display: "flex", alignItems: "center", gap: 5, height: 24, padding: "0 10px", background: c.white, border: `0.5px solid ${c.rule}`, cursor: "pointer", color: c.ink, fontFamily: Fb, fontSize: 7.5, letterSpacing: "0.1em", textTransform: "uppercase" as const }}>
-                    <Eye size={9} />{shareStatus || "Share"}
-                  </button>
-                  <button onClick={handleExportPDF} disabled={printing} style={{ display: "flex", alignItems: "center", gap: 5, height: 24, padding: "0 10px", background: printing ? c.grey : c.brown, border: "none", cursor: printing ? "default" : "pointer", color: printing ? c.mid : c.white, fontFamily: Fb, fontSize: 7.5, letterSpacing: "0.1em", textTransform: "uppercase" as const }}>
-                    <Download size={9} />{printing ? "Preparing…" : "Export PDF"}
-                  </button>
-                  <button onClick={handleExportPPTX} style={{ display: "flex", alignItems: "center", gap: 5, height: 24, padding: "0 10px", background: c.ochre, border: "none", cursor: "pointer", color: c.white, fontFamily: Fb, fontSize: 7.5, letterSpacing: "0.1em", textTransform: "uppercase" as const }}>
-                    <FileText size={9} />Export PPTX
-                  </button>
-                </>
-              )}
+              {viewOnly && <a href="mailto:graymkhonto@gmail.com" aria-label="Email Gracious Gray Mkhonto" title="graymkhonto@gmail.com" style={{ display: "flex", alignItems: "center", gap: 5, height: 24, padding: "0 10px", boxSizing: "border-box", background: c.white, border: `0.5px solid ${c.rule}`, color: c.ink, textDecoration: "none", fontFamily: Fb, fontSize: 7.5, letterSpacing: "0.1em", textTransform: "uppercase" as const, flexShrink: 0 }}>
+                <Mail size={9} />Email
+              </a>}
+              <button onClick={handleShareLink} style={{ display: "flex", alignItems: "center", gap: 5, height: 24, padding: "0 10px", background: c.white, border: `0.5px solid ${c.rule}`, cursor: "pointer", color: c.ink, fontFamily: Fb, fontSize: 7.5, letterSpacing: "0.1em", textTransform: "uppercase" as const }}>
+                <Eye size={9} />{shareStatus || "Share"}
+              </button>
+              <button onClick={handleExportPDF} disabled={printing} style={{ display: "flex", alignItems: "center", gap: 5, height: 24, padding: "0 10px", background: printing ? c.grey : c.brown, border: "none", cursor: printing ? "default" : "pointer", color: printing ? c.mid : c.white, fontFamily: Fb, fontSize: 7.5, letterSpacing: "0.1em", textTransform: "uppercase" as const }}>
+                <Download size={9} />{printing ? "Preparing..." : "Export PDF"}
+              </button>
               <button aria-label="Previous slide" onClick={() => go(-1)} disabled={current === 0} style={{ width: 24, height: 24, display: "flex", alignItems: "center", justifyContent: "center", background: "transparent", border: `0.5px solid ${current === 0 ? c.rule : c.mid}`, cursor: current === 0 ? "default" : "pointer", color: current === 0 ? c.rule : c.mid }}>
                 <ChevronLeft size={11} />
               </button>
@@ -4929,43 +5547,7 @@ export default function App() {
               </button>
             </div>
           </div>
-          {intelligenceOpen && activePage && (
-            <IntelligencePanel
-              page={activePage}
-              prompt={intelligencePrompt}
-              response={intelligenceResponse}
-              onPromptChange={setIntelligencePrompt}
-              onGenerate={handleGenerateIntelligence}
-              onAddComment={addIntelligenceComment}
-              onClose={() => setIntelligenceOpen(false)}
-            />
-          )}
-          {imageIntelligenceOpen && activePage && (
-            <CreativeImagePanel
-              page={activePage}
-              prompt={imagePrompt}
-              isImported={Boolean(activePage.pdfId)}
-              onPromptChange={setImagePrompt}
-              onGenerateImage={generateLocalImage}
-              onUpscale={upscaleCurrentAsset}
-              onClose={() => setImageIntelligenceOpen(false)}
-            />
-          )}
-          {!viewOnly && creatorOpen && (
-            <CreatorPanel
-              onCreate={createLayoutSet}
-              onClose={() => setCreatorOpen(false)}
-            />
-          )}
-          {!viewOnly && keynoteMode && autoLayoutOpen && activePage && (
-            <AutoLayoutPanel
-              settings={autoLayoutSettings}
-              boxCount={(keynoteEdits[activePage.id] || []).length}
-              onChange={patch => setAutoLayoutSettings(prev => ({ ...prev, ...patch }))}
-              onApply={applyAutoLayout}
-            />
-          )}
-          <section ref={stageRef} className="portfolio-stage" aria-label={activePage ? `Current slide: ${activePage.title}` : "Portfolio slide"} style={{ flex: 1, minHeight: 0, display: "flex", alignItems: "center", justifyContent: "center", padding: 28, overflow: "hidden" }}>
+          <section ref={stageRef} className="portfolio-stage" tabIndex={0} aria-label={activePage ? `Scrollable viewing area. Current slide: ${activePage.title}` : "Scrollable portfolio viewing area"} style={{ flex: 1, minHeight: 0, display: "flex", alignItems: "center", justifyContent: "center", padding: 28, overflow: "auto" }}>
             {flipbookMode ? (
               <div style={{ position: "relative", width: (PW * 2 + 24) * scale, height: PH * scale, flexShrink: 0 }}>
                 <div className="portfolio-page-spread" data-page-scale={scale} style={{ width: PW * 2 + 24, height: PH, transform: `scale(${scale})`, transformOrigin: "top left", position: "absolute", top: 0, left: 0, opacity: visible ? 1 : 0, transition: "opacity 0.14s ease", display: "flex", gap: 24 }}>
@@ -4977,10 +5559,13 @@ export default function App() {
                 </div>
               </div>
             ) : (
-              <div style={{ position: "relative", width: PW * scale, height: PH * scale, flexShrink: 0 }}>
-                <div className="portfolio-page-presentation" data-page-scale={scale} style={{ width: PW, height: PH, transform: `scale(${scale})`, transformOrigin: "top left", position: "absolute", top: 0, left: 0, opacity: visible ? 1 : 0, transition: "opacity 0.14s ease", boxShadow: "0 2px 32px rgba(26,24,21,0.22)" }}>
-                  {activePage ? renderPageWithKeynote(activePage, keynoteMode && !viewOnly) : null}
+              <div style={{ width: PW * scale, flexShrink: 0 }}>
+                <div style={{ position: "relative", width: PW * scale, height: PH * scale }}>
+                  <div className="portfolio-page-presentation" data-page-scale={scale} style={{ width: PW, height: PH, transform: `scale(${scale})`, transformOrigin: "top left", position: "absolute", top: 0, left: 0, opacity: visible ? 1 : 0, transition: "opacity 0.14s ease", boxShadow: "0 2px 32px rgba(26,24,21,0.22)" }}>
+                    {activePage ? renderPageWithKeynote(activePage, false) : null}
+                  </div>
                 </div>
+                {current === 0 && !finalOutputsMode && !researchMode && <><UkuvuselelaLandingPreview scale={scale} /><UkuvuselelaCaseStudyPreview scale={scale} /><BehanceLandingPreview scale={scale} /></>}
               </div>
             )}
           </section>

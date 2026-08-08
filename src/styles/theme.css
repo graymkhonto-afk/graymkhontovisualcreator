@@ -211,8 +211,16 @@ img { transition: opacity 180ms ease, filter 180ms ease; }
    frame, while project artwork keeps its original crop, colour and hierarchy. */
 .portfolio-stage {
   background:
-    radial-gradient(circle at 50% 42%, rgba(250, 250, 250, 0.5), transparent 52%),
-    #d4d0ca;
+    linear-gradient(135deg, rgba(26, 24, 21, 0.12) 0 1px, transparent 1px 22px),
+    radial-gradient(circle at 48% 38%, rgba(250, 250, 250, 0.58), transparent 44%),
+    linear-gradient(180deg, #d9d5cf 0%, #c7c1b8 100%);
+  align-items: safe center !important;
+  justify-content: safe center !important;
+  overflow-x: auto !important;
+  overflow-y: auto !important;
+  overscroll-behavior: contain;
+  scrollbar-gutter: stable;
+  -webkit-overflow-scrolling: touch;
 }
 
 .portfolio-page-presentation,
@@ -359,14 +367,203 @@ img { transition: opacity 180ms ease, filter 180ms ease; }
   gap: 40px;
 }
 
+/* Portfolio refinement pass. These rules target the viewer chrome only, leaving
+   the designed A4 portfolio pages and artwork untouched. */
+html,
+body,
+#root {
+  width: 100%;
+  height: 100%;
+}
+
+body {
+  overflow: hidden;
+  background: #1a1815;
+}
+
+#root {
+  min-height: 100vh;
+  min-height: 100dvh;
+  background: #1a1815;
+}
+
+.portfolio-viewer {
+  height: 100vh;
+  height: 100dvh;
+}
+
+.portfolio-toolbar {
+  min-height: 48px !important;
+  padding: 8px 18px !important;
+  background: rgba(250, 250, 250, 0.94) !important;
+  border-bottom-color: rgba(26, 24, 21, 0.1) !important;
+  box-shadow: 0 1px 0 rgba(250, 250, 250, 0.7) inset, 0 10px 28px rgba(26, 24, 21, 0.08);
+  backdrop-filter: blur(14px);
+}
+
+.portfolio-toolbar-actions {
+  scrollbar-width: none;
+  -webkit-overflow-scrolling: touch;
+}
+
+.portfolio-toolbar-actions::-webkit-scrollbar {
+  display: none;
+}
+
+.portfolio-toolbar button,
+.portfolio-toolbar a {
+  min-width: 24px;
+  border-radius: 4px !important;
+  box-shadow: 0 1px 1px rgba(26, 24, 21, 0.06);
+  white-space: nowrap;
+}
+
+.portfolio-toolbar button:hover,
+.portfolio-toolbar a:hover {
+  filter: none;
+  transform: translateY(-1px);
+  box-shadow: 0 6px 14px rgba(26, 24, 21, 0.12);
+}
+
+.portfolio-sidebar {
+  background: #e8e4de !important;
+  box-shadow: 1px 0 0 rgba(250, 250, 250, 0.7) inset, 12px 0 32px rgba(26, 24, 21, 0.08);
+}
+
+.portfolio-sidebar input,
+.portfolio-sidebar select,
+.portfolio-sidebar button {
+  border-radius: 4px !important;
+}
+
+.portfolio-sidebar input,
+.portfolio-sidebar select {
+  box-shadow: 0 1px 0 rgba(250, 250, 250, 0.8) inset;
+}
+
+.portfolio-sidebar button:hover {
+  filter: none;
+  background-image: linear-gradient(rgba(26, 24, 21, 0.025), rgba(26, 24, 21, 0.025));
+}
+
+.portfolio-page-presentation,
+.portfolio-page-spread > div {
+  position: relative;
+  border: 1px solid rgba(250, 250, 250, 0.46);
+  outline: 1px solid rgba(26, 24, 21, 0.08);
+  outline-offset: -1px;
+}
+
+.portfolio-page-presentation::after,
+.portfolio-page-spread > div::after {
+  content: "";
+  position: absolute;
+  inset: 0;
+  pointer-events: none;
+  box-shadow: inset 0 0 0 1px rgba(26, 24, 21, 0.035);
+}
+
+@media (max-width: 980px) {
+  .portfolio-viewer {
+    flex-direction: column !important;
+  }
+
+  .portfolio-sidebar {
+    width: 100% !important;
+    height: clamp(180px, 30dvh, 300px) !important;
+    min-height: 0;
+    max-height: none;
+    border-right: 0 !important;
+    border-bottom: 0.5px solid #d0ccc6 !important;
+    overflow-y: auto !important;
+    overscroll-behavior: contain;
+    -webkit-overflow-scrolling: touch;
+  }
+
+  .portfolio-workspace {
+    min-height: 0;
+    overflow: hidden !important;
+  }
+
+  .portfolio-toolbar {
+    min-height: 78px !important;
+    align-items: flex-start !important;
+    flex-direction: column !important;
+    position: sticky;
+    top: 0;
+    z-index: 30;
+  }
+
+  .portfolio-toolbar-label {
+    max-width: 100% !important;
+    width: 100% !important;
+  }
+
+  .portfolio-toolbar-actions {
+    width: 100%;
+    justify-content: flex-start !important;
+    padding-bottom: 4px !important;
+  }
+
+  .portfolio-stage {
+    align-items: flex-start !important;
+    justify-content: center !important;
+    overflow-x: hidden !important;
+    overflow-y: auto !important;
+    overscroll-behavior: contain;
+    -webkit-overflow-scrolling: touch;
+    scroll-behavior: smooth;
+  }
+
+  .portfolio-page-presentation,
+  .portfolio-page-spread {
+    margin-block: 6px 22px;
+  }
+}
+
 @media (max-width: 760px) {
-  .portfolio-sidebar { width: 188px !important; }
   .portfolio-stage { padding: 14px !important; }
+
+  .portfolio-toolbar button,
+  .portfolio-toolbar a {
+    padding-inline: 8px !important;
+  }
 }
 
 @media (max-width: 520px) {
-  .portfolio-sidebar { width: 148px !important; }
+  .portfolio-sidebar {
+    height: clamp(150px, 28dvh, 220px) !important;
+  }
+
   .portfolio-stage { padding: 8px !important; }
+
+  .portfolio-toolbar {
+    min-height: 86px !important;
+    padding: 8px 10px !important;
+  }
+
+  .portfolio-toolbar button,
+  .portfolio-toolbar a {
+    height: 28px !important;
+    font-size: 7px !important;
+  }
+}
+
+@media (max-height: 560px) {
+  .portfolio-sidebar {
+    height: 148px !important;
+  }
+
+  .portfolio-toolbar {
+    min-height: 42px !important;
+    flex-direction: row !important;
+    align-items: center !important;
+  }
+
+  .portfolio-toolbar-label {
+    width: auto !important;
+    max-width: 34vw !important;
+  }
 }
 
 @media (prefers-reduced-motion: reduce) {
