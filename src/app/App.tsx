@@ -2815,6 +2815,7 @@ function EditableTextSlidePage({ slideNumber, section, data }: { slideNumber: nu
         const isSlide13Strength = slideNumber === 13 && rawText.startsWith("A Multifaceted Visual creator");
         const hideCorruptCoverText = slideNumber === 1 && [20, 22, 24, 25, 26, 27].includes(index);
         const textLines = rawText.split("\n");
+        const longestLine = Math.max(1, ...textLines.map(line => line.length));
         const isDenseList = textLines.length >= 3;
         const boxWidthPx = (adjustedWidth / 100) * PW;
         const boxHeightPx = (item.h / 100) * PH;
@@ -2855,10 +2856,11 @@ function EditableTextSlidePage({ slideNumber, section, data }: { slideNumber: nu
                   : characterStyle === "label"
                     ? 9.5
                     : 9;
-        // Respect the original Keynote frame. The former forced minimum enlarged copy
-        // beyond its available box and produced overlaps across the reconstructed deck.
-        const minimumReadableSize = characterStyle === "display" ? 18 : characterStyle === "subheading" ? 12 : 9;
-        const resolvedFontSize = Math.max(minimumReadableSize, Math.min(preferredFontSize, frameBoundPt));
+        // Respect every imported Keynote frame. A hard type minimum made dense copy
+        // exceed short frames and collide with neighbouring content. Keep a small
+        // emergency floor only for malformed frames; otherwise the frame is authoritative.
+        const emergencyFloor = characterStyle === "display" ? 10 : characterStyle === "subheading" ? 8 : 6.5;
+        const resolvedFontSize = Math.max(emergencyFloor, Math.min(preferredFontSize, frameBoundPt));
         const resolvedTracking = characterStyle === "display"
           ? -0.35
           : characterStyle === "label"
