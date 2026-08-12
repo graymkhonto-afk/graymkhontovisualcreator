@@ -4672,6 +4672,7 @@ export default function App() {
     Object.keys(editableKeynoteSlides)
       .map(Number)
       .sort((a, b) => a - b)
+      .filter(slideNumber => slideNumber !== 30)
       .map(slideNumber => ({
         id: `keynote-${slideNumber}`,
         title: `Portfolio Slide ${slideNumber}`,
