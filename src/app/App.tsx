@@ -2415,10 +2415,11 @@ function EditableTextSlidePage({ slideNumber, section, data }: { slideNumber: nu
   if (slideNumber === 7) return <CvEditorialPage />;
   if (slideNumber === 8) return <ReflectiveLearningEditorialPage />;
   const resolvedColor = (value?: string | null) => {
-    if (!value || slideNumber !== 14) return value;
+    if (!value || (slideNumber !== 14 && slideNumber !== 18)) return value;
     const normalized = value.toUpperCase();
     if (normalized === "#BF7B76") return c.ochre;
     if (normalized === "#EFD3D1") return c.grey;
+    if (slideNumber === 18 && normalized === "#DDD5CC") return c.bg;
     return value;
   };
 
