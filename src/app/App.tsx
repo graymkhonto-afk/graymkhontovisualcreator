@@ -2476,7 +2476,7 @@ function EditableTextSlidePage({ slideNumber, section, data }: { slideNumber: nu
         const widthBoundPt = (boxWidthPx / (longestLine * 0.54)) * 0.75;
         const heightBoundPt = (boxHeightPx / (Math.max(1, textLines.length) * 1.18)) * 0.75;
         const rawFrameBoundPt = Math.min(widthBoundPt, heightBoundPt);
-        const frameBoundPt = Math.max(9, rawFrameBoundPt);
+        const frameBoundPt = Math.max(6.5, rawFrameBoundPt);
         const isEdgeMatter = item.y < 10 || item.y > 95;
         const lettersOnly = rawText.replace(/[^A-Za-zÀ-ž]/g, "");
         const isAllCaps = lettersOnly.length > 1 && lettersOnly === lettersOnly.toUpperCase();
@@ -2507,7 +2507,7 @@ function EditableTextSlidePage({ slideNumber, section, data }: { slideNumber: nu
                     : 9;
         // Respect the original Keynote frame. The former forced minimum enlarged copy
         // beyond its available box and produced overlaps across the reconstructed deck.
-        const minimumReadableSize = characterStyle === "display" ? 18 : characterStyle === "subheading" ? 12 : 9;
+        const minimumReadableSize = characterStyle === "display" ? 14 : characterStyle === "subheading" ? 9 : 6.5;
         const resolvedFontSize = isSlide9Footer
           ? Math.min(item.fontSize || 6, 7)
           : isSlide12Header || isSlide12Footer
@@ -2566,7 +2566,7 @@ function EditableTextSlidePage({ slideNumber, section, data }: { slideNumber: nu
             ? 6.5
           : isSlide10Text
             ? Math.max(5.5, Math.min(item.fontSize || preferredFontSize, rawFrameBoundPt))
-            : Math.max(minimumReadableSize, Math.min(preferredFontSize, frameBoundPt));
+            : Math.max(minimumReadableSize, Math.min(preferredFontSize, rawFrameBoundPt));
         const resolvedTracking = characterStyle === "display"
           ? -0.35
           : characterStyle === "label"
@@ -2680,6 +2680,18 @@ function EditableTextSlidePage({ slideNumber, section, data }: { slideNumber: nu
                 const colour = resolvedColor(item.color);
                 if (slideNumber === 11) return index === 17 || index === 23 ? c.ochre : c.white;
                 if (slideNumber === 29 && index === 7) return c.white;
+                if (item.fill) {
+                  const fill = resolvedColor(item.fill) || "";
+                  const match = fill.match(/^#([0-9A-F]{6})$/i);
+                  if (match) {
+                    const hex = match[1];
+                    const red = parseInt(hex.slice(0, 2), 16);
+                    const green = parseInt(hex.slice(2, 4), 16);
+                    const blue = parseInt(hex.slice(4, 6), 16);
+                    const luminance = (0.2126 * red + 0.7152 * green + 0.0722 * blue) / 255;
+                    if (luminance < 0.42) return c.white;
+                  }
+                }
                 if (slideNumber !== 1) return colour || c.ink;
 
                 const normalized = (colour || "").replace(/\s+/g, "").toUpperCase();
