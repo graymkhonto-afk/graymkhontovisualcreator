@@ -2437,6 +2437,8 @@ function EditableTextSlidePage({ slideNumber, section, data }: { slideNumber: nu
         const isSlide13Identity = isSlide13Text && item.x >= 84 && item.y >= 15 && item.y <= 40;
         const isSlide15Text = slideNumber === 15 && item.kind === "text";
         const isSlide15Footer = isSlide15Text && item.y > 95;
+        const isSlide19Text = slideNumber === 19 && item.kind === "text";
+        const isSlide19Footer = isSlide19Text && item.y > 95;
         const isSharedSafeFooter = item.kind === "text" && item.y > 95 && (slideNumber === 14 || slideNumber >= 21);
         const hideSlide12OverflowFragment = slideNumber === 12 && index === 10;
         const slide12FormatLabelWidth = slideNumber === 12 && index === 9 ? 16.7 : adjustedWidth;
@@ -2452,6 +2454,8 @@ function EditableTextSlidePage({ slideNumber, section, data }: { slideNumber: nu
                 : isSlide13Footer
                   ? 96.15
                   : isSlide15Footer
+                    ? 96.15
+                  : isSlide19Footer
                     ? 96.15
                   : isSharedSafeFooter
                     ? 96.15
@@ -2514,6 +2518,20 @@ function EditableTextSlidePage({ slideNumber, section, data }: { slideNumber: nu
                   : index >= 85
                     ? Math.min(9.5, rawFrameBoundPt)
                     : Math.min(index === 41 || index === 46 || index === 65 || index === 68 || index === 77 ? 8.5 : 8, rawFrameBoundPt)
+          : isSlide19Text
+            ? isSlide19Footer
+              ? 6.5
+              : index === 14
+                ? Math.min(20, rawFrameBoundPt)
+                : index === 15 || index === 20
+                  ? Math.min(17, rawFrameBoundPt)
+                  : index >= 16 && index <= 18
+                    ? Math.min(9.5, rawFrameBoundPt)
+                    : index >= 22 && index <= 30 && index % 2 === 0
+                      ? Math.min(9, rawFrameBoundPt)
+                      : index === 32
+                        ? Math.min(8.5, rawFrameBoundPt)
+                        : Math.min(8, rawFrameBoundPt)
           : isSharedSafeFooter
             ? 6.5
           : isSlide10Text
@@ -2546,6 +2564,8 @@ function EditableTextSlidePage({ slideNumber, section, data }: { slideNumber: nu
             : isSlide13Footer
               ? 2.75
             : isSlide15Footer
+              ? 2.75
+            : isSlide19Footer
               ? 2.75
             : isSharedSafeFooter
               ? 2.75
