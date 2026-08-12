@@ -2418,7 +2418,8 @@ function EditableTextSlidePage({ slideNumber, section, data }: { slideNumber: nu
       {data.items.map((item, index) => {
         const isPhotographyTitle = index === 9 && slideNumber >= 45 && slideNumber <= 47;
         const adjustedWidth = isPhotographyTitle && slideNumber === 45 ? 24.5 : item.w;
-        const adjustedTop = slideNumber === 108 && index === 56 ? 15.2 : item.y;
+        const isSlide9Footer = slideNumber === 9 && item.kind === "text" && item.y > 95;
+        const adjustedTop = slideNumber === 108 && index === 56 ? 15.2 : isSlide9Footer ? 96.1 : item.y;
         const rawText = normalizeEditableSlideText(slideNumber, item.text);
         const textLines = rawText.split("\n");
         const longestLine = Math.max(1, ...textLines.map(line => line.length));
@@ -2458,7 +2459,7 @@ function EditableTextSlidePage({ slideNumber, section, data }: { slideNumber: nu
         // Respect the original Keynote frame. The former forced minimum enlarged copy
         // beyond its available box and produced overlaps across the reconstructed deck.
         const minimumReadableSize = characterStyle === "display" ? 18 : characterStyle === "subheading" ? 12 : 9;
-        const resolvedFontSize = Math.max(minimumReadableSize, Math.min(preferredFontSize, frameBoundPt));
+        const resolvedFontSize = isSlide9Footer ? Math.min(item.fontSize || 6, 7) : Math.max(minimumReadableSize, Math.min(preferredFontSize, frameBoundPt));
         const resolvedTracking = characterStyle === "display"
           ? -0.35
           : characterStyle === "label"
@@ -2479,7 +2480,7 @@ function EditableTextSlidePage({ slideNumber, section, data }: { slideNumber: nu
             : characterStyle === "body"
               ? 1.5
               : 1.2;
-        const adjustedHeight = item.y > 95 ? Math.min(item.h, 2.55) : item.h;
+        const adjustedHeight = isSlide9Footer ? 2.8 : item.y > 95 ? Math.min(item.h, 2.55) : item.h;
         const shared: React.CSSProperties = {
           position: "absolute",
           left: `${item.x}%`,
