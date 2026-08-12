@@ -2439,6 +2439,8 @@ function EditableTextSlidePage({ slideNumber, section, data }: { slideNumber: nu
         const isSlide15Footer = isSlide15Text && item.y > 95;
         const isSlide19Text = slideNumber === 19 && item.kind === "text";
         const isSlide19Footer = isSlide19Text && item.y > 95;
+        const isSlide29Text = slideNumber === 29 && item.kind === "text";
+        const isSlide29Footer = isSlide29Text && item.y > 95;
         const isSharedSafeFooter = item.kind === "text" && item.y > 95 && (slideNumber === 14 || slideNumber >= 20);
         const hideSlide12OverflowFragment = slideNumber === 12 && index === 10;
         const slide12FormatLabelWidth = slideNumber === 12 && index === 9 ? 16.7 : adjustedWidth;
@@ -2456,6 +2458,8 @@ function EditableTextSlidePage({ slideNumber, section, data }: { slideNumber: nu
                   : isSlide15Footer
                     ? 96.15
                   : isSlide19Footer
+                    ? 96.15
+                  : isSlide29Footer
                     ? 96.15
                   : isSharedSafeFooter
                     ? 96.15
@@ -2534,6 +2538,16 @@ function EditableTextSlidePage({ slideNumber, section, data }: { slideNumber: nu
                         : index === 21 || index === 23 || index === 25 || index === 27 || index === 29 || index === 31
                           ? 7
                           : 7.5
+          : isSlide29Text
+            ? isSlide29Footer
+              ? 6.5
+              : index === 3
+                ? 8
+                : index === 6
+                  ? 17
+                  : index === 7
+                    ? 8.5
+                    : 8
           : isSharedSafeFooter
             ? 6.5
           : isSlide10Text
@@ -2568,6 +2582,8 @@ function EditableTextSlidePage({ slideNumber, section, data }: { slideNumber: nu
             : isSlide15Footer
               ? 2.75
             : isSlide19Footer
+              ? 2.75
+            : isSlide29Footer
               ? 2.75
             : isSharedSafeFooter
               ? 2.75
@@ -2641,6 +2657,7 @@ function EditableTextSlidePage({ slideNumber, section, data }: { slideNumber: nu
               color: (() => {
                 const colour = resolvedColor(item.color);
                 if (slideNumber === 11) return index === 17 || index === 23 ? c.ochre : c.white;
+                if (slideNumber === 29 && index === 7) return c.white;
                 if (slideNumber !== 1) return colour || c.ink;
 
                 const normalized = (colour || "").replace(/\s+/g, "").toUpperCase();
