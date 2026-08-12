@@ -2422,6 +2422,15 @@ function EditableTextSlidePage({ slideNumber, section, data }: { slideNumber: nu
     if (slideNumber === 18 && normalized === "#DDD5CC") return c.bg;
     return value;
   };
+  const interiorTextItems = data.items.filter(item => item.kind === "text" && item.y >= 10 && item.y <= 95);
+  const denseTextCount = interiorTextItems.filter(item => {
+    const lines = (item.text || "").split("\n");
+    const longest = Math.max(1, ...lines.map(line => line.length));
+    const widthBound = ((item.w / 100) * PW / (longest * 0.54)) * 0.75;
+    const heightBound = ((item.h / 100) * PH / (Math.max(1, lines.length) * 1.18)) * 0.75;
+    return (item.text || "").length > 35 && Math.min(widthBound, heightBound) < 8.5;
+  }).length;
+  const isDenseEvidenceSlide = denseTextCount >= 3 || interiorTextItems.length >= 24;
 
   return (
       <div aria-label={`${section} — editable reconstruction of Portfolio Slide ${slideNumber}`} style={{ width: PW, height: PH, position: "relative", overflow: "hidden", background: c.bg }}>
@@ -2509,9 +2518,17 @@ function EditableTextSlidePage({ slideNumber, section, data }: { slideNumber: nu
                   : characterStyle === "label"
                     ? 9.5
                     : 9;
-        // Respect the original Keynote frame. The former forced minimum enlarged copy
-        // beyond its available box and produced overlaps across the reconstructed deck.
-        const minimumReadableSize = characterStyle === "display" ? 14 : characterStyle === "subheading" ? 9 : 6.5;
+        // Apply the editorial type floor from the Figma master. Dense evidence pages
+        // use a slightly tighter leading value while retaining a readable body size.
+        const minimumReadableSize = characterStyle === "display"
+          ? 16
+          : characterStyle === "subheading"
+            ? 10
+            : characterStyle === "body"
+              ? isDenseEvidenceSlide ? 8.5 : 9.5
+              : characterStyle === "label"
+                ? 7.5
+                : 6.5;
         const resolvedFontSize = isSlide9Footer
           ? Math.min(item.fontSize || 6, 7)
           : isSlide12Header || isSlide12Footer
@@ -2609,7 +2626,7 @@ function EditableTextSlidePage({ slideNumber, section, data }: { slideNumber: nu
           : characterStyle === "subheading"
             ? 1.18
             : characterStyle === "body"
-              ? 1.5
+              ? isDenseEvidenceSlide ? 1.35 : 1.5
               : 1.2;
         const adjustedHeight = isSlide9Footer
           ? 2.8
@@ -2636,11 +2653,13 @@ function EditableTextSlidePage({ slideNumber, section, data }: { slideNumber: nu
             : item.y > 95
               ? Math.min(item.h, 2.55)
               : item.h;
+        const safeLeft = item.kind === "text" ? Math.max(item.x, item.x >= 0 && item.x < 4.5 ? 2.5 : item.x) : item.x;
+        const safeWidth = item.kind === "text" ? Math.min(resolvedWidth, 97.5 - safeLeft) : resolvedWidth;
         const shared: React.CSSProperties = {
           position: "absolute",
-          left: `${item.x}%`,
+          left: `${safeLeft}%`,
           top: `${adjustedTop}%`,
-          width: `${resolvedWidth}%`,
+          width: `${safeWidth}%`,
           height: `${adjustedHeight}%`,
           boxSizing: "border-box",
           background: resolvedColor(item.fill) || "transparent",
