@@ -2391,6 +2391,15 @@ function normalizeEditableSlideText(slideNumber: number, value = "") {
     .replace("assessedforauthenticity", "assessed for authenticity")
     .replace("In western design green and sharp geometric lines are associated with villains in Africa prehistorically green is associated with health, growth, fertility. Triangles are feminine, While the diamonds shape means balance.", "In Western design, green and sharp geometric lines are often associated with villains. In precolonial African visual culture, green is associated with health, growth, and fertility. Triangles are feminine forms, while the diamond represents balance.");
 
+  if (slideNumber === 12) {
+    text = text
+      .replace("A 4  A N DS CLA PE · 2 9 7 × 201  M", "A4 LANDSCAPE · 297 × 210 MM")
+      .replace("IETDORI AL R PL P ORT FOLIO", "EDITORIAL RPL PORTFOLIO")
+      .replace("REV IEW BOARD ·  GU IDEL IN ES", "REVIEW BOARD · GUIDELINES")
+      .replace("PRIN T ED IN DIGITAL F ORM", "PRINTED IN DIGITAL FORM")
+      .replace("© 20 24", "© 2024");
+  }
+
   const correctedFolios: Record<number, string> = { 183: "P. 115", 184: "P. 116", 185: "P. 117", 192: "P. 118" };
   if (correctedFolios[slideNumber]) text = text.replaceAll("P. 114", correctedFolios[slideNumber]);
   return text;
@@ -2420,7 +2429,19 @@ function EditableTextSlidePage({ slideNumber, section, data }: { slideNumber: nu
         const adjustedWidth = isPhotographyTitle && slideNumber === 45 ? 24.5 : item.w;
         const isSlide9Footer = slideNumber === 9 && item.kind === "text" && item.y > 95;
         const isSlide10Text = slideNumber === 10 && item.kind === "text";
-        const adjustedTop = slideNumber === 108 && index === 56 ? 15.2 : isSlide9Footer ? 96.1 : item.y;
+        const isSlide12Header = slideNumber === 12 && item.kind === "text" && item.y < 10;
+        const isSlide12Footer = slideNumber === 12 && item.kind === "text" && item.y > 94;
+        const hideSlide12OverflowFragment = slideNumber === 12 && index === 10;
+        const slide12FormatLabelWidth = slideNumber === 12 && index === 9 ? 16.7 : adjustedWidth;
+        const adjustedTop = slideNumber === 108 && index === 56
+          ? 15.2
+          : isSlide9Footer
+            ? 96.1
+            : isSlide12Header
+              ? Math.max(item.y, 1.35)
+              : isSlide12Footer
+                ? 96.35
+                : item.y;
         const rawText = normalizeEditableSlideText(slideNumber, item.text);
         const textLines = rawText.split("\n");
         const longestLine = Math.max(1, ...textLines.map(line => line.length));
@@ -2463,6 +2484,8 @@ function EditableTextSlidePage({ slideNumber, section, data }: { slideNumber: nu
         const minimumReadableSize = characterStyle === "display" ? 18 : characterStyle === "subheading" ? 12 : 9;
         const resolvedFontSize = isSlide9Footer
           ? Math.min(item.fontSize || 6, 7)
+          : isSlide12Header || isSlide12Footer
+            ? Math.min(item.fontSize || 6, 6.5)
           : isSlide10Text
             ? Math.max(5.5, Math.min(item.fontSize || preferredFontSize, rawFrameBoundPt))
             : Math.max(minimumReadableSize, Math.min(preferredFontSize, frameBoundPt));
@@ -2486,12 +2509,18 @@ function EditableTextSlidePage({ slideNumber, section, data }: { slideNumber: nu
             : characterStyle === "body"
               ? 1.5
               : 1.2;
-        const adjustedHeight = isSlide9Footer ? 2.8 : item.y > 95 ? Math.min(item.h, 2.55) : item.h;
+        const adjustedHeight = isSlide9Footer
+          ? 2.8
+          : isSlide12Header || isSlide12Footer
+            ? 2.45
+            : item.y > 95
+              ? Math.min(item.h, 2.55)
+              : item.h;
         const shared: React.CSSProperties = {
           position: "absolute",
           left: `${item.x}%`,
           top: `${adjustedTop}%`,
-          width: `${adjustedWidth}%`,
+          width: `${slide12FormatLabelWidth}%`,
           height: `${adjustedHeight}%`,
           boxSizing: "border-box",
           background: resolvedColor(item.fill) || "transparent",
@@ -2541,7 +2570,7 @@ function EditableTextSlidePage({ slideNumber, section, data }: { slideNumber: nu
             aria-readonly={IS_PUBLIC_VIEWER || undefined}
             style={{
               ...shared,
-              display: "flex",
+              display: hideSlide12OverflowFragment ? "none" : "flex",
               alignItems: item.vertical || "flex-start",
               whiteSpace: "pre-wrap",
               overflow: "hidden",
