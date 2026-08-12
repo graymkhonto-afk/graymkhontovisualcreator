@@ -2443,6 +2443,8 @@ function EditableTextSlidePage({ slideNumber, section, data }: { slideNumber: nu
         const isSlide29Footer = isSlide29Text && item.y > 95;
         const isSlide31Text = slideNumber === 31 && item.kind === "text";
         const isSlide31Footer = isSlide31Text && item.y > 95;
+        const isReignCodeText = (slideNumber === 183 || slideNumber === 185) && item.kind === "text";
+        const isReignCodeFooter = isReignCodeText && item.y > 95;
         const isSharedSafeFooter = item.kind === "text" && item.y > 95 && (slideNumber === 14 || slideNumber >= 20);
         const hideSlide12OverflowFragment = slideNumber === 12 && index === 10;
         const slide12FormatLabelWidth = slideNumber === 12 && index === 9 ? 16.7 : adjustedWidth;
@@ -2464,6 +2466,8 @@ function EditableTextSlidePage({ slideNumber, section, data }: { slideNumber: nu
                   : isSlide29Footer
                     ? 96.15
                   : isSlide31Footer
+                    ? 96.15
+                  : isReignCodeFooter
                     ? 96.15
                   : isSharedSafeFooter
                     ? 96.15
@@ -2562,6 +2566,22 @@ function EditableTextSlidePage({ slideNumber, section, data }: { slideNumber: nu
                   : index === 34
                     ? 7.5
                     : 6.8
+          : isReignCodeText
+            ? isReignCodeFooter
+              ? 6.5
+              : item.y < 10
+                ? 6.5
+                : item.y >= 20 && item.y < 36
+                  ? 16
+                  : item.y >= 36 && item.y < 65
+                    ? 8.2
+                    : item.fill === "#08080F"
+                      ? 6.2
+                      : item.y >= 78 && item.y < 93
+                        ? 6.5
+                        : item.y >= 93
+                          ? 7
+                          : 7.5
           : isSharedSafeFooter
             ? 6.5
           : isSlide10Text
@@ -2580,7 +2600,9 @@ function EditableTextSlidePage({ slideNumber, section, data }: { slideNumber: nu
           : characterStyle === "subheading" || characterStyle === "label"
             ? 600
             : 400;
-        const resolvedLineHeight = isSlide31Text
+        const resolvedLineHeight = isReignCodeText
+          ? item.y >= 36 && item.y < 65 ? 1.42 : 1.2
+          : isSlide31Text
           ? 1.24
           : characterStyle === "display"
           ? 0.98
@@ -2602,6 +2624,8 @@ function EditableTextSlidePage({ slideNumber, section, data }: { slideNumber: nu
             : isSlide29Footer
               ? 2.75
             : isSlide31Footer
+              ? 2.75
+            : isReignCodeFooter
               ? 2.75
             : isSlide31Text && index >= 10 && index <= 31
               ? 4.9
