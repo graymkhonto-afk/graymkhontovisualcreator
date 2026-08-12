@@ -4466,12 +4466,6 @@ function PublicPortfolio({ onOpenDossier }: { onOpenDossier: () => void }) {
         </figure>
       </section>
 
-      <section className="public-section public-intro" aria-labelledby="intro-title">
-        <p className="public-kicker">Positioning</p>
-        <h2 id="intro-title">The portfolio remains recognisably yours: warm, minimal, editorial and evidence-led.</h2>
-        <p>What changes is the route through the work. Recruiters can now scan selected projects quickly, while assessors can follow a mapped trail of research, reflection, process and professional practice.</p>
-      </section>
-
       <section id="work" className="public-section" aria-labelledby="work-title">
         <div className="public-section__heading">
           <p className="public-kicker">Selected Work</p>
