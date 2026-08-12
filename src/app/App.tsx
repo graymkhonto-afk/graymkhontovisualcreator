@@ -2419,6 +2419,7 @@ function EditableTextSlidePage({ slideNumber, section, data }: { slideNumber: nu
         const isPhotographyTitle = index === 9 && slideNumber >= 45 && slideNumber <= 47;
         const adjustedWidth = isPhotographyTitle && slideNumber === 45 ? 24.5 : item.w;
         const isSlide9Footer = slideNumber === 9 && item.kind === "text" && item.y > 95;
+        const isSlide10Text = slideNumber === 10 && item.kind === "text";
         const adjustedTop = slideNumber === 108 && index === 56 ? 15.2 : isSlide9Footer ? 96.1 : item.y;
         const rawText = normalizeEditableSlideText(slideNumber, item.text);
         const textLines = rawText.split("\n");
@@ -2427,7 +2428,8 @@ function EditableTextSlidePage({ slideNumber, section, data }: { slideNumber: nu
         const boxHeightPx = (item.h / 100) * PH;
         const widthBoundPt = (boxWidthPx / (longestLine * 0.54)) * 0.75;
         const heightBoundPt = (boxHeightPx / (Math.max(1, textLines.length) * 1.18)) * 0.75;
-        const frameBoundPt = Math.max(9, Math.min(widthBoundPt, heightBoundPt));
+        const rawFrameBoundPt = Math.min(widthBoundPt, heightBoundPt);
+        const frameBoundPt = Math.max(9, rawFrameBoundPt);
         const isEdgeMatter = item.y < 10 || item.y > 95;
         const lettersOnly = rawText.replace(/[^A-Za-zÀ-ž]/g, "");
         const isAllCaps = lettersOnly.length > 1 && lettersOnly === lettersOnly.toUpperCase();
@@ -2459,7 +2461,11 @@ function EditableTextSlidePage({ slideNumber, section, data }: { slideNumber: nu
         // Respect the original Keynote frame. The former forced minimum enlarged copy
         // beyond its available box and produced overlaps across the reconstructed deck.
         const minimumReadableSize = characterStyle === "display" ? 18 : characterStyle === "subheading" ? 12 : 9;
-        const resolvedFontSize = isSlide9Footer ? Math.min(item.fontSize || 6, 7) : Math.max(minimumReadableSize, Math.min(preferredFontSize, frameBoundPt));
+        const resolvedFontSize = isSlide9Footer
+          ? Math.min(item.fontSize || 6, 7)
+          : isSlide10Text
+            ? Math.max(5.5, Math.min(item.fontSize || preferredFontSize, rawFrameBoundPt))
+            : Math.max(minimumReadableSize, Math.min(preferredFontSize, frameBoundPt));
         const resolvedTracking = characterStyle === "display"
           ? -0.35
           : characterStyle === "label"
@@ -2547,6 +2553,7 @@ function EditableTextSlidePage({ slideNumber, section, data }: { slideNumber: nu
               lineHeight: resolvedLineHeight,
               color: (() => {
                 const colour = resolvedColor(item.color);
+                if (slideNumber === 11) return index === 17 || index === 23 ? c.ochre : c.white;
                 if (slideNumber !== 1) return colour || c.ink;
 
                 const normalized = (colour || "").replace(/\s+/g, "").toUpperCase();
