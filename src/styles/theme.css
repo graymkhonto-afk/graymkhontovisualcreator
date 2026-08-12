@@ -475,6 +475,16 @@ body {
   background: #292826;
 }
 
+.case-study-card__media[data-project="ukuvuselela"] {
+  background: #ffc43a;
+}
+
+.case-study-card__media[data-project="ukuvuselela"] img {
+  object-fit: contain;
+  object-position: center;
+  background: #ffc43a;
+}
+
 .case-study-card__content {
   grid-column: 8 / span 5;
   min-width: 0;
