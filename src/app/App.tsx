@@ -2522,16 +2522,18 @@ function EditableTextSlidePage({ slideNumber, section, data }: { slideNumber: nu
             ? isSlide19Footer
               ? 6.5
               : index === 14
-                ? Math.min(20, rawFrameBoundPt)
+                ? 17
                 : index === 15 || index === 20
-                  ? Math.min(17, rawFrameBoundPt)
+                  ? 14
                   : index >= 16 && index <= 18
-                    ? Math.min(9.5, rawFrameBoundPt)
+                    ? 8.5
                     : index >= 22 && index <= 30 && index % 2 === 0
-                      ? Math.min(9, rawFrameBoundPt)
+                      ? 8
                       : index === 32
-                        ? Math.min(8.5, rawFrameBoundPt)
-                        : Math.min(8, rawFrameBoundPt)
+                        ? 8
+                        : index === 21 || index === 23 || index === 25 || index === 27 || index === 29 || index === 31
+                          ? 7
+                          : 7.5
           : isSharedSafeFooter
             ? 6.5
           : isSlide10Text
