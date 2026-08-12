@@ -334,6 +334,92 @@ img { transition: opacity 180ms ease, filter 180ms ease; }
   --editorial-body-colour: rgba(250, 250, 250, 0.82);
 }
 
+/* Section openers follow the approved Figma Make editorial reference:
+   quiet Playfair titling, an ochre folio numeral, and generous negative space. */
+.section-opener__number-column {
+  width: 300px;
+  flex: 0 0 300px;
+  display: flex;
+  align-items: flex-end;
+  justify-content: center;
+  padding: 0 34px 122px;
+}
+
+.section-opener__number {
+  font-weight: 500;
+  line-height: 0.78;
+  letter-spacing: -0.055em;
+  opacity: 0.92;
+  font-variant-numeric: lining-nums tabular-nums;
+}
+
+.section-opener__content {
+  flex: 1;
+  min-width: 0;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  padding: 8px 76px 0 68px;
+  gap: 0;
+}
+
+.section-opener__category {
+  margin-bottom: 28px;
+  color: rgba(250, 250, 250, 0.48);
+  font-size: 9px;
+  font-weight: 500;
+  line-height: 1;
+  letter-spacing: 0.18em;
+  text-transform: uppercase;
+}
+
+.section-opener__title {
+  max-width: 690px;
+  color: #fafafa;
+  font-size: 58px;
+  font-weight: 400;
+  line-height: 0.96;
+  letter-spacing: -0.035em;
+  white-space: pre-line;
+  text-wrap: balance;
+}
+
+.section-opener__rule {
+  width: 36px;
+  height: 1px;
+  margin: 30px 0 22px;
+}
+
+.section-opener__quote {
+  max-width: 590px;
+  margin-bottom: 42px;
+  font-size: 15px;
+  font-style: italic;
+  font-weight: 400;
+  line-height: 1.5;
+  letter-spacing: 0;
+}
+
+.section-opener__index {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 9px 20px;
+  max-width: 650px;
+}
+
+.section-opener__index-item {
+  display: flex;
+  gap: 9px;
+  align-items: center;
+}
+
+.section-opener__index-item span {
+  color: rgba(250, 250, 250, 0.42);
+  font-size: 8px;
+  line-height: 1.3;
+  letter-spacing: 0.045em;
+}
+
 .premium-project-title {
   font-size: var(--editorial-title) !important;
   line-height: 0.88 !important;

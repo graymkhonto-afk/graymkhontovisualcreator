@@ -423,23 +423,23 @@ function PartOpener({ partNum, partTitle, subtitle, quote, sections, accent = c.
     <div style={{ width: PW, height: PH, background: c.dark, display: "flex", flexDirection: "column", overflow: "hidden", position: "relative" }}>
       <TopNav right="VOL. 1 — 2026" />
       <SubHeader left={subtitle} right={`PART ${partNum}`} />
-      <div style={{ flex: 1, display: "flex", position: "relative" }}>
+      <div className="section-opener" style={{ flex: 1, display: "flex", position: "relative" }}>
         {/* Large part number */}
-        <div style={{ width: 280, display: "flex", alignItems: "center", justifyContent: "center", flexShrink: 0, borderRight: `0.5px solid rgba(255,255,255,0.06)` }}>
-          <div style={{ fontFamily: Fd, fontSize: 160, fontWeight: 700, color: accent, lineHeight: 1, opacity: 0.85, letterSpacing: "-0.04em" }}>{partNum}</div>
+        <div className="section-opener__number-column" style={{ borderRight: `0.5px solid rgba(255,255,255,0.06)` }}>
+          <div className="section-opener__number" style={{ fontFamily: Fd, fontSize: partNum.length > 2 ? 84 : 132, color: accent }}>{partNum}</div>
         </div>
         {/* Content */}
-        <div className="premium-project-copy premium-project-copy--dark" style={{ flex: 1, display: "flex", flexDirection: "column", justifyContent: "center", padding: `0 ${M}px` }}>
-          <div className="premium-project-category" style={{ fontFamily: Fb, letterSpacing: "0.12em", textTransform: "uppercase" as const, color: "rgba(250,250,250,0.55)" }}>{subtitle}</div>
-          <div className="premium-project-title" style={{ fontFamily: Fd, fontWeight: 400, color: c.white, letterSpacing: "-0.035em" }}>{partTitle}</div>
-          <div style={{ width: 40, height: 1, background: accent, marginBottom: 24 }} />
-          <div className="premium-project-body" style={{ fontFamily: Fd, fontStyle: "italic", color: accent, maxWidth: 560 }}>"{quote}"</div>
+        <div className="section-opener__content premium-project-copy--dark">
+          <div className="section-opener__category" style={{ fontFamily: Fb }}>{subtitle}</div>
+          <div className="section-opener__title" style={{ fontFamily: Fd }}>{partTitle}</div>
+          <div className="section-opener__rule" style={{ background: accent }} />
+          <div className="section-opener__quote" style={{ fontFamily: Fd, color: accent }}>"{quote}"</div>
           {/* Sections index */}
-          <div style={{ display: "flex", flexWrap: "wrap" as const, gap: "6px 16px" }}>
+          <div className="section-opener__index">
             {sections.map((s, i) => (
-              <div key={i} style={{ display: "flex", gap: 8, alignItems: "center" }}>
+              <div key={i} className="section-opener__index-item">
                 <div style={{ width: 3, height: 3, background: accent, opacity: 0.6 }} />
-                <span style={{ fontFamily: Fb, fontSize: 9.5, color: "rgba(250,250,250,0.45)", letterSpacing: "0.04em" }}>{s}</span>
+                <span style={{ fontFamily: Fb }}>{s}</span>
               </div>
             ))}
           </div>
