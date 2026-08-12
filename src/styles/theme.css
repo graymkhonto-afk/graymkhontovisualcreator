@@ -465,6 +465,16 @@ body {
   border: 1px solid rgba(26, 24, 21, 0.14);
 }
 
+.case-study-card__media[data-project="gauta-eteng"] {
+  background: #292826;
+}
+
+.case-study-card__media[data-project="gauta-eteng"] img {
+  object-fit: contain;
+  object-position: center;
+  background: #292826;
+}
+
 .case-study-card__content {
   grid-column: 8 / span 5;
   min-width: 0;

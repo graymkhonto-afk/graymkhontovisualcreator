@@ -90,6 +90,7 @@ import framedNetAbstractIllustrationImg from "@/imports/framed-net-abstract-illu
 import qgVisualsPhotographyBannerImg from "@/imports/qg-visuals-photography-banner.jpg";
 import gautaEtengTypesOfWasteImg from "@/imports/gauta-eteng-types-of-waste.png";
 import gautaEtengHouseholdWasteMapImg from "@/imports/gauta-eteng-household-waste-map.png";
+import gautaEtengGoldRushLandingImg from "@/imports/gauta-eteng-gold-rush-landing.png";
 import bobRossLogoBlackWebImg from "@/imports/bob-ross-logo-black-webdesign.png";
 import bobRossWebBrandingImg from "@/imports/bob-ross-webdesign-branding.png";
 import bobRossLogoWhiteWebImg from "@/imports/bob-ross-logo-white-webdesign.png";
@@ -4352,8 +4353,8 @@ const PUBLIC_CASE_STUDIES: PublicCaseStudy[] = [
     title: "Gauta Eteng",
     discipline: "Art Direction · Social Impact Campaign",
     year: "2024",
-    image: gautaEtengHouseholdWasteMapImg,
-    imageAlt: "Gauta Eteng household waste map and visual research evidence",
+    image: gautaEtengGoldRushLandingImg,
+    imageAlt: "Gauta Eteng Gold Rush newspaper campaign system",
     summary: "A communication system shaped from local waste behaviour, material culture and SDG 12 research.",
     problem: "The brief required a campaign that could make sustainable behaviour feel local, specific and usable rather than generic or imported.",
     research: "The work begins with observed urban texture, household waste categories, behavioural friction and visual references already present in Gauteng environments.",
@@ -4478,7 +4479,7 @@ function PublicPortfolio({ onOpenDossier }: { onOpenDossier: () => void }) {
         <div className="case-study-list">
           {PUBLIC_CASE_STUDIES.map((study, index) => (
             <article className="case-study-card" id={study.slug} key={study.slug}>
-              <div className="case-study-card__media">
+              <div className="case-study-card__media" data-project={study.slug}>
                 <ImageWithFallback src={study.image} alt={study.imageAlt} />
               </div>
               <div className="case-study-card__content">
