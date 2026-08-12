@@ -2431,8 +2431,12 @@ function EditableTextSlidePage({ slideNumber, section, data }: { slideNumber: nu
         const isSlide10Text = slideNumber === 10 && item.kind === "text";
         const isSlide12Header = slideNumber === 12 && item.kind === "text" && item.y < 10;
         const isSlide12Footer = slideNumber === 12 && item.kind === "text" && item.y > 94;
+        const isSlide13Text = slideNumber === 13 && item.kind === "text";
+        const isSlide13Footer = isSlide13Text && item.y > 95;
+        const isSlide13Identity = isSlide13Text && item.x >= 84 && item.y >= 15 && item.y <= 40;
         const hideSlide12OverflowFragment = slideNumber === 12 && index === 10;
         const slide12FormatLabelWidth = slideNumber === 12 && index === 9 ? 16.7 : adjustedWidth;
+        const resolvedWidth = isSlide13Identity ? Math.max(slide12FormatLabelWidth, 14) : slide12FormatLabelWidth;
         const adjustedTop = slideNumber === 108 && index === 56
           ? 15.2
           : isSlide9Footer
@@ -2441,7 +2445,9 @@ function EditableTextSlidePage({ slideNumber, section, data }: { slideNumber: nu
               ? Math.max(item.y, 1.35)
               : isSlide12Footer
                 ? 96.35
-                : item.y;
+                : isSlide13Footer
+                  ? 96.15
+                  : item.y;
         const rawText = normalizeEditableSlideText(slideNumber, item.text);
         const textLines = rawText.split("\n");
         const longestLine = Math.max(1, ...textLines.map(line => line.length));
@@ -2486,6 +2492,10 @@ function EditableTextSlidePage({ slideNumber, section, data }: { slideNumber: nu
           ? Math.min(item.fontSize || 6, 7)
           : isSlide12Header || isSlide12Footer
             ? Math.min(item.fontSize || 6, 6.5)
+          : isSlide13Text
+            ? isSlide13Footer
+              ? 6.5
+              : Math.max(7, Math.min(item.fontSize || preferredFontSize, rawFrameBoundPt))
           : isSlide10Text
             ? Math.max(5.5, Math.min(item.fontSize || preferredFontSize, rawFrameBoundPt))
             : Math.max(minimumReadableSize, Math.min(preferredFontSize, frameBoundPt));
@@ -2513,6 +2523,8 @@ function EditableTextSlidePage({ slideNumber, section, data }: { slideNumber: nu
           ? 2.8
           : isSlide12Header || isSlide12Footer
             ? 2.45
+            : isSlide13Footer
+              ? 2.75
             : item.y > 95
               ? Math.min(item.h, 2.55)
               : item.h;
@@ -2520,7 +2532,7 @@ function EditableTextSlidePage({ slideNumber, section, data }: { slideNumber: nu
           position: "absolute",
           left: `${item.x}%`,
           top: `${adjustedTop}%`,
-          width: `${slide12FormatLabelWidth}%`,
+          width: `${resolvedWidth}%`,
           height: `${adjustedHeight}%`,
           boxSizing: "border-box",
           background: resolvedColor(item.fill) || "transparent",
