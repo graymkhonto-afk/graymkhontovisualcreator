@@ -2431,6 +2431,29 @@ function EditableTextSlidePage({ slideNumber, section, data }: { slideNumber: nu
     return (item.text || "").length > 35 && Math.min(widthBound, heightBound) < 8.5;
   }).length;
   const isDenseEvidenceSlide = denseTextCount >= 3 || interiorTextItems.length >= 24;
+  const textItems = data.items
+    .map((item, index) => ({ item, index }))
+    .filter(({ item }) => item.kind === "text");
+
+  const reflowBoxFor = (item: EditableSlideItem, index: number, width: number) => {
+    if (item.kind !== "text") return { width, height: item.h };
+    const left = Math.max(item.x, item.x >= 0 && item.x < 4.5 ? 2.5 : item.x);
+    const rightLimit = 97.5;
+    const verticalPeers = textItems.filter(({ item: peer, index: peerIndex }) =>
+      peerIndex !== index &&
+      peer.y < item.y + item.h && peer.y + peer.h > item.y &&
+      peer.x > left + 1
+    );
+    const horizontalPeers = textItems.filter(({ item: peer, index: peerIndex }) =>
+      peerIndex !== index && peer.y > item.y + 0.35 &&
+      peer.x < left + width && peer.x + peer.w > left
+    );
+    const nextRight = verticalPeers.length ? Math.min(...verticalPeers.map(({ item: peer }) => peer.x)) : rightLimit;
+    const nextBelow = horizontalPeers.length ? Math.min(...horizontalPeers.map(({ item: peer }) => peer.y)) : 95;
+    const expandedWidth = Math.max(width, Math.min(rightLimit - left, nextRight - left - 1.1));
+    const expandedHeight = Math.max(item.h, Math.min(95 - item.y, nextBelow - item.y - 0.7));
+    return { width: Math.max(1, expandedWidth), height: Math.max(1, expandedHeight) };
+  };
 
   return (
       <div aria-label={`${section} — editable reconstruction of Portfolio Slide ${slideNumber}`} style={{ width: PW, height: PH, position: "relative", overflow: "hidden", background: c.bg }}>
@@ -2457,7 +2480,9 @@ function EditableTextSlidePage({ slideNumber, section, data }: { slideNumber: nu
         const isSharedSafeFooter = item.kind === "text" && item.y > 95 && (slideNumber === 14 || slideNumber >= 20);
         const hideSlide12OverflowFragment = slideNumber === 12 && index === 10;
         const slide12FormatLabelWidth = slideNumber === 12 && index === 9 ? 16.7 : adjustedWidth;
-        const resolvedWidth = isSlide13Identity ? Math.max(slide12FormatLabelWidth, 14) : slide12FormatLabelWidth;
+        const baseResolvedWidth = isSlide13Identity ? Math.max(slide12FormatLabelWidth, 14) : slide12FormatLabelWidth;
+        const reflowBox = reflowBoxFor(item, index, baseResolvedWidth);
+        const resolvedWidth = reflowBox.width;
         const adjustedTop = slideNumber === 108 && index === 56
           ? 15.2
           : isSlide9Footer
@@ -2485,11 +2510,11 @@ function EditableTextSlidePage({ slideNumber, section, data }: { slideNumber: nu
         const textLines = rawText.split("\n");
         const longestLine = Math.max(1, ...textLines.map(line => line.length));
         const boxWidthPx = (adjustedWidth / 100) * PW;
-        const boxHeightPx = (item.h / 100) * PH;
+        const boxHeightPx = (reflowBox.height / 100) * PH;
         const widthBoundPt = (boxWidthPx / (longestLine * 0.54)) * 0.75;
         const heightBoundPt = (boxHeightPx / (Math.max(1, textLines.length) * 1.18)) * 0.75;
         const rawFrameBoundPt = Math.min(widthBoundPt, heightBoundPt);
-        const frameBoundPt = Math.max(6.5, rawFrameBoundPt);
+        const frameBoundPt = Math.max(5.75, rawFrameBoundPt);
         const isEdgeMatter = item.y < 10 || item.y > 95;
         const lettersOnly = rawText.replace(/[^A-Za-zÀ-ž]/g, "");
         const isAllCaps = lettersOnly.length > 1 && lettersOnly === lettersOnly.toUpperCase();
@@ -2518,17 +2543,9 @@ function EditableTextSlidePage({ slideNumber, section, data }: { slideNumber: nu
                   : characterStyle === "label"
                     ? 9.5
                     : 9;
-        // Apply the editorial type floor from the Figma master. Dense evidence pages
-        // use a slightly tighter leading value while retaining a readable body size.
-        const minimumReadableSize = characterStyle === "display"
-          ? 16
-          : characterStyle === "subheading"
-            ? 10
-            : characterStyle === "body"
-              ? isDenseEvidenceSlide ? 8.5 : 9.5
-              : characterStyle === "label"
-                ? 7.5
-                : 6.5;
+        // The Figma hierarchy supplies preferred sizes, but the Keynote frame remains
+        // authoritative. Every entry reflows into available grid space and then uses
+        // a bounded size, preventing a readable type floor from causing collisions.
         const resolvedFontSize = isSlide9Footer
           ? Math.min(item.fontSize || 6, 7)
           : isSlide12Header || isSlide12Footer
@@ -2603,7 +2620,7 @@ function EditableTextSlidePage({ slideNumber, section, data }: { slideNumber: nu
             ? 6.5
           : isSlide10Text
             ? Math.max(5.5, Math.min(item.fontSize || preferredFontSize, rawFrameBoundPt))
-            : Math.max(minimumReadableSize, Math.min(preferredFontSize, rawFrameBoundPt));
+            : Math.max(5.75, Math.min(preferredFontSize, frameBoundPt));
         const resolvedTracking = characterStyle === "display"
           ? -0.35
           : characterStyle === "label"
@@ -2652,7 +2669,7 @@ function EditableTextSlidePage({ slideNumber, section, data }: { slideNumber: nu
               ? 2.75
             : item.y > 95
               ? Math.min(item.h, 2.55)
-              : item.h;
+              : reflowBox.height;
         const safeLeft = item.kind === "text" ? Math.max(item.x, item.x >= 0 && item.x < 4.5 ? 2.5 : item.x) : item.x;
         const safeWidth = item.kind === "text" ? Math.min(resolvedWidth, 97.5 - safeLeft) : resolvedWidth;
         const shared: React.CSSProperties = {
@@ -2709,7 +2726,7 @@ function EditableTextSlidePage({ slideNumber, section, data }: { slideNumber: nu
             aria-readonly={IS_PUBLIC_VIEWER || undefined}
             style={{
               ...shared,
-              display: hideSlide12OverflowFragment ? "none" : "flex",
+              display: hideSlide12OverflowFragment || item.x < -1 || item.y < -1 ? "none" : "flex",
               alignItems: item.vertical || "flex-start",
               whiteSpace: "pre-wrap",
               overflow: "hidden",
@@ -2723,6 +2740,7 @@ function EditableTextSlidePage({ slideNumber, section, data }: { slideNumber: nu
                 const colour = resolvedColor(item.color);
                 if (slideNumber === 11) return index === 17 || index === 23 ? c.ochre : c.white;
                 if (slideNumber === 29 && index === 7) return c.white;
+                if (slideNumber === 183 && item.fill === "#08080F") return c.white;
                 if (item.fill) {
                   const fill = resolvedColor(item.fill) || "";
                   const match = fill.match(/^#([0-9A-F]{6})$/i);
@@ -3504,7 +3522,7 @@ function PaintingProcessPage() {
 
 function DrawingGallerySlide({ title, subtitle, page, works, accent = c.ochre }: { title: string; subtitle: string; page: string; works: { src: string; label: string; position?: string }[]; accent?: string }) {
   return <EPage section="PART THREE · DRAWING" page={page} footerRight="GRACIOUS MKHONTO · DRAWING PRACTICE">
-    <div style={{ height: "100%", display: "grid", gridTemplateRows: "108px 1fr" }}>
+    <div style={{ height: "100%", boxSizing: "border-box", padding: `18px ${M}px 14px`, display: "grid", gridTemplateRows: "108px 1fr" }}>
       <div style={{ display: "grid", gridTemplateColumns: "1.15fr .85fr", alignItems: "end", borderBottom: `1px solid ${c.ink}`, paddingBottom: 15 }}><div><div style={{ fontFamily: Fm, fontSize: 8, letterSpacing: ".18em", color: accent, marginBottom: 8 }}>SKETCHBOOK · OBSERVATION · DEVELOPMENT</div><h1 style={{ fontFamily: Fd, fontSize: 42, fontWeight: 500, lineHeight: .96, margin: 0 }}>{title}</h1></div><p style={{ fontFamily: Fb, fontSize: 9.5, lineHeight: 1.5, margin: 0, color: c.mid }}>{subtitle}</p></div>
       <div style={{ display: "grid", gridTemplateColumns: "repeat(3, 1fr)", gridTemplateRows: "repeat(2, 1fr)", gap: 11, paddingTop: 15, minHeight: 0 }}>{works.map((work, index) => <figure key={`${work.label}-${index}`} style={{ margin: 0, display: "grid", gridTemplateRows: "1fr 24px", minHeight: 0 }}><img src={work.src} style={{ width: "100%", height: "100%", objectFit: "cover", objectPosition: work.position || "center" }} /><figcaption style={{ fontFamily: Fm, fontSize: 6.8, letterSpacing: ".1em", paddingTop: 7 }}>0{index + 1} · {work.label.toUpperCase()}</figcaption></figure>)}</div>
     </div>
@@ -3514,7 +3532,7 @@ function DrawingGallerySlide({ title, subtitle, page, works, accent = c.ochre }:
 function DrawingMotionSlide() {
   const works = [{ src: drawingMotion01, label: "Portrait construction · animated sequence" }, { src: drawingMotion02, label: "Facial structure · animated sequence" }];
   return <EPage section="PART THREE · DRAWING" page="DRAWING · 04" footerRight="GRACIOUS MKHONTO · DRAWING IN MOTION">
-    <div style={{ height: "100%", display: "grid", gridTemplateRows: "108px 1fr" }}><div style={{ display: "grid", gridTemplateColumns: "1.15fr .85fr", alignItems: "end", borderBottom: `1px solid ${c.ink}`, paddingBottom: 15 }}><div><div style={{ fontFamily: Fm, fontSize: 8, letterSpacing: ".18em", color: c.brown, marginBottom: 8 }}>PROCESS CAPTURE · ANIMATED STUDIES</div><h1 style={{ fontFamily: Fd, fontSize: 42, fontWeight: 500, lineHeight: .96, margin: 0 }}>Drawing in Motion</h1></div><p style={{ fontFamily: Fb, fontSize: 9.5, lineHeight: 1.5, margin: 0, color: c.mid }}>Short animated records reveal how facial proportion, contour and colour are developed through successive marks.</p></div><div style={{ display: "grid", gridTemplateColumns: "1fr 1fr", gap: 18, paddingTop: 16, minHeight: 0 }}>{works.map((work, index) => <figure key={work.src} style={{ margin: 0, display: "grid", gridTemplateRows: "1fr 38px", minHeight: 0 }}><div style={{ background: c.ink, display: "flex", alignItems: "center", justifyContent: "center", overflow: "hidden" }}><img src={work.src} style={{ width: "100%", height: "100%", objectFit: "contain" }} /></div><figcaption style={{ display: "flex", alignItems: "center", justifyContent: "space-between", fontFamily: Fm, fontSize: 7, letterSpacing: ".1em" }}><span>0{index + 1} · {work.label.toUpperCase()}</span><span style={{ color: c.ochre }}>GIF · PROCESS</span></figcaption></figure>)}</div></div>
+    <div style={{ height: "100%", boxSizing: "border-box", padding: `18px ${M}px 14px`, display: "grid", gridTemplateRows: "108px 1fr" }}><div style={{ display: "grid", gridTemplateColumns: "1.15fr .85fr", alignItems: "end", borderBottom: `1px solid ${c.ink}`, paddingBottom: 15 }}><div><div style={{ fontFamily: Fm, fontSize: 8, letterSpacing: ".18em", color: c.brown, marginBottom: 8 }}>PROCESS CAPTURE · ANIMATED STUDIES</div><h1 style={{ fontFamily: Fd, fontSize: 42, fontWeight: 500, lineHeight: .96, margin: 0 }}>Drawing in Motion</h1></div><p style={{ fontFamily: Fb, fontSize: 9.5, lineHeight: 1.5, margin: 0, color: c.mid }}>Short animated records reveal how facial proportion, contour and colour are developed through successive marks.</p></div><div style={{ display: "grid", gridTemplateColumns: "1fr 1fr", gap: 18, paddingTop: 16, minHeight: 0 }}>{works.map((work, index) => <figure key={work.src} style={{ margin: 0, display: "grid", gridTemplateRows: "1fr 38px", minHeight: 0 }}><div style={{ background: c.ink, display: "flex", alignItems: "center", justifyContent: "center", overflow: "hidden" }}><img src={work.src} style={{ width: "100%", height: "100%", objectFit: "contain" }} /></div><figcaption style={{ display: "flex", alignItems: "center", justifyContent: "space-between", fontFamily: Fm, fontSize: 7, letterSpacing: ".1em" }}><span>0{index + 1} · {work.label.toUpperCase()}</span><span style={{ color: c.ochre }}>GIF · PROCESS</span></figcaption></figure>)}</div></div>
   </EPage>;
 }
 
