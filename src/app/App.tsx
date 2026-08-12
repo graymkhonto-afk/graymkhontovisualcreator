@@ -358,6 +358,32 @@ function EPage({ children, section = "", page = "", navActive = "", footerRight 
   );
 }
 
+function EditorialMagazineEvidencePage() {
+  const magazineUrl = `${import.meta.env.BASE_URL}editorial-design-mag/index.html`;
+  return (
+    <EPage section="PART TWO · APPLIED EVIDENCE" page="E01" navActive="ARCHIVE" footerRight="EDITORIAL DESIGN · APPLIED EVIDENCE">
+      <div style={{ position: "absolute", inset: 0, padding: `22px ${M}px 18px`, display: "grid", gridTemplateColumns: ".62fr 1.38fr", gap: 32 }}>
+        <section style={{ display: "flex", flexDirection: "column", justifyContent: "space-between", borderRight: `0.5px solid ${c.rule}`, paddingRight: 28 }}>
+          <div>
+            <CapLabel color={c.brown}>Applied Editorial Evidence · E01</CapLabel>
+            <h1 style={{ fontFamily: Fd, fontSize: 42, fontWeight: 500, lineHeight: .98, margin: "0 0 16px" }}>Editorial Design Magazine</h1>
+            <p style={{ fontFamily: Fb, fontSize: 10.5, lineHeight: 1.6, color: c.mid, margin: 0 }}>An eight-page publication demonstrating editorial hierarchy, typography, page sequencing, image direction and a coherent magazine system.</p>
+          </div>
+          <dl style={{ margin: 0, borderTop: `0.5px solid ${c.rule}` }}>
+            {[["Evidence", "E01 · Editorial publication"], ["Competency", "Grid · hierarchy · sequencing"], ["Format", "Eight-page interactive flipbook"], ["Location", "Part Two · Applied Evidence"]].map(([term, value]) => <div key={term} style={{ display: "grid", gridTemplateColumns: "86px 1fr", gap: 12, padding: "8px 0", borderBottom: `0.5px solid ${c.rule}` }}><dt style={{ fontFamily: Fm, fontSize: 7, letterSpacing: ".1em", color: c.ochre, textTransform: "uppercase" }}>{term}</dt><dd style={{ fontFamily: Fb, fontSize: 9, lineHeight: 1.35, margin: 0 }}>{value}</dd></div>)}
+          </dl>
+        </section>
+        <section style={{ display: "grid", gridTemplateRows: "1fr auto", minHeight: 0 }}>
+          <div style={{ minHeight: 0, background: c.dark, border: `0.5px solid ${c.rule}`, overflow: "hidden" }}>
+            <iframe src={magazineUrl} title="QG Editorial Design Magazine interactive flipbook" loading="lazy" style={{ width: "100%", height: "100%", border: 0, display: "block" }} />
+          </div>
+          <a href={magazineUrl} target="_blank" rel="noreferrer" style={{ justifySelf: "end", marginTop: 10, display: "inline-flex", alignItems: "center", gap: 7, color: c.ink, fontFamily: Fm, fontSize: 7.5, letterSpacing: ".1em", textTransform: "uppercase", textDecoration: "none" }}>Open full flipbook <ChevronRight size={11} /></a>
+        </section>
+      </div>
+    </EPage>
+  );
+}
+
 function SubmissionPlaceholderPage({ item, index }: { item: (typeof SUBMISSION_PLACEHOLDERS)[number]; index: number }) {
   return (
     <EPage section={item.section} page={`PLACEHOLDER ${String(index + 1).padStart(2, "0")}`} navActive="ARCHIVE">
@@ -3740,6 +3766,7 @@ const PAGES: PageEntry[] = [
     render: () => <PartOpener partNum="02" partTitle={"Part Two —\nEvidence"} subtitle="Evidence of Learning" accent={c.olive} quote="Evidence is not merely documentation — it is proof that learning has occurred through sustained, purposeful practice." sections={["Qualification Outcome Mapping","Evidence Matrix"]} /> },
   { id: "p2-outcomes", title: "Qualification Outcome Mapping", section: "Part 02 — Evidence", render: () => <OutcomeMapping /> },
   { id: "p2-matrix",   title: "Evidence Matrix",               section: "Part 02 — Evidence", render: () => <EvidenceMatrix /> },
+  { id: "p2-editorial-magazine", title: "E01 — Editorial Design Magazine", section: "Part 02 — Evidence", render: () => <EditorialMagazineEvidencePage /> },
 
   // ── PART THREE — DESIGN PORTFOLIO ────────────────────────────────────────
   { id: "p3div", title: "Part Three — Design Portfolio", section: "Part 03 — Portfolio",
@@ -5305,9 +5332,12 @@ export default function App() {
             <span title={viewOnly ? `VIEW ONLY · ${label}` : label} style={{ flex: "1 1 auto", minWidth: 120, maxWidth: "min(44vw, 560px)", overflow: "hidden", textOverflow: "ellipsis", whiteSpace: "nowrap" as const, fontFamily: Fb, fontSize: 7.5, letterSpacing: "0.1em", textTransform: "uppercase" as const, color: c.mid }}>{viewOnly ? `VIEW ONLY · ${label}` : label}</span>
             <div style={{ flex: "0 1 auto", minWidth: 0, display: "flex", gap: 5, alignItems: "center", justifyContent: "flex-end", overflowX: "auto", overflowY: "hidden", paddingBottom: 1 }}>
               {IS_PUBLIC_VIEWER && (
-                <button onClick={() => setPublicMode(true)} style={{ display: "flex", alignItems: "center", gap: 5, height: 24, padding: "0 10px", background: c.dark, border: "none", cursor: "pointer", color: c.white, fontFamily: Fb, fontSize: 7.5, letterSpacing: "0.1em", textTransform: "uppercase" as const }}>
-                  Portfolio
-                </button>
+                <>
+                  <button onClick={() => { setPublicMode(true); window.setTimeout(() => document.getElementById("top")?.scrollIntoView(), 0); }} style={{ display: "flex", alignItems: "center", gap: 5, height: 24, padding: "0 10px", background: c.dark, border: "none", cursor: "pointer", color: c.white, fontFamily: Fb, fontSize: 7.5, letterSpacing: "0.1em", textTransform: "uppercase" as const }}>Home</button>
+                  <button onClick={() => { setPublicMode(true); window.setTimeout(() => document.getElementById("work")?.scrollIntoView({ behavior: "smooth" }), 0); }} style={{ display: "flex", alignItems: "center", gap: 5, height: 24, padding: "0 10px", background: c.white, border: `0.5px solid ${c.rule}`, cursor: "pointer", color: c.ink, fontFamily: Fb, fontSize: 7.5, letterSpacing: "0.1em", textTransform: "uppercase" as const }}>Work</button>
+                  <button onClick={() => { setPublicMode(true); window.setTimeout(() => document.getElementById("methodology")?.scrollIntoView({ behavior: "smooth" }), 0); }} style={{ display: "flex", alignItems: "center", gap: 5, height: 24, padding: "0 10px", background: c.white, border: `0.5px solid ${c.rule}`, cursor: "pointer", color: c.ink, fontFamily: Fb, fontSize: 7.5, letterSpacing: "0.1em", textTransform: "uppercase" as const }}>Method</button>
+                  <button onClick={() => { setPublicMode(true); window.setTimeout(() => document.getElementById("rpl")?.scrollIntoView({ behavior: "smooth" }), 0); }} style={{ display: "flex", alignItems: "center", gap: 5, height: 24, padding: "0 10px", background: c.white, border: `0.5px solid ${c.rule}`, cursor: "pointer", color: c.ink, fontFamily: Fb, fontSize: 7.5, letterSpacing: "0.1em", textTransform: "uppercase" as const }}>RPL</button>
+                </>
               )}
               {!viewOnly && (
                 <>

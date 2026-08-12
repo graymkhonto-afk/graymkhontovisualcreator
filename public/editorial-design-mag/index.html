@@ -1,0 +1,279 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>QG Editorial Design Mag Flipbook</title>
+  <style>
+    :root {
+      color-scheme: dark;
+      --bg: #090b10;
+      --panel: #151922;
+      --ink: #f7f3eb;
+      --muted: #a4acb8;
+      --line: #2b313c;
+      --accent: #067bc2;
+      --hot: #ed1689;
+    }
+
+    * {
+      box-sizing: border-box;
+    }
+
+    body {
+      margin: 0;
+      min-height: 100vh;
+      background:
+        radial-gradient(circle at 18% 20%, rgba(6, 123, 194, 0.18), transparent 28rem),
+        radial-gradient(circle at 84% 28%, rgba(237, 22, 137, 0.15), transparent 25rem),
+        linear-gradient(180deg, #090b10 0%, #10131a 100%);
+      color: var(--ink);
+      font-family: Inter, ui-sans-serif, system-ui, -apple-system, BlinkMacSystemFont, "Segoe UI", sans-serif;
+      display: grid;
+      grid-template-rows: auto 1fr auto;
+      gap: 18px;
+      padding: 20px;
+      overflow-x: hidden;
+    }
+
+    header,
+    footer {
+      width: min(1120px, 100%);
+      margin: 0 auto;
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      gap: 16px;
+    }
+
+    h1 {
+      margin: 0;
+      font-size: clamp(18px, 3vw, 28px);
+      line-height: 1.05;
+      letter-spacing: 0;
+    }
+
+    .meta,
+    .counter {
+      color: var(--muted);
+      font-size: 14px;
+      white-space: nowrap;
+    }
+
+    main {
+      display: grid;
+      place-items: center;
+      min-height: 0;
+    }
+
+    .stage {
+      width: min(92vw, 652px);
+      aspect-ratio: 652.08 / 793.8;
+      perspective: 2200px;
+      position: relative;
+    }
+
+    .book {
+      width: 100%;
+      height: 100%;
+      position: relative;
+      transform-style: preserve-3d;
+      filter: drop-shadow(0 26px 34px rgba(0, 0, 0, 0.48));
+    }
+
+    .page {
+      position: absolute;
+      inset: 0;
+      transform-origin: left center;
+      transform-style: preserve-3d;
+      transition: transform 720ms cubic-bezier(0.2, 0.72, 0.1, 1), filter 720ms ease;
+      background: #f5f2ec;
+      border: 1px solid rgba(255, 255, 255, 0.12);
+      overflow: hidden;
+      backface-visibility: hidden;
+    }
+
+    .page img {
+      display: block;
+      width: 100%;
+      height: 100%;
+      object-fit: contain;
+      background: #f5f2ec;
+      user-select: none;
+      pointer-events: none;
+    }
+
+    .page::after {
+      content: "";
+      position: absolute;
+      inset: 0;
+      opacity: 0;
+      pointer-events: none;
+      background: linear-gradient(90deg, rgba(0, 0, 0, 0.34), transparent 30%, rgba(255, 255, 255, 0.1));
+      transition: opacity 720ms ease;
+    }
+
+    .page.turned {
+      transform: rotateY(-180deg);
+      filter: brightness(0.86);
+    }
+
+    .page.turned::after {
+      opacity: 1;
+    }
+
+    .toolbar {
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      gap: 10px;
+      flex-wrap: wrap;
+    }
+
+    button,
+    a.button {
+      appearance: none;
+      border: 1px solid var(--line);
+      background: var(--panel);
+      color: var(--ink);
+      min-height: 40px;
+      padding: 0 14px;
+      border-radius: 6px;
+      font: inherit;
+      font-weight: 700;
+      text-decoration: none;
+      display: inline-flex;
+      align-items: center;
+      justify-content: center;
+      gap: 8px;
+      cursor: pointer;
+    }
+
+    button:hover,
+    a.button:hover {
+      border-color: var(--accent);
+    }
+
+    button:disabled {
+      color: #596171;
+      cursor: not-allowed;
+      border-color: #202632;
+    }
+
+    .progress {
+      width: min(380px, 46vw);
+      accent-color: var(--hot);
+    }
+
+    @media (max-width: 680px) {
+      body {
+        padding: 14px;
+        gap: 14px;
+      }
+
+      header,
+      footer {
+        align-items: flex-start;
+        flex-direction: column;
+      }
+
+      .stage {
+        width: min(96vw, 520px);
+      }
+
+      .progress {
+        width: min(88vw, 360px);
+      }
+    }
+  </style>
+</head>
+<body>
+  <header>
+    <div>
+      <h1>QG Editorial Design Mag</h1>
+      <div class="meta">Interactive flipbook · 8 pages</div>
+    </div>
+    <div class="counter" id="counter">Page 1 of 8</div>
+  </header>
+
+  <main>
+    <section class="stage" aria-label="Flipbook preview">
+      <div class="book" id="book"></div>
+    </section>
+  </main>
+
+  <footer>
+    <div class="toolbar">
+      <button id="prev" type="button" aria-label="Previous page">← Prev</button>
+      <input class="progress" id="progress" type="range" min="1" max="8" value="1" aria-label="Page selector">
+      <button id="next" type="button" aria-label="Next page">Next →</button>
+    </div>
+    <a class="button" href="../../pdf/qg-editorial-design-mag.pdf">Open PDF</a>
+  </footer>
+
+  <script>
+    const pages = [
+      "pages/page-1.png",
+      "pages/page-2.png",
+      "pages/page-3.png",
+      "pages/page-4.png",
+      "pages/page-5.png",
+      "pages/page-6.png",
+      "pages/page-7.png",
+      "pages/page-8.png"
+    ];
+
+    const book = document.querySelector("#book");
+    const counter = document.querySelector("#counter");
+    const prev = document.querySelector("#prev");
+    const next = document.querySelector("#next");
+    const progress = document.querySelector("#progress");
+    let current = 0;
+
+    pages.forEach((src, index) => {
+      const sheet = document.createElement("article");
+      sheet.className = "page";
+      sheet.style.zIndex = String(pages.length - index);
+
+      const image = document.createElement("img");
+      image.src = src;
+      image.alt = `Flipbook page ${index + 1}`;
+      image.loading = index === 0 ? "eager" : "lazy";
+      sheet.append(image);
+      book.append(sheet);
+    });
+
+    const pageEls = [...document.querySelectorAll(".page")];
+
+    function render() {
+      pageEls.forEach((page, index) => {
+        page.classList.toggle("turned", index < current);
+        page.style.zIndex = index < current ? String(index + 1) : String(pages.length - index);
+      });
+      counter.textContent = `Page ${current + 1} of ${pages.length}`;
+      progress.value = String(current + 1);
+      prev.disabled = current === 0;
+      next.disabled = current === pages.length - 1;
+    }
+
+    function goTo(pageIndex) {
+      current = Math.max(0, Math.min(pages.length - 1, pageIndex));
+      render();
+    }
+
+    prev.addEventListener("click", () => goTo(current - 1));
+    next.addEventListener("click", () => goTo(current + 1));
+    progress.addEventListener("input", event => goTo(Number(event.target.value) - 1));
+    book.addEventListener("click", event => {
+      const midpoint = book.getBoundingClientRect().left + book.getBoundingClientRect().width / 2;
+      goTo(event.clientX < midpoint ? current - 1 : current + 1);
+    });
+    window.addEventListener("keydown", event => {
+      if (event.key === "ArrowLeft") goTo(current - 1);
+      if (event.key === "ArrowRight") goTo(current + 1);
+    });
+
+    render();
+  </script>
+</body>
+</html>
