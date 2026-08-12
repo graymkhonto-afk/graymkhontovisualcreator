@@ -2434,6 +2434,7 @@ function EditableTextSlidePage({ slideNumber, section, data }: { slideNumber: nu
         const isSlide13Text = slideNumber === 13 && item.kind === "text";
         const isSlide13Footer = isSlide13Text && item.y > 95;
         const isSlide13Identity = isSlide13Text && item.x >= 84 && item.y >= 15 && item.y <= 40;
+        const isSharedSafeFooter = item.kind === "text" && item.y > 95 && (slideNumber === 14 || slideNumber >= 21);
         const hideSlide12OverflowFragment = slideNumber === 12 && index === 10;
         const slide12FormatLabelWidth = slideNumber === 12 && index === 9 ? 16.7 : adjustedWidth;
         const resolvedWidth = isSlide13Identity ? Math.max(slide12FormatLabelWidth, 14) : slide12FormatLabelWidth;
@@ -2447,7 +2448,9 @@ function EditableTextSlidePage({ slideNumber, section, data }: { slideNumber: nu
                 ? 96.35
                 : isSlide13Footer
                   ? 96.15
-                  : item.y;
+                  : isSharedSafeFooter
+                    ? 96.15
+                    : item.y;
         const rawText = normalizeEditableSlideText(slideNumber, item.text);
         const textLines = rawText.split("\n");
         const longestLine = Math.max(1, ...textLines.map(line => line.length));
@@ -2496,6 +2499,8 @@ function EditableTextSlidePage({ slideNumber, section, data }: { slideNumber: nu
             ? isSlide13Footer
               ? 6.5
               : Math.max(7, Math.min(item.fontSize || preferredFontSize, rawFrameBoundPt))
+          : isSharedSafeFooter
+            ? 6.5
           : isSlide10Text
             ? Math.max(5.5, Math.min(item.fontSize || preferredFontSize, rawFrameBoundPt))
             : Math.max(minimumReadableSize, Math.min(preferredFontSize, frameBoundPt));
@@ -2524,6 +2529,8 @@ function EditableTextSlidePage({ slideNumber, section, data }: { slideNumber: nu
           : isSlide12Header || isSlide12Footer
             ? 2.45
             : isSlide13Footer
+              ? 2.75
+            : isSharedSafeFooter
               ? 2.75
             : item.y > 95
               ? Math.min(item.h, 2.55)
