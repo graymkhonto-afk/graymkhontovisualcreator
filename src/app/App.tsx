@@ -2434,6 +2434,8 @@ function EditableTextSlidePage({ slideNumber, section, data }: { slideNumber: nu
         const isSlide13Text = slideNumber === 13 && item.kind === "text";
         const isSlide13Footer = isSlide13Text && item.y > 95;
         const isSlide13Identity = isSlide13Text && item.x >= 84 && item.y >= 15 && item.y <= 40;
+        const isSlide15Text = slideNumber === 15 && item.kind === "text";
+        const isSlide15Footer = isSlide15Text && item.y > 95;
         const isSharedSafeFooter = item.kind === "text" && item.y > 95 && (slideNumber === 14 || slideNumber >= 21);
         const hideSlide12OverflowFragment = slideNumber === 12 && index === 10;
         const slide12FormatLabelWidth = slideNumber === 12 && index === 9 ? 16.7 : adjustedWidth;
@@ -2448,6 +2450,8 @@ function EditableTextSlidePage({ slideNumber, section, data }: { slideNumber: nu
                 ? 96.35
                 : isSlide13Footer
                   ? 96.15
+                  : isSlide15Footer
+                    ? 96.15
                   : isSharedSafeFooter
                     ? 96.15
                     : item.y;
@@ -2499,6 +2503,16 @@ function EditableTextSlidePage({ slideNumber, section, data }: { slideNumber: nu
             ? isSlide13Footer
               ? 6.5
               : Math.max(7, Math.min(item.fontSize || preferredFontSize, rawFrameBoundPt))
+          : isSlide15Text
+            ? isSlide15Footer
+              ? 6.5
+              : index === 47
+                ? Math.min(17, rawFrameBoundPt)
+                : index === 66 || index === 67
+                  ? Math.min(10.5, rawFrameBoundPt)
+                  : index >= 85
+                    ? Math.min(9.5, rawFrameBoundPt)
+                    : Math.min(index === 41 || index === 46 || index === 65 || index === 68 || index === 77 ? 8.5 : 8, rawFrameBoundPt)
           : isSharedSafeFooter
             ? 6.5
           : isSlide10Text
@@ -2529,6 +2543,8 @@ function EditableTextSlidePage({ slideNumber, section, data }: { slideNumber: nu
           : isSlide12Header || isSlide12Footer
             ? 2.45
             : isSlide13Footer
+              ? 2.75
+            : isSlide15Footer
               ? 2.75
             : isSharedSafeFooter
               ? 2.75
