@@ -71,6 +71,7 @@ import noveltiesRaffiaHeartStudy from "@/imports/novelties-raffia-heart-study.jp
 import ukuMockup from "@/imports/uku_poster_mock_up.png";
 import characterSketch from "@/imports/IMG_0561.PNG";
 import editorialManifestoImg from "@/imports/editorial-first-things-first-2020.png";
+import ghostInGridMagazineLandingImg from "@/imports/ghost-in-grid-magazine-landing.png";
 import editorialFoldedManifestoMockupImg from "@/imports/editorial-folded-manifesto-mockup.png";
 import webWireframeImg from "@/imports/gracious-mkhonto-double-up-wireframe.png";
 import webframeLogoDesignImg from "@/imports/webframe-logo-design.png";
@@ -4401,8 +4402,8 @@ const PUBLIC_CASE_STUDIES: PublicCaseStudy[] = [
     title: "Ghost in the Grid",
     discipline: "Editorial Design · Research",
     year: "2022",
-    image: editorialManifestoImg,
-    imageAlt: "Editorial manifesto spread demonstrating typographic hierarchy and grid structure",
+    image: ghostInGridMagazineLandingImg,
+    imageAlt: "Ghost in the Grid eight-page premium in-house magazine overview",
     summary: "A publication-led investigation into grid ideology, typographic hierarchy and African visual systems.",
     problem: "The work needed to question the grid while still using the grid with discipline and clarity.",
     research: "The project connects modernist grid theory, editorial pacing, African pattern systems and critical design writing.",

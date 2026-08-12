@@ -485,6 +485,16 @@ body {
   background: #ffc43a;
 }
 
+.case-study-card__media[data-project="ghost-grid"] {
+  background: #d7d5d0;
+}
+
+.case-study-card__media[data-project="ghost-grid"] img {
+  object-fit: contain;
+  object-position: center;
+  background: #d7d5d0;
+}
+
 .case-study-card__content {
   grid-column: 8 / span 5;
   min-width: 0;
