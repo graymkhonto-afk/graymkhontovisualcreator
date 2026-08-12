@@ -2439,7 +2439,7 @@ function EditableTextSlidePage({ slideNumber, section, data }: { slideNumber: nu
         const isSlide15Footer = isSlide15Text && item.y > 95;
         const isSlide19Text = slideNumber === 19 && item.kind === "text";
         const isSlide19Footer = isSlide19Text && item.y > 95;
-        const isSharedSafeFooter = item.kind === "text" && item.y > 95 && (slideNumber === 14 || slideNumber >= 21);
+        const isSharedSafeFooter = item.kind === "text" && item.y > 95 && (slideNumber === 14 || slideNumber >= 20);
         const hideSlide12OverflowFragment = slideNumber === 12 && index === 10;
         const slide12FormatLabelWidth = slideNumber === 12 && index === 9 ? 16.7 : adjustedWidth;
         const resolvedWidth = isSlide13Identity ? Math.max(slide12FormatLabelWidth, 14) : slide12FormatLabelWidth;
