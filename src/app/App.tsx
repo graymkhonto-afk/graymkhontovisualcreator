@@ -4572,6 +4572,9 @@ type PublicCaseStudy = {
   year: string;
   image: string;
   imageAlt: string;
+  video?: string;
+  videoLabel?: string;
+  retainImage?: boolean;
   summary: string;
   problem: string;
   research: string;
@@ -4606,6 +4609,9 @@ const PUBLIC_CASE_STUDIES: PublicCaseStudy[] = [
     year: "2026",
     image: ukuvuselelaFractalPoster03,
     imageAlt: "Yellow Ukuvuselela fractal poster design outcome",
+    video: `${import.meta.env.BASE_URL}media/ukuvuselela-fractal-doodle.mp4`,
+    videoLabel: "Ukuvuselela fractal doodle motion study",
+    retainImage: true,
     summary: "An awarded visual system using fractal structure, cultural renewal and poster rhythm.",
     problem: "The challenge was to create a contemporary communication piece that could carry cultural memory without becoming decorative.",
     research: "The process investigated pattern, repetition, renewal, African visual systems and the expressive potential of motion from a static poster base.",
@@ -4638,6 +4644,8 @@ const PUBLIC_CASE_STUDIES: PublicCaseStudy[] = [
     year: "2022",
     image: ghostInGridMagazineLandingImg,
     imageAlt: "Ghost in the Grid eight-page premium in-house magazine overview",
+    video: `${import.meta.env.BASE_URL}media/ghost-in-the-grid-editorial.mp4`,
+    videoLabel: "Ghost in the Grid editorial magazine motion presentation",
     summary: "A publication-led investigation into grid ideology, typographic hierarchy and African visual systems.",
     problem: "The work needed to question the grid while still using the grid with discipline and clarity.",
     research: "The project connects modernist grid theory, editorial pacing, African pattern systems and critical design writing.",
@@ -4709,7 +4717,8 @@ function PublicPortfolio({ onOpenDossier }: { onOpenDossier: () => void }) {
           {PUBLIC_CASE_STUDIES.map((study, index) => (
             <article className="case-study-card" id={study.slug} key={study.slug}>
               <div className="case-study-card__media" data-project={study.slug}>
-                <ImageWithFallback src={study.image} alt={study.imageAlt} />
+                {study.video && <video src={study.video} aria-label={study.videoLabel} autoPlay muted loop playsInline preload="metadata" />}
+                {(!study.video || study.retainImage) && <ImageWithFallback src={study.image} alt={study.imageAlt} />}
               </div>
               <div className="case-study-card__content">
                 <p className="public-kicker">{String(index + 1).padStart(2, "0")} · {study.year} · {study.discipline}</p>
@@ -5325,12 +5334,12 @@ export default function App() {
         </>}
       </div>
 
-      <main id="main-content" tabIndex={-1} style={{ display: "flex", height: "100vh", width: "100vw", background: "#D4D0CA", overflow: "hidden" }}>
+      <main id="main-content" className="portfolio-workspace" tabIndex={-1} style={{ display: "flex", height: "100vh", width: "100vw", background: "#D4D0CA", overflow: "hidden" }}>
         <Sidebar current={current} onSelect={goTo} total={totalPages} displayPages={displayPages} onAssetImport={handleAssetImport} pdfLoading={pdfLoading} onRemovePdf={handleRemovePdf} currentSection={activePage?.section || "Part 03 — Portfolio"} viewOnly={viewOnly} uploadStatus={uploadStatus} />
         <div ref={containerRef} style={{ flex: 1, minWidth: 0, display: "flex", flexDirection: "column", overflow: "hidden" }}>
-          <div style={{ minHeight: 42, background: c.bg, borderBottom: `0.5px solid ${c.rule}`, display: "flex", alignItems: "center", justifyContent: "space-between", gap: 14, padding: "7px 18px", flexShrink: 0 }}>
+          <div className="portfolio-toolbar" style={{ minHeight: 42, background: c.bg, borderBottom: `0.5px solid ${c.rule}`, display: "flex", alignItems: "center", justifyContent: "space-between", gap: 14, padding: "7px 18px", flexShrink: 0 }}>
             <span title={viewOnly ? `VIEW ONLY · ${label}` : label} style={{ flex: "1 1 auto", minWidth: 120, maxWidth: "min(44vw, 560px)", overflow: "hidden", textOverflow: "ellipsis", whiteSpace: "nowrap" as const, fontFamily: Fb, fontSize: 7.5, letterSpacing: "0.1em", textTransform: "uppercase" as const, color: c.mid }}>{viewOnly ? `VIEW ONLY · ${label}` : label}</span>
-            <div style={{ flex: "0 1 auto", minWidth: 0, display: "flex", gap: 5, alignItems: "center", justifyContent: "flex-end", overflowX: "auto", overflowY: "hidden", paddingBottom: 1 }}>
+            <div className="portfolio-toolbar__controls" style={{ flex: "0 1 auto", minWidth: 0, display: "flex", gap: 5, alignItems: "center", justifyContent: "flex-end", overflowX: "auto", overflowY: "hidden", paddingBottom: 1 }}>
               {IS_PUBLIC_VIEWER && (
                 <>
                   <button onClick={() => { setPublicMode(true); window.setTimeout(() => document.getElementById("top")?.scrollIntoView(), 0); }} style={{ display: "flex", alignItems: "center", gap: 5, height: 24, padding: "0 10px", background: c.dark, border: "none", cursor: "pointer", color: c.white, fontFamily: Fb, fontSize: 7.5, letterSpacing: "0.1em", textTransform: "uppercase" as const }}>Home</button>
