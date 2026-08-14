@@ -4466,7 +4466,7 @@ function Sidebar({ current, onSelect, total, displayPages, onAssetImport, pdfLoa
   }, [currentSection]);
 
   return (
-    <aside className="portfolio-sidebar" aria-label="Portfolio slide navigation" style={{ width: 252, flexShrink: 0, height: "100vh", background: c.bg, borderRight: `0.5px solid ${c.rule}`, display: "flex", flexDirection: "column", overflow: "hidden" }}>
+    <aside className={`portfolio-sidebar${viewOnly ? " portfolio-sidebar--view-only" : ""}`} aria-label="Portfolio slide navigation" style={{ width: viewOnly ? 218 : 252, flexShrink: 0, height: "100vh", background: c.bg, borderRight: `0.5px solid ${c.rule}`, display: "flex", flexDirection: "column", overflow: "hidden" }}>
       <div style={{ padding: "16px 18px 12px", borderBottom: `0.5px solid ${c.rule}` }}>
         <div style={{ fontFamily: Fb, fontSize: 8.5, letterSpacing: "0.14em", textTransform: "uppercase" as const, color: c.ink, fontWeight: 600, marginBottom: 3 }}>RPL PORTFOLIO</div>
         <div style={{ fontFamily: Fb, fontSize: 8, color: c.mid, letterSpacing: "0.1em", marginBottom: 10 }}>Qinisile G. Mkhonto · Vol. 1 — 2026</div>
@@ -5344,10 +5344,10 @@ export default function App() {
       <main id="main-content" className="portfolio-workspace" tabIndex={-1} style={{ display: "flex", height: "100vh", width: "100vw", background: "#D4D0CA", overflow: "hidden" }}>
         <Sidebar current={current} onSelect={goTo} total={totalPages} displayPages={displayPages} onAssetImport={handleAssetImport} pdfLoading={pdfLoading} onRemovePdf={handleRemovePdf} currentSection={activePage?.section || "Part 03 — Portfolio"} viewOnly={viewOnly} uploadStatus={uploadStatus} />
         <div ref={containerRef} style={{ flex: 1, minWidth: 0, display: "flex", flexDirection: "column", overflow: "hidden" }}>
-          <div className="portfolio-toolbar" style={{ minHeight: 42, background: c.bg, borderBottom: `0.5px solid ${c.rule}`, display: "flex", alignItems: "center", justifyContent: "space-between", gap: 14, padding: "7px 18px", flexShrink: 0 }}>
+          <div className={`portfolio-toolbar${viewOnly ? " portfolio-toolbar--view-only" : ""}`} style={{ minHeight: 42, background: c.bg, borderBottom: `0.5px solid ${c.rule}`, display: "flex", alignItems: "center", justifyContent: "space-between", gap: 14, padding: "7px 18px", flexShrink: 0 }}>
             <span title={viewOnly ? `VIEW ONLY · ${label}` : label} style={{ flex: "1 1 auto", minWidth: 120, maxWidth: "min(44vw, 560px)", overflow: "hidden", textOverflow: "ellipsis", whiteSpace: "nowrap" as const, fontFamily: Fb, fontSize: 7.5, letterSpacing: "0.1em", textTransform: "uppercase" as const, color: c.mid }}>{viewOnly ? `VIEW ONLY · ${label}` : label}</span>
             <div className="portfolio-toolbar__controls" style={{ flex: "0 1 auto", minWidth: 0, display: "flex", gap: 5, alignItems: "center", justifyContent: "flex-end", overflowX: "auto", overflowY: "hidden", paddingBottom: 1 }}>
-              {IS_PUBLIC_VIEWER && (
+              {IS_PUBLIC_VIEWER && !viewOnly && (
                 <>
                   <button onClick={() => { setPublicMode(true); window.setTimeout(() => document.getElementById("top")?.scrollIntoView(), 0); }} style={{ display: "flex", alignItems: "center", gap: 5, height: 24, padding: "0 10px", background: c.dark, border: "none", cursor: "pointer", color: c.white, fontFamily: Fb, fontSize: 7.5, letterSpacing: "0.1em", textTransform: "uppercase" as const }}>Home</button>
                   <button onClick={() => { setPublicMode(true); window.setTimeout(() => document.getElementById("work")?.scrollIntoView({ behavior: "smooth" }), 0); }} style={{ display: "flex", alignItems: "center", gap: 5, height: 24, padding: "0 10px", background: c.white, border: `0.5px solid ${c.rule}`, cursor: "pointer", color: c.ink, fontFamily: Fb, fontSize: 7.5, letterSpacing: "0.1em", textTransform: "uppercase" as const }}>Work</button>
@@ -5378,15 +5378,15 @@ export default function App() {
                   </button>
                 </>
               )}
-              <button onClick={() => setFlipbookMode(v => !v)} style={{ display: "flex", alignItems: "center", gap: 5, height: 24, padding: "0 10px", background: flipbookMode ? c.ochre : c.white, border: `0.5px solid ${flipbookMode ? c.ochre : c.rule}`, cursor: "pointer", color: flipbookMode ? c.white : c.ink, fontFamily: Fb, fontSize: 7.5, letterSpacing: "0.1em", textTransform: "uppercase" as const }}>
+              {!viewOnly && <button onClick={() => setFlipbookMode(v => !v)} style={{ display: "flex", alignItems: "center", gap: 5, height: 24, padding: "0 10px", background: flipbookMode ? c.ochre : c.white, border: `0.5px solid ${flipbookMode ? c.ochre : c.rule}`, cursor: "pointer", color: flipbookMode ? c.white : c.ink, fontFamily: Fb, fontSize: 7.5, letterSpacing: "0.1em", textTransform: "uppercase" as const }}>
                 <BookOpen size={9} />Flipbook
-              </button>
-              <a href="https://www.linkedin.com/in/graciousgraymkhonto" target="_blank" rel="noreferrer" aria-label="Open Gracious Gray Mkhonto's LinkedIn profile" style={{ display: "flex", alignItems: "center", gap: 5, height: 24, padding: "0 10px", boxSizing: "border-box", background: c.white, border: `0.5px solid ${c.rule}`, color: c.ink, textDecoration: "none", fontFamily: Fb, fontSize: 7.5, letterSpacing: "0.1em", textTransform: "uppercase" as const, flexShrink: 0 }}>
+              </button>}
+              {!viewOnly && <a href="https://www.linkedin.com/in/graciousgraymkhonto" target="_blank" rel="noreferrer" aria-label="Open Gracious Gray Mkhonto's LinkedIn profile" style={{ display: "flex", alignItems: "center", gap: 5, height: 24, padding: "0 10px", boxSizing: "border-box", background: c.white, border: `0.5px solid ${c.rule}`, color: c.ink, textDecoration: "none", fontFamily: Fb, fontSize: 7.5, letterSpacing: "0.1em", textTransform: "uppercase" as const, flexShrink: 0 }}>
                 <Linkedin size={9} />LinkedIn
-              </a>
-              <a href="https://www.behance.net/graymkhonto1" target="_blank" rel="noreferrer" aria-label="Open Gracious Gray Mkhonto's Behance profile" style={{ display: "flex", alignItems: "center", gap: 5, height: 24, padding: "0 10px", boxSizing: "border-box", background: c.white, border: `0.5px solid ${c.rule}`, color: c.ink, textDecoration: "none", fontFamily: Fb, fontSize: 7.5, letterSpacing: "0.1em", textTransform: "uppercase" as const, flexShrink: 0 }}>
+              </a>}
+              {!viewOnly && <a href="https://www.behance.net/graymkhonto1" target="_blank" rel="noreferrer" aria-label="Open Gracious Gray Mkhonto's Behance profile" style={{ display: "flex", alignItems: "center", gap: 5, height: 24, padding: "0 10px", boxSizing: "border-box", background: c.white, border: `0.5px solid ${c.rule}`, color: c.ink, textDecoration: "none", fontFamily: Fb, fontSize: 7.5, letterSpacing: "0.1em", textTransform: "uppercase" as const, flexShrink: 0 }}>
                 Bē Behance
-              </a>
+              </a>}
               {!viewOnly && (
                 <>
                   <button onClick={() => setIntelligenceOpen(true)} style={{ display: "flex", alignItems: "center", gap: 5, height: 24, padding: "0 10px", background: c.dark, border: "none", cursor: "pointer", color: c.white, fontFamily: Fb, fontSize: 7.5, letterSpacing: "0.1em", textTransform: "uppercase" as const }}>
