@@ -2533,6 +2533,8 @@ function EditableTextSlidePage({ slideNumber, section, data }: { slideNumber: nu
                     ? 96.15
                     : item.y;
         const rawText = normalizeEditableSlideText(slideNumber, item.text);
+        const isRenderPlaceholder = item.kind === "text" && /^rendering(?:\.{3}|…)?$/i.test(rawText.trim());
+        if (isRenderPlaceholder) return null;
         const textLines = rawText.split("\n");
         const longestLine = Math.max(1, ...textLines.map(line => line.length));
         const boxWidthPx = (adjustedWidth / 100) * PW;
@@ -2704,6 +2706,7 @@ function EditableTextSlidePage({ slideNumber, section, data }: { slideNumber: nu
           top: `${adjustedTop}%`,
           width: `${safeWidth}%`,
           height: `${adjustedHeight}%`,
+          zIndex: item.kind === "text" ? 3 : item.kind === "image" ? 2 : 1,
           boxSizing: "border-box",
           background: resolvedColor(item.fill) || "transparent",
           border: item.stroke ? `0.5px solid ${resolvedColor(item.stroke)}` : "none",
@@ -2714,6 +2717,10 @@ function EditableTextSlidePage({ slideNumber, section, data }: { slideNumber: nu
         if (item.kind === "shape") return <div key={index} style={shared} />;
 
         if (item.kind === "image" && item.src) {
+          // The source Keynote contains two duplicate thumbnail fragments in
+          // the top-right of slide 65. They sit on top of the project text and
+          // are not part of the intended evidence layout.
+          if (slideNumber === 65 && item.x > 80 && item.y < 32) return null;
           const crop = item.crop || { l: 0, t: 0, r: 0, b: 0 };
           const hasCrop = crop.l > 0.01 || crop.t > 0.01 || crop.r > 0.01 || crop.b > 0.01;
           const visibleW = Math.max(1, 100 - crop.l - crop.r);
