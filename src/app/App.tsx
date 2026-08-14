@@ -2461,10 +2461,27 @@ function EditableTextSlidePage({ slideNumber, section, data }: { slideNumber: nu
     .map((item, index) => ({ item, index }))
     .filter(({ item }) => item.kind === "text");
 
+  // Figma editorial grid: twelve columns inside a 5.5% live area. Imported
+  // Keynote frames are gently snapped to this grid so their words retain the
+  // original sequence while behaving like typeset editorial matter.
+  const gridMargin = 5.5;
+  const gridRight = 94.5;
+  const gridColumn = (gridRight - gridMargin) / 12;
+  const snapGridLine = (value: number) => {
+    const clamped = Math.max(gridMargin, Math.min(gridRight, value));
+    return gridMargin + Math.round((clamped - gridMargin) / gridColumn) * gridColumn;
+  };
+  const editorialLeftFor = (item: EditableSlideItem) => {
+    if (item.kind !== "text" || item.y < 10 || item.y > 95) return item.x;
+    const safe = Math.max(gridMargin, item.x);
+    const snapped = snapGridLine(safe);
+    return Math.abs(snapped - safe) <= 2.2 ? snapped : safe;
+  };
+
   const reflowBoxFor = (item: EditableSlideItem, index: number, width: number) => {
     if (item.kind !== "text") return { width, height: item.h };
-    const left = Math.max(item.x, item.x >= 0 && item.x < 4.5 ? 2.5 : item.x);
-    const rightLimit = 97.5;
+    const left = editorialLeftFor(item);
+    const rightLimit = item.y < 10 || item.y > 95 ? 97.5 : gridRight;
     const verticalPeers = textItems.filter(({ item: peer, index: peerIndex }) =>
       peerIndex !== index &&
       peer.y < item.y + item.h && peer.y + peer.h > item.y &&
@@ -2476,7 +2493,9 @@ function EditableTextSlidePage({ slideNumber, section, data }: { slideNumber: nu
     );
     const nextRight = verticalPeers.length ? Math.min(...verticalPeers.map(({ item: peer }) => peer.x)) : rightLimit;
     const nextBelow = horizontalPeers.length ? Math.min(...horizontalPeers.map(({ item: peer }) => peer.y)) : 95;
-    const expandedWidth = Math.max(width, Math.min(rightLimit - left, nextRight - left - 1.1));
+    const desiredRight = Math.min(rightLimit, nextRight - 1.1);
+    const snappedRight = item.y < 10 || item.y > 95 ? desiredRight : snapGridLine(desiredRight);
+    const expandedWidth = Math.max(width, Math.min(rightLimit - left, snappedRight - left));
     const expandedHeight = Math.max(item.h, Math.min(95 - item.y, nextBelow - item.y - 0.7));
     return { width: Math.max(1, expandedWidth), height: Math.max(1, expandedHeight) };
   };
@@ -2698,8 +2717,9 @@ function EditableTextSlidePage({ slideNumber, section, data }: { slideNumber: nu
             : item.y > 95
               ? Math.min(item.h, 2.55)
               : reflowBox.height;
-        const safeLeft = item.kind === "text" ? Math.max(item.x, item.x >= 0 && item.x < 4.5 ? 2.5 : item.x) : item.x;
-        const safeWidth = item.kind === "text" ? Math.min(resolvedWidth, 97.5 - safeLeft) : resolvedWidth;
+        const safeLeft = item.kind === "text" ? editorialLeftFor(item) : item.x;
+        const textRightLimit = item.kind === "text" && item.y >= 10 && item.y <= 95 ? gridRight : 97.5;
+        const safeWidth = item.kind === "text" ? Math.min(resolvedWidth, textRightLimit - safeLeft) : resolvedWidth;
         const shared: React.CSSProperties = {
           position: "absolute",
           left: `${safeLeft}%`,
@@ -2753,6 +2773,7 @@ function EditableTextSlidePage({ slideNumber, section, data }: { slideNumber: nu
             key={index}
             data-editable-slide-text="true"
             data-character-style={characterStyle}
+            data-editorial-grid="12-column"
             contentEditable={!IS_PUBLIC_VIEWER}
             suppressContentEditableWarning
             spellCheck={!IS_PUBLIC_VIEWER}

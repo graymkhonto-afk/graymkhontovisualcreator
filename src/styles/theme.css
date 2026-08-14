@@ -917,6 +917,16 @@ body {
   overflow-wrap: normal !important;
   word-break: normal !important;
   text-wrap: pretty;
+  text-box-trim: trim-both;
+  text-box-edge: cap alphabetic;
+}
+
+[data-editable-slide-text="true"][data-character-style="body"] {
+  max-inline-size: 62ch;
+}
+
+[data-editable-slide-text="true"][data-character-style="subheading"] {
+  max-inline-size: 38ch;
 }
 
 .editorial-running-title,
