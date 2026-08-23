@@ -4685,16 +4685,6 @@ const PUBLIC_CASE_STUDIES: PublicCaseStudy[] = [
   },
 ];
 
-const METHOD_STEPS = [
-  ["Problem", "Define the communication challenge before selecting a medium."],
-  ["Research", "Investigate audience, context, material culture, visual references and constraints."],
-  ["Insights", "Translate findings into a precise design opportunity."],
-  ["Strategy", "Choose the visual system, touchpoints and hierarchy that the evidence supports."],
-  ["Iterations", "Test composition, type, colour, image and production decisions."],
-  ["Outcome", "Resolve the work into a clear, professional communication system."],
-  ["Reflection", "Assess what changed, what worked, what failed and what the project proves."],
-];
-
 const RPL_EVIDENCE = [
   ["Critical thinking", "Design theory, reflection, cultural context and problem framing across case studies."],
   ["Independent learning", "Self-directed research in typography, UX/UI, motion, photography and African-centred visual systems."],
@@ -4704,7 +4694,7 @@ const RPL_EVIDENCE = [
   ["Iterative process", "Sketches, prototypes, grids, process photography, rejected routes and final refinements."],
 ];
 
-function PublicPortfolio({ onOpenDossier }: { onOpenDossier: () => void }) {
+function PublicPortfolio() {
   const currentYear = new Date().getFullYear();
 
   return (
@@ -4713,10 +4703,10 @@ function PublicPortfolio({ onOpenDossier }: { onOpenDossier: () => void }) {
         <a className="public-brand" href="#top" aria-label="Gray Mkhonto portfolio home">Gray Mkhonto</a>
         <nav>
           <a href="#work">Work</a>
-          <a href="#methodology">Methodology</a>
+          <a href="#methodology">Practice</a>
           <a href="#rpl">RPL Evidence</a>
           <a href="#contact">Contact</a>
-          <button type="button" onClick={onOpenDossier}>RPL Dossier</button>
+          <a className="public-controlled-link" href="mailto:graymkhonto@gmail.com?subject=Controlled%20RPL%20Dossier%20Access">Controlled dossier</a>
         </nav>
       </header>
 
@@ -4727,7 +4717,7 @@ function PublicPortfolio({ onOpenDossier }: { onOpenDossier: () => void }) {
           <p className="public-hero__statement">I investigate communication systems first and allow the appropriate visual system to emerge through research rather than selecting a medium first.</p>
           <div className="public-actions" aria-label="Primary portfolio actions">
             <a href="#work">View selected work <ChevronRight aria-hidden="true" size={16} /></a>
-            <button type="button" onClick={onOpenDossier}>Open RPL dossier <BookOpen aria-hidden="true" size={16} /></button>
+            <a className="public-controlled-link" href="mailto:graymkhonto@gmail.com?subject=Controlled%20RPL%20Dossier%20Access">Request dossier access <BookOpen aria-hidden="true" size={16} /></a>
           </div>
         </div>
         <figure className="public-hero__image">
@@ -4769,20 +4759,12 @@ function PublicPortfolio({ onOpenDossier }: { onOpenDossier: () => void }) {
         </div>
       </section>
 
-      <section id="methodology" className="public-section public-method" aria-labelledby="method-title">
+      <section id="methodology" className="public-section public-method public-method--protected" aria-labelledby="method-title">
         <div>
-          <p className="public-kicker">Methodology</p>
-          <h2 id="method-title">A consistent narrative for every project.</h2>
-          <p>The structure makes your philosophy assessable: research produces insight, insight produces strategy, and strategy determines the visual system.</p>
+          <p className="public-kicker">Practice Positioning</p>
+          <h2 id="method-title">Research-led communication design, shared at the right level.</h2>
+          <p>My work is grounded in research, cultural knowledge, lived experience and systems thinking. Detailed working methods, diagnostic tools and implementation protocols remain confidential and are shared only through controlled review.</p>
         </div>
-        <ol className="method-list">
-          {METHOD_STEPS.map(([title, text]) => (
-            <li key={title}>
-              <span>{title}</span>
-              <p>{text}</p>
-            </li>
-          ))}
-        </ol>
       </section>
 
       <section id="rpl" className="public-section" aria-labelledby="rpl-title">
@@ -4808,7 +4790,7 @@ function PublicPortfolio({ onOpenDossier }: { onOpenDossier: () => void }) {
         <div className="public-contact__links">
           <a href="https://www.linkedin.com/in/graciousgraymkhonto" target="_blank" rel="noreferrer">LinkedIn</a>
           <a href="https://www.behance.net/graymkhonto1" target="_blank" rel="noreferrer">Behance</a>
-          <button type="button" onClick={onOpenDossier}>Review RPL dossier</button>
+          <a className="public-controlled-link" href="mailto:graymkhonto@gmail.com?subject=Controlled%20RPL%20Dossier%20Access">Request controlled dossier access</a>
         </div>
       </section>
 
@@ -4822,7 +4804,7 @@ function PublicPortfolio({ onOpenDossier }: { onOpenDossier: () => void }) {
 
 // ─── App ─────────────────────────────────────────────────────────────────────
 export default function App() {
-  const [publicMode, setPublicMode] = useState(() => IS_PUBLIC_VIEWER && new URLSearchParams(window.location.search).get("dossier") !== "true");
+  const [publicMode, setPublicMode] = useState(() => IS_PUBLIC_VIEWER);
   const [current, setCurrent] = useState(0);
   const [scale, setScale]     = useState(1);
   const [visible, setVisible] = useState(true);
@@ -5351,7 +5333,7 @@ export default function App() {
   );
 
   if (publicMode) {
-    return <PublicPortfolio onOpenDossier={() => setPublicMode(false)} />;
+    return <PublicPortfolio />;
   }
 
   return (

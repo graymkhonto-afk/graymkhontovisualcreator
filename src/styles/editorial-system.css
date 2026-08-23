@@ -54,7 +54,7 @@
   letter-spacing: 0.14em;
 }
 
-.public-nav nav button:last-child {
+.public-nav nav .public-controlled-link {
   min-height: 30px;
   padding-inline: 12px;
   border: 1px solid rgba(196, 154, 69, 0.72);
@@ -152,7 +152,7 @@
   color: var(--qg-ink);
 }
 
-.public-hero .public-actions button {
+.public-hero .public-actions .public-controlled-link {
   background: transparent;
   color: var(--qg-white);
 }

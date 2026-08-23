@@ -391,7 +391,9 @@ body {
 }
 
 .public-actions button,
-.public-contact__links button {
+.public-actions .public-controlled-link,
+.public-contact__links button,
+.public-contact__links .public-controlled-link {
   background: transparent;
   color: #1a1815;
 }
@@ -584,6 +586,17 @@ body {
   align-self: start;
 }
 
+.public-method--protected > div:first-child {
+  grid-column: 2 / span 8;
+  position: static;
+}
+
+.public-method--protected p:not(.public-kicker) {
+  max-width: 52rem;
+  font-size: clamp(1rem, 1.45vw, 1.25rem);
+  line-height: 1.65;
+}
+
 .public-method h2,
 .public-contact h2 {
   margin-top: var(--space-2);
@@ -671,7 +684,8 @@ body {
   color: #1a1815;
 }
 
-.public-contact__links button {
+.public-contact__links button,
+.public-contact__links .public-controlled-link {
   background: transparent;
   color: #fafafa;
 }
